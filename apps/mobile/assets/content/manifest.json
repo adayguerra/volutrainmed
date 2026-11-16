@@ -1,0 +1,42 @@
+{
+ "publicKey": "iwggOKKqMNhKikGscioXCBuC/CrqAQRHs6Bc3JPtqGw=",
+ "keyId": "vtm-content-2026-1",
+ "packages": [
+  {
+   "id": "it-fundamentos",
+   "version": "2026.11.1",
+   "url": "it-fundamentos.json.gz",
+   "sha256": "89f124d0400d60d8ec6aa014c2c5d78c33dd4fa04bd4a34b49e9812ce6f18ca4",
+   "signature": "JJo3VywXYQqsI8C9vWkS3YyKYBn+N85ZMglGha1QDviPX1PvQLVlwlPgtc4JmRclGqcg2YJVmKFfby3NJfgjCQ==",
+   "size": 33664,
+   "minAppVersion": "1.0.0"
+  },
+  {
+   "id": "it-anestesia",
+   "version": "2026.11.1",
+   "url": "it-anestesia.json.gz",
+   "sha256": "0f98c4e67d555ee7b3d50387580ae0f8b9ea4c3f48f8782ddda94a7fd4d833a7",
+   "signature": "odLsY8Glu9eJcfVd4Cd0pU+YQn8zRhlOxumrNSri+DQUaXI/orRXVZ9G49nT+GbiI9ej6Kcqf4PMyozdqapjDw==",
+   "size": 27410,
+   "minAppVersion": "1.0.0"
+  },
+  {
+   "id": "it-vet-pequenos",
+   "version": "2026.11.1",
+   "url": "it-vet-pequenos.json.gz",
+   "sha256": "6d047146a1ee0dc2e0f4479ac4214584126c7873719eaca02c44bbb90b8651df",
+   "signature": "L3CC7m4oDCLq505Bdwo8Z1f1hgxPEx5QD/32gvfb2OrRM5j0T1f54Tizclp+LXdLCF8bxYxS4qFjqmxaCx2jAw==",
+   "size": 23275,
+   "minAppVersion": "1.0.0"
+  }
+ ],
+ "global": {
+  "id": "global",
+  "version": "2026.11.1",
+  "url": "global.json.gz",
+  "sha256": "e25c0a9cad6d96f6cbdd80fd53e1b73fb28a0827911cf030c3a1f8f49714aa4b",
+  "signature": "Kam4jWHrwbl1wbsIUY6BA7RsdPL6QkXWjXQ9/Z7REXoitIllqsxIzdFQaNfTOMwdPwqktN2+YlnJR3Or1srfBA==",
+  "size": 4427,
+  "minAppVersion": "1.0.0"
+ }
+}
