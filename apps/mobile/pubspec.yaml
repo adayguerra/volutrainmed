@@ -48,6 +48,7 @@ dependencies:
   timezone: ^0.11.2
   material_symbols_icons: ^4.2960.0
   path_provider: ^2.1.6
+  rational: ^2.2.3
 
 dev_dependencies:
   flutter_test:
