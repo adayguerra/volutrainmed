@@ -1,0 +1,19 @@
+{
+  "name": "@vtm/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Motor de plantillas de VolutrainMed: aritmética decimal exacta, análisis dimensional, generación de variantes, doble cálculo independiente, corrección, normalizador de lectura y gramática de cifras habladas.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@vtm/contracts": "workspace:*",
+    "decimal.js": "^10.6.0"
+  },
+  "devDependencies": { "typescript": "^5.9.3", "vitest": "^3.2.4" }
+}

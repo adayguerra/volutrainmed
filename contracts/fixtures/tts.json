@@ -1,0 +1,26 @@
+{
+  "description": "Normalizador de lectura: cantidad escrita → texto hablado.",
+  "quantities": [
+    { "value": "0.25", "unit": "mg", "spoken": "cero coma veinticinco miligramos" },
+    { "value": "0.05", "unit": "mg", "spoken": "cero coma cero cinco miligramos" },
+    { "value": "1", "unit": "mg", "spoken": "un miligramo" },
+    { "value": "1", "unit": "UI", "spoken": "una unidad" },
+    { "value": "21", "unit": "mg", "spoken": "veintiún miligramos" },
+    { "value": "2", "unit": "%", "spoken": "dos por ciento" },
+    { "value": "0.2", "unit": "mg/kg", "spoken": "cero coma dos miligramos por kilo" },
+    { "value": "0.1", "unit": "µg/kg/min", "spoken": "cero coma uno microgramos por kilo y minuto" },
+    { "value": "4.8", "unit": "ml/h", "spoken": "cuatro coma ocho mililitros por hora" },
+    { "value": "42", "unit": "gotas/min", "spoken": "cuarenta y dos gotas por minuto" },
+    { "value": "200", "unit": "gotas", "spoken": "doscientas gotas" },
+    { "value": "1500", "unit": "mg", "spoken": "mil quinientos miligramos" },
+    { "value": "80", "unit": "kg", "spoken": "ochenta kilos" },
+    { "value": "3.12", "unit": "ml", "spoken": "tres coma doce mililitros" },
+    { "value": "100", "unit": "µg/ml", "spoken": "cien microgramos por mililitro" },
+    { "value": "20000", "unit": "gotas", "spoken": "veinte mil gotas" }
+  ],
+  "texts": [
+    { "text": "Adrenalina 1:10 000", "spoken": "Adrenalina uno en diez mil" },
+    { "text": "Suspensión de 250 mg/5 ml", "spoken": "Suspensión de doscientos cincuenta miligramos en cinco mililitros" },
+    { "text": "Pauta: 0,2 mg/kg", "spoken": "Pauta: cero coma dos miligramos por kilo" }
+  ]
+}
