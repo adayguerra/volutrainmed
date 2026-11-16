@@ -28,7 +28,10 @@ Fase 2. Depende de `add-training-app-mvp`, `add-house-ads-and-premium` (las plaz
 
 ### Modified Capabilities
 
-Ninguna en este paquete, porque los cambios anteriores aún no están archivados. Al implementarlo habrá que añadir deltas sobre `gamification-progress` (los logros fijos pasan a ser configurables) y sobre `exercise-session` (tipos T4, T5, T8 y T10).
+- `gamification-progress`: los logros fijos pasan a ser configurables desde el back office (delta en `specs/gamification-progress/spec.md`).
+- `exercise-session`: la sesión incorpora T4, T5, T8 y T10 definidos con el creador de tipos (delta en `specs/exercise-session/spec.md`).
+
+Estos deltas se añadieron al implementar el cambio. Para archivarlo hay que archivar antes `add-training-app-mvp`, de modo que las especificaciones de destino existan en `openspec/specs/`.
 
 ## Impact
 

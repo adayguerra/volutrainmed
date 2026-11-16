@@ -769,7 +769,7 @@ La puntuación premia la precisión y no el volumen para que la liga empuje haci
 ### 5.17 Suscripción
 
 - **Objetivo y momento.** Explicar el plan de pago y permitir la compra. Aparece desde Perfil, al tocar contenido de pago y al acabar la prueba.
-- **Modelo supuesto.** Gratis: Fundamentos completo, las dos primeras unidades del itinerario elegido, repaso sin límite de lo ya abierto y 5 minutos diarios de manos libres. De pago: todos los itinerarios y sectores, manos libres sin límite, contrarreloj completo y estadísticas avanzadas. Prueba de 7 días. Las organizaciones dan acceso con código, sin compra en la app.
+- **Modelo (actualizado con el cambio `add-house-ads-and-premium`).** Gratis: Fundamentos completo y el itinerario elegido completo, sin muro de pago, con una pausa promocional tras cada ejercicio servida con anuncios propios de la app (sin redes publicitarias, sin identificador publicitario y en modo avión) y 5 minutos diarios de manos libres. Premium: sin pausas promocionales, manos libres sin límite, todos los itinerarios y sectores y estadísticas avanzadas. Prueba de 7 días una vez por cuenta. Precios de trabajo: 6,99 € al mes y 39,99 € al año. Las organizaciones dan acceso con código, sin compra en la app, y sus plazas eliminan los anuncios.
 - **Móvil.** Titular de beneficio; cuatro ventajas con icono; selector de plan anual y mensual; precio con periodo y condiciones de renovación en lenguaje llano; «Probar 7 días gratis» (primaria); «Restaurar compras»; «Tengo un código de organización»; enlaces a términos y privacidad. Botón de cierre siempre visible y la frase «Cancela cuando quieras desde los ajustes de la tienda».
 - **Tablet.** Ventajas a la izquierda; planes y acción a la derecha, con 420 dp de ancho máximo.
 - **Estados.** Precios cargando: esqueleto; si falla, «No se pueden cargar los precios» y «Reintentar». Compra en curso, completada, cancelada y fallida, cada una con su mensaje. Sin conexión: no se puede comprar; el acceso ya adquirido sigue activo 30 días sin validar.
@@ -1524,7 +1524,7 @@ Mientras su finalidad prevista sea formativa y no procese datos de pacientes, Vo
 | Datos que se tratan | Cuenta (correo y alias), perfil (sector y nivel declarado), aprendizaje (intentos, tiempos y errores), dispositivo (modelo y versiones), estado de la suscripción y consultas |
 | Datos que no se tratan | Datos de pacientes, datos de salud del usuario, audio, texto transcrito, ubicación y contactos. Los datos de pago los trata la tienda |
 | Bases jurídicas | Ejecución del contrato para prestar el servicio. Consentimiento para comunicaciones comerciales. La base de la analítica de producto (interés legítimo o consentimiento) se decide con asesoría |
-| Minimización | Alias en las ligas, identificador seudónimo en la analítica, sin publicidad ni componentes publicitarios |
+| Minimización | Alias en las ligas, identificador seudónimo en la analítica. Los anuncios son propios, viajan en el paquete de contenido y se eligen en el dispositivo: sin SDK ni red publicitaria, sin identificador publicitario y sin consentimiento de rastreo. Los eventos de anuncio (impresión, permanencia, toque y compra atribuida) se tratan como el resto de la analítica de producto |
 | Conservación | Mientras la cuenta esté activa. Propuesta: anonimizar a los 24 meses de inactividad. Los intentos anonimizados se conservan para la analítica de contenido |
 | Derechos | Exportación y supresión desde Perfil; rectificación y oposición a la analítica |
 | Encargados | Backend, analítica y registro de errores en la UE. El proveedor de suscripciones puede implicar transferencia internacional, que exige garantías contractuales |
@@ -1706,7 +1706,7 @@ Decisiones tomadas sin dato de partida. Cualquiera puede cambiarse; se indica qu
 | S6 | La empresa está establecida en la UE y toda la infraestructura está en la UE | Protección de datos |
 | S7 | Los usuarios tienen 16 años o más | Términos y alta |
 | S8 | Se publican 300 variantes por plantilla y nivel | Tamaño de los paquetes |
-| S9 | No hay publicidad | Privacidad y modelo de ingresos |
+| S9 | Sustituido por el cambio `add-house-ads-and-premium`: plan gratuito con una pausa promocional de anuncios propios tras cada ejercicio y suscripción Premium que la elimina. No hay redes de publicidad de terceros | Privacidad, sesión de ejercicios, paquete de contenido y modelo de ingresos |
 | S10 | No hay mascota; la marca se apoya en el menisco | Sistema de diseño |
 | S11 | El contenido se elabora a partir de información pública de los fármacos y lo valida un profesional por sector | Flujo de revisión |
 | S12 | Las ligas agrupan por sector y usan alias | Reglas de liga |
