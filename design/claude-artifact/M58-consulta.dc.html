@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>M58 · Formulario de consulta</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/16a697ebb4d14b35b2c65628fe0a929b">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500;700&amp;family=Figtree:wght@500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0E7490}a:hover{color:#0B5F76}
+</style>
+</helmet>
+<div class="vt phone " style="width: 390px; height: 844px"><div class="top-safe"></div>
+<header class="topbar"><a class="iconbtn " href="M54-perfil.dc.html" aria-label="Volver"><svg class="ic " width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a><h1 class="ttl grow">Consulta</h1></header>
+<div class="col px16 g14 body-scroll" style="gap: 14px">
+  <div class="card row g10 ai-start" style="background: var(--warning-tint); border-color: transparent" role="note"><svg class="ic c-warning" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><p class="t-small"><b class="ui">No respondemos consultas sobre pacientes ni tratamientos.</b></p></div>
+  <div class="field"><span class="flabel">Tipo</span><div class="row g6 wrap"><button type="button" class="chip chip-primary" aria-pressed="true" style="height: 36px; font-size: 14px"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Error en un ejercicio</button><button type="button" class="chip chip-line" aria-pressed="false" style="height: 36px; font-size: 14px">Duda sobre una explicación</button><button type="button" class="chip chip-line" aria-pressed="false" style="height: 36px; font-size: 14px">Problema técnico</button><button type="button" class="chip chip-line" aria-pressed="false" style="height: 36px; font-size: 14px">Sugerencia de contenido</button><button type="button" class="chip chip-line" aria-pressed="false" style="height: 36px; font-size: 14px">Otro</button></div></div>
+  <div class="field"><span class="flabel">Ejercicio adjunto</span><span class="chip chip-line" style="height: 36px; align-self: flex-start"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span class="mono">pf-noradre-03 · v118 · 0<span class="cm">,</span>08 ml/h</span><button class="iconbtn" type="button" aria-label="Quitar el ejercicio adjunto" style="width: 28px; height: 28px"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span></div>
+  <div class="field"><label for="msg">Mensaje</label><div class="input textarea" id="msg">La explicación dice 100 µg/ml, pero el enunciado da la dilución en mg. ¿Falta indicar la conversión?</div><span class="help">Cuéntanos qué esperabas y qué viste.</span></div>
+  <div class="field"><label for="em">Correo de respuesta</label><div class="input" id="em">lucia.m@correo.es</div></div>
+  <button class="btn btn-tertiary btn-sm" type="button" style="align-self: flex-start"><svg class="ic " width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Adjuntar captura</button>
+</div>
+<div class="col g8 px16" style="padding-top: 12px; padding-bottom: 8px"><a class="btn btn-primary " href="M59-mis-consultas.dc.html"><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Enviar</a></div><div class="bot-safe"></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 390, "height": 844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

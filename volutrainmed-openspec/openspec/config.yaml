@@ -1,0 +1,47 @@
+schema: spec-driven
+
+context: |
+  Idioma: Español de España.
+  Todos los artefactos deben escribirse en español de España.
+  Los encabezados estructurales de OpenSpec y las palabras clave SHALL/MUST se mantienen en inglés.
+
+  Producto: VolutrainMed (nombre provisional). Entrenador móvil para ganar agilidad y fiabilidad
+  en el cálculo de dosis y volúmenes de fármacos. Usuarios: estudiantes y profesionales de
+  veterinaria, medicina, enfermería, farmacia, anestesia y emergencias.
+
+  Límite irrenunciable: es un entrenador formativo, no una calculadora clínica ni una herramienta
+  de apoyo a la decisión sobre pacientes reales. Ningún requisito puede introducir entrada libre de
+  datos de pacientes, recomendación de pautas ni mensajes que sugieran uso clínico.
+
+  Modelo de ingresos: plan gratuito con una pausa promocional tras cada ejercicio, servida con
+  anuncios propios de la app; la suscripción Premium elimina esas pausas. No hay redes de
+  publicidad de terceros.
+
+  Pila tecnológica recomendada: Flutter (iOS y Android, móvil y tablet), voz en el dispositivo con
+  sherpa-onnx, SQLite con Drift y sincronización propia por bandeja de salida, Supabase en la UE,
+  servicio de publicación en TypeScript, back office web en React y TypeScript.
+
+  Convenciones de producto:
+  - Sin conexión como norma: toda función de entrenamiento debe poder usarse en modo avión.
+  - La voz se procesa íntegramente en el dispositivo; no se guarda audio ni texto transcrito.
+  - El dispositivo no calcula fórmulas: compara con valores generados y verificados en el servidor.
+  - Coma decimal, cero inicial obligatorio y ningún cero final en las cifras.
+  - Todo ejemplo de ejercicio queda pendiente de validación por un profesional antes de publicarse.
+  - Accesibilidad: contraste 4,5:1, objetivos táctiles de 48 dp, texto ampliable al 200 %,
+    ningún estado comunicado solo con color y alternativa a todo gesto.
+
+rules:
+  proposal:
+    - Indicar la fase del producto a la que pertenece el cambio (0, 1, 2 o 3) y de qué otros cambios depende.
+    - Pasar el control de cambios regulatorio: explicar por qué el cambio no acerca el producto a una calculadora clínica.
+  specs:
+    - Describir comportamiento observable; los mecanismos internos van en design.md.
+    - Incluir al menos un escenario de funcionamiento sin conexión en toda capacidad que se use durante el entrenamiento.
+    - Expresar cifras con coma decimal y unidad, y marcar los ejemplos farmacológicos como pendientes de validación.
+    - Usar MUST o SHALL en inglés en el cuerpo de cada requisito.
+  design:
+    - Registrar alternativas consideradas y el motivo de aprendizaje o de uso de cada decisión.
+    - Señalar cualquier efecto sobre privacidad, accesibilidad o encaje regulatorio.
+  tasks:
+    - Incluir tareas de prueba en modo avión, en tablet y con lector de pantalla cuando el cambio toque la app.
+    - Incluir la validación experta del contenido cuando el cambio añada o modifique ejercicios.

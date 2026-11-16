@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><title>VolutrainMed - Detalle</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container": "#eaedff", "primary": "#004357", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#002114", "primary-container": "#0d5c75", "border-subtle": "#C5D9E0", "on-error": "#ffffff", "tertiary-container": "#006142", "error-container": "#ffdad6", "on-surface": "#131b2e", "on-primary": "#ffffff", "on-tertiary-container": "#6bdeac", "outline-variant": "#bfc8cd", "surface-bright": "#faf8ff", "surface-dim": "#d2d9f4", "surface-variant": "#dae2fd", "inverse-surface": "#283044", "background": "#faf8ff", "secondary-container": "#8debff", "primary-fixed-dim": "#90cfec", "error": "#ba1a1a", "on-secondary": "#ffffff", "secondary-fixed-dim": "#76d4e7", "on-tertiary": "#ffffff", "primary-fixed": "#bde9ff", "clinical-warning": "#D97706", "on-primary-container": "#93d3ef", "surface-container-highest": "#dae2fd", "unit-dimmed": "#475569", "clinical-error": "#DC2626", "surface-container-high": "#e2e7ff", "on-secondary-container": "#006b7a", "surface-container-low": "#f2f3ff", "clinical-deep": "#0A4D68", "secondary": "#006877", "secondary-fixed": "#a3eeff", "surface-tint": "#1e667f", "on-error-container": "#93000a", "on-secondary-fixed": "#001f25", "surface": "#faf8ff", "tertiary-fixed-dim": "#68dba9", "on-tertiary-fixed-variant": "#005137", "tertiary": "#004730", "inverse-on-surface": "#eef0ff", "outline": "#70787d", "on-primary-fixed": "#001f2a", "inverse-primary": "#90cfec", "tertiary-fixed": "#85f8c4", "surface-canvas": "#F4FAFB", "on-secondary-fixed-variant": "#004e5a", "on-primary-fixed-variant": "#004d64", "on-surface-variant": "#40484c", "surface-container-lowest": "#ffffff", "on-background": "#131b2e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xl": "2rem", "gutter-tablet": "1.5rem", "gutter-desktop": "2rem", "space-md": "1rem", "margin": "1rem", "gutter": "1rem", "margin-tablet": "1.5rem", "margin-desktop": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-problem": ["Noto Sans"], "label-code": ["Space Mono"], "numeric-input-mobile": ["Space Mono"], "display-handsfree-mobile": ["Space Mono"], "headline-lg": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "headline-lg-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-default": ["Noto Sans"], "badge-micro": ["Space Grotesk"], "body-sm": ["Noto Sans"], "label-unit": ["Space Mono"], "numeric-input": ["Space Mono"], "display-handsfree": ["Space Mono"] }, "fontSize": { "body-problem": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}], "label-code": ["13px", {"lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400"}], "numeric-input-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700"}], "display-handsfree-mobile": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}], "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600"}], "body-default": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}], "badge-micro": ["11px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600"}], "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}], "label-unit": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}], "numeric-input": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}], "display-handsfree": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas text-on-surface font-body-default min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 w-full z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Volver" class="min-h-[44px] px-2 -ml-2 flex items-center gap-1 text-primary active:bg-surface-variant/50 rounded-lg transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span><span class="font-headline-sm text-body-sm font-semibold tracking-tight">Volver</span></button></div><div class="flex-1 text-center px-2 truncate"><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Gestión De Paquetes</h1></div><div class="flex items-center justify-end gap-1"><button aria-label="Acciones de pantalla" class="w-11 h-11 flex items-center justify-center text-unit-dimmed rounded-full active:bg-surface-variant transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">tune</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas"><div class="flex flex-col w-full pb-10">
+<!-- Top Ambient Banner: Offline Reliability Guarantee -->
+<div class="px-margin pt-space-md">
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-headline-sm text-badge-micro text-tertiary uppercase tracking-wider">Modo Autónomo Activo</span>
+</div>
+<span class="font-label-code text-badge-micro px-2 py-0.5 rounded-full bg-surface-container text-primary font-bold">100% OFFLINE</span>
+</div>
+<div class="flex items-start gap-3 mt-1">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[24px]">airplanemode_active</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-headline-sm text-body-sm text-on-surface font-semibold leading-tight">
+            Listo para quirófanos y sótanos
+          </p>
+<p class="font-body-default text-body-sm text-on-surface-variant text-[13px] leading-snug mt-0.5">
+            Todo el entrenamiento y reconocimiento por voz operan sin cobertura ni datos móviles.
+          </p>
+</div>
+</div>
+<!-- Storage Gauge -->
+<div class="mt-space-xs bg-surface-canvas rounded-lg p-3 flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<span class="font-headline-sm text-badge-micro text-unit-dimmed tracking-wider uppercase">Almacenamiento Local Reservado</span>
+<span class="font-label-code text-label-code text-primary font-bold">142 MB <span class="text-unit-dimmed font-normal">/ 500 MB</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary-container rounded-full" style="width: 28.4%"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-unit-dimmed font-label-code pt-0.5">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            Itinerarios: 102 MB
+          </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Voz (sherpa): 40 MB
+          </span>
+<span>Disponible: 358 MB</span>
+</div>
+</div>
+<!-- Network and Telemetry strip -->
+<div class="flex items-center justify-between pt-1 text-[12px] text-on-surface-variant border-t-0 font-body-sm">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0">wifi</span>
+<span class="truncate">Wi-Fi Hospitalaria Detectada</span>
+</div>
+<span class="shrink-0 font-label-code text-[11px] text-unit-dimmed">Sinc: Hoy, 07:15 AM</span>
+</div>
+</div>
+</div>
+<!-- Content Section 1: Clinical Itinerary Packs -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">inventory_2</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Paquetes Clínicos</h2>
+</div>
+<span class="font-label-code text-badge-micro text-unit-dimmed bg-surface-container px-2 py-0.5 rounded-full">3 Descargados · 2 en Nube</span>
+</div>
+<!-- Pack 1: Base -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline-sm text-badge-micro px-2 py-0.5 rounded bg-surface-container-high text-primary font-bold">CORE</span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">v3.2</span>
+</div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Itinerario Base: Fundamentos &amp; Conversiones
+          </h3>
+<p class="font-label-code text-badge-micro text-unit-dimmed mt-0.5">
+            24 MB · Unidades métricas, mEq, regla de tres, conversiones rápidas
+          </p>
+</div>
+<span class="w-8 h-8 rounded-full bg-tertiary-container/10 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-[12px] text-tertiary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+          Listo para usar offline
+        </span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">84 fichas</span>
+</div>
+</div>
+<!-- Pack 2: Critical Care (Active) -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline-sm text-badge-micro px-2 py-0.5 rounded bg-primary-container text-on-primary font-bold">UCI ACTIVA</span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">v2.8</span>
+</div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Cuidados Críticos, Vasoactivos &amp; Perfusión IV
+          </h3>
+<p class="font-label-code text-badge-micro text-unit-dimmed mt-0.5">
+            42 MB · Noradrenalina, dopamina, milrinona, titulación continua
+          </p>
+</div>
+<span class="w-8 h-8 rounded-full bg-tertiary-container/10 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-[12px] text-primary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[15px]">task_alt</span>
+          140 plantillas validadas en memoria
+        </span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">Actualizado</span>
+</div>
+</div>
+<!-- Pack 3: Anesthesia (Update available) -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline-sm text-badge-micro px-2 py-0.5 rounded bg-surface-container text-primary font-bold">QUIRÓFANO</span>
+<span class="font-label-code text-badge-micro text-clinical-warning font-semibold">Parche pendiente</span>
+</div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Anestesia, TIVA &amp; Dilución Rápida
+          </h3>
+<p class="font-label-code text-badge-micro text-unit-dimmed mt-0.5">
+            Descargado: 36 MB · Propofol, remifentanilo, bloqueantes
+          </p>
+</div>
+<span class="w-8 h-8 rounded-full bg-clinical-warning/10 text-clinical-warning flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">system_update_alt</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-[12px] text-on-surface-variant">4 MB nuevos disponibles</span>
+<button class="h-9 px-3 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high active:scale-95 transition-all text-[12px] font-headline-sm font-semibold flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+          Actualizar
+        </button>
+</div>
+</div>
+<!-- Pack 4: Pediatrics (In Cloud) -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline-sm text-badge-micro px-2 py-0.5 rounded bg-surface-container text-unit-dimmed font-bold">PEDIATRÍA</span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">En la nube</span>
+</div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Pediatría y Neonatología: Factor 10
+          </h3>
+<p class="font-label-code text-badge-micro text-unit-dimmed mt-0.5">
+            28 MB · Dosificación por m², dilución extrema y prevención de errores
+          </p>
+</div>
+<span class="w-8 h-8 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">cloud</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-code text-badge-micro text-unit-dimmed">28 MB requeridos</span>
+<button class="h-9 px-3 rounded-lg bg-primary text-on-primary active:scale-95 transition-all text-[12px] font-headline-sm font-semibold flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+          Descargar offline
+        </button>
+</div>
+</div>
+<!-- Pack 5: Veterinary (In Cloud) -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline-sm text-badge-micro px-2 py-0.5 rounded bg-surface-container text-unit-dimmed font-bold">VETERINARIA</span>
+<span class="font-label-code text-badge-micro text-unit-dimmed">En la nube</span>
+</div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Urgencias Veterinarias &amp; Pequeños Animales
+          </h3>
+<p class="font-label-code text-badge-micro text-unit-dimmed mt-0.5">
+            32 MB · Especies canina y felina, fluidoterapia de choque
+          </p>
+</div>
+<span class="w-8 h-8 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">cloud</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-code text-badge-micro text-unit-dimmed">32 MB requeridos</span>
+<button class="h-9 px-3 rounded-lg bg-primary text-on-primary active:scale-95 transition-all text-[12px] font-headline-sm font-semibold flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+          Descargar paquete
+        </button>
+</div>
+</div>
+</div>
+<!-- Content Section 2: sherpa-onnx Voice Models -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">mic</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Modelos de Voz Local (sherpa-onnx)</h2>
+</div>
+<span class="font-label-code text-badge-micro px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold">CPU INT8</span>
+</div>
+<!-- Speech Model Primary Card -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/40 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">graphic_eq</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-body-sm font-semibold text-on-surface">
+              Modelo Español Sanitario (INT8)
+            </h3>
+<p class="font-label-code text-badge-micro text-secondary font-medium">
+              Latencia ultrabaja: 48 ms · Cero peticiones de red
+            </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+</div>
+<p class="font-body-default text-body-sm text-on-surface-variant text-[13px] leading-relaxed">
+        Vocabulario numérico y farmacológico cerrado cuantizado a 8 bits. Diseñado para no calentar el procesador y preservar la batería en turnos de guardia prolongados.
+      </p>
+<div class="grid grid-cols-2 gap-2 p-2.5 rounded-lg bg-surface-canvas text-[12px] font-label-code">
+<div>
+<span class="text-unit-dimmed block text-[10px]">TAMAÑO DISCO</span>
+<span class="text-primary font-bold">58 MB</span>
+</div>
+<div>
+<span class="text-unit-dimmed block text-[10px]">USO DE RAM</span>
+<span class="text-primary font-bold">35 MB</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-[12px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+          Checksum SHA-256 verificado
+        </span>
+<button class="text-primary font-headline-sm text-[12px] font-semibold flex items-center gap-1 active:opacity-70" type="button">
+<span class="material-symbols-outlined text-[16px]">rule</span>
+          Recomprobar
+        </button>
+</div>
+</div>
+<!-- Lexicon Phonetic Card -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">record_voice_over</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-headline-sm text-body-sm font-semibold text-on-surface truncate">
+            Pronunciación Fonética de Fármacos
+          </h4>
+<p class="font-label-code text-badge-micro text-unit-dimmed truncate">
+            fentanilo, noradrenalina, buprenorfina, UI/kg · 12 MB
+          </p>
+</div>
+</div>
+<span class="font-label-code text-badge-micro text-tertiary font-bold shrink-0">INSTALADO</span>
+</div>
+</div>
+<!-- Content Section 3: Safe Sync and Download Policies -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Políticas de Red &amp; Memoria</h2>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-4">
+<!-- Toggle 1 -->
+<label class="flex items-center justify-between cursor-pointer">
+<div class="flex flex-col pr-4">
+<span class="font-headline-sm text-body-sm font-semibold text-on-surface">Descargar paquetes solo con Wi-Fi</span>
+<span class="font-body-default text-body-sm text-on-surface-variant text-[12px]">Evita consumo de datos móviles en unidades móviles</span>
+</div>
+<input checked="" class="sr-only peer" id="toggle-wifi" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-border-subtle after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container relative"></div>
+</label>
+<!-- Toggle 2 -->
+<label class="flex items-center justify-between cursor-pointer">
+<div class="flex flex-col pr-4">
+<span class="font-headline-sm text-body-sm font-semibold text-on-surface">Actualizaciones automáticas de plantillas</span>
+<span class="font-body-default text-body-sm text-on-surface-variant text-[12px]">Descarga silenciosa de dosis y correcciones de posología</span>
+</div>
+<input checked="" class="sr-only peer" id="toggle-updates" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-border-subtle after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container relative"></div>
+</label>
+<!-- Cache purge action -->
+<div class="pt-2 flex flex-col gap-2">
+<button class="w-full h-[48px] rounded-lg bg-surface-canvas text-primary font-headline-sm text-body-sm font-semibold flex items-center justify-center gap-2 active:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">cleaning_services</span>
+          Purgar caché de variantes resueltas (18 MB)
+        </button>
+<p class="font-body-default text-[11px] text-unit-dimmed text-center leading-tight">
+          Libera espacio de almacenamiento sin alterar tu progreso de repetición espaciada (FSRS) ni rachas.
+        </p>
+</div>
+</div>
+</div>
+<!-- Content Section 4: Privacy & Compliance Callout -->
+<div class="px-margin mt-space-lg">
+<div class="bg-surface-container rounded-xl p-space-md flex gap-3 items-start">
+<div class="w-9 h-9 rounded-full bg-surface-card text-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-body-sm font-semibold text-primary">
+          Privacidad Clínica &amp; Seguridad de Datos
+        </h4>
+<p class="font-body-default text-body-sm text-on-surface-variant text-[12px] leading-relaxed mt-1">
+          Ningún audio o patrón de voz abandona este dispositivo. El reconocimiento acústico se ejecuta de forma 100% aislada en la CPU local a través del motor sherpa-onnx compilado para arquitectura móvil. Cumple con directivas hospitalarias de protección de datos de pacientes (RGPD / HIPAA).
+        </p>
+</div>
+</div>
+</div>
+<!-- Bottom CTA: Quick Force Sync -->
+<div class="px-margin mt-space-lg">
+<button class="w-full h-[52dp] rounded-xl bg-primary-container text-on-primary font-headline-sm text-body-default font-semibold shadow-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">cloud_sync</span>
+      Sincronizar telemetría ahora
+    </button>
+</div>
+</div></main></body></html>

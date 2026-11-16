@@ -1,0 +1,1226 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "B01-acceso.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "page": "backoffice",
+      "title": "B01 · Acceso con doble factor",
+      "w": 1440,
+      "x": 0,
+      "y": 260
+    },
+    "B02-panel.dc.html": {
+      "expand": "fill",
+      "h": 1080,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B02 · Panel de control",
+      "w": 1440,
+      "x": 1560,
+      "y": 260
+    },
+    "B03-panel-vacio.dc.html": {
+      "expand": "fill",
+      "h": 860,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B03 · Panel en una instalación nueva",
+      "w": 1440,
+      "x": 3120,
+      "y": 260
+    },
+    "B04-estructura.dc.html": {
+      "expand": "fill",
+      "h": 960,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B04 · Sectores e itinerarios",
+      "w": 1440,
+      "x": 0,
+      "y": 1720
+    },
+    "B05-biblioteca.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B05 · Biblioteca de plantillas y preguntas",
+      "w": 1440,
+      "x": 1560,
+      "y": 1720
+    },
+    "B06-plantilla-variables.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B06 · Editor de plantilla · variables",
+      "w": 1440,
+      "x": 0,
+      "y": 3060
+    },
+    "B07-plantilla-formula.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B07 · Editor de plantilla · fórmula y comprobación dimensional",
+      "w": 1440,
+      "x": 1560,
+      "y": 3060
+    },
+    "B08-plantilla-errores.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B08 · Editor de plantilla · restricciones y errores",
+      "w": 1440,
+      "x": 3120,
+      "y": 3060
+    },
+    "B09-plantilla-prueba.dc.html": {
+      "expand": "fill",
+      "h": 1060,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B09 · Editor de plantilla · prueba masiva",
+      "w": 1440,
+      "x": 4680,
+      "y": 3060
+    },
+    "B10-pregunta.dc.html": {
+      "expand": "fill",
+      "h": 1180,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B10 · Editor de preguntas",
+      "w": 1440,
+      "x": 0,
+      "y": 4500
+    },
+    "B11-vista-previa.dc.html": {
+      "expand": "fill",
+      "h": 960,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B11 · Vista previa con lectura en voz alta",
+      "w": 1440,
+      "x": 1560,
+      "y": 4500
+    },
+    "B12-tipos.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B12 · Creador de tipos de ejercicio (fase 2)",
+      "w": 1440,
+      "x": 3120,
+      "y": 4500
+    },
+    "B13-importar.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B13 · Importación masiva · emparejar columnas",
+      "w": 1440,
+      "x": 0,
+      "y": 6060
+    },
+    "B14-importar-validacion.dc.html": {
+      "expand": "fill",
+      "h": 960,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B14 · Importación masiva · validación de filas",
+      "w": 1440,
+      "x": 1560,
+      "y": 6060
+    },
+    "B15-revision.dc.html": {
+      "expand": "fill",
+      "h": 820,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B15 · Bandeja de revisión",
+      "w": 1440,
+      "x": 3120,
+      "y": 6060
+    },
+    "B16-revision-ficha.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B16 · Ficha de revisión",
+      "w": 1440,
+      "x": 4680,
+      "y": 6060
+    },
+    "B17-publicacion.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B17 · Versionado y publicación",
+      "w": 1440,
+      "x": 6240,
+      "y": 6060
+    },
+    "B18-usuarios.dc.html": {
+      "expand": "fill",
+      "h": 820,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B18 · Usuarios",
+      "w": 1440,
+      "x": 0,
+      "y": 7440
+    },
+    "B19-usuario.dc.html": {
+      "expand": "fill",
+      "h": 960,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B19 · Ficha de usuario",
+      "w": 1440,
+      "x": 1560,
+      "y": 7440
+    },
+    "B20-organizaciones.dc.html": {
+      "expand": "fill",
+      "h": 920,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B20 · Organizaciones (fase 2)",
+      "w": 1440,
+      "x": 3120,
+      "y": 7440
+    },
+    "B21-analitica.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B21 · Analítica de contenido",
+      "w": 1440,
+      "x": 0,
+      "y": 8780
+    },
+    "B22-analitica-elemento.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B22 · Analítica de un elemento",
+      "w": 1440,
+      "x": 1560,
+      "y": 8780
+    },
+    "B23-logros.dc.html": {
+      "expand": "fill",
+      "h": 860,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B23 · Gestión de logros (fase 2)",
+      "w": 1440,
+      "x": 0,
+      "y": 10160
+    },
+    "B24-ligas.dc.html": {
+      "expand": "fill",
+      "h": 980,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B24 · Configuración de ligas (fase 2)",
+      "w": 1440,
+      "x": 1560,
+      "y": 10160
+    },
+    "B25-consultas.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B25 · Consultas de usuarios",
+      "w": 1440,
+      "x": 3120,
+      "y": 10160
+    },
+    "B26-catalogos.dc.html": {
+      "expand": "fill",
+      "h": 820,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B26 · Catálogos de unidades y voz",
+      "w": 1440,
+      "x": 4680,
+      "y": 10160
+    },
+    "B27-auditoria.dc.html": {
+      "expand": "fill",
+      "h": 760,
+      "is_interactive": true,
+      "page": "backoffice",
+      "title": "B27 · Registro de auditoría",
+      "w": 1440,
+      "x": 6240,
+      "y": 10160
+    },
+    "M02-cuenta.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M02 · Crear cuenta (hoja)",
+      "w": 390,
+      "x": 470,
+      "y": 260
+    },
+    "M03-codigo.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M03 · Código de verificación",
+      "w": 390,
+      "x": 940,
+      "y": 260
+    },
+    "M04-sector.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M04 · Alta · Sector",
+      "w": 390,
+      "x": 1410,
+      "y": 260
+    },
+    "M05-nivel.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M05 · Alta · Nivel declarado",
+      "w": 390,
+      "x": 1880,
+      "y": 260
+    },
+    "M06-meta.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M06 · Alta · Meta",
+      "w": 390,
+      "x": 2350,
+      "y": 260
+    },
+    "M07-aviso.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M07 · Alta · Aviso formativo",
+      "w": 390,
+      "x": 2820,
+      "y": 260
+    },
+    "M08-prueba.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M08 · Prueba de nivel · ejercicio",
+      "w": 390,
+      "x": 3290,
+      "y": 260
+    },
+    "M09-prueba-resultado.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M09 · Prueba de nivel · resultado",
+      "w": 390,
+      "x": 3760,
+      "y": 260
+    },
+    "M10-descarga.dc.html": {
+      "h": 844,
+      "page": "movil",
+      "title": "M10 · Descarga del itinerario",
+      "w": 390,
+      "x": 4230,
+      "y": 260
+    },
+    "M11-permisos.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M11 · Permiso de notificaciones",
+      "w": 390,
+      "x": 4700,
+      "y": 260
+    },
+    "M12-inicio.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M12 · Inicio con ruta",
+      "w": 390,
+      "x": 0,
+      "y": 1484
+    },
+    "M13-unidad.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M13 · Detalle de unidad",
+      "w": 390,
+      "x": 470,
+      "y": 1484
+    },
+    "M14-practicar.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M14 · Practicar",
+      "w": 390,
+      "x": 940,
+      "y": 1484
+    },
+    "M15-inicio-offline.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M15 · Inicio sin conexión",
+      "w": 390,
+      "x": 1410,
+      "y": 1484
+    },
+    "M16-inicio-carga.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M16 · Inicio cargando (esqueleto)",
+      "w": 390,
+      "x": 1880,
+      "y": 1484
+    },
+    "M17-t1.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M17 · T1 Respuesta numérica (unidad fija)",
+      "w": 390,
+      "x": 0,
+      "y": 2708
+    },
+    "M18-t1-unidad.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M18 · T1 nivel 4 · eliges la unidad",
+      "w": 390,
+      "x": 470,
+      "y": 2708
+    },
+    "M19-t2.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M19 · T2 Selección única",
+      "w": 390,
+      "x": 940,
+      "y": 2708
+    },
+    "M20-t3.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M20 · T3 Ordenar pasos",
+      "w": 390,
+      "x": 1410,
+      "y": 2708
+    },
+    "M21-t6.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M21 · T6 Estimación rápida",
+      "w": 390,
+      "x": 1880,
+      "y": 2708
+    },
+    "M22-t7.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M22 · T7 Conversión relámpago",
+      "w": 390,
+      "x": 2350,
+      "y": 2708
+    },
+    "M23-apoyos.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M23 · Práctica con apoyos (planteamiento y pista)",
+      "w": 390,
+      "x": 2820,
+      "y": 2708
+    },
+    "M24-salir.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M24 · Confirmar salida de la sesión",
+      "w": 390,
+      "x": 3290,
+      "y": 2708
+    },
+    "M25-t1-oscuro.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M25 · T1 en tema oscuro",
+      "w": 390,
+      "x": 3760,
+      "y": 2708
+    },
+    "M26-correcto.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M26 · Veredicto correcto",
+      "w": 390,
+      "x": 0,
+      "y": 3932
+    },
+    "M27-observacion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M27 · Correcta con observación",
+      "w": 390,
+      "x": 470,
+      "y": 3932
+    },
+    "M28-fallo.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M28 · Corrección paso a paso tras un fallo",
+      "w": 390,
+      "x": 940,
+      "y": 3932
+    },
+    "M29-segundo-intento.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M29 · Segundo intento con otros números",
+      "w": 390,
+      "x": 1410,
+      "y": 3932
+    },
+    "M30-fin-leccion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M30 · Fin de lección",
+      "w": 390,
+      "x": 1880,
+      "y": 3932
+    },
+    "M31-hito.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M31 · Hito: habilidad consolidada (capa)",
+      "w": 390,
+      "x": 2350,
+      "y": 3932
+    },
+    "M32-repaso.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M32 · Repaso · entrada",
+      "w": 390,
+      "x": 0,
+      "y": 5156
+    },
+    "M33-repaso-sesion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M33 · Repaso · sesión",
+      "w": 390,
+      "x": 470,
+      "y": 5156
+    },
+    "M34-repaso-cierre.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M34 · Repaso · cierre",
+      "w": 390,
+      "x": 940,
+      "y": 5156
+    },
+    "M35-repaso-vacio.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M35 · Repaso · sin fichas",
+      "w": 390,
+      "x": 1410,
+      "y": 5156
+    },
+    "M36-crono-seleccion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M36 · Contrarreloj · selección",
+      "w": 390,
+      "x": 0,
+      "y": 6380
+    },
+    "M37-crono-juego.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M37 · Contrarreloj · en juego",
+      "w": 390,
+      "x": 470,
+      "y": 6380
+    },
+    "M38-crono-cierre.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M38 · Contrarreloj · cierre con récord",
+      "w": 390,
+      "x": 940,
+      "y": 6380
+    },
+    "M39-crono-no-valida.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M39 · Contrarreloj · marca no válida",
+      "w": 390,
+      "x": 1410,
+      "y": 6380
+    },
+    "M40-hf-previa.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M40 · Manos libres · comprobaciones",
+      "w": 390,
+      "x": 0,
+      "y": 7604
+    },
+    "M41-hf-config.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M41 · Manos libres · contenido y duración",
+      "w": 390,
+      "x": 470,
+      "y": 7604
+    },
+    "M42-hf-leyendo.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M42 · Manos libres · leyendo",
+      "w": 390,
+      "x": 940,
+      "y": 7604
+    },
+    "M43-hf-escucho.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M43 · Manos libres · te escucho",
+      "w": 390,
+      "x": 1410,
+      "y": 7604
+    },
+    "M44-hf-confirma.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M44 · Manos libres · ¿correcto?",
+      "w": 390,
+      "x": 1880,
+      "y": 7604
+    },
+    "M45-hf-veredicto.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M45 · Manos libres · incorrecto",
+      "w": 390,
+      "x": 2350,
+      "y": 7604
+    },
+    "M46-hf-pausa.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M46 · Manos libres · en pausa",
+      "w": 390,
+      "x": 2820,
+      "y": 7604
+    },
+    "M47-hf-bolsillo.dc.html": {
+      "h": 844,
+      "page": "movil",
+      "title": "M47 · Manos libres · modo bolsillo",
+      "w": 390,
+      "x": 3290,
+      "y": 7604
+    },
+    "M48-hf-resumen.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M48 · Manos libres · resumen",
+      "w": 390,
+      "x": 3760,
+      "y": 7604
+    },
+    "M49-hf-paquete.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M49 · Manos libres · paquete de voz",
+      "w": 390,
+      "x": 4230,
+      "y": 7604
+    },
+    "M50-progreso.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M50 · Progreso y estadísticas",
+      "w": 390,
+      "x": 0,
+      "y": 8828
+    },
+    "M51-habilidad.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M51 · Detalle de habilidad",
+      "w": 390,
+      "x": 470,
+      "y": 8828
+    },
+    "M52-liga.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M52 · Liga semanal (fase 2)",
+      "w": 390,
+      "x": 940,
+      "y": 8828
+    },
+    "M53-logros.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M53 · Logros",
+      "w": 390,
+      "x": 1410,
+      "y": 8828
+    },
+    "M54-perfil.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M54 · Perfil",
+      "w": 390,
+      "x": 0,
+      "y": 10052
+    },
+    "M55-voz.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M55 · Ajustes de voz",
+      "w": 390,
+      "x": 470,
+      "y": 10052
+    },
+    "M56-accesibilidad.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M56 · Accesibilidad y apariencia",
+      "w": 390,
+      "x": 940,
+      "y": 10052
+    },
+    "M57-suscripcion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M57 · Suscripción",
+      "w": 390,
+      "x": 1410,
+      "y": 10052
+    },
+    "M58-consulta.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M58 · Formulario de consulta",
+      "w": 390,
+      "x": 1880,
+      "y": 10052
+    },
+    "M59-mis-consultas.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M59 · Mis consultas",
+      "w": 390,
+      "x": 2350,
+      "y": 10052
+    },
+    "M60-sincronizacion.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M60 · Descargas y sincronización",
+      "w": 390,
+      "x": 2820,
+      "y": 10052
+    },
+    "M61-eliminar-cuenta.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M61 · Privacidad · eliminar cuenta",
+      "w": 390,
+      "x": 3290,
+      "y": 10052
+    },
+    "Main.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "movil",
+      "title": "M01 · Bienvenida",
+      "w": 390,
+      "x": 0,
+      "y": 260
+    },
+    "S01-sistema.dc.html": {
+      "h": 2000,
+      "page": "sistema",
+      "title": "S01 · Sistema de diseño",
+      "w": 1440,
+      "x": 0,
+      "y": 260
+    },
+    "T01-inicio.dc.html": {
+      "h": 834,
+      "is_interactive": true,
+      "page": "tablet",
+      "title": "T01 · Inicio · ruta y detalle de unidad",
+      "w": 1194,
+      "x": 0,
+      "y": 260
+    },
+    "T02-sesion.dc.html": {
+      "h": 834,
+      "is_interactive": true,
+      "page": "tablet",
+      "title": "T02 · Sesión táctil con hoja de borrador",
+      "w": 1194,
+      "x": 1274,
+      "y": 260
+    },
+    "T03-correccion.dc.html": {
+      "h": 834,
+      "is_interactive": true,
+      "page": "tablet",
+      "title": "T03 · Corrección en el panel derecho",
+      "w": 1194,
+      "x": 2548,
+      "y": 260
+    },
+    "T04-manos-libres.dc.html": {
+      "h": 834,
+      "page": "tablet",
+      "title": "T04 · Manos libres en tablet",
+      "w": 1194,
+      "x": 3822,
+      "y": 260
+    },
+    "T05-progreso.dc.html": {
+      "h": 834,
+      "is_interactive": true,
+      "page": "tablet",
+      "title": "T05 · Progreso en dos paneles",
+      "w": 1194,
+      "x": 0,
+      "y": 1474
+    },
+    "T06-fin-leccion.dc.html": {
+      "h": 834,
+      "page": "tablet",
+      "title": "T06 · Fin de lección en dos columnas",
+      "w": 1194,
+      "x": 1274,
+      "y": 1474
+    },
+    "T07-ajustes.dc.html": {
+      "h": 834,
+      "is_interactive": true,
+      "page": "tablet",
+      "title": "T07 · Ajustes de voz y accesibilidad con muestra",
+      "w": 1194,
+      "x": 2548,
+      "y": 1474
+    },
+    "T08-sector.dc.html": {
+      "h": 834,
+      "page": "tablet",
+      "title": "T08 · Alta · sector con vista previa",
+      "w": 1194,
+      "x": 3822,
+      "y": 1474
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-16T19:40:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "movil",
+    "view": "canvas"
+  },
+  "notes": {
+    "backoffice-r0": {
+      "kind": "title1",
+      "maxW": 4560,
+      "page": "backoffice",
+      "text": "Acceso y panel de control",
+      "w": 240,
+      "x": 0,
+      "y": 20
+    },
+    "backoffice-r1": {
+      "kind": "title1",
+      "maxW": 3000,
+      "page": "backoffice",
+      "text": "Estructura y biblioteca",
+      "w": 240,
+      "x": 0,
+      "y": 1480
+    },
+    "backoffice-r2": {
+      "kind": "title1",
+      "maxW": 6120,
+      "page": "backoffice",
+      "text": "Editor de plantillas parametrizadas",
+      "w": 240,
+      "x": 0,
+      "y": 2820
+    },
+    "backoffice-r3": {
+      "kind": "title1",
+      "maxW": 4560,
+      "page": "backoffice",
+      "text": "Preguntas, vista previa con voz y tipos de ejercicio",
+      "w": 240,
+      "x": 0,
+      "y": 4260
+    },
+    "backoffice-r4": {
+      "kind": "title1",
+      "maxW": 7680,
+      "page": "backoffice",
+      "text": "Importación masiva, revisión experta y publicación",
+      "w": 240,
+      "x": 0,
+      "y": 5820
+    },
+    "backoffice-r5": {
+      "kind": "title1",
+      "maxW": 4560,
+      "page": "backoffice",
+      "text": "Usuarios y organizaciones",
+      "w": 240,
+      "x": 0,
+      "y": 7200
+    },
+    "backoffice-r6": {
+      "kind": "title1",
+      "maxW": 3000,
+      "page": "backoffice",
+      "text": "Analítica de contenido",
+      "w": 240,
+      "x": 0,
+      "y": 8540
+    },
+    "backoffice-r7": {
+      "kind": "title1",
+      "maxW": 7680,
+      "page": "backoffice",
+      "text": "Logros, ligas, consultas, catálogos y auditoría",
+      "w": 240,
+      "x": 0,
+      "y": 9920
+    },
+    "bo-sticky": {
+      "fill": "teal",
+      "page": "backoffice",
+      "size": 24,
+      "text": "Back office web en React, pensado para escritorio desde 1280 px y utilizable desde 1024 px. Las pantallas son páginas fluidas: ábrelas a pantalla completa para verlas a su ancho real. Lo marcado «Fase 2» queda fuera del MVP.",
+      "w": 400,
+      "x": -520,
+      "y": 260
+    },
+    "movil-r0": {
+      "kind": "title1",
+      "maxW": 5090,
+      "page": "movil",
+      "text": "Alta y primera sesión",
+      "w": 240,
+      "x": 0,
+      "y": 20
+    },
+    "movil-r1": {
+      "kind": "title1",
+      "maxW": 2270,
+      "page": "movil",
+      "text": "Inicio, unidad y Practicar",
+      "w": 240,
+      "x": 0,
+      "y": 1244
+    },
+    "movil-r2": {
+      "kind": "title1",
+      "maxW": 4150,
+      "page": "movil",
+      "text": "Sesión táctil · T1, T2, T3, T6 y T7",
+      "w": 240,
+      "x": 0,
+      "y": 2468
+    },
+    "movil-r3": {
+      "kind": "title1",
+      "maxW": 2740,
+      "page": "movil",
+      "text": "Corrección, segundo intento y fin de lección",
+      "w": 240,
+      "x": 0,
+      "y": 3692
+    },
+    "movil-r4": {
+      "kind": "title1",
+      "maxW": 1800,
+      "page": "movil",
+      "text": "Repaso de errores",
+      "w": 240,
+      "x": 0,
+      "y": 4916
+    },
+    "movil-r5": {
+      "kind": "title1",
+      "maxW": 1800,
+      "page": "movil",
+      "text": "Contrarreloj",
+      "w": 240,
+      "x": 0,
+      "y": 6140
+    },
+    "movil-r6": {
+      "kind": "title1",
+      "maxW": 4620,
+      "page": "movil",
+      "text": "Manos libres",
+      "w": 240,
+      "x": 0,
+      "y": 7364
+    },
+    "movil-r7": {
+      "kind": "title1",
+      "maxW": 1800,
+      "page": "movil",
+      "text": "Progreso, ligas y logros",
+      "w": 240,
+      "x": 0,
+      "y": 8588
+    },
+    "movil-r8": {
+      "kind": "title1",
+      "maxW": 3680,
+      "page": "movil",
+      "text": "Perfil, ajustes, suscripción y consulta",
+      "w": 240,
+      "x": 0,
+      "y": 9812
+    },
+    "movil-sticky": {
+      "fill": "teal",
+      "page": "movil",
+      "size": 24,
+      "text": "Prototipo navegable: pulsa Play en una pantalla y sigue los botones principales (alta → inicio → lección → corrección → fin). La barra inferior enlaza los cinco destinos. Todas las cifras de ejemplo salen de la definición funcional y siguen pendientes de validación profesional.",
+      "w": 400,
+      "x": -520,
+      "y": 260
+    },
+    "sistema-r0": {
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "sistema",
+      "text": "Sistema de diseño · tokens, tipografía y componentes",
+      "w": 240,
+      "x": 0,
+      "y": 20
+    },
+    "tablet-r0": {
+      "kind": "title1",
+      "maxW": 5016,
+      "page": "tablet",
+      "text": "Tablet · inicio, sesión, corrección y manos libres",
+      "w": 240,
+      "x": 0,
+      "y": 20
+    },
+    "tablet-r1": {
+      "kind": "title1",
+      "maxW": 5016,
+      "page": "tablet",
+      "text": "Tablet · progreso, fin de lección, ajustes y alta",
+      "w": 240,
+      "x": 0,
+      "y": 1234
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "S01-sistema.dc.html",
+    "M02-cuenta.dc.html",
+    "M03-codigo.dc.html",
+    "M04-sector.dc.html",
+    "M05-nivel.dc.html",
+    "M06-meta.dc.html",
+    "M07-aviso.dc.html",
+    "M08-prueba.dc.html",
+    "M09-prueba-resultado.dc.html",
+    "M10-descarga.dc.html",
+    "M11-permisos.dc.html",
+    "M12-inicio.dc.html",
+    "M13-unidad.dc.html",
+    "M14-practicar.dc.html",
+    "M15-inicio-offline.dc.html",
+    "M16-inicio-carga.dc.html",
+    "M17-t1.dc.html",
+    "M18-t1-unidad.dc.html",
+    "M19-t2.dc.html",
+    "M20-t3.dc.html",
+    "M21-t6.dc.html",
+    "M22-t7.dc.html",
+    "M23-apoyos.dc.html",
+    "M24-salir.dc.html",
+    "M25-t1-oscuro.dc.html",
+    "M26-correcto.dc.html",
+    "M27-observacion.dc.html",
+    "M28-fallo.dc.html",
+    "M29-segundo-intento.dc.html",
+    "M30-fin-leccion.dc.html",
+    "M31-hito.dc.html",
+    "M32-repaso.dc.html",
+    "M33-repaso-sesion.dc.html",
+    "M34-repaso-cierre.dc.html",
+    "M35-repaso-vacio.dc.html",
+    "M36-crono-seleccion.dc.html",
+    "M37-crono-juego.dc.html",
+    "M38-crono-cierre.dc.html",
+    "M39-crono-no-valida.dc.html",
+    "M40-hf-previa.dc.html",
+    "M41-hf-config.dc.html",
+    "M42-hf-leyendo.dc.html",
+    "M43-hf-escucho.dc.html",
+    "M44-hf-confirma.dc.html",
+    "M45-hf-veredicto.dc.html",
+    "M46-hf-pausa.dc.html",
+    "M47-hf-bolsillo.dc.html",
+    "M48-hf-resumen.dc.html",
+    "M49-hf-paquete.dc.html",
+    "M50-progreso.dc.html",
+    "M51-habilidad.dc.html",
+    "M52-liga.dc.html",
+    "M53-logros.dc.html",
+    "M54-perfil.dc.html",
+    "M55-voz.dc.html",
+    "M56-accesibilidad.dc.html",
+    "M57-suscripcion.dc.html",
+    "M58-consulta.dc.html",
+    "M59-mis-consultas.dc.html",
+    "M60-sincronizacion.dc.html",
+    "M61-eliminar-cuenta.dc.html",
+    "T01-inicio.dc.html",
+    "T02-sesion.dc.html",
+    "T03-correccion.dc.html",
+    "T04-manos-libres.dc.html",
+    "T05-progreso.dc.html",
+    "T06-fin-leccion.dc.html",
+    "T07-ajustes.dc.html",
+    "T08-sector.dc.html",
+    "B01-acceso.dc.html",
+    "B02-panel.dc.html",
+    "B03-panel-vacio.dc.html",
+    "B04-estructura.dc.html",
+    "B05-biblioteca.dc.html",
+    "B06-plantilla-variables.dc.html",
+    "B07-plantilla-formula.dc.html",
+    "B08-plantilla-errores.dc.html",
+    "B09-plantilla-prueba.dc.html",
+    "B10-pregunta.dc.html",
+    "B11-vista-previa.dc.html",
+    "B12-tipos.dc.html",
+    "B13-importar.dc.html",
+    "B14-importar-validacion.dc.html",
+    "B15-revision.dc.html",
+    "B16-revision-ficha.dc.html",
+    "B17-publicacion.dc.html",
+    "B18-usuarios.dc.html",
+    "B19-usuario.dc.html",
+    "B20-organizaciones.dc.html",
+    "B21-analitica.dc.html",
+    "B22-analitica-elemento.dc.html",
+    "B23-logros.dc.html",
+    "B24-ligas.dc.html",
+    "B25-consultas.dc.html",
+    "B26-catalogos.dc.html",
+    "B27-auditoria.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "sistema",
+      "name": "Sistema de diseño"
+    },
+    {
+      "id": "movil",
+      "name": "App móvil"
+    },
+    {
+      "id": "tablet",
+      "name": "Tablet"
+    },
+    {
+      "id": "backoffice",
+      "name": "Back office"
+    }
+  ],
+  "title": "VolutrainMed · Pantallas"
+}

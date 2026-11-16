@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>M28 · Corrección paso a paso tras un fallo</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/16a697ebb4d14b35b2c65628fe0a929b">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500;700&amp;family=Figtree:wght@500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0E7490}a:hover{color:#0B5F76}
+</style>
+</helmet>
+<div class="vt phone " style="width: 390px; height: 844px"><div class="top-safe"></div>
+<div class="sbar"><a class="iconbtn " href="M24-salir.dc.html" aria-label="Salir de la sesión"><svg class="ic " width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></a><div class="segs" aria-hidden="true"><i class="ok"></i><i class="ok"></i><i class="ko"></i><i class="ok"></i><i class="ok"></i><i class="ko"></i><i class=""></i><i class=""></i></div><span class="t-label muted">6 de 8</span></div>
+<div class="px16"><p class="t-small muted">Paciente simulado de 80 kg · noradrenalina 0<span class="cm">,</span>1 µg/kg/min · 10 mg en 100 ml · ¿ml/h?</p></div>
+<section class="sheet" aria-label="Corrección" style="top: 136px; padding: 0 16px 24px">
+  <div class="grabber"></div>
+  <div class="verdict verdict-ko" style="border-radius: 14px; margin-top: 4px; padding: 14px" role="status">
+    <div class="row g10"><svg class="ic c-error" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><span class="t-sub c-error">No es correcto</span></div>
+    <div class="row g12 ai-end"><span class="col"><span class="t-label muted">Era</span><span class="mono b" style="font-size: 32px; line-height: 38px">4<span class="cm">,</span>8 <span style="font-weight: 400; font-size: 20px">ml/h</span></span></span>
+    <span class="col" style="margin-left: auto; text-align: right"><span class="t-label muted">Tu respuesta</span><span class="mono t-body">0<span class="cm">,</span>08 ml/h</span></span></div>
+  </div>
+  <div class="row g8 ai-start" style="margin: 12px 0"><span class="chip chip-error"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>E1 · Unidad</span><p class="t-body grow">Falta pasar de minutos a horas.</p></div>
+  <ol class="col g8"><li class="step "><span class="n">1</span><div class="col g4 grow"><span class="t-label muted">Concentración</span><p class="op">10 <span class="cx">mg</span> ÷ 100 ml = 0<span class="cm">,</span>1 mg/ml = <b>100 µg/ml</b></p></div></li><li class="step "><span class="n">2</span><div class="col g4 grow"><span class="t-label muted">Dosis por minuto</span><p class="op">0<span class="cm">,</span>1 µg/<span class="cx">kg</span>/min × 80 <span class="cx">kg</span> = <b>8 µg/min</b></p></div></li><li class="step dev"><span class="n">3</span><div class="col g4 grow"><span class="t-label muted">Dosis por hora</span><p class="op">8 µg/<span class="cx">min</span> × 60 <span class="cx">min</span>/h = <b>480 µg/h</b></p><span class="row g6 t-label c-error sb"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 1-1h12l-2 4 2 4H5"/></svg>Aquí te desviaste: faltó pasar a horas</span></div></li><li class="step "><span class="n">4</span><div class="col g4 grow"><span class="t-label muted">Ritmo</span><p class="op">480 <span class="cx">µg</span>/h ÷ 100 <span class="cx">µg</span>/ml = <b>4<span class="cm">,</span>8 ml/h</b></p></div></li></ol>
+  <div class="card card-tint row g10" style="margin-top: 10px; padding: 12px"><svg class="ic c-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><p class="t-small"><span class="nu mono"><b>4<span class="cm">,</span>8</b>&#8202;<span class="u">ml/h</span></span> en una bomba de perfusión. Tiene sentido.</p></div>
+  <div style="flex: 1"></div>
+  <div class="col g8" style="margin-top: 12px"><a class="btn btn-primary " href="M29-segundo-intento.dc.html"><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Probar con otros números</a><a class="btn btn-secondary " href="M30-fin-leccion.dc.html">Continuar</a></div>
+  <a class="link t-small tc" href="M58-consulta.dc.html" style="margin-top: 10px">Informar de un error en este ejercicio</a>
+</section></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 390, "height": 844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

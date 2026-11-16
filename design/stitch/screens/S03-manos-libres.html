@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;background-color:#F4FAFB;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "unit-dimmed": "#475569", "on-secondary-container": "#006b7a", "clinical-error": "#DC2626", "secondary": "#006877", "surface": "#faf8ff", "primary": "#004357", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "on-surface-variant": "#40484c", "on-error": "#ffffff", "error-container": "#ffdad6", "tertiary-container": "#006142", "on-surface": "#131b2e", "tertiary-fixed-dim": "#68dba9", "surface-tint": "#1e667f", "on-primary-container": "#93d3ef", "surface-variant": "#dae2fd", "on-error-container": "#93000a", "primary-container": "#0d5c75", "on-primary-fixed": "#001f2a", "primary-fixed": "#bde9ff", "on-secondary-fixed-variant": "#004e5a", "on-tertiary": "#ffffff", "on-tertiary-fixed": "#002114", "surface-canvas": "#F4FAFB", "secondary-fixed-dim": "#76d4e7", "surface-dim": "#d2d9f4", "outline": "#70787d", "tertiary-fixed": "#85f8c4", "surface-card": "#FFFFFF", "clinical-warning": "#D97706", "on-tertiary-container": "#6bdeac", "secondary-fixed": "#a3eeff", "inverse-primary": "#90cfec", "background": "#faf8ff", "primary-fixed-dim": "#90cfec", "surface-container-lowest": "#ffffff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed-variant": "#005137", "inverse-surface": "#283044", "clinical-deep": "#0A4D68", "surface-container-high": "#e2e7ff", "outline-variant": "#bfc8cd", "border-subtle": "#C5D9E0", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#004d64", "tertiary": "#004730", "on-background": "#131b2e", "on-primary": "#ffffff", "on-secondary-fixed": "#001f25", "secondary-container": "#8debff", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "gutter-desktop": "2rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "margin": "1rem", "gutter": "1rem", "margin-desktop": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-tablet": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-code": ["Space Mono"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "numeric-input-mobile": ["Space Mono"], "display-handsfree": ["Space Mono"], "label-unit": ["Space Mono"], "body-problem": ["Noto Sans"], "numeric-input": ["Space Mono"], "badge-micro": ["Space Grotesk"], "display-handsfree-mobile": ["Space Mono"], "body-sm": ["Noto Sans"], "body-default": ["Noto Sans"] }, fontSize: { "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-code": ["13px", { lineHeight: "18px", letterSpacing: "0.04em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0", fontWeight: "600" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "600" }], "numeric-input-mobile": ["32px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "700" }], "display-handsfree": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-unit": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }], "body-problem": ["18px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "400" }], "numeric-input": ["40px", { lineHeight: "48px", letterSpacing: "0.02em", fontWeight: "700" }], "badge-micro": ["11px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "600" }], "display-handsfree-mobile": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["14px", { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" }], "body-default": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas font-body-default text-body-default text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Volver" class="w-11 h-11 flex items-center justify-center rounded-lg text-primary hover:bg-surface-container-low transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="VolutrainMed Logo" class="h-7 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDJA8M8l2BWlPko0YacX9tvjpSiwFg7FXw3Usm4LeouESiCyyaNdxPTnPAQUa85kxnuVVo5xv6lfSBO89zsqFq2vei63CmUwfaxve7gCBzK_BGJzY3nJuBrR3RZ1LmoXptfkTJd8_W3Awg0UwiUFG2HqXnBLIqSpB1_ggulDhvNyWxKTygfhwWSC0ugDDQRwyjUGnSqBWG9K7VVsKuwKs9RLB6ivqQ2-VPzRuwgC6g"/></div><div class="flex-1 text-center truncate px-2"><h1 class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Modo Manos Libres</h1></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas min-h-screen"><div class="flex flex-col w-full px-margin pb-space-lg select-none">
+<!-- Status Chip: Edge Voice / Offline Model -->
+<div class="w-full flex items-center justify-between py-space-sm">
+<div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-badge-micro text-badge-micro tracking-wide uppercase">Modo sin nube · sherpa-onnx local</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors active:scale-95" id="btn-quick-pause" type="button">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span class="font-badge-micro text-badge-micro font-bold uppercase tracking-wider">Pausa</span>
+</button>
+</div>
+<!-- Medical Case Problem Card (High Visibility 1m Distance) -->
+<div class="w-full mt-space-sm bg-surface-card rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container text-clinical-deep font-badge-micro text-badge-micro uppercase tracking-wider">
+        Canino · Farmacología de Urgencias
+      </span>
+<div class="flex items-center gap-1 text-unit-dimmed font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">scale</span>
+<span>24,0 kg</span>
+</div>
+</div>
+<!-- Clinical Formulation -->
+<div class="mt-1 space-y-1">
+<p class="font-headline-sm text-headline-sm text-on-surface leading-tight font-semibold">
+        Meloxicam <span class="font-numeric-input-mobile text-headline-sm text-primary font-bold">0,2 mg/kg</span> en perro de <span class="font-numeric-input-mobile text-headline-sm text-primary font-bold">24 kg</span>.
+      </p>
+<div class="flex items-center gap-2 pt-1 text-unit-dimmed font-label-code text-label-code">
+<span class="px-2 py-0.5 rounded bg-surface-container-low text-primary font-bold">Conc: 5 mg/ml</span>
+<span>•</span>
+<span>Vía: Subcutánea</span>
+</div>
+</div>
+<!-- Clear Query Box -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[24px]">syringe</span>
+<span class="font-headline-sm text-headline-sm font-bold">¿Qué volumen cargas?</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-card shadow-sm flex items-center justify-center text-primary active:scale-90 transition-transform" id="btn-read-tts" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Central Acoustic Voice Radar (The Meniscus Sound Field) -->
+<div class="w-full my-space-md py-space-sm flex flex-col items-center justify-center text-center relative overflow-hidden rounded-xl bg-surface-card shadow-sm">
+<!-- Fluid Wave Glow Rings -->
+<div class="relative w-28 h-28 flex items-center justify-center mb-space-xs">
+<div class="absolute inset-0 rounded-full bg-secondary-container/40 animate-ping" style="animation-duration: 2.2s;"></div>
+<div class="absolute -inset-2 rounded-full bg-secondary-fixed/30 animate-pulse" style="animation-duration: 1.8s;"></div>
+<div class="relative z-10 w-20 h-20 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[36px]" id="mic-icon">mic</span>
+</div>
+</div>
+<!-- Speech State Caption -->
+<div class="flex items-center gap-1.5 text-secondary font-headline-sm text-headline-sm font-bold tracking-tight">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span id="voice-state-label">Te escucho...</span>
+</div>
+<!-- Massive Hands-Free Target Output -->
+<div class="mt-space-xs flex items-baseline justify-center gap-2">
+<span class="font-display-handsfree-mobile text-display-handsfree-mobile text-clinical-deep font-bold tracking-tight" id="transcription-val">
+        0,96
+      </span>
+<span class="font-label-unit text-label-unit text-unit-dimmed uppercase">ml</span>
+</div>
+<!-- Dynamic Confirm Instruction -->
+<div class="mt-space-xs px-space-md py-1 rounded-full bg-surface-container-high text-primary font-label-code text-label-code font-bold">
+      Di «confirmar» o el nuevo valor
+    </div>
+<!-- Audio Waveform Live Feedback -->
+<div class="w-48 h-6 flex items-center justify-center gap-1 mt-space-sm" id="wave-bars">
+<span class="w-1.5 h-2 rounded-full bg-secondary-container transition-all duration-150 animate-pulse"></span>
+<span class="w-1.5 h-4 rounded-full bg-secondary transition-all duration-150 animate-bounce" style="animation-delay: 100ms;"></span>
+<span class="w-1.5 h-6 rounded-full bg-primary transition-all duration-150 animate-bounce" style="animation-delay: 200ms;"></span>
+<span class="w-1.5 h-3 rounded-full bg-secondary transition-all duration-150 animate-bounce" style="animation-delay: 300ms;"></span>
+<span class="w-1.5 h-5 rounded-full bg-primary-container transition-all duration-150 animate-bounce" style="animation-delay: 150ms;"></span>
+<span class="w-1.5 h-2 rounded-full bg-secondary-container transition-all duration-150 animate-pulse"></span>
+</div>
+</div>
+<!-- Giant Glove Mode Actions (72dp+ ergonomics) -->
+<div class="w-full flex flex-col gap-space-sm mt-space-xs">
+<!-- Big Primary Voice Confirmation (Glove-Target: 72dp) -->
+<button class="w-full h-[72px] rounded-xl bg-primary text-on-primary shadow-md flex items-center justify-between px-space-md active:scale-[0.98] transition-all" id="btn-confirm-action" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px] text-on-primary">check_circle</span>
+</div>
+<div class="text-left">
+<p class="font-headline-sm text-headline-sm font-bold tracking-tight">Confirmar dosis</p>
+<p class="font-label-code text-label-code text-on-primary-container font-mono">0,96 ml · Subcutáneo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[28px]">arrow_forward</span>
+</button>
+<!-- Pair of 72dp Clinical Assistance Actions -->
+<div class="w-full grid grid-cols-2 gap-space-sm">
+<!-- Repetir audio -->
+<button class="h-[72px] rounded-xl bg-surface-card text-primary shadow-sm flex flex-col items-center justify-center gap-1 active:bg-surface-container-low transition-all active:scale-[0.98]" id="btn-repeat-audio" type="button">
+<span class="material-symbols-outlined text-[26px]">record_voice_over</span>
+<span class="font-headline-sm text-body-sm font-bold">Repetir audio</span>
+</button>
+<!-- No lo sé / Paso -->
+<button class="h-[72px] rounded-xl bg-surface-card text-unit-dimmed shadow-sm flex flex-col items-center justify-center gap-1 active:bg-surface-container-low transition-all active:scale-[0.98]" id="btn-pass-case" type="button">
+<span class="material-symbols-outlined text-[26px]">help_outline</span>
+<span class="font-headline-sm text-body-sm font-bold">No lo sé</span>
+</button>
+</div>
+</div>
+<!-- Permanent Privacy & Offline Safety Guarantee -->
+<div class="w-full mt-space-md p-space-sm rounded-lg bg-surface-card shadow-sm flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-code text-label-code text-on-surface font-semibold truncate">
+        Voz procesada 100% en tu dispositivo
+      </p>
+<div class="flex items-center gap-2 text-unit-dimmed font-badge-micro text-badge-micro">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">airplanemode_active</span>
+          Funciona en modo avión
+        </span>
+<span>•</span>
+<span>Zero-Cloud Telemetry</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const valDisplay = document.getElementById('transcription-val');
+    const stateLabel = document.getElementById('voice-state-label');
+    const micIcon = document.getElementById('mic-icon');
+    const btnRepeat = document.getElementById('btn-repeat-audio');
+    const btnPass = document.getElementById('btn-pass-case');
+    const btnConfirm = document.getElementById('btn-confirm-action');
+    const btnRead = document.getElementById('btn-read-tts');
+
+    // Tactile Audio feedback simulation
+    function triggerHapticPulse() {
+      if (navigator.vibrate) {
+        navigator.vibrate([15, 30, 15]);
+      }
+    }
+
+    if (btnConfirm) {
+      btnConfirm.addEventListener('click', function() {
+        triggerHapticPulse();
+        stateLabel.innerText = 'Dosis validada';
+        valDisplay.classList.add('text-secondary');
+        setTimeout(() => {
+          stateLabel.innerText = 'Cargando caso 2/10...';
+        }, 800);
+      });
+    }
+
+    if (btnRepeat) {
+      btnRepeat.addEventListener('click', function() {
+        triggerHapticPulse();
+        stateLabel.innerText = 'Reproduciendo enunciado...';
+        setTimeout(() => {
+          stateLabel.innerText = 'Te escucho...';
+        }, 1600);
+      });
+    }
+
+    if (btnRead) {
+      btnRead.addEventListener('click', function() {
+        triggerHapticPulse();
+        stateLabel.innerText = 'Reproduciendo caso...';
+        setTimeout(() => {
+          stateLabel.innerText = 'Te escucho...';
+        }, 1200);
+      });
+    }
+
+    if (btnPass) {
+      btnPass.addEventListener('click', function() {
+        triggerHapticPulse();
+        stateLabel.innerText = 'Mostrando resolución...';
+        valDisplay.innerText = '0,96';
+      });
+    }
+  })();
+</script></main></body></html>

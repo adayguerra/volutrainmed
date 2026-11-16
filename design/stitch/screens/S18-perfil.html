@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>VolutrainMed</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container": "#eaedff", "primary": "#004357", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#002114", "primary-container": "#0d5c75", "border-subtle": "#C5D9E0", "on-error": "#ffffff", "tertiary-container": "#006142", "error-container": "#ffdad6", "on-surface": "#131b2e", "on-primary": "#ffffff", "on-tertiary-container": "#6bdeac", "outline-variant": "#bfc8cd", "surface-bright": "#faf8ff", "surface-dim": "#d2d9f4", "surface-variant": "#dae2fd", "inverse-surface": "#283044", "background": "#faf8ff", "secondary-container": "#8debff", "primary-fixed-dim": "#90cfec", "error": "#ba1a1a", "on-secondary": "#ffffff", "secondary-fixed-dim": "#76d4e7", "on-tertiary": "#ffffff", "primary-fixed": "#bde9ff", "clinical-warning": "#D97706", "on-primary-container": "#93d3ef", "surface-container-highest": "#dae2fd", "unit-dimmed": "#475569", "clinical-error": "#DC2626", "surface-container-high": "#e2e7ff", "on-secondary-container": "#006b7a", "surface-container-low": "#f2f3ff", "clinical-deep": "#0A4D68", "secondary": "#006877", "secondary-fixed": "#a3eeff", "surface-tint": "#1e667f", "on-error-container": "#93000a", "on-secondary-fixed": "#001f25", "surface": "#faf8ff", "tertiary-fixed-dim": "#68dba9", "on-tertiary-fixed-variant": "#005137", "tertiary": "#004730", "inverse-on-surface": "#eef0ff", "outline": "#70787d", "on-primary-fixed": "#001f2a", "inverse-primary": "#90cfec", "tertiary-fixed": "#85f8c4", "surface-canvas": "#F4FAFB", "on-secondary-fixed-variant": "#004e5a", "on-primary-fixed-variant": "#004d64", "on-surface-variant": "#40484c", "surface-container-lowest": "#ffffff", "on-background": "#131b2e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xl": "2rem", "gutter-tablet": "1.5rem", "gutter-desktop": "2rem", "space-md": "1rem", "margin": "1rem", "gutter": "1rem", "margin-tablet": "1.5rem", "margin-desktop": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-problem": ["Noto Sans"], "label-code": ["Space Mono"], "numeric-input-mobile": ["Space Mono"], "display-handsfree-mobile": ["Space Mono"], "headline-lg": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "headline-lg-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-default": ["Noto Sans"], "badge-micro": ["Space Grotesk"], "body-sm": ["Noto Sans"], "label-unit": ["Space Mono"], "numeric-input": ["Space Mono"], "display-handsfree": ["Space Mono"] }, "fontSize": { "body-problem": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}], "label-code": ["13px", {"lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400"}], "numeric-input-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700"}], "display-handsfree-mobile": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}], "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600"}], "body-default": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}], "badge-micro": ["11px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600"}], "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}], "label-unit": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}], "numeric-input": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}], "display-handsfree": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas text-on-surface font-body-default min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 w-full z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">vaccines</span></div><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">VolutrainMed</span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-code text-[10px] uppercase font-bold tracking-wider"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>SYNC</span></div><span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider">Perfil</span></div></div><div class="flex items-center gap-2"><button aria-label="Offline Protocol Status" class="w-11 h-11 flex items-center justify-center text-unit-dimmed rounded-full active:bg-surface-variant transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">cloud_done</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface-canvas"><div class="flex flex-col w-full px-margin pb-space-xl gap-space-md">
+<!-- 1. USER CLINICAL HEADER CARD -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<!-- Initials Avatar -->
+<div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-headline-sm flex-shrink-0 shadow-inner">
+          EA
+        </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h1 class="font-headline-sm text-headline-sm text-primary truncate leading-tight">Enf. Alejandro R.</h1>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-code text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              ACTIVO
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed truncate">Enfermería en Cuidados Críticos &amp; Urgencias</p>
+<p class="font-label-code text-[12px] text-outline truncate">COL. #ES-384920 · Hosp. Universitario</p>
+</div>
+</div>
+</div>
+<!-- Hospital License Badge -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px] text-secondary">local_hospital</span>
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider font-semibold">Cuenta Verificada · Suscripción Hospitalaria Activa</span>
+</div>
+<!-- Quick Clinical Stats -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="bg-surface-canvas rounded-lg p-2.5 flex flex-col">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Racha Activa</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-label-code text-[18px] font-bold text-primary">8</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">días</span>
+</div>
+</div>
+<div class="bg-surface-canvas rounded-lg p-2.5 flex flex-col">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Precisión</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-label-code text-[18px] font-bold text-primary">97.4</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">%</span>
+</div>
+</div>
+<div class="bg-surface-canvas rounded-lg p-2.5 flex flex-col">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Práctica</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-label-code text-[18px] font-bold text-primary">18.5</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">h</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. ACTIVE SECTOR & CLINICAL PATHWAY -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">medical_services</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Sector y Especialidad</h2>
+</div>
+<button class="px-2.5 py-1 text-primary text-body-sm font-semibold hover:bg-surface-canvas rounded active:scale-95 transition-all" type="button">
+        Cambiar Sector
+      </button>
+</div>
+<!-- Active Track Description -->
+<div class="bg-surface-canvas rounded-lg p-3 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-unit-dimmed">Sector Activo</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-badge-micro text-badge-micro font-bold">UCI / Urgencias</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold">Enfermería General y Críticos</p>
+<p class="font-body-sm text-[13px] text-unit-dimmed leading-snug">
+        Itinerario: Vasoactivos, Sedoanalgesia y Bombas de Infusión (UCI/URPA)
+      </p>
+</div>
+<!-- Cross-discipline Pediatric Toggle -->
+<label class="flex items-center justify-between py-2 px-1 cursor-pointer select-none">
+<div class="flex flex-col pr-3">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Incluir casos pediátricos transversales</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Cálculo crítico de dilución y factor 10 en infancias</span>
+</div>
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" id="toggle-pediatric" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</label>
+</div>
+<!-- 3. ON-DEVICE VOICE ENGINE (sherpa-onnx) -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">graphic_eq</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Voz On-Device (Manos Libres)</h2>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]" title="Modo Seguro y Aislado">verified_user</span>
+</div>
+<!-- Technical Spec Capsule -->
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<span class="font-label-code text-[11px] font-bold text-primary">sherpa-onnx v1.10</span>
+<span class="inline-flex items-center gap-1 font-badge-micro text-[10px] uppercase font-bold text-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> 100% On-Device (Sin Nube)
+        </span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-[12px] text-unit-dimmed">
+<span>Latencia de inferencia local:</span>
+<span class="font-label-code font-bold text-on-surface">Mediana: 48 ms (Zero Latency)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-[12px] text-unit-dimmed">
+<span>Canónica de unidades:</span>
+<span class="font-label-code text-on-surface">µg/min · ml/h · mg/kg</span>
+</div>
+</div>
+<!-- Live Test Interaction -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="h-[52px] w-full bg-surface-canvas hover:bg-surface-container active:scale-[0.99] rounded-lg flex items-center justify-between px-3 text-primary transition-all" id="btn-voice-test" type="button">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary" id="mic-indicator">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-body-sm text-body-sm font-semibold">Probar Reconocimiento</span>
+<span class="font-label-code text-[11px] text-unit-dimmed">Di en voz alta: "0,5 ml" o "20 microgramos"</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline">play_arrow</span>
+</button>
+<!-- Dynamic Voice Feedback Banner (Updated via JS) -->
+<div class="hidden px-3 py-2 bg-secondary-container/30 rounded-lg flex items-center justify-between" id="voice-feedback">
+<span class="font-label-code text-[12px] text-primary" id="voice-text">Capturado: "0,5 ml/h" [Confianza: 99.2%]</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+</div>
+</div>
+<!-- Verbal Confirmation Toggle -->
+<div class="flex flex-col gap-1 divide-y divide-surface-canvas">
+<label class="flex items-center justify-between py-2 cursor-pointer select-none">
+<div class="flex flex-col pr-3">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Confirmación verbal de seguridad</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Preguntar "¿Confirmar?" antes de registrar la dosis</span>
+</div>
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</label>
+<!-- ICU / OR Acoustic Filter Toggle -->
+<label class="flex items-center justify-between py-2 cursor-pointer select-none">
+<div class="flex flex-col pr-3">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Filtro de ruido de UCI / Quirófano</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Aísla alarmas acústicas de respiradores y bombas</span>
+</div>
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- 4. CLINICAL ACCESSIBILITY & HAPTICS -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">touch_app</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Ergonomía y Háptica Clínica</h2>
+</div>
+<!-- High Contrast WCAG AAA -->
+<label class="flex items-center justify-between py-1.5 cursor-pointer select-none">
+<div class="flex flex-col pr-3">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Alto Contraste Clínico (WCAG AAA)</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Optimizado para entornos con alta luz directa o quirófano</span>
+</div>
+<div class="relative inline-flex items-center">
+<input class="sr-only peer" id="toggle-high-contrast" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</label>
+<!-- Decimal Format Radio Group -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Formato Numérico Estricto</span>
+<span class="font-badge-micro text-badge-micro px-1.5 py-0.5 rounded bg-clinical-warning/20 text-clinical-warning font-bold">NORMA ES/UE</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex flex-col p-3 rounded-lg bg-surface-canvas text-on-surface cursor-pointer has-[:checked]:bg-primary-container has-[:checked]:text-on-primary transition-all">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-code text-[14px] font-bold">Coma ( , )</span>
+<input checked="" class="accent-primary" name="decimal-separator" type="radio" value="comma"/>
+</div>
+<span class="font-label-code text-[11px] opacity-80">Ej: 12,5 ml</span>
+</label>
+<label class="flex flex-col p-3 rounded-lg bg-surface-canvas text-on-surface cursor-pointer has-[:checked]:bg-primary-container has-[:checked]:text-on-primary transition-all">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-code text-[14px] font-bold">Punto ( . )</span>
+<input class="accent-primary" name="decimal-separator" type="radio" value="dot"/>
+</div>
+<span class="font-label-code text-[11px] opacity-80">Ej: 12.5 ml</span>
+</label>
+</div>
+<p class="font-body-sm text-[12px] text-clinical-warning flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">info</span>
+        Coma decimal obligatoria recomendada para prevenir error de factor 10.
+      </p>
+</div>
+<!-- Haptic & Audio Row -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-canvas">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">vibration</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Retroalimentación háptica calibrada</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">1 pulso sostenido en validación correcta · 2 pulsos dobles secos en desviación dosimétrica.</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-canvas">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">volume_down</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Sonidos clínicos discretos</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Frecuencias suaves (&lt; 45 dB) compatibles con la política de silencio de UCI.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. OFFLINE STORAGE & PACKAGES LINK -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between gap-space-sm cursor-pointer hover:bg-surface-canvas transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/50 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">offline_pin</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm font-bold text-on-surface">Paquetes y Modelos Sin Conexión</span>
+<span class="font-label-code text-[12px] text-unit-dimmed truncate">128 MB usados · 3 protocolos listos</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[22px]">arrow_forward</span>
+</div>
+<!-- 6. CLINICAL AUDIT, LEGAL & ACTIONS -->
+<div class="flex flex-col gap-space-sm pt-2">
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2">
+<button class="h-[52px] w-full bg-primary-container text-on-primary rounded-lg font-body-sm font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">description</span>
+        Exportar Informe de Acreditación (PDF/CSV)
+      </button>
+<button class="h-[52px] w-full bg-surface-card text-clinical-error rounded-lg font-body-sm font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+        Cerrar Sesión Segura
+      </button>
+</div>
+<!-- Formal Legal & Standard Disclaimer -->
+<div class="p-3 bg-surface-canvas rounded-lg flex flex-col items-center text-center gap-1 mt-2">
+<span class="font-badge-micro text-[10px] text-unit-dimmed uppercase tracking-wider">
+        Marco Formativo ISO/IEEE 11073-10201
+      </span>
+<p class="font-body-sm text-[11px] text-outline leading-tight">
+        Entrenador dosimétrico para simulación y cálculo clínico. No sustituye la verificación dual reglamentaria al pie de cama del paciente real.
+      </p>
+<span class="font-label-code text-[11px] text-unit-dimmed mt-1">
+        VolutrainMed v2.4.1 (Build 829) · Compilado para entorno hospitalario
+      </span>
+</div>
+</div>
+</div>
+<script>
+  // Simple test interaction for microphone / local STT demo
+  const testBtn = document.getElementById('btn-voice-test');
+  const micIcon = document.getElementById('mic-indicator');
+  const feedback = document.getElementById('voice-feedback');
+  const voiceText = document.getElementById('voice-text');
+
+  let isListening = false;
+
+  testBtn.addEventListener('click', () => {
+    if (isListening) return;
+    isListening = true;
+
+    // Visual indicator: Listening state
+    micIcon.classList.remove('bg-primary/10', 'text-primary');
+    micIcon.classList.add('bg-error/20', 'text-clinical-error');
+    feedback.classList.remove('hidden');
+    voiceText.textContent = "Escuchando modelo on-device...";
+
+    // Simulate rapid sherpa-onnx local inferencing (48ms + small delay)
+    setTimeout(() => {
+      voiceText.textContent = 'Reconocido: "0,5 ml/h" (Confianza: 98.7%)';
+      micIcon.classList.remove('bg-error/20', 'text-clinical-error');
+      micIcon.classList.add('bg-primary/10', 'text-primary');
+      isListening = false;
+      
+      // Clinical gentle haptic pattern if browser supports it
+      if ('vibrate' in navigator) {
+        navigator.vibrate(40);
+      }
+    }, 1100);
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-card/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(10,77,104,0.06)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-1"><a class="flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-unit-dimmed hover:text-primary transition-colors" data-path="inicio" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-badge-micro text-badge-micro tracking-tight">Inicio</span></a><a class="flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-unit-dimmed hover:text-primary transition-colors" data-path="practicar" href="#"><span class="material-symbols-outlined text-[22px]">calculate</span><span class="font-badge-micro text-badge-micro tracking-tight">Practicar</span></a><a class="flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-unit-dimmed hover:text-primary transition-colors" data-path="progreso" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-badge-micro text-badge-micro tracking-tight">Progreso</span></a><a class="flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-unit-dimmed hover:text-primary transition-colors" data-path="ligas" href="#"><span class="material-symbols-outlined text-[22px]">trophy</span><span class="font-badge-micro text-badge-micro tracking-tight">Ligas</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors text-primary font-bold" data-path="perfil" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-badge-micro text-badge-micro tracking-tight">Perfil</span></a></div></nav></body></html>

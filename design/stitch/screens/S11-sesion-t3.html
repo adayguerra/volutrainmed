@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#93000a", "surface-container-low": "#f2f3ff", "on-background": "#131b2e", "on-secondary-container": "#006b7a", "primary": "#004357", "error-container": "#ffdad6", "primary-fixed-dim": "#90cfec", "on-tertiary-fixed-variant": "#005137", "unit-dimmed": "#475569", "on-surface": "#131b2e", "secondary-fixed-dim": "#76d4e7", "clinical-deep": "#0A4D68", "surface-container-lowest": "#ffffff", "outline": "#70787d", "inverse-primary": "#90cfec", "surface-container": "#eaedff", "surface-canvas": "#F4FAFB", "secondary": "#006877", "surface-container-highest": "#dae2fd", "secondary-fixed": "a3eeff", "surface-bright": "#faf8ff", "primary-container": "#0d5c75", "inverse-surface": "#283044", "clinical-warning": "#D97706", "on-primary-fixed": "#001f2a", "surface-variant": "#dae2fd", "tertiary": "#004730", "surface-card": "#FFFFFF", "clinical-error": "#DC2626", "outline-variant": "#bfc8cd", "on-error": "#ffffff", "surface-dim": "#d2d9f4", "on-secondary-fixed-variant": "#004e5a", "on-tertiary": "#ffffff", "surface-tint": "#1e667f", "surface": "#faf8ff", "on-tertiary-fixed": "#002114", "tertiary-fixed-dim": "#68dba9", "background": "#faf8ff", "on-primary": "#ffffff", "surface-container-high": "#e2e7ff", "on-primary-container": "#93d3ef", "tertiary-container": "#006142", "error": "#ba1a1a", "on-primary-fixed-variant": "#004d64", "on-tertiary-container": "#6bdeac", "on-surface-variant": "#40484c", "inverse-on-surface": "#eef0ff", "on-secondary-fixed": "#001f25", "primary-fixed": "#bde9ff", "secondary-container": "#8debff", "tertiary-fixed": "#85f8c4", "on-secondary": "#ffffff", "border-subtle": "#C5D9E0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-xl": "2rem", "margin-desktop": "2rem", "gutter-tablet": "1.5rem", "gutter-desktop": "2rem", "space-sm": "0.5rem", "margin-tablet": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "1rem", "gutter": "1rem" }, "fontFamily": { "headline-lg-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-sm": ["Noto Sans"], "headline-lg": ["Space Grotesk"], "numeric-input": ["Space Mono"], "display-handsfree": ["Space Mono"], "body-default": ["Noto Sans"], "display-handsfree-mobile": ["Space Mono"], "headline-sm": ["Space Grotesk"], "label-unit": ["Space Mono"], "badge-micro": ["Space Grotesk"], "numeric-input-mobile": ["Space Mono"], "body-problem": ["Noto Sans"], "label-code": ["Space Mono"] }, "fontSize": { "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600" }], "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "numeric-input": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }], "display-handsfree": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-default": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }], "display-handsfree-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }], "label-unit": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "badge-micro": ["11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "numeric-input-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" }], "body-problem": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }], "label-code": ["13px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Cerrar o volver del ejercicio" class="w-11 h-11 flex items-center justify-center rounded-lg text-primary hover:bg-surface-container-low transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">close</span></button><div class="flex flex-col"><span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider">Caso Clínico UCI</span><h1 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight truncate max-w-[170px]">Sesion Dilucion Pediatrica</h1></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border-subtle"><span class="material-symbols-outlined text-secondary text-[16px]">timer</span><span class="font-label-code text-label-code font-bold text-on-surface">00:45</span></div><button aria-label="Opciones de sesión" class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">tune</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas"><div class="flex flex-col w-full px-space-md pb-space-xl gap-space-md">
+<!-- Case Taxonomy and Category Pills -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">reorder</span>
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-primary font-bold">Tipo T3 · Secuenciación Metodológica</span>
+</div>
+<span class="font-label-code text-label-code text-unit-dimmed flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+        Meta: 4 Pasos
+      </span>
+</div>
+<div class="inline-flex self-start items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-badge-micro text-badge-micro font-semibold uppercase tracking-wider">
+<span>Anestesia &amp; Críticos · H9 Perfusión Peso/Tiempo</span>
+</div>
+</div>
+<!-- Clinical Enunciation Card (Meniscus clinical design) -->
+<div class="rounded-xl bg-surface-card shadow-sm p-space-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-primary-container"></div>
+<div class="flex items-center justify-between gap-space-sm">
+<span class="font-label-code text-label-code uppercase tracking-wide text-unit-dimmed font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">assignment</span>
+        Protocolo de Titulación Vasoactiva
+      </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-code text-label-code font-bold">
+        SG 5%
+      </span>
+</div>
+<p class="font-body-default text-body-default text-on-surface leading-relaxed pl-space-xs">
+      Ordena la secuencia correcta para calcular la velocidad de infusión en <span class="font-label-code text-label-code font-bold text-primary bg-surface-container px-1 py-0.5 rounded">ml/h</span> de <span class="font-semibold text-clinical-deep">Noradrenalina</span> a <span class="font-label-code text-label-code font-bold text-on-surface">0,1 µg/kg/min</span> en un paciente de <span class="font-label-code text-label-code font-bold text-on-surface">80 kg</span> con dilución de <span class="font-label-code text-label-code font-bold text-on-surface">10 mg en 100 ml</span> de SG 5%.
+    </p>
+<!-- Patient quick-spec pills -->
+<div class="flex items-center gap-space-xs flex-wrap pt-space-xs">
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-canvas text-on-surface-variant font-label-code text-label-code">
+<span class="material-symbols-outlined text-[14px] text-unit-dimmed">scale</span>
+<span>Peso: <strong class="text-on-surface">80 kg</strong></span>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-canvas text-on-surface-variant font-label-code text-label-code">
+<span class="material-symbols-outlined text-[14px] text-unit-dimmed">medication_liquid</span>
+<span>Ampolla: <strong class="text-on-surface">10 mg / 100 ml</strong></span>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-canvas text-on-surface-variant font-label-code text-label-code">
+<span class="material-symbols-outlined text-[14px] text-unit-dimmed">speed</span>
+<span>Dosis: <strong class="text-on-surface">0,1 µg/kg/min</strong></span>
+</div>
+</div>
+</div>
+<!-- Micro-interaction / Accessibility Notice -->
+<div class="flex items-start gap-2.5 p-space-sm rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">touch_app</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+<strong class="text-primary font-semibold">Instrucción interactiva:</strong> Toca las flechas o utiliza los botones numéricos correlativos para secuenciar los pasos lógicos. Compatible con controles para guantes y WCAG.
+    </p>
+</div>
+<!-- Reorderable Interactive Steps Stack -->
+<div aria-label="Lista secuencial de pasos de cálculo" class="flex flex-col gap-space-sm" id="steps-container" role="list">
+<!-- Item A (Rendered initially as slot 1, but represents logical Step 1) -->
+<div class="step-card group relative bg-surface-card rounded-xl p-space-md shadow-sm transition-all duration-200" data-step-id="1" role="listitem">
+<div class="flex items-start justify-between gap-space-sm">
+<!-- Ordinal Badge Indicator -->
+<div class="flex items-center gap-2.5">
+<div class="ordinal-tag w-8 h-8 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center shrink-0 shadow-sm">
+<span class="step-display-num font-label-code font-bold text-[14px]">1</span>
+</div>
+<div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider block font-bold">Operación Inicial</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Dosis ponderal absoluta</h2>
+</div>
+</div>
+<!-- Resulting Dimensional Unit Badge (Teal/Emerald target state) -->
+<div class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-code text-label-code font-bold flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>8 µg/min</span>
+</div>
+</div>
+<div class="mt-space-sm pl-10 pr-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-normal">
+          Multiplicar dosis por peso corporal:
+        </p>
+<div class="mt-1 font-label-code text-label-code font-bold text-on-surface bg-surface-canvas p-2 rounded-lg flex items-center justify-between">
+<span>0,1 µg/kg/min × 80 kg</span>
+<span class="text-unit-dimmed font-normal text-xs">= 8 µg/min</span>
+</div>
+</div>
+<!-- Micro WCAG Step Reorder Controls (48dp safe touch targets) -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs border-t-0 bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-space-xs rounded-b-xl">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Ajustar posición</span>
+<div class="flex items-center gap-1">
+<button aria-label="Subir este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, -1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_up</span>
+</button>
+<button aria-label="Bajar este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, 1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item B (Logical Step 3 placed here initially for playful challenge) -->
+<div class="step-card group relative bg-surface-card rounded-xl p-space-md shadow-sm transition-all duration-200" data-step-id="3" role="listitem">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="ordinal-tag w-8 h-8 rounded-full bg-surface-container-highest text-on-surface font-headline-sm text-headline-sm flex items-center justify-center shrink-0">
+<span class="step-display-num font-label-code font-bold text-[14px]">2</span>
+</div>
+<div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider block font-bold">Dilución de Matriz</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Concentración de la solución</h2>
+</div>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-code text-label-code font-bold flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span>100 µg/ml</span>
+</div>
+</div>
+<div class="mt-space-sm pl-10 pr-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-normal">
+          Calcular concentración neta convirtiendo mg a µg:
+        </p>
+<div class="mt-1 font-label-code text-label-code font-bold text-on-surface bg-surface-canvas p-2 rounded-lg flex items-center justify-between">
+<span>10 mg / 100 ml = 0,1 mg/ml</span>
+<span class="text-unit-dimmed font-normal text-xs">= 100 µg/ml</span>
+</div>
+</div>
+<!-- WCAG Controls -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-space-xs rounded-b-xl">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Ajustar posición</span>
+<div class="flex items-center gap-1">
+<button aria-label="Subir este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, -1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_up</span>
+</button>
+<button aria-label="Bajar este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, 1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item C (Logical Step 2) -->
+<div class="step-card group relative bg-surface-card rounded-xl p-space-md shadow-sm transition-all duration-200" data-step-id="2" role="listitem">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="ordinal-tag w-8 h-8 rounded-full bg-surface-container-highest text-on-surface font-headline-sm text-headline-sm flex items-center justify-center shrink-0">
+<span class="step-display-num font-label-code font-bold text-[14px]">3</span>
+</div>
+<div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider block font-bold">Conversión Temporal</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Cálculo de dosis horaria</h2>
+</div>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-code text-label-code font-bold flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>480 µg/h</span>
+</div>
+</div>
+<div class="mt-space-sm pl-10 pr-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-normal">
+          Multiplicar por 60 min/h para equiparar la escala de infusión:
+        </p>
+<div class="mt-1 font-label-code text-label-code font-bold text-on-surface bg-surface-canvas p-2 rounded-lg flex items-center justify-between">
+<span>8 µg/min × 60 min/h</span>
+<span class="text-unit-dimmed font-normal text-xs">= 480 µg/h</span>
+</div>
+</div>
+<!-- WCAG Controls -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-space-xs rounded-b-xl">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Ajustar posición</span>
+<div class="flex items-center gap-1">
+<button aria-label="Subir este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, -1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_up</span>
+</button>
+<button aria-label="Bajar este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, 1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item D (Logical Step 4: Final Infusion Rate) -->
+<div class="step-card group relative bg-surface-card rounded-xl p-space-md shadow-sm transition-all duration-200" data-step-id="4" role="listitem">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="ordinal-tag w-8 h-8 rounded-full bg-surface-container-highest text-on-surface font-headline-sm text-headline-sm flex items-center justify-center shrink-0">
+<span class="step-display-num font-label-code font-bold text-[14px]">4</span>
+</div>
+<div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider block font-bold">Volumen de Entrega</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Tasa volumétrica en bomba</h2>
+</div>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-code text-label-code font-bold flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+<span>4,8 ml/h</span>
+</div>
+</div>
+<div class="mt-space-sm pl-10 pr-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-normal">
+          Dividir dosis horaria entre concentración final:
+        </p>
+<div class="mt-1 font-label-code text-label-code font-bold text-on-surface bg-surface-canvas p-2 rounded-lg flex items-center justify-between">
+<span>480 µg/h ÷ 100 µg/ml</span>
+<span class="text-primary font-bold text-xs">= 4,8 ml/h</span>
+</div>
+</div>
+<!-- WCAG Controls -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-space-xs rounded-b-xl">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Ajustar posición</span>
+<div class="flex items-center gap-1">
+<button aria-label="Subir este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, -1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_up</span>
+</button>
+<button aria-label="Bajar este paso en la jerarquía" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-primary active:bg-surface-container-high transition-transform active:scale-95 shadow-xs" onclick="moveStep(this, 1)" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dimensional Analysis Verification Box (PRD Specification Footnote) -->
+<div class="rounded-xl bg-surface-container-high p-space-md flex flex-col gap-2 relative shadow-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">calculate</span>
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-clinical-deep font-bold">Comprobación Dimensional Canónica</span>
+</div>
+<span class="font-label-code text-label-code text-unit-dimmed">ISO/EN 60601</span>
+</div>
+<!-- Mathematical Formula Display -->
+<div class="p-space-sm bg-surface-card rounded-lg flex items-center justify-center text-center overflow-x-auto shadow-inner">
+<span class="font-label-code text-label-code font-bold text-clinical-deep tracking-wide whitespace-nowrap">
+        [ µg/kg/min × kg × 60 min/h ] ÷ µg/ml = <span class="text-tertiary font-bold bg-tertiary-fixed/30 px-1.5 py-0.5 rounded">ml/h</span>
+</span>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<span class="material-symbols-outlined text-[16px] text-unit-dimmed">chevron_forward</span>
+<p class="font-body-sm text-body-sm text-unit-dimmed leading-tight">
+        Las unidades en min y kg se anulan consecutivamente hasta aislar el flujo volumétrico puro.
+      </p>
+</div>
+</div>
+<!-- Feedback Container (Revealed via validation) -->
+<div class="hidden rounded-xl p-space-md transition-all duration-300" id="validation-banner"></div>
+<!-- Bottom Ergonomic Clinical Action Buttons (Glove & Thumb Friendly) -->
+<div class="flex flex-col gap-space-sm pt-space-xs mt-auto">
+<!-- Primary Confirmation CTA -->
+<button class="w-full h-[52px] rounded-lg bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all" id="validate-btn" onclick="validateMethodologicalOrder()" type="button">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+<span>Comprobar orden metodológico</span>
+</button>
+<!-- Secondary & Canonical Support Actions (Two columns for balance) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-[48px] rounded-lg bg-surface-container text-primary font-body-sm text-body-sm font-semibold flex items-center justify-center gap-1.5 active:bg-surface-container-high transition-colors" onclick="resetToInitialOrder()" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span>Reiniciar orden</span>
+</button>
+<button class="h-[48px] rounded-lg bg-surface-container-low text-secondary font-body-sm text-body-sm font-semibold flex items-center justify-center gap-1.5 active:bg-surface-container transition-colors" onclick="showCanonicalSequence()" type="button">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+<span class="truncate">Ver canónica</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  function updateVisualIndices() {
+    const container = document.getElementById('steps-container');
+    const cards = container.querySelectorAll('.step-card');
+    cards.forEach((card, index) => {
+      const numSpan = card.querySelector('.step-display-num');
+      const tag = card.querySelector('.ordinal-tag');
+      if (numSpan) {
+        numSpan.textContent = (index + 1);
+      }
+      if (tag) {
+        if (index === 0) {
+          tag.className = 'ordinal-tag w-8 h-8 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center shrink-0 shadow-sm';
+        } else {
+          tag.className = 'ordinal-tag w-8 h-8 rounded-full bg-surface-container-highest text-on-surface font-headline-sm text-headline-sm flex items-center justify-center shrink-0';
+        }
+      }
+    });
+  }
+
+  function moveStep(button, direction) {
+    const card = button.closest('.step-card');
+    const container = document.getElementById('steps-container');
+    const cards = Array.from(container.children);
+    const currentIndex = cards.indexOf(card);
+    const targetIndex = currentIndex + direction;
+
+    if (targetIndex >= 0 && targetIndex < cards.length) {
+      if (direction === -1) {
+        container.insertBefore(card, cards[targetIndex]);
+      } else {
+        container.insertBefore(card, cards[targetIndex].nextSibling);
+      }
+      card.classList.add('bg-surface-container-low');
+      setTimeout(() => card.classList.remove('bg-surface-container-low'), 200);
+      updateVisualIndices();
+      hideBanner();
+    }
+  }
+
+  function hideBanner() {
+    const banner = document.getElementById('validation-banner');
+    banner.className = 'hidden rounded-xl p-space-md transition-all duration-300';
+    banner.innerHTML = '';
+  }
+
+  function validateMethodologicalOrder() {
+    const container = document.getElementById('steps-container');
+    const cards = Array.from(container.querySelectorAll('.step-card'));
+    const currentOrder = cards.map(c => c.getAttribute('data-step-id'));
+    const banner = document.getElementById('validation-banner');
+
+    // Canonical sequential order accepted in PRD: [1, 2, 3, 4] OR [1, 3, 2, 4] / [3, 1, 2, 4]
+    // Strictly: 1 & 2 yield hourly dose; 3 yields concentration; 4 divides hourly dose by concentration.
+    const isStrictMatch = currentOrder.join(',') === '1,2,3,4' || currentOrder.join(',') === '3,1,2,4' || currentOrder.join(',') === '1,3,2,4';
+
+    if (isStrictMatch) {
+      banner.className = 'flex items-start gap-space-sm rounded-xl p-space-md bg-tertiary-fixed text-on-tertiary-fixed shadow-sm';
+      banner.innerHTML = `
+        <span class="material-symbols-outlined text-[26px] text-tertiary shrink-0">task_alt</span>
+        <div class="flex flex-col gap-1">
+          <span class="font-headline-sm text-headline-sm font-bold text-tertiary">¡Secuencia Metodológica Correcta!</span>
+          <p class="font-body-sm text-body-sm text-on-tertiary-fixed leading-relaxed">
+            Has organizado con precisión matemática la derivación: primero se aíslan los requerimientos ponderales continuos, se normalizan a la hora y se contrastan con la dilución miligramo a microgramo. Flujo exacto: <strong>4,8 ml/h</strong>.
+          </p>
+        </div>
+      `;
+    } else {
+      banner.className = 'flex items-start gap-space-sm rounded-xl p-space-md bg-error-container text-on-error-container shadow-sm';
+      banner.innerHTML = `
+        <span class="material-symbols-outlined text-[26px] text-error shrink-0">error</span>
+        <div class="flex flex-col gap-1">
+          <span class="font-headline-sm text-headline-sm font-bold text-error">Discrepancia en la Secuencia</span>
+          <p class="font-body-sm text-body-sm text-on-error-container leading-relaxed">
+            Recuerda que para dividir la dosis horaria entre la concentración (Paso 4), antes debes haber obtenido la dosis horaria en µg/h (Paso 2) y la concentración en µg/ml (Paso 3). Revisa el orden.
+          </p>
+        </div>
+      `;
+    }
+  }
+
+  function resetToInitialOrder() {
+    const container = document.getElementById('steps-container');
+    const order = ['1', '3', '2', '4'];
+    order.forEach(id => {
+      const card = container.querySelector(`[data-step-id="${id}"]`);
+      if (card) container.appendChild(card);
+    });
+    updateVisualIndices();
+    hideBanner();
+  }
+
+  function showCanonicalSequence() {
+    const container = document.getElementById('steps-container');
+    const canonicalOrder = ['1', '2', '3', '4'];
+    canonicalOrder.forEach(id => {
+      const card = container.querySelector(`[data-step-id="${id}"]`);
+      if (card) container.appendChild(card);
+    });
+    updateVisualIndices();
+
+    const banner = document.getElementById('validation-banner');
+    banner.className = 'flex items-start gap-space-sm rounded-xl p-space-md bg-secondary-container text-on-secondary-container shadow-sm';
+    banner.innerHTML = `
+      <span class="material-symbols-outlined text-[26px] text-secondary shrink-0">menu_book</span>
+      <div class="flex flex-col gap-1">
+        <span class="font-headline-sm text-headline-sm font-bold text-secondary">Secuencia Canónica Aplicada</span>
+        <p class="font-body-sm text-body-sm text-on-secondary-container leading-relaxed">
+          Paso 1: Dosis × Peso (8 µg/min) → Paso 2: Horaria (480 µg/h) → Paso 3: Concentración (100 µg/ml) → Paso 4: Infusión (4,8 ml/h).
+        </p>
+      </div>
+    `;
+  }
+
+  // Initial call to ensure labels match DOM
+  updateVisualIndices();
+</script></main></body></html>

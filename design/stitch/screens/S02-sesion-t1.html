@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;background-color:#F4FAFB;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "unit-dimmed": "#475569", "on-secondary-container": "#006b7a", "clinical-error": "#DC2626", "secondary": "#006877", "surface": "#faf8ff", "primary": "#004357", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "on-surface-variant": "#40484c", "on-error": "#ffffff", "error-container": "#ffdad6", "tertiary-container": "#006142", "on-surface": "#131b2e", "tertiary-fixed-dim": "#68dba9", "surface-tint": "#1e667f", "on-primary-container": "#93d3ef", "surface-variant": "#dae2fd", "on-error-container": "#93000a", "primary-container": "#0d5c75", "on-primary-fixed": "#001f2a", "primary-fixed": "#bde9ff", "on-secondary-fixed-variant": "#004e5a", "on-tertiary": "#ffffff", "on-tertiary-fixed": "#002114", "surface-canvas": "#F4FAFB", "secondary-fixed-dim": "#76d4e7", "surface-dim": "#d2d9f4", "outline": "#70787d", "tertiary-fixed": "#85f8c4", "surface-card": "#FFFFFF", "clinical-warning": "#D97706", "on-tertiary-container": "#6bdeac", "secondary-fixed": "#a3eeff", "inverse-primary": "#90cfec", "background": "#faf8ff", "primary-fixed-dim": "#90cfec", "surface-container-lowest": "#ffffff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed-variant": "#005137", "inverse-surface": "#283044", "clinical-deep": "#0A4D68", "surface-container-high": "#e2e7ff", "outline-variant": "#bfc8cd", "border-subtle": "#C5D9E0", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#004d64", "tertiary": "#004730", "on-background": "#131b2e", "on-primary": "#ffffff", "on-secondary-fixed": "#001f25", "secondary-container": "#8debff", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "gutter-desktop": "2rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "margin": "1rem", "gutter": "1rem", "margin-desktop": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-tablet": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-code": ["Space Mono"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "numeric-input-mobile": ["Space Mono"], "display-handsfree": ["Space Mono"], "label-unit": ["Space Mono"], "body-problem": ["Noto Sans"], "numeric-input": ["Space Mono"], "badge-micro": ["Space Grotesk"], "display-handsfree-mobile": ["Space Mono"], "body-sm": ["Noto Sans"], "body-default": ["Noto Sans"] }, fontSize: { "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-code": ["13px", { lineHeight: "18px", letterSpacing: "0.04em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0", fontWeight: "600" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "600" }], "numeric-input-mobile": ["32px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "700" }], "display-handsfree": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-unit": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }], "body-problem": ["18px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "400" }], "numeric-input": ["40px", { lineHeight: "48px", letterSpacing: "0.02em", fontWeight: "700" }], "badge-micro": ["11px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "600" }], "display-handsfree-mobile": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["14px", { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" }], "body-default": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas font-body-default text-body-default text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Volver" class="w-11 h-11 flex items-center justify-center rounded-lg text-primary hover:bg-surface-container-low transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="VolutrainMed Logo" class="h-7 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDJA8M8l2BWlPko0YacX9tvjpSiwFg7FXw3Usm4LeouESiCyyaNdxPTnPAQUa85kxnuVVo5xv6lfSBO89zsqFq2vei63CmUwfaxve7gCBzK_BGJzY3nJuBrR3RZ1LmoXptfkTJd8_W3Awg0UwiUFG2HqXnBLIqSpB1_ggulDhvNyWxKTygfhwWSC0ugDDQRwyjUGnSqBWG9K7VVsKuwKs9RLB6ivqQ2-VPzRuwgC6g"/></div><div class="flex-1 text-center truncate px-2"><h1 class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Sesión De Cálculo Clínico</h1></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas min-h-screen"><div class="flex flex-col w-full px-margin pb-6 max-w-[540px] mx-auto select-none">
+<!-- Sub-header & Session Metric Context -->
+<div class="flex items-center justify-between gap-space-sm pt-2 pb-3">
+<!-- Exit Trigger (Modal Dialog) -->
+<button aria-label="Abandonar sesión" class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" id="btn-exit" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- Segmented Linear Progress (4 of 8) -->
+<div class="flex-1 flex flex-col gap-1.5 px-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+<span class="tracking-wide">CASO 04/08</span>
+<div class="flex items-center gap-1 font-numeric-input-mobile text-[12px] leading-none text-unit-dimmed">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span id="session-timer">00:42</span>
+</div>
+</div>
+<div class="grid grid-cols-8 gap-1 w-full h-1.5">
+<div class="h-full rounded-full bg-primary-container"></div>
+<div class="h-full rounded-full bg-primary-container"></div>
+<div class="h-full rounded-full bg-primary-container"></div>
+<div class="h-full rounded-full bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-secondary-fixed opacity-70 animate-pulse"></div>
+</div>
+<div class="h-full rounded-full bg-surface-container-highest"></div>
+<div class="h-full rounded-full bg-surface-container-highest"></div>
+<div class="h-full rounded-full bg-surface-container-highest"></div>
+<div class="h-full rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Difficulty Badge -->
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high text-primary flex items-center gap-1 font-badge-micro text-badge-micro uppercase tracking-wider flex-shrink-0">
+<span class="material-symbols-outlined text-[14px] text-clinical-warning" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>NIVEL 3</span>
+</div>
+</div>
+<!-- Clinical Problem Card -->
+<div class="bg-surface-card rounded-xl shadow-sm p-4 mb-3 relative overflow-hidden">
+<!-- Visual Meniscus Indicator Bar -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-container via-secondary to-secondary-container"></div>
+<!-- Taxonomy Tags -->
+<div class="flex items-center justify-between mb-2.5 pt-0.5">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-badge-micro text-badge-micro uppercase">
+          Veterinaria · Urgencias
+        </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-unit-dimmed font-badge-micro text-badge-micro">
+          Canino · 24.0 kg
+        </span>
+</div>
+<span class="material-symbols-outlined text-unit-dimmed text-[18px]">pets</span>
+</div>
+<!-- Scenario Body -->
+<p class="font-body-default text-body-default text-on-surface leading-snug tracking-normal">
+      Perro mestizo de <span class="font-headline-sm text-body-default text-primary">24 kg</span>. Pauta prescrita: 
+      <span class="font-headline-sm text-body-default text-primary">meloxicam 0,2 mg/kg</span> por vía subcutánea. 
+      Presentación comercial disponible en vial: <span class="font-headline-sm text-body-default text-primary">5 mg/ml</span>.
+    </p>
+<div class="mt-3 pt-2.5 bg-surface-container-low/60 rounded-lg px-3 py-2 flex items-center justify-between">
+<span class="font-label-code text-label-code text-on-surface-variant font-medium">¿Qué volumen debes cargar en jeringa?</span>
+<span class="font-label-unit text-label-unit text-primary">V = (D × P) / C</span>
+</div>
+</div>
+<!-- Target Answer Workspace -->
+<div class="bg-surface-card rounded-xl shadow-sm p-3.5 mb-3 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-unit-dimmed uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">edit_note</span>
+        Dosis calculada
+      </span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed">PRECISIÓN 0,01</span>
+</div>
+<!-- Active High-Contrast Metric Output Field -->
+<div class="h-16 w-full rounded-xl bg-surface-container-lowest px-4 flex items-center justify-between shadow-inner focus-within:ring-2 focus-within:ring-primary-container transition-all" id="answer-display-box">
+<div class="flex items-center gap-0.5 overflow-x-auto min-w-0 flex-1">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-surface tracking-tight" id="input-val"></span>
+<span class="w-0.5 h-8 bg-primary animate-pulse ml-0.5 inline-block" id="input-cursor"></span>
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-outline-variant select-none" id="placeholder-hint">0,00</span>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 pl-2">
+<span class="font-label-unit text-label-unit text-unit-dimmed uppercase bg-surface-container px-2 py-1 rounded" id="current-unit-label">ml</span>
+<!-- Mic Voice Trigger Button -->
+<button aria-label="Entrada dictada por voz" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors" id="btn-voice" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+</div>
+<!-- Unit Selector Filter Chips -->
+<div class="flex items-center gap-1.5 pt-1 overflow-x-auto pb-0.5">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase mr-1">Unidad:</span>
+<button class="unit-chip h-8 px-3 rounded-full bg-surface-container text-unit-dimmed font-label-code text-label-code flex items-center justify-center active:scale-95 transition-all" data-unit="µg" type="button">
+        µg
+      </button>
+<button class="unit-chip h-8 px-3 rounded-full bg-surface-container text-unit-dimmed font-label-code text-label-code flex items-center justify-center active:scale-95 transition-all" data-unit="mg" type="button">
+        mg
+      </button>
+<button class="unit-chip active h-8 px-3.5 rounded-full bg-primary-container text-on-primary font-label-code text-label-code flex items-center gap-1 shadow-sm active:scale-95 transition-all" data-unit="ml" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+        ml
+      </button>
+<button class="unit-chip h-8 px-3 rounded-full bg-surface-container text-unit-dimmed font-label-code text-label-code flex items-center justify-center active:scale-95 transition-all" data-unit="UI" type="button">
+        UI
+      </button>
+</div>
+<!-- Cognitive Assistance Auxiliary Row -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-10 px-3 rounded-lg bg-surface-container-low text-primary flex items-center justify-center gap-1.5 font-label-code text-label-code hover:bg-surface-container transition-colors active:scale-98" id="btn-hint" type="button">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+<span>Pista dimensional</span>
+</button>
+<button class="h-10 px-3 rounded-lg bg-error-container text-on-error-container flex items-center justify-center gap-1.5 font-label-code text-label-code hover:opacity-90 transition-opacity active:scale-98" id="btn-surrender" type="button">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span>No lo sé (ver pasos)</span>
+</button>
+</div>
+</div>
+<!-- Dimensional Analysis Hint Modal Drawer (Toggled) -->
+<div class="hidden bg-surface-card rounded-xl shadow-md p-3.5 mb-3" id="hint-drawer">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">calculate</span>
+<span class="font-headline-sm text-[15px] font-semibold">Análisis dimensional guiado</span>
+</div>
+<button class="text-unit-dimmed hover:text-on-surface" id="btn-close-hint" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="space-y-2 text-on-surface-variant font-label-code text-label-code bg-surface-canvas p-2.5 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[10px]">1</span>
+<span>Dosis total (mg) = 24 kg × 0,2 mg/kg</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[10px]">2</span>
+<span>Volumen (ml) = Dosis total ÷ 5 mg/ml</span>
+</div>
+<div class="text-[11px] text-unit-dimmed pt-1 pl-7">
+        Unidades canceladas: <span class="line-through text-clinical-error">kg</span> y <span class="line-through text-clinical-error">mg</span> resultando estrictamente en <span class="text-primary font-bold">ml</span>.
+      </div>
+</div>
+</div>
+<!-- Interactive 12-Key Ergonomic Clinical Keypad -->
+<div class="w-full flex flex-col gap-1.5 mb-3">
+<div class="grid grid-cols-3 gap-1.5 w-full">
+<!-- Row 1 -->
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="1" type="button">
+        1
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="2" type="button">
+        2
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="3" type="button">
+        3
+      </button>
+<!-- Row 2 -->
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="4" type="button">
+        4
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="5" type="button">
+        5
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="6" type="button">
+        6
+      </button>
+<!-- Row 3 -->
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="7" type="button">
+        7
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="8" type="button">
+        8
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="9" type="button">
+        9
+      </button>
+<!-- Row 4 -->
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="," id="key-comma" type="button">
+        ,
+      </button>
+<button class="calc-key h-14 rounded-xl bg-surface-card text-on-surface font-numeric-input-mobile text-numeric-input-mobile flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="0" type="button">
+        0
+      </button>
+<button aria-label="Borrar dígito" class="calc-key h-14 rounded-xl bg-surface-card text-on-surface-variant flex items-center justify-center shadow-sm active:bg-surface-container active:scale-95 transition-all" data-key="backspace" type="button">
+<span class="material-symbols-outlined text-[26px]">backspace</span>
+</button>
+</div>
+<!-- Primary Verification Action CTA -->
+<button class="w-full h-14 mt-1 rounded-xl bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all disabled:opacity-50 disabled:pointer-events-none" id="btn-submit" type="button">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+<span>Comprobar dosis</span>
+</button>
+</div>
+<!-- Clinical Safety & Legal Footer Banner -->
+<div class="flex items-center justify-center gap-1.5 py-1 text-unit-dimmed text-center">
+<span class="material-symbols-outlined text-[15px] text-clinical-warning">shield</span>
+<span class="font-label-code text-[11px] leading-tight tracking-wide">
+      Simulación formativa · Redondeo a 0,01 ml
+    </span>
+</div>
+<!-- Exit Confirmation Modal (Tier 4 Scrim Overlay) -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm" id="modal-exit">
+<div class="bg-surface-card rounded-2xl shadow-xl w-full max-w-sm p-5 flex flex-col gap-3">
+<div class="w-12 h-12 rounded-full bg-error-container text-on-error-container flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[28px]">logout</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">¿Interrumpir lección clínica?</h2>
+<p class="font-body-default text-body-sm text-on-surface-variant">
+        Tu progreso en este ejercicio no se contabilizará en el informe de destreza si abandonas la titulación activa.
+      </p>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<button class="h-12 rounded-xl bg-surface-container text-on-surface font-label-code text-label-code hover:bg-surface-container-high transition-colors" id="modal-cancel" type="button">
+          Continuar
+        </button>
+<button class="h-12 rounded-xl bg-clinical-error text-on-error font-label-code text-label-code hover:opacity-90 transition-opacity" id="modal-confirm" type="button">
+          Salir ahora
+        </button>
+</div>
+</div>
+</div>
+<!-- Solution Reveal Sheet ("No lo sé" triggered) -->
+<div class="hidden fixed inset-0 z-50 flex items-end justify-center p-0 bg-inverse-surface/60 backdrop-blur-sm" id="modal-solution">
+<div class="bg-surface-card rounded-t-2xl shadow-2xl w-full max-w-lg p-5 flex flex-col gap-3.5 animate-in slide-in-from-bottom duration-200">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">i</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Resolución pedagógica</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-unit-dimmed font-badge-micro text-badge-micro">Sin penalización</span>
+</div>
+<div class="bg-surface-container-low p-3.5 rounded-xl flex flex-col gap-2 font-label-code text-label-code">
+<div class="flex justify-between items-center text-on-surface">
+<span>1. Dosis prescrita:</span>
+<span class="font-bold">24 kg × 0,2 mg/kg = 4,8 mg</span>
+</div>
+<div class="flex justify-between items-center text-on-surface">
+<span>2. Volumen vial (5 mg/ml):</span>
+<span class="font-bold">4,8 mg ÷ 5 mg/ml = 0,96 ml</span>
+</div>
+<div class="pt-2 mt-1 border-t border-surface-container flex justify-between items-center text-primary font-bold text-sm">
+<span>Respuesta correcta:</span>
+<span>0,96 ml</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed">
+        Puedes replicar el resultado exacto en el teclado numérico para asimilar el flujo posológico.
+      </p>
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-label-code text-label-code flex items-center justify-center gap-2" id="modal-solution-apply" type="button">
+<span>Insertar 0,96 ml y reanudar</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  (() => {
+    let rawInput = "";
+    let selectedUnit = "ml";
+
+    const displayVal = document.getElementById("input-val");
+    const placeholderHint = document.getElementById("placeholder-hint");
+    const commaKey = document.getElementById("key-comma");
+    const currentUnitLabel = document.getElementById("current-unit-label");
+    const submitBtn = document.getElementById("btn-submit");
+
+    const updateDisplay = () => {
+      if (rawInput.length > 0) {
+        displayVal.textContent = rawInput;
+        placeholderHint.classList.add("hidden");
+      } else {
+        displayVal.textContent = "";
+        placeholderHint.classList.remove("hidden");
+      }
+
+      // Safeguard: Disable comma button if one comma already present
+      if (rawInput.includes(",")) {
+        commaKey.setAttribute("disabled", "true");
+        commaKey.classList.add("opacity-40", "pointer-events-none");
+      } else {
+        commaKey.removeAttribute("disabled");
+        commaKey.classList.remove("opacity-40", "pointer-events-none");
+      }
+
+      // Enable/disable check button
+      submitBtn.disabled = rawInput.trim().length === 0;
+    };
+
+    // Keypad Handling
+    document.querySelectorAll(".calc-key").forEach((keyEl) => {
+      keyEl.addEventListener("click", () => {
+        const key = keyEl.getAttribute("data-key");
+        if (key === "backspace") {
+          rawInput = rawInput.slice(0, -1);
+        } else if (key === ",") {
+          if (!rawInput.includes(",")) {
+            rawInput = rawInput.length === 0 ? "0," : rawInput + ",";
+          }
+        } else {
+          // Limit to max 6 characters for clinical dose safety
+          if (rawInput.length < 6) {
+            rawInput += key;
+          }
+        }
+        updateDisplay();
+      });
+    });
+
+    // Unit selector chips
+    document.querySelectorAll(".unit-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".unit-chip").forEach((c) => {
+          c.classList.remove("bg-primary-container", "text-on-primary", "shadow-sm");
+          c.classList.add("bg-surface-container", "text-unit-dimmed");
+          const icon = c.querySelector(".material-symbols-outlined");
+          if (icon) icon.remove();
+        });
+
+        chip.classList.remove("bg-surface-container", "text-unit-dimmed");
+        chip.classList.add("bg-primary-container", "text-on-primary", "shadow-sm");
+        
+        const checkIcon = document.createElement("span");
+        checkIcon.className = "material-symbols-outlined text-[14px]";
+        checkIcon.textContent = "check";
+        chip.prepend(checkIcon);
+
+        selectedUnit = chip.getAttribute("data-unit");
+        currentUnitLabel.textContent = selectedUnit;
+      });
+    });
+
+    // Pista (Hint) Drawer Toggle
+    const hintDrawer = document.getElementById("hint-drawer");
+    document.getElementById("btn-hint").addEventListener("click", () => {
+      hintDrawer.classList.toggle("hidden");
+    });
+    document.getElementById("btn-close-hint").addEventListener("click", () => {
+      hintDrawer.classList.add("hidden");
+    });
+
+    // Exit Modal Handling
+    const exitModal = document.getElementById("modal-exit");
+    document.getElementById("btn-exit").addEventListener("click", () => {
+      exitModal.classList.remove("hidden");
+    });
+    document.getElementById("modal-cancel").addEventListener("click", () => {
+      exitModal.classList.add("hidden");
+    });
+    document.getElementById("modal-confirm").addEventListener("click", () => {
+      window.history.back();
+    });
+
+    // Solution Reveal Modal ("No lo sé")
+    const solutionModal = document.getElementById("modal-solution");
+    document.getElementById("btn-surrender").addEventListener("click", () => {
+      solutionModal.classList.remove("hidden");
+    });
+    document.getElementById("modal-solution-apply").addEventListener("click", () => {
+      rawInput = "0,96";
+      updateDisplay();
+      solutionModal.classList.add("hidden");
+    });
+
+    // Voice Input Micro-Action
+    const voiceBtn = document.getElementById("btn-voice");
+    voiceBtn.addEventListener("click", () => {
+      voiceBtn.classList.toggle("bg-clinical-error");
+      voiceBtn.classList.toggle("text-on-error");
+      setTimeout(() => {
+        rawInput = "0,96";
+        updateDisplay();
+        voiceBtn.classList.remove("bg-clinical-error", "text-on-error");
+      }, 900);
+    });
+
+    // Submit Validation Micro-Interaction
+    submitBtn.addEventListener("click", () => {
+      const box = document.getElementById("answer-display-box");
+      const isCorrect = (rawInput === "0,96" || rawInput === "0.96") && selectedUnit === "ml";
+      
+      if (isCorrect) {
+        box.classList.remove("bg-surface-container-lowest");
+        box.classList.add("bg-tertiary-fixed/30");
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[24px]">task_alt</span> Dosis Exacta';
+        submitBtn.classList.remove("bg-primary-container");
+        submitBtn.classList.add("bg-tertiary-container");
+      } else {
+        box.classList.add("animate-shake", "bg-error-container/40");
+        setTimeout(() => box.classList.remove("animate-shake", "bg-error-container/40"), 400);
+      }
+    });
+
+    updateDisplay();
+  })();
+</script></main></body></html>

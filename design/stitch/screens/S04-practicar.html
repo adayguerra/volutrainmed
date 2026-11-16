@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;background-color:#F4FAFB;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "unit-dimmed": "#475569", "on-secondary-container": "#006b7a", "clinical-error": "#DC2626", "secondary": "#006877", "surface": "#faf8ff", "primary": "#004357", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "on-surface-variant": "#40484c", "on-error": "#ffffff", "error-container": "#ffdad6", "tertiary-container": "#006142", "on-surface": "#131b2e", "tertiary-fixed-dim": "#68dba9", "surface-tint": "#1e667f", "on-primary-container": "#93d3ef", "surface-variant": "#dae2fd", "on-error-container": "#93000a", "primary-container": "#0d5c75", "on-primary-fixed": "#001f2a", "primary-fixed": "#bde9ff", "on-secondary-fixed-variant": "#004e5a", "on-tertiary": "#ffffff", "on-tertiary-fixed": "#002114", "surface-canvas": "#F4FAFB", "secondary-fixed-dim": "#76d4e7", "surface-dim": "#d2d9f4", "outline": "#70787d", "tertiary-fixed": "#85f8c4", "surface-card": "#FFFFFF", "clinical-warning": "#D97706", "on-tertiary-container": "#6bdeac", "secondary-fixed": "#a3eeff", "inverse-primary": "#90cfec", "background": "#faf8ff", "primary-fixed-dim": "#90cfec", "surface-container-lowest": "#ffffff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed-variant": "#005137", "inverse-surface": "#283044", "clinical-deep": "#0A4D68", "surface-container-high": "#e2e7ff", "outline-variant": "#bfc8cd", "border-subtle": "#C5D9E0", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#004d64", "tertiary": "#004730", "on-background": "#131b2e", "on-primary": "#ffffff", "on-secondary-fixed": "#001f25", "secondary-container": "#8debff", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "gutter-desktop": "2rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "margin": "1rem", "gutter": "1rem", "margin-desktop": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-tablet": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-code": ["Space Mono"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "numeric-input-mobile": ["Space Mono"], "display-handsfree": ["Space Mono"], "label-unit": ["Space Mono"], "body-problem": ["Noto Sans"], "numeric-input": ["Space Mono"], "badge-micro": ["Space Grotesk"], "display-handsfree-mobile": ["Space Mono"], "body-sm": ["Noto Sans"], "body-default": ["Noto Sans"] }, fontSize: { "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-code": ["13px", { lineHeight: "18px", letterSpacing: "0.04em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0", fontWeight: "600" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "600" }], "numeric-input-mobile": ["32px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "700" }], "display-handsfree": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-unit": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }], "body-problem": ["18px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "400" }], "numeric-input": ["40px", { lineHeight: "48px", letterSpacing: "0.02em", fontWeight: "700" }], "badge-micro": ["11px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "600" }], "display-handsfree-mobile": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["14px", { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" }], "body-default": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas font-body-default text-body-default text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="VolutrainMed Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDJA8M8l2BWlPko0YacX9tvjpSiwFg7FXw3Usm4LeouESiCyyaNdxPTnPAQUa85kxnuVVo5xv6lfSBO89zsqFq2vei63CmUwfaxve7gCBzK_BGJzY3nJuBrR3RZ1LmoXptfkTJd8_W3Awg0UwiUFG2HqXnBLIqSpB1_ggulDhvNyWxKTygfhwWSC0ugDDQRwyjUGnSqBWG9K7VVsKuwKs9RLB6ivqQ2-VPzRuwgC6g"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">VolutrainMed</span></div><div class="flex items-center gap-space-xs"><button class="inline-flex items-center gap-1 text-unit-dimmed hover:text-primary transition-colors text-left" type="button"><span class="font-badge-micro text-badge-micro uppercase tracking-wider font-semibold text-secondary truncate">Enfermería</span><span class="material-symbols-outlined text-[13px] text-unit-dimmed leading-none">unfold_more</span></button><span class="text-[10px] text-border-subtle leading-none">•</span><span class="inline-flex items-center gap-1 font-badge-micro text-badge-micro text-tertiary font-medium"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>Sincronizado</span></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface-canvas min-h-screen"><div class="flex flex-col w-full px-margin pb-6 gap-space-lg">
+<!-- Dynamic Clinical Mode & Sector Selector -->
+<div class="flex flex-col gap-space-sm pt-2">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-badge-micro text-badge-micro uppercase tracking-wider text-unit-dimmed font-semibold">Módulo de Capacitación</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Centro de Práctica</h1>
+</div>
+<!-- Profile Context Pill -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-code text-[11px] font-semibold text-primary">UCI Activa</span>
+</div>
+</div>
+<!-- Segmented Control: Veterinaria vs Enfermería -->
+<div class="grid grid-cols-2 p-1 rounded-xl bg-surface-container shadow-inner" id="sector-selector">
+<button class="flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 text-unit-dimmed hover:text-primary" id="sector-vet" onclick="setSector('vet')" type="button">
+<span class="material-symbols-outlined text-[18px]">pets</span>
+<span>Veterinaria</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 bg-surface-card text-primary shadow-sm font-bold" id="sector-enf" onclick="setSector('enf')" type="button">
+<span class="material-symbols-outlined text-[18px]">medical_services</span>
+<span>Enfermería</span>
+</button>
+</div>
+</div>
+<!-- SECCIÓN 1: Repaso Espaciado FSRS de Errores -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-clinical-warning text-[20px]">history_edu</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Repaso Inteligente FSRS</h2>
+</div>
+<span class="font-label-code text-[11px] text-unit-dimmed">Algoritmo v4.5</span>
+</div>
+<!-- Master FSRS Alert Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-card shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Watermark/Meniscus Graphic -->
+<div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-surface-container-high/40 pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex gap-space-sm items-start">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0 text-clinical-warning">
+<span class="material-symbols-outlined text-[24px]">priority_high</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">12 fichas</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-badge-micro text-badge-micro font-bold">Pendientes</span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed mt-0.5">Optimizado para retención clínica de memoria a largo plazo.</p>
+</div>
+</div>
+</div>
+<!-- Critical breakdown tags -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<div class="p-2.5 rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-badge-micro text-badge-micro text-clinical-error font-bold uppercase">Cuarentena</span>
+<span class="font-label-code text-[12px] font-bold text-clinical-error">2</span>
+</div>
+<span class="font-body-sm text-[12px] leading-tight text-on-surface truncate">E1 Unidad • E2 Factor 10</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed font-bold uppercase">Vencidas</span>
+<span class="font-label-code text-[12px] font-bold text-on-surface">10</span>
+</div>
+<span class="font-body-sm text-[12px] leading-tight text-unit-dimmed">Curva de olvido crítica</span>
+</div>
+</div>
+<!-- Primary Review Action -->
+<button class="w-full h-[52px] rounded-lg bg-primary-container hover:bg-primary active:scale-[0.98] transition-all flex items-center justify-center gap-space-sm text-on-primary shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+<span class="font-headline-sm text-[16px] tracking-wide font-medium">Iniciar Repaso Diario</span>
+<span class="px-2 py-0.5 rounded bg-on-primary/15 font-label-code text-[12px]">~6 min</span>
+</button>
+</div>
+</section>
+<!-- SECCIÓN 2: Modo Manos Libres (Sin Pantalla / Con Guantes) -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">headset_mic</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Modo Manos Libres</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-badge-micro text-badge-micro font-semibold uppercase">Estéril</span>
+</div>
+<!-- Voice Mode Card -->
+<div class="rounded-xl bg-surface-card shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Media Header with Ambient Indicator -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[26px]">graphic_eq</span>
+<span class="absolute -top-1 -right-1 w-3 h-3 bg-tertiary rounded-full"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[17px] text-on-surface font-semibold">Entrenar con voz y audio</span>
+<span class="font-body-sm text-body-sm text-unit-dimmed">Cálculo mental guiado sin tocar pantalla</span>
+</div>
+</div>
+</div>
+<!-- Duración Chips -->
+<div class="flex flex-col gap-1.5">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-unit-dimmed font-semibold">Duración de la sesión</span>
+<div class="grid grid-cols-3 gap-space-xs" id="duration-selector">
+<button class="h-10 rounded-lg bg-primary-container text-on-primary font-label-code text-[13px] font-bold flex items-center justify-center transition-colors" id="dur-5" onclick="selectDuration(5)" type="button">
+            5 min
+          </button>
+<button class="h-10 rounded-lg bg-surface-container text-unit-dimmed hover:text-primary font-label-code text-[13px] font-bold flex items-center justify-center transition-colors" id="dur-10" onclick="selectDuration(10)" type="button">
+            10 min
+          </button>
+<button class="h-10 rounded-lg bg-surface-container text-unit-dimmed hover:text-primary font-label-code text-[13px] font-bold flex items-center justify-center transition-colors" id="dur-15" onclick="selectDuration(15)" type="button">
+            15 min
+          </button>
+</div>
+</div>
+<!-- Glove-Friendly High-Target Action (72dp) -->
+<button class="w-full h-[72px] rounded-xl bg-surface-container-high active:bg-surface-variant flex items-center justify-between px-space-md text-on-surface transition-all" type="button">
+<div class="flex items-center gap-space-sm text-left">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[22px]">hearing</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[16px] text-primary font-bold">Activar Interfaz Acústica</span>
+<span class="font-label-code text-[11px] text-unit-dimmed">Órdenes: "Repetir", "Validar", "Siguiente"</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]">chevron_right</span>
+</button>
+<!-- Local Package Footnote -->
+<div class="flex items-center justify-between pt-1 text-unit-dimmed">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[16px]">offline_pin</span>
+<span class="font-label-code text-[11px]">Paquete local activo (18 MB)</span>
+</div>
+<span class="font-badge-micro text-badge-micro font-semibold text-tertiary uppercase">Sin latencia</span>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 3: Modos Especiales de Agilidad -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Agilidad &amp; Auditoría</h2>
+</div>
+<span class="font-label-code text-[11px] text-unit-dimmed">Modos Rápidos</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Tarjeta 1: Contrarreloj de Precisión -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold truncate">Contrarreloj de Precisión</span>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-badge-micro text-[10px] font-bold">Nivel 4+</span>
+</div>
+<p class="font-body-sm text-[13px] text-unit-dimmed truncate">Exclusivo para habilidades consolidadas</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-variant flex items-center justify-center text-primary flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Tarjeta 2: Conversión Relámpago -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[22px]">sync_alt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold truncate">Conversión Relámpago</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-badge-micro text-[10px] font-bold">60 seg</span>
+</div>
+<p class="font-body-sm text-[13px] text-unit-dimmed truncate">10 dosis: mg → µg, % → mg/ml</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-variant flex items-center justify-center text-secondary flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Tarjeta 3: Detección de Error Clínico -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-clinical-error">
+<span class="material-symbols-outlined text-[22px]">rule</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold truncate">Detección de Error Clínico</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-badge-micro text-[10px] font-bold">Auditoría</span>
+</div>
+<p class="font-body-sm text-[13px] text-unit-dimmed truncate">Detecta el fallo en hojas de infusión ya resueltas</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-variant flex items-center justify-center text-clinical-error flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 4: Práctica Libre por Habilidad (Catálogo H1 a H12) -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">category</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Catálogo de Habilidades</h2>
+</div>
+<span class="font-label-code text-[11px] text-unit-dimmed">4 / 12 Núcleos</span>
+</div>
+<!-- Skill Items Accordion-like List -->
+<div class="flex flex-col gap-space-xs">
+<!-- H1: Conversión de Unidades -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-md bg-surface-container text-primary font-label-code text-[12px] font-bold flex items-center justify-center">H1</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold">Conversión de Unidades</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Factores de escala g, mg, µg, ng</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-code text-[14px] font-bold text-tertiary">94%</span>
+<span class="font-badge-micro text-[10px] uppercase text-unit-dimmed">Dominio</span>
+</div>
+</div>
+<!-- Progress Metric Line -->
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<!-- H2: Concentraciones -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-md bg-surface-container text-primary font-label-code text-[12px] font-bold flex items-center justify-center">H2</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold">Concentraciones &amp; Diluciones</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Porcentajes, ratios 1:1000, mg/ml</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-code text-[14px] font-bold text-tertiary">81%</span>
+<span class="font-badge-micro text-[10px] uppercase text-unit-dimmed">Dominio</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 81%"></div>
+</div>
+</div>
+<!-- H3: Dosis por peso -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-md bg-surface-container text-primary font-label-code text-[12px] font-bold flex items-center justify-center">H3</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold">Dosis Ponderales (mg/kg)</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Rangos terapéuticos y dosis de choque</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-code text-[14px] font-bold text-clinical-warning">68%</span>
+<span class="font-badge-micro text-[10px] uppercase text-unit-dimmed">Práctica req.</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-clinical-warning h-full rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- H7: Ritmo de perfusión en ml/h -->
+<div class="rounded-xl bg-surface-card p-space-md shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-md bg-surface-container text-primary font-label-code text-[12px] font-bold flex items-center justify-center">H7</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] text-on-surface font-semibold">Ritmo de Perfusión (ml/h)</span>
+<span class="font-body-sm text-[12px] text-unit-dimmed">Bombas continuas, gotas/min a ml/h</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-code text-[14px] font-bold text-clinical-error">42%</span>
+<span class="font-badge-micro text-[10px] uppercase text-clinical-error font-bold">Frecuente error</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-clinical-error h-full rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+<!-- Expansion Trigger for All H12 Modules -->
+<button class="w-full py-3 mt-1 rounded-xl bg-surface-container flex items-center justify-center gap-2 text-primary font-headline-sm text-[14px] font-semibold hover:bg-surface-variant transition-colors" type="button">
+<span>Ver catálogo completo (H1 a H12)</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</section>
+</div>
+<script>
+  function setSector(type) {
+    const vetBtn = document.getElementById('sector-vet');
+    const enfBtn = document.getElementById('sector-enf');
+    if (!vetBtn || !enfBtn) return;
+
+    if (type === 'vet') {
+      vetBtn.className = "flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 bg-surface-card text-primary shadow-sm font-bold";
+      enfBtn.className = "flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 text-unit-dimmed hover:text-primary";
+    } else {
+      enfBtn.className = "flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 bg-surface-card text-primary shadow-sm font-bold";
+      vetBtn.className = "flex items-center justify-center gap-2 py-2 rounded-lg font-badge-micro text-badge-micro transition-all duration-200 text-unit-dimmed hover:text-primary";
+    }
+  }
+
+  function selectDuration(mins) {
+    [5, 10, 15].forEach(m => {
+      const btn = document.getElementById('dur-' + m);
+      if (!btn) return;
+      if (m === mins) {
+        btn.className = "h-10 rounded-lg bg-primary-container text-on-primary font-label-code text-[13px] font-bold flex items-center justify-center transition-colors";
+      } else {
+        btn.className = "h-10 rounded-lg bg-surface-container text-unit-dimmed hover:text-primary font-label-code text-[13px] font-bold flex items-center justify-center transition-colors";
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-card/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(15,23,42,0.04)]" data-active-classes="text-primary-container font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] px-1 text-unit-dimmed hover:text-primary transition-colors" data-path="inicio" href="#"><span class="material-symbols-outlined text-[24px]">conversion_path</span><span class="font-badge-micro text-badge-micro tracking-tight mt-0.5">Inicio</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] px-1 transition-colors text-primary-container font-semibold" data-path="practicar" href="#"><span class="material-symbols-outlined text-[24px]">fitness_center</span><span class="font-badge-micro text-badge-micro tracking-tight mt-0.5">Practicar</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] px-1 text-unit-dimmed hover:text-primary transition-colors" data-path="progreso" href="#"><span class="material-symbols-outlined text-[24px]">query_stats</span><span class="font-badge-micro text-badge-micro tracking-tight mt-0.5">Progreso</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] px-1 text-unit-dimmed hover:text-primary transition-colors" data-path="ligas" href="#"><span class="material-symbols-outlined text-[24px]">military_tech</span><span class="font-badge-micro text-badge-micro tracking-tight mt-0.5">Ligas</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] px-1 text-unit-dimmed hover:text-primary transition-colors" data-path="perfil" href="#"><span class="material-symbols-outlined text-[24px]">manage_accounts</span><span class="font-badge-micro text-badge-micro tracking-tight mt-0.5">Perfil</span></a></div></nav></body></html>

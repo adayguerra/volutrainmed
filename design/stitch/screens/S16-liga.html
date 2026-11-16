@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'secondary-container': '#8debff', 'unit-dimmed': '#475569', 'primary-container': '#0d5c75', 'on-background': '#131b2e', 'clinical-error': '#DC2626', 'tertiary': '#004730', 'on-secondary': '#ffffff', 'surface-container': '#eaedff', 'clinical-deep': '#0A4D68', 'error-container': '#ffdad6', 'tertiary-fixed-dim': '#68dba9', 'on-secondary-fixed': '#001f25', 'on-secondary-container': '#006b7a', 'inverse-on-surface': '#eef0ff', 'on-surface-variant': '#40484c', 'tertiary-container': '#006142', 'surface-tint': '#1e667f', 'surface-variant': '#dae2fd', 'primary-fixed-dim': '#90cfec', 'on-primary-container': '#93d3ef', 'surface-container-low': '#f2f3ff', 'inverse-surface': '#283044', 'background': '#faf8ff', 'on-primary': '#ffffff', 'secondary': '#006877', 'secondary-fixed': '#a3eeff', 'surface-card': '#FFFFFF', 'inverse-primary': '#90cfec', 'error': '#ba1a1a', 'surface-container-lowest': '#ffffff', 'tertiary-fixed': '#85f8c4', 'surface': '#faf8ff', 'on-tertiary-fixed-variant': '#005137', 'outline': '#70787d', 'on-primary-fixed-variant': '#004d64', 'on-tertiary-container': '#6bdeac', 'on-tertiary': '#ffffff', 'on-surface': '#131b2e', 'on-secondary-fixed-variant': '#004e5a', 'surface-dim': '#d2d9f4', 'outline-variant': '#bfc8cd', 'surface-canvas': '#F4FAFB', 'primary': '#004357', 'secondary-fixed-dim': '#76d4e7', 'on-tertiary-fixed': '#002114', 'on-error': '#ffffff', 'on-error-container': '#93000a', 'border-subtle': '#C5D9E0', 'surface-container-high': '#e2e7ff', 'surface-container-highest': '#dae2fd', 'surface-bright': '#faf8ff', 'on-primary-fixed': '#001f2a', 'clinical-warning': '#D97706', 'primary-fixed': '#bde9ff' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'gutter-desktop': '2rem', 'margin': '1rem', 'gutter': '1rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'margin-tablet': '1.5rem', 'space-sm': '0.5rem', 'margin-desktop': '2rem', 'space-xl': '2rem', 'gutter-tablet': '1.5rem', 'space-lg': '1.5rem' }, fontFamily: { 'badge-micro': ['Space Grotesk'], 'label-code': ['Space Mono'], 'numeric-input-mobile': ['Space Mono'], 'headline-sm': ['Space Grotesk'], 'label-unit': ['Space Mono'], 'headline-lg': ['Space Grotesk'], 'numeric-input': ['Space Mono'], 'body-default': ['Noto Sans'], 'headline-md': ['Space Grotesk'], 'display-handsfree': ['Space Mono'], 'body-sm': ['Noto Sans'], 'headline-lg-mobile': ['Space Grotesk'], 'body-problem': ['Noto Sans'], 'display-handsfree-mobile': ['Space Mono'] }, fontSize: { 'badge-micro': ['11px', { lineHeight: '16px', letterSpacing: '0.06em', fontWeight: '600' }], 'label-code': ['13px', { lineHeight: '18px', letterSpacing: '0.04em', fontWeight: '400' }], 'numeric-input-mobile': ['32px', { lineHeight: '40px', letterSpacing: '0.02em', fontWeight: '700' }], 'headline-sm': ['20px', { lineHeight: '28px', letterSpacing: '0', fontWeight: '600' }], 'label-unit': ['14px', { lineHeight: '20px', letterSpacing: '0.02em', fontWeight: '700' }], 'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }], 'numeric-input': ['40px', { lineHeight: '48px', letterSpacing: '0.02em', fontWeight: '700' }], 'body-default': ['16px', { lineHeight: '24px', letterSpacing: '0', fontWeight: '400' }], 'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0', fontWeight: '600' }], 'display-handsfree': ['64px', { lineHeight: '72px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0', fontWeight: '400' }], 'headline-lg-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }], 'body-problem': ['18px', { lineHeight: '28px', letterSpacing: '0', fontWeight: '400' }], 'display-handsfree-mobile': ['48px', { lineHeight: '56px', letterSpacing: '-0.02em', fontWeight: '700' }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#F4FAFB;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas font-body-default text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-white text-[20px]">vital_signs</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-[16px] tracking-tight text-primary font-bold leading-tight truncate">Volutrain<span class="text-secondary">Med</span></span></div><div class="inline-flex items-center gap-1 bg-surface-container px-space-xs py-0.5 rounded-full mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container shrink-0"></span><span class="font-badge-micro text-badge-micro text-on-surface-variant uppercase tracking-wider truncate">Enfermería / Críticos</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface-canvas min-h-screen px-margin"><div class="flex flex-col w-full pb-8 space-y-4">
+<!-- Cohorte Banner & Regla Operativa -->
+<div class="bg-surface-card rounded-xl shadow-sm p-4 space-y-3">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<div class="flex flex-col min-w-0">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-unit-dimmed">Cohorte Activa</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Cuidados Críticos y Anestesia</h2>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 bg-primary-container text-on-primary font-badge-micro text-badge-micro px-2.5 py-1 rounded-full shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed shrink-0"></span>
+        División Alfa
+      </span>
+</div>
+<!-- Countdown & Protocol Note -->
+<div class="bg-surface-canvas rounded-lg p-3 space-y-2">
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">schedule</span>
+<span class="font-badge-micro text-badge-micro text-on-surface font-semibold uppercase tracking-wider">Cierre de Cohorte</span>
+</div>
+<span class="font-label-code text-label-code font-bold text-primary">Quedan 2d 14h</span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed leading-relaxed">
+        Puntuación indexada por exactitud en primer intento y consistencia diaria. Penalizaciones por desvío crítico (±20%) restan prioridad de clasificación.
+      </p>
+</div>
+</div>
+<!-- Tarjeta Destacada Usuario (Mi Posición) -->
+<div class="bg-primary text-on-primary rounded-xl shadow-md p-4 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-primary-container/40 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-code text-label-code bg-on-primary/10 text-on-primary px-2 py-0.5 rounded font-bold">PUESTO #04</span>
+<span class="font-badge-micro text-badge-micro text-on-primary-container">DE 30 ESPECIALISTAS</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-tertiary-container text-on-tertiary font-badge-micro text-badge-micro px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+          Zona Promoción
+        </span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-on-primary-container block">Tu Desempeño Semanal</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-primary">1.480</span>
+<span class="font-label-unit text-label-unit text-on-primary-container">PTS</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-on-primary-container block">Precisión Global</span>
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-secondary-fixed">98.4<span class="text-sm font-normal">%</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-on-primary/10 text-on-primary-container">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span>
+<span class="font-body-sm text-body-sm text-on-primary">Ascenso proyectado a <strong class="text-secondary-fixed font-semibold">División Máster</strong></span>
+</div>
+<span class="font-label-code text-label-code text-on-primary font-bold">Racha 8d</span>
+</div>
+</div>
+</div>
+<!-- Visual Indicador de Precisión de Cohorte (SVG Gráfico Compacto) -->
+<div class="bg-surface-card rounded-xl shadow-sm p-4 space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider text-unit-dimmed">Distribución de Cohorte (Top 5)</span>
+<span class="font-label-code text-label-code text-primary font-bold">Media: 98.1%</span>
+</div>
+<div class="w-full h-12 flex items-end gap-1.5 pt-1">
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<span class="font-badge-micro text-[10px] text-unit-dimmed font-label-code">#1</span>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 92%;"></div>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<span class="font-badge-micro text-[10px] text-unit-dimmed font-label-code">#2</span>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 89%;"></div>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<span class="font-badge-micro text-[10px] text-unit-dimmed font-label-code">#3</span>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 84%;"></div>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<span class="font-badge-micro text-[10px] text-primary font-bold font-label-code">TÚ</span>
+<div class="w-full bg-primary rounded-t-sm" style="height: 82%;"></div>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<span class="font-badge-micro text-[10px] text-unit-dimmed font-label-code">#5</span>
+<div class="w-full bg-surface-variant rounded-t-sm" style="height: 75%;"></div>
+</div>
+</div>
+</div>
+<!-- Tabla de Clasificación Semanal -->
+<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">format_list_numbered</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Cuadro de Honor Clínico</h3>
+</div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider">Top Sanitarios</span>
+</div>
+<div class="divide-y divide-surface-canvas">
+<!-- #01 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-surface-canvas/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary">01</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-default text-body-default font-semibold text-on-surface truncate">Dr. M. Aranda</span>
+<span class="material-symbols-outlined text-[14px] text-clinical-warning" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase truncate">Anestesia · Racha 21d</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary block">1.620 pts</span>
+<span class="font-badge-micro text-badge-micro text-tertiary-container font-semibold">99.1% Prec.</span>
+</div>
+</div>
+<!-- #02 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-surface-canvas/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary">02</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-default text-body-default font-semibold text-on-surface truncate">Enf. S. Valero</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase truncate">UCI Pediátrica · Racha 14d</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary block">1.580 pts</span>
+<span class="font-badge-micro text-badge-micro text-tertiary-container font-semibold">98.8% Prec.</span>
+</div>
+</div>
+<!-- #03 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-surface-canvas/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary">03</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-default text-body-default font-semibold text-on-surface truncate">Vet. L. Mendez</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase truncate">Urgencias Vet · Racha 30d</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary block">1.510 pts</span>
+<span class="font-badge-micro text-badge-micro text-tertiary-container font-semibold">97.9% Prec.</span>
+</div>
+</div>
+<!-- #04 (Tú - Destacado) -->
+<div class="p-3.5 bg-surface-container/70 flex items-center justify-between gap-3 relative">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="font-label-code text-label-code font-bold">04</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-default text-body-default font-bold text-primary truncate">Tú (Identidad Auditada)</span>
+<span class="font-badge-micro text-[10px] bg-primary-container text-on-primary px-1.5 py-0.2 rounded font-bold uppercase">Actual</span>
+</div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase truncate">Enfermería Críticos · Racha 8d</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary block">1.480 pts</span>
+<span class="font-badge-micro text-badge-micro text-tertiary-container font-bold">98.4% Prec.</span>
+</div>
+</div>
+<!-- #05 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-surface-canvas/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary">05</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-default text-body-default font-semibold text-on-surface truncate">Dr. K. Nogueira</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase truncate">Urgencias SEM · Racha 6d</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-code text-label-code font-bold text-primary block">1.410 pts</span>
+<span class="font-badge-micro text-badge-micro text-tertiary-container font-semibold">96.5% Prec.</span>
+</div>
+</div>
+</div>
+<!-- Línea de Corte Promoción -->
+<div class="bg-surface-container-high px-4 py-2 flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">check_circle</span>
+<span class="font-badge-micro text-badge-micro font-bold uppercase tracking-wider text-tertiary-container">Línea de Ascenso a División Máster (Top 5)</span>
+</div>
+<span class="font-label-code text-[11px] text-unit-dimmed font-semibold">Puestos 6-30 se mantienen</span>
+</div>
+</div>
+<!-- Sección de Logros Clínicos y Competencias Auditadas -->
+<div class="bg-surface-card rounded-xl shadow-sm p-4 space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Competencias Auditadas</h3>
+</div>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase tracking-wider">2 / 3 Validadas</span>
+</div>
+<div class="space-y-2.5">
+<!-- Medalla 1: Cero Eventos Centinela -->
+<div class="bg-surface-canvas rounded-lg p-3 flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<h4 class="font-body-default text-body-default font-bold text-on-surface truncate">Cero Eventos Centinela</h4>
+<span class="inline-flex items-center gap-0.5 bg-tertiary text-on-tertiary font-badge-micro text-[10px] px-2 py-0.5 rounded-full uppercase shrink-0">
+<span class="material-symbols-outlined text-[12px]">done_all</span> Completada
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed mt-0.5 leading-snug">
+            100 cálculos consecutivos sin error de dosificación crítico E1 ni E2 en protocolos agudos.
+          </p>
+<div class="mt-2 flex items-center justify-between text-unit-dimmed">
+<span class="font-label-code text-[11px]">Exactitud: 100/100</span>
+<span class="font-label-code text-[11px] font-bold text-tertiary-container">Auditado ISO/Med</span>
+</div>
+</div>
+</div>
+<!-- Medalla 2: Oído Clínico -->
+<div class="bg-surface-canvas rounded-lg p-3 flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">record_voice_over</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<h4 class="font-body-default text-body-default font-bold text-on-surface truncate">Oído Clínico</h4>
+<span class="font-label-code text-label-code font-bold text-primary shrink-0">8 / 10</span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed mt-0.5 leading-snug">
+            10 sesiones de cálculo en Modo Manos Libres superadas en entorno estéril con comando vocal.
+          </p>
+<!-- Barra de progreso clínica -->
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 80%;"></div>
+</div>
+<div class="mt-1 flex items-center justify-between text-unit-dimmed">
+<span class="font-badge-micro text-[10px] uppercase">Progreso 80%</span>
+<span class="font-badge-micro text-[10px] text-secondary font-semibold">2 para auditoría final</span>
+</div>
+</div>
+</div>
+<!-- Medalla 3: Titulación Relámpago -->
+<div class="bg-surface-canvas rounded-lg p-3 flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<h4 class="font-body-default text-body-default font-bold text-on-surface truncate">Titulación Relámpago</h4>
+<span class="inline-flex items-center gap-0.5 bg-tertiary text-on-tertiary font-badge-micro text-[10px] px-2 py-0.5 rounded-full uppercase shrink-0">
+<span class="material-symbols-outlined text-[12px]">done_all</span> Completada
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed mt-0.5 leading-snug">
+            Cálculo de perfusión dimensional compleja resuelto en menos de 15 segundos con 100% de fiabilidad.
+          </p>
+<div class="mt-2 flex items-center justify-between text-unit-dimmed">
+<span class="font-label-code text-[11px]">Marca: 11.4s en Noradrenalina</span>
+<span class="font-label-code text-[11px] font-bold text-tertiary-container">Registrado</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Declaración de Fiabilidad / Footer Contextual -->
+<div class="bg-surface-canvas rounded-xl p-3 text-center">
+<div class="flex items-center justify-center gap-1.5 text-unit-dimmed mb-1">
+<span class="material-symbols-outlined text-[16px]">policy</span>
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider">Marco de Evaluación Clínica</span>
+</div>
+<p class="font-body-sm text-body-sm text-unit-dimmed leading-tight max-w-xs mx-auto">
+      Este escalafón certifica velocidad y seguridad analítica para guardias hospitalarias y transporte medicalizado.
+    </p>
+</div>
+</div>
+<script>
+  // Sincronización de navegación activa para el App Shell (Pestaña "Ligas", índice 4)
+  document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('nav a[data-path]');
+    navItems.forEach((link) => {
+      const path = link.getAttribute('data-path');
+      if (path === 'ligas') {
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('text-primary', 'font-semibold');
+        const icon = link.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 1";
+        }
+      } else {
+        link.classList.remove('text-primary', 'font-semibold');
+        link.classList.add('text-on-surface-variant');
+        const icon = link.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 0";
+        }
+      }
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-canvas/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(10,77,104,0.06)]" data-active-classes="text-primary font-semibold"><div class="flex justify-between items-center h-16 px-space-xs"><a class="flex-1 flex flex-col items-center justify-center min-h-[48px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="inicio" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-badge-micro text-badge-micro uppercase tracking-wider mt-0.5">Inicio</span></a><a class="flex-1 flex flex-col items-center justify-center min-h-[48px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="practicar" href="#"><span class="material-symbols-outlined text-[22px]">calculate</span><span class="font-badge-micro text-badge-micro uppercase tracking-wider mt-0.5">Practicar</span></a><a class="flex-1 flex flex-col items-center justify-center min-h-[48px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="progreso" href="#"><span class="material-symbols-outlined text-[22px]">query_stats</span><span class="font-badge-micro text-badge-micro uppercase tracking-wider mt-0.5">Progreso</span></a><a aria-current="page" class="flex-1 flex flex-col items-center justify-center min-h-[48px] py-1 transition-colors text-primary font-semibold" data-path="ligas" href="#"><span class="material-symbols-outlined text-[22px]">trophy</span><span class="font-badge-micro text-badge-micro uppercase tracking-wider mt-0.5">Ligas</span></a><a class="flex-1 flex flex-col items-center justify-center min-h-[48px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="perfil" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-badge-micro text-badge-micro uppercase tracking-wider mt-0.5">Perfil</span></a></div></nav></body></html>

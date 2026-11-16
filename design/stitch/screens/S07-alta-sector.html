@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#6bdeac", "border-subtle": "#C5D9E0", "clinical-error": "#DC2626", "surface-container-highest": "#dae2fd", "clinical-warning": "#D97706", "primary-container": "#0d5c75", "on-tertiary-fixed": "#002114", "primary": "#004357", "secondary-fixed": "#a3eeff", "surface-dim": "#d2d9f4", "surface-container": "#eaedff", "surface-container-high": "#e2e7ff", "on-secondary-container": "#006b7a", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#76d4e7", "on-primary-fixed-variant": "#004d64", "tertiary-container": "#006142", "surface-tint": "#1e667f", "inverse-primary": "#90cfec", "tertiary-fixed": "#85f8c4", "error": "#ba1a1a", "on-tertiary-fixed-variant": "#005137", "secondary-container": "#8debff", "primary-fixed-dim": "#90cfec", "on-primary-fixed": "#001f2a", "surface-canvas": "#F4FAFB", "on-tertiary": "#ffffff", "secondary": "#006877", "on-error": "#ffffff", "on-secondary": "#ffffff", "surface-container-low": "#f2f3ff", "primary-fixed": "#bde9ff", "unit-dimmed": "#475569", "on-surface-variant": "#40484c", "error-container": "#ffdad6", "inverse-on-surface": "#eef0ff", "tertiary": "#004730", "background": "#faf8ff", "tertiary-fixed-dim": "#68dba9", "on-secondary-fixed": "#001f25", "outline-variant": "#bfc8cd", "clinical-deep": "#0A4D68", "inverse-surface": "#283044", "surface-bright": "#faf8ff", "surface-variant": "#dae2fd", "on-surface": "#131b2e", "on-error-container": "#93000a", "on-primary": "#ffffff", "surface-card": "#FFFFFF", "on-secondary-fixed-variant": "#004e5a", "surface": "#faf8ff", "outline": "#70787d", "on-primary-container": "#93d3ef", "on-background": "#131b2e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-tablet": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-md": "1rem", "gutter-desktop": "2rem", "margin": "1rem", "gutter": "1rem", "margin-tablet": "1.5rem", "space-xl": "2rem", "margin-desktop": "2rem", "space-sm": "0.5rem" }, "fontFamily": { "label-code": ["Space Mono"], "body-sm": ["Noto Sans"], "headline-lg-mobile": ["Space Grotesk"], "numeric-input-mobile": ["Space Mono"], "numeric-input": ["Space Mono"], "headline-sm": ["Space Grotesk"], "body-default": ["Noto Sans"], "headline-lg": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "display-handsfree": ["Space Mono"], "label-unit": ["Space Mono"], "badge-micro": ["Space Grotesk"], "body-problem": ["Noto Sans"], "display-handsfree-mobile": ["Space Mono"] }, "fontSize": { "label-code": ["13px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400" }], "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "numeric-input-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0.02em", "fontWeight": "700" }], "numeric-input": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }], "body-default": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600" }], "display-handsfree": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-unit": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }], "badge-micro": ["11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "body-problem": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }], "display-handsfree-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas text-on-surface font-body-default min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><button aria-label="Atrás" class="w-12 h-12 flex items-center justify-center rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[22px]">vaccines</span><span class="font-headline-sm text-headline-sm text-clinical-deep font-bold tracking-tight">VolutrainMed</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas px-gutter"><div class="flex flex-col w-full pb-24">
+<!-- Stepper Header: 4 Steps (Step 1 Active) -->
+<div class="w-full pt-4 pb-3">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary uppercase font-bold tracking-wider">Paso 1 de 4</span>
+<span class="font-badge-micro text-badge-micro px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">Configuración de perfil</span>
+</div>
+<div class="grid grid-cols-4 gap-2 w-full">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container"></div>
+</div>
+</div>
+<!-- Screen Narrative / Header Block -->
+<div class="flex flex-col gap-1.5 mt-2 mb-5">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-clinical-deep tracking-tight">
+      ¿Cuál es tu ámbito clínico principal?
+    </h1>
+<p class="font-body-default text-body-default text-on-surface-variant leading-relaxed">
+      Configuraremos el vocabulario, fármacos habituales y tipos de fluidos específicos de tu práctica diaria.
+    </p>
+</div>
+<!-- Medical Specialties Grid / Selection -->
+<div aria-label="Especialidad clínica" class="flex flex-col gap-3 mb-6" id="sector-list" role="radiogroup">
+<!-- Option 1: Selected by default -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative bg-surface-container-low" data-option="1" style="outline: 2px solid #0d5c75;">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">medical_services</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Enfermería General y Críticos
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Unidades de Cuidados Críticos / Planta</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          ml/h, bombas volumétricas, dilución de viales, gotas/min, UI heparina/insulina
+        </p>
+</div>
+</div>
+<!-- Option 2 -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative" data-option="2">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">vital_signs</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Anestesia y Reanimación
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Bloque Quirúrgico / URPA</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0 hidden">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          µg/kg/min, mezclas de vasoactivos, límites toxicológicos anestésicos locales, razones 1:1.000
+        </p>
+</div>
+</div>
+<!-- Option 3 -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative" data-option="3">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">emergency</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Medicina y Urgencias
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Emergencias Hospitalarias y SEM</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0 hidden">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          Dosis ponderales mg/kg, bolos de emergencia, paracetamol/antibioterapia intravenosa
+        </p>
+</div>
+</div>
+<!-- Option 4 -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative" data-option="4">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">child_care</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Pediatría y Neonatología
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">UCIN / UCIP / Urgencias Pediátricas</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0 hidden">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          Prevención de error factor 10, dosificación por m² superficie corporal y fraccionamiento por toma
+        </p>
+</div>
+</div>
+<!-- Option 5 -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative" data-option="5">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">pets</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Medicina Veterinaria
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Hospital Clínico Veterinario</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0 hidden">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          Dosificación diferenciada canina/felina/exóticos, volúmenes de precisión en jeringa 1ml, sedaciones
+        </p>
+</div>
+</div>
+<!-- Option 6 -->
+<div class="sector-card cursor-pointer rounded-xl p-4 bg-surface-card shadow-sm transition-all duration-150 flex flex-col gap-2 relative" data-option="6">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">biotech</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">
+              Farmacia Hospitalaria
+            </h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">Unidad de Mezclas y Terapias</span>
+</div>
+</div>
+<div class="sector-check w-6 h-6 rounded-full bg-surface-container text-unit-dimmed flex items-center justify-center shrink-0 hidden">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="pt-1.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px] shrink-0 mt-0.5">calculate</span>
+<p class="font-label-code text-label-code text-unit-dimmed leading-snug">
+          Reconstitución de liofilizados, porcentajes y mezclas de nutrición parenteral
+        </p>
+</div>
+</div>
+</div>
+<!-- Commitment Cadence Goal Section -->
+<div class="bg-surface-card rounded-xl p-4 shadow-sm mb-6 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-clinical-deep font-bold tracking-wide">META DIARIA DE ENTRENAMIENTO</span>
+<span class="material-symbols-outlined text-primary text-[18px]">timer</span>
+</div>
+<div class="grid grid-cols-3 gap-2" id="cadence-selector">
+<button class="cadence-pill min-h-[48px] rounded-full px-2 py-2 flex flex-col items-center justify-center bg-surface-container text-on-surface text-center transition-colors" data-cadence="5" type="button">
+<span class="font-label-code text-label-code font-bold">5 min/d</span>
+<span class="font-badge-micro text-badge-micro opacity-75">1 lección</span>
+</button>
+<button class="cadence-pill min-h-[48px] rounded-full px-2 py-2 flex flex-col items-center justify-center bg-primary-container text-on-primary text-center transition-colors shadow-sm" data-cadence="10" type="button">
+<span class="font-label-code text-label-code font-bold">10 min/d</span>
+<span class="font-badge-micro text-badge-micro font-semibold text-secondary-fixed">Recomendado</span>
+</button>
+<button class="cadence-pill min-h-[48px] rounded-full px-2 py-2 flex flex-col items-center justify-center bg-surface-container text-on-surface text-center transition-colors" data-cadence="15" type="button">
+<span class="font-label-code text-label-code font-bold">15 min/d</span>
+<span class="font-badge-micro text-badge-micro opacity-75">Intensivo</span>
+</button>
+</div>
+</div>
+<!-- Ethical Simulation Disclaimer Acceptance -->
+<div class="bg-surface-card rounded-xl p-4 shadow-sm mb-6 flex items-start gap-3">
+<button aria-checked="true" class="w-6 h-6 mt-0.5 rounded bg-primary-container text-on-primary flex items-center justify-center shrink-0 transition-colors focus:outline-none" id="simulation-checkbox-btn" role="checkbox" type="button">
+<span class="material-symbols-outlined text-[18px]" id="simulation-check-icon">check</span>
+</button>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer select-none" for="simulation-checkbox-btn">
+      He leído y comprendo que el contenido consta de <strong class="text-on-surface font-semibold">casos simulados para entrenamiento formativo</strong>. La dosificación real debe validarse según ficha técnica y prescripción médica facultativa.
+    </label>
+</div>
+<!-- Sticky Confirmation Bottom Dock -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-canvas/95 backdrop-blur-md px-gutter py-3 pb-safe shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+<div class="max-w-md mx-auto w-full">
+<button class="w-full h-[52dp] min-h-[52px] rounded-xl bg-primary-container text-on-primary font-headline-sm text-headline-sm text-base flex items-center justify-center gap-2 font-semibold shadow-md active:scale-[0.98] transition-all" id="submit-step-btn" type="button">
+<span>Continuar a prueba de nivel</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  (function initSpecialtySelector() {
+    const cards = document.querySelectorAll('.sector-card');
+    const cadenceButtons = document.querySelectorAll('.cadence-pill');
+    const checkboxBtn = document.getElementById('simulation-checkbox-btn');
+    const checkIcon = document.getElementById('simulation-check-icon');
+    const submitBtn = document.getElementById('submit-step-btn');
+
+    let isAccepted = true;
+
+    // Specialty selection handler
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => {
+          c.classList.remove('bg-surface-container-low');
+          c.style.outline = 'none';
+          const iconBox = c.querySelector('.w-10');
+          iconBox.classList.remove('bg-primary-container', 'text-on-primary');
+          iconBox.classList.add('bg-surface-container', 'text-primary');
+          const check = c.querySelector('.sector-check');
+          check.classList.add('hidden');
+          check.classList.remove('bg-primary-container', 'text-on-primary');
+        });
+
+        card.classList.add('bg-surface-container-low');
+        card.style.outline = '2px solid #0d5c75';
+        const activeIconBox = card.querySelector('.w-10');
+        activeIconBox.classList.add('bg-primary-container', 'text-on-primary');
+        activeIconBox.classList.remove('bg-surface-container', 'text-primary');
+        const activeCheck = card.querySelector('.sector-check');
+        activeCheck.classList.remove('hidden');
+        activeCheck.classList.add('bg-primary-container', 'text-on-primary');
+      });
+    });
+
+    // Cadence button handler
+    cadenceButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        cadenceButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+          const badge = b.querySelector('.font-badge-micro');
+          if (badge) {
+            badge.classList.remove('text-secondary-fixed');
+          }
+        });
+        btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+        const activeBadge = btn.querySelector('.font-badge-micro');
+        if (activeBadge) {
+          activeBadge.classList.add('text-secondary-fixed');
+        }
+      });
+    });
+
+    // Disclaimer Checkbox Toggle
+    checkboxBtn.addEventListener('click', () => {
+      isAccepted = !isAccepted;
+      checkboxBtn.setAttribute('aria-checked', isAccepted ? 'true' : 'false');
+      if (isAccepted) {
+        checkboxBtn.classList.remove('bg-surface-container', 'text-transparent');
+        checkboxBtn.classList.add('bg-primary-container', 'text-on-primary');
+        checkIcon.classList.remove('opacity-0');
+        submitBtn.removeAttribute('disabled');
+        submitBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+      } else {
+        checkboxBtn.classList.add('bg-surface-container', 'text-transparent');
+        checkboxBtn.classList.remove('bg-primary-container', 'text-on-primary');
+        checkIcon.classList.add('opacity-0');
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.classList.add('opacity-40', 'cursor-not-allowed');
+      }
+    });
+
+    // Action button feedback
+    submitBtn.addEventListener('click', () => {
+      if (!isAccepted) return;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+        <span>Configurando módulos...</span>
+      `;
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+      }, 1000);
+    });
+  })();
+</script></main></body></html>

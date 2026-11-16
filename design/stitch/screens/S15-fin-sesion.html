@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'secondary-container': '#8debff', 'unit-dimmed': '#475569', 'primary-container': '#0d5c75', 'on-background': '#131b2e', 'clinical-error': '#DC2626', 'tertiary': '#004730', 'on-secondary': '#ffffff', 'surface-container': '#eaedff', 'clinical-deep': '#0A4D68', 'error-container': '#ffdad6', 'tertiary-fixed-dim': '#68dba9', 'on-secondary-fixed': '#001f25', 'on-secondary-container': '#006b7a', 'inverse-on-surface': '#eef0ff', 'on-surface-variant': '#40484c', 'tertiary-container': '#006142', 'surface-tint': '#1e667f', 'surface-variant': '#dae2fd', 'primary-fixed-dim': '#90cfec', 'on-primary-container': '#93d3ef', 'surface-container-low': '#f2f3ff', 'inverse-surface': '#283044', 'background': '#faf8ff', 'on-primary': '#ffffff', 'secondary': '#006877', 'secondary-fixed': '#a3eeff', 'surface-card': '#FFFFFF', 'inverse-primary': '#90cfec', 'error': '#ba1a1a', 'surface-container-lowest': '#ffffff', 'tertiary-fixed': '#85f8c4', 'surface': '#faf8ff', 'on-tertiary-fixed-variant': '#005137', 'outline': '#70787d', 'on-primary-fixed-variant': '#004d64', 'on-tertiary-container': '#6bdeac', 'on-tertiary': '#ffffff', 'on-surface': '#131b2e', 'on-secondary-fixed-variant': '#004e5a', 'surface-dim': '#d2d9f4', 'outline-variant': '#bfc8cd', 'surface-canvas': '#F4FAFB', 'primary': '#004357', 'secondary-fixed-dim': '#76d4e7', 'on-tertiary-fixed': '#002114', 'on-error': '#ffffff', 'on-error-container': '#93000a', 'border-subtle': '#C5D9E0', 'surface-container-high': '#e2e7ff', 'surface-container-highest': '#dae2fd', 'surface-bright': '#faf8ff', 'on-primary-fixed': '#001f2a', 'clinical-warning': '#D97706', 'primary-fixed': '#bde9ff' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'gutter-desktop': '2rem', 'margin': '1rem', 'gutter': '1rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'margin-tablet': '1.5rem', 'space-sm': '0.5rem', 'margin-desktop': '2rem', 'space-xl': '2rem', 'gutter-tablet': '1.5rem', 'space-lg': '1.5rem' }, fontFamily: { 'badge-micro': ['Space Grotesk'], 'label-code': ['Space Mono'], 'numeric-input-mobile': ['Space Mono'], 'headline-sm': ['Space Grotesk'], 'label-unit': ['Space Mono'], 'headline-lg': ['Space Grotesk'], 'numeric-input': ['Space Mono'], 'body-default': ['Noto Sans'], 'headline-md': ['Space Grotesk'], 'display-handsfree': ['Space Mono'], 'body-sm': ['Noto Sans'], 'headline-lg-mobile': ['Space Grotesk'], 'body-problem': ['Noto Sans'], 'display-handsfree-mobile': ['Space Mono'] }, fontSize: { 'badge-micro': ['11px', { lineHeight: '16px', letterSpacing: '0.06em', fontWeight: '600' }], 'label-code': ['13px', { lineHeight: '18px', letterSpacing: '0.04em', fontWeight: '400' }], 'numeric-input-mobile': ['32px', { lineHeight: '40px', letterSpacing: '0.02em', fontWeight: '700' }], 'headline-sm': ['20px', { lineHeight: '28px', letterSpacing: '0', fontWeight: '600' }], 'label-unit': ['14px', { lineHeight: '20px', letterSpacing: '0.02em', fontWeight: '700' }], 'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }], 'numeric-input': ['40px', { lineHeight: '48px', letterSpacing: '0.02em', fontWeight: '700' }], 'body-default': ['16px', { lineHeight: '24px', letterSpacing: '0', fontWeight: '400' }], 'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0', fontWeight: '600' }], 'display-handsfree': ['64px', { lineHeight: '72px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0', fontWeight: '400' }], 'headline-lg-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }], 'body-problem': ['18px', { lineHeight: '28px', letterSpacing: '0', fontWeight: '400' }], 'display-handsfree-mobile': ['48px', { lineHeight: '56px', letterSpacing: '-0.02em', fontWeight: '700' }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#F4FAFB;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-canvas font-body-default text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs min-w-0"><button aria-label="Regresar o cerrar sesión" class="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-primary hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">close</span></button><div class="flex flex-col min-w-0"><div class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-clinical-deep shrink-0"></span><span class="font-badge-micro text-badge-micro text-primary-container uppercase tracking-wider truncate">CASO CLÍNICO MULTIETAPA · T8</span></div><h1 class="font-headline-sm text-[16px] text-on-surface font-semibold truncate leading-tight">Resumen De Sesión 5.9</h1></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-container text-unit-dimmed"><span class="material-symbols-outlined text-[16px]">timer</span><span class="font-label-code text-label-code font-bold">04:18</span></div><button aria-label="Configuración o soporte clínico" class="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all"><span class="material-symbols-outlined text-[20px]">tune</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface-canvas min-h-screen px-margin"><div class="flex flex-col w-full pb-safe">
+<!-- Status Feedback Banner: Clinical Rigor & Reliability Confirmation -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm mb-space-md mt-space-sm">
+<div class="flex items-center justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-badge-micro text-badge-micro text-primary-container uppercase tracking-wider truncate">SESIÓN VALIDADA · ESTÁNDAR UCI</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Sesión Completada</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-badge-micro text-badge-micro">
+        FSRS v4.5 ACTIVO
+      </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0 mt-0.5">analytics</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Rigor dosimétrico verificado. Se preservó el margen de bioseguridad en cálculos de dilución y perfusión continua.
+      </p>
+</div>
+</div>
+<!-- Primary Metrics Matrix (Bento Layout) -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<!-- Card 1: Precision -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-unit-dimmed mb-space-xs">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider">Precisión Global</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+</div>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-surface leading-none">91.7</span>
+<span class="font-label-unit text-label-unit text-primary-container">%</span>
+</div>
+<span class="font-label-code text-label-code text-unit-dimmed">11/12 al 1.ᵉʳ intento</span>
+</div>
+<!-- Card 2: Median Execution Time -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-unit-dimmed mb-space-xs">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider">Tiempo Mediano</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">pace</span>
+</div>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-surface leading-none">24</span>
+<span class="font-label-unit text-label-unit text-unit-dimmed">s/ej</span>
+</div>
+<span class="font-label-code text-label-code text-tertiary">Objetivo &lt;30s cumplido</span>
+</div>
+<!-- Card 3: Safety / Deviations Guard -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-unit-dimmed mb-space-xs">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider">Errores Críticos</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">security</span>
+</div>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-surface leading-none">0</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed">E1/E2</span>
+</div>
+<span class="font-label-code text-label-code text-clinical-warning">1 desvío leve (E7)</span>
+</div>
+<!-- Card 4: Clinical Streak -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-unit-dimmed mb-space-xs">
+<span class="font-badge-micro text-badge-micro uppercase tracking-wider">Racha Práctica</span>
+<span class="material-symbols-outlined text-[18px] text-primary">local_fire_department</span>
+</div>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-numeric-input-mobile text-numeric-input-mobile text-on-surface leading-none">8</span>
+<span class="font-label-unit text-label-unit text-unit-dimmed">días</span>
+</div>
+<span class="font-label-code text-label-code text-primary-container">Micro-dosis al día</span>
+</div>
+</div>
+<!-- Deviation Inspection Snippet -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm mb-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-clinical-warning"></span>
+<span class="font-badge-micro text-badge-micro text-on-surface uppercase tracking-wider">Desviación Leve Detectada</span>
+</div>
+<span class="font-label-code text-label-code text-unit-dimmed">Código E7</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Tolerancia de Redondeo en Infusión</span>
+<span class="font-label-code text-label-code text-clinical-error font-bold">14.3 vs 14.28 ml/h</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        No compromete la ventana terapéutica. Se recomienda truncar al primer decimal tras finalizar todas las conversiones de unidades.
+      </p>
+</div>
+</div>
+<!-- FSRS Engine Calibration Card -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm mb-space-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">model_training</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-[15px] text-on-surface font-bold truncate">Calibración Algoritmo FSRS</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed">Motor v4.5 · 12 fichas procesadas</span>
+</div>
+</div>
+<span class="font-label-code text-label-code text-tertiary bg-surface-container px-2 py-0.5 rounded font-bold">R &gt; 90%</span>
+</div>
+<!-- Visual Distribution Bar -->
+<div class="w-full mb-space-sm">
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[67%]" title="8 fichas (+4d)"></div>
+<div class="bg-secondary-fixed-dim h-full w-[25%]" title="3 fichas (+2d)"></div>
+<div class="bg-clinical-warning h-full w-[8%]" title="1 ficha (repaso mañana)"></div>
+</div>
+<div class="flex justify-between items-center mt-1">
+<span class="font-badge-micro text-badge-micro text-unit-dimmed">67% Intervalo extendido</span>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed">8% Repaso prioritario</span>
+</div>
+</div>
+<!-- FSRS Impact Details -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">fast_forward</span>
+<span class="font-body-sm text-body-sm text-on-surface">8 fichas extienden intervalo</span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">+4 días</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-clinical-warning text-[16px]">priority_high</span>
+<span class="font-body-sm text-body-sm text-on-surface">H9 Perfusión peso/tiempo</span>
+</div>
+<span class="font-label-code text-label-code text-clinical-warning font-bold">Mañana</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-unit-dimmed text-[16px]">event_upcoming</span>
+<span class="font-body-sm text-body-sm text-on-surface">Próximo repaso programado</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface font-bold">Mañana, 08:00 AM (8 fichas)</span>
+</div>
+</div>
+</div>
+<!-- Clinical Skills Breakdown (Detailed Proficiency) -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-sm text-[15px] text-on-surface font-bold">Habilidades Evaluadas</h2>
+<span class="font-badge-micro text-badge-micro text-unit-dimmed uppercase">3 Dominios</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Skill 1 -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-bold text-primary">H3</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dosis Ponderales</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary text-on-tertiary font-badge-micro text-badge-micro">
+            CONSOLIDADA
+          </span>
+</div>
+<div class="flex items-center justify-between text-unit-dimmed font-label-code text-label-code">
+<span>Base mg/kg y titulación</span>
+<span class="text-tertiary font-bold">+4.0% precisión</span>
+</div>
+</div>
+<!-- Skill 2 -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-bold text-primary">H4</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Volumen a Cargar</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary text-on-primary font-badge-micro text-badge-micro">
+            DOMINADA
+          </span>
+</div>
+<div class="flex items-center justify-between text-unit-dimmed font-label-code text-label-code">
+<span>Dilución en jeringa</span>
+<span class="text-on-surface font-semibold">3 d consecutivos &gt;95%</span>
+</div>
+</div>
+<!-- Skill 3 -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-bold text-clinical-warning">H7</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Ritmo de Perfusión</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-unit-dimmed font-badge-micro text-badge-micro">
+            EN APRENDIZAJE
+          </span>
+</div>
+<div class="flex items-center justify-between text-unit-dimmed font-label-code text-label-code">
+<span>Conversión ml/h y microgotas</span>
+<span class="text-clinical-warning font-semibold">Revisar factor tiempo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ergonomic Bottom Action Footprint -->
+<div class="flex flex-col gap-space-sm w-full mb-space-md">
+<!-- Primary CTA -->
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-headline-sm text-[16px] font-bold flex items-center justify-center gap-space-xs shadow-sm active:scale-[0.98] transition-all" onclick="handleContinue()" type="button">
+<span>Continuar a Inicio</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Action Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-[48px] bg-surface-card text-primary rounded-xl font-body-sm text-body-sm font-semibold flex items-center justify-center gap-1 shadow-sm active:scale-[0.98] transition-all" onclick="reviewErrors()" type="button">
+<span class="material-symbols-outlined text-[18px] text-clinical-warning">history_edu</span>
+<span class="truncate">Ver Desvío (1)</span>
+</button>
+<button class="h-[48px] bg-surface-card text-on-surface-variant rounded-xl font-body-sm text-body-sm font-semibold flex items-center justify-center gap-1 shadow-sm active:scale-[0.98] transition-all" onclick="shareReport()" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="truncate">Exportar Reporte</span>
+</button>
+</div>
+</div>
+<script>
+    function handleContinue() {
+      // Direct navigation to main clinical dashboard
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '#dashboard';
+      }
+    }
+
+    function reviewErrors() {
+      // Deep-dive inspection into the E7 rounding step
+      alert('Detalle de Desviación E7:\n\nEjercicio #7: Perfusión de Noradrenalina.\nCálculo teórico: 14.285 ml/h.\nIngresado: 14.3 ml/h.\nAcción sugerida: Programar bomba volumétrica con 2 decimales para pesos neonatales.');
+    }
+
+    function shareReport() {
+      // Clinical certification export
+      if (navigator.share) {
+        navigator.share({
+          title: 'VolutrainMed - Registro de Entrenamiento UCI',
+          text: 'Sesión Completada: 91.7% de precisión, 0 errores críticos, racha de 8 días. Verificado con FSRS v4.5.',
+          url: window.location.href
+        }).catch(function() {});
+      } else {
+        alert('Reporte clínico copiado al portapapeles con metadatos de auditoría hospitalaria.');
+      }
+    }
+  </script>
+</div></main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>B01 · Acceso con doble factor</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/16a697ebb4d14b35b2c65628fe0a929b">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500;700&amp;family=Figtree:wght@500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0E7490}a:hover{color:#0B5F76}
+</style>
+</helmet>
+<div class="vt row center" style="min-height: 900px; padding: 40px 16px; background: var(--bg)">
+  <div class="panel col g20" style="width: 100%; max-width: 440px; padding: 40px 36px">
+    <div class="row g8"><svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true"><defs><clipPath id="vclip36"><path d="M7 7h26L22.5 33a2.7 2.7 0 0 1-5 0z"/></clipPath></defs><g clip-path="url(#vclip36)"><rect x="0" y="0" width="40" height="40" fill="var(--surface)"/><path d="M0 19 Q20 25 40 19 V40 H0z" fill="var(--brand)"/></g><path d="M7 7h26L22.5 33a2.7 2.7 0 0 1-5 0z" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="ui b" style="font-size: 22px; letter-spacing: -0.01em">Volutrain<span class="c-primary">Med</span></span></div>
+    <div class="col g6"><span class="t-over">Back office · paso 2 de 2</span><h1 class="h1">Verificación en dos pasos</h1>
+    <p class="t-body muted">Escribe el código de seis cifras de tu aplicación de autenticación.</p></div>
+    <div class="otp" role="group" aria-label="Código de verificación"><span class="">3</span><span class="">1</span><span class="">7</span><span class="f"></span><span class=""></span><span class=""></span></div>
+    <button class="btn btn-off " type="button">Verificar</button>
+    <div class="row between t-small"><a class="link" href="#">Usar un código de recuperación</a><a class="link" href="#">Cambiar de cuenta</a></div>
+    <div class="card row g10 ai-start" style="background: var(--surface-2); border-color: transparent"><svg class="ic c-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><p class="t-small">El doble factor es obligatorio para todos los roles. Toda acción queda en el registro de auditoría.</p></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

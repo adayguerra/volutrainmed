@@ -1,0 +1,33 @@
+# Sistema
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Datos locales del servidor
+services/api/data/
+*.sqlite
+*.sqlite-journal
+*.db
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.iml
+.idea/
+apps/mobile/ios/Pods/
+apps/mobile/ios/.symlinks/
+apps/mobile/android/.gradle/
+apps/mobile/android/local.properties
+
+# Claves privadas de firma (se generan en local)
+**/keys/*.pem
