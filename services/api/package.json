@@ -1,0 +1,29 @@
+{
+  "name": "@vtm/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "API de VolutrainMed: autenticación, sincronización, contenido firmado, publicación, back office, suscripción, organizaciones y ligas.",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "migrate": "tsx src/db/migrate.ts",
+    "seed": "tsx src/seed/run.ts",
+    "build:sample": "tsx src/seed/build-sample.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@vtm/contracts": "workspace:*",
+    "@vtm/engine": "workspace:*",
+    "fastify": "^5.6.1",
+    "pg": "^8.16.3",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.5",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

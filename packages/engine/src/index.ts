@@ -7,3 +7,4 @@ export * from './spoken.js';
 export * from './grading.js';
 export * from './textcheck.js';
 export * from './template.js';
+export * from './question.js';

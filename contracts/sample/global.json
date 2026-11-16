@@ -1,0 +1,908 @@
+{
+ "format": 1,
+ "contentVersion": "2026.11.1",
+ "minAppVersion": "1.0.0",
+ "sectors": [
+  {
+   "id": "enfermeria",
+   "code": "ENF",
+   "name": "Enfermería",
+   "description": "Planta, críticos y estudiantes de grado",
+   "icon": "medical_services",
+   "typicalCalcs": "ml/h, gotas/min, diluciones, UI de insulina y heparina",
+   "defaultItineraryId": "it-fundamentos",
+   "itineraryIds": [
+    "it-fundamentos"
+   ],
+   "order": 0
+  },
+  {
+   "id": "medicina",
+   "code": "MED",
+   "name": "Medicina",
+   "description": "Estudiantes y residentes",
+   "icon": "stethoscope",
+   "typicalCalcs": "mg/kg, dosis máximas, perfusiones y conversiones",
+   "defaultItineraryId": "it-fundamentos",
+   "itineraryIds": [
+    "it-fundamentos",
+    "it-anestesia"
+   ],
+   "order": 1
+  },
+  {
+   "id": "anestesia",
+   "code": "ANE",
+   "name": "Anestesia y reanimación",
+   "description": "Residentes, adjuntos y enfermería de anestesia",
+   "icon": "vital_signs",
+   "typicalCalcs": "µg/kg/min, vasoactivos, dosis máxima de anestésico local, %",
+   "defaultItineraryId": "it-anestesia",
+   "itineraryIds": [
+    "it-fundamentos",
+    "it-anestesia"
+   ],
+   "order": 2
+  },
+  {
+   "id": "emergencias",
+   "code": "EME",
+   "name": "Emergencias",
+   "description": "TES, enfermería y medicina de urgencias",
+   "icon": "emergency",
+   "typicalCalcs": "Adrenalina 1:1000 y 1:10 000, dosis pediátricas por peso",
+   "defaultItineraryId": "it-fundamentos",
+   "itineraryIds": [
+    "it-fundamentos",
+    "it-anestesia"
+   ],
+   "order": 3
+  },
+  {
+   "id": "farmacia",
+   "code": "FAR",
+   "name": "Farmacia",
+   "description": "Estudiantes, farmacia hospitalaria y técnicos",
+   "icon": "medication",
+   "typicalCalcs": "Reconstitución, porcentajes, proporciones y concentración final",
+   "defaultItineraryId": "it-fundamentos",
+   "itineraryIds": [
+    "it-fundamentos"
+   ],
+   "order": 4
+  },
+  {
+   "id": "pediatria",
+   "code": "PED",
+   "name": "Pediatría",
+   "description": "Residentes y enfermería pediátrica",
+   "icon": "child_care",
+   "typicalCalcs": "mg/kg/día en tomas, suspensiones en mg/5 ml, dosis máxima",
+   "defaultItineraryId": "it-fundamentos",
+   "itineraryIds": [
+    "it-fundamentos"
+   ],
+   "order": 5,
+   "doubleReview": true
+  },
+  {
+   "id": "veterinaria",
+   "code": "VET",
+   "name": "Veterinaria",
+   "description": "Estudiantes, clínicos y auxiliares",
+   "icon": "pets",
+   "typicalCalcs": "mg/kg por especie, volúmenes muy pequeños, infusiones continuas",
+   "defaultItineraryId": "it-vet-pequenos",
+   "itineraryIds": [
+    "it-fundamentos",
+    "it-vet-pequenos"
+   ],
+   "order": 6
+  }
+ ],
+ "itineraries": [
+  {
+   "id": "it-fundamentos",
+   "sectorId": "comun",
+   "name": "Fundamentos",
+   "description": "Conversiones, concentraciones, volumen a cargar, redondeo y estimación. Común a todos los sectores.",
+   "recommendedLevel": "cero",
+   "order": 0,
+   "isFoundations": true
+  },
+  {
+   "id": "it-anestesia",
+   "sectorId": "anestesia",
+   "name": "Anestesia y reanimación",
+   "description": "Diluciones, dosis por peso, perfusiones en µg/kg/min y dosis máximas de anestésicos locales.",
+   "recommendedLevel": "afianzar",
+   "order": 1,
+   "isFoundations": false
+  },
+  {
+   "id": "it-vet-pequenos",
+   "sectorId": "veterinaria",
+   "name": "Anestesia y clínica de pequeños animales",
+   "description": "Dosis por especie y peso, volúmenes pequeños, infusiones continuas y fluidoterapia.",
+   "recommendedLevel": "afianzar",
+   "order": 2,
+   "isFoundations": false
+  }
+ ],
+ "skills": [
+  {
+   "id": "H1",
+   "name": "Conversión de unidades de masa, volumen y tiempo"
+  },
+  {
+   "id": "H2",
+   "name": "Concentraciones: mg/ml, porcentaje, razones 1:N y UI/ml"
+  },
+  {
+   "id": "H3",
+   "name": "Dosis por peso (mg/kg, µg/kg, UI/kg)"
+  },
+  {
+   "id": "H4",
+   "name": "Volumen a cargar según la concentración"
+  },
+  {
+   "id": "H5",
+   "name": "Dosis diaria repartida en tomas"
+  },
+  {
+   "id": "H6",
+   "name": "Reconstitución y dilución"
+  },
+  {
+   "id": "H7",
+   "name": "Ritmo de perfusión en ml/h"
+  },
+  {
+   "id": "H8",
+   "name": "Goteo en gotas/min"
+  },
+  {
+   "id": "H9",
+   "name": "Perfusión por peso y tiempo (µg/kg/min y ml/h)"
+  },
+  {
+   "id": "H10",
+   "name": "Dosis máxima y comprobación de límites"
+  },
+  {
+   "id": "H11",
+   "name": "Redondeo según el instrumento de medida"
+  },
+  {
+   "id": "H12",
+   "name": "Estimación y plausibilidad del resultado"
+  }
+ ],
+ "exerciseTypes": [
+  {
+   "id": "T1",
+   "version": 1,
+   "name": "Respuesta numérica con unidad",
+   "description": "Caso simulado con pauta; una respuesta con unidad",
+   "steps": [
+    {
+     "presentation": [
+      "statement",
+      "highlighted_data"
+     ],
+     "response": "numeric_unit",
+     "grading": "numeric_tolerance"
+    }
+   ],
+   "behaviour": [
+    "hints",
+    "scoring",
+    "second_try"
+   ],
+   "voiceCompatible": true,
+   "minAppVersion": "1.0.0"
+  },
+  {
+   "id": "T2",
+   "version": 1,
+   "name": "Selección única",
+   "description": "Elegir entre 3 o 4 opciones diagnósticas",
+   "steps": [
+    {
+     "presentation": [
+      "statement",
+      "highlighted_data"
+     ],
+     "response": "single_choice",
+     "grading": "exact_match"
+    }
+   ],
+   "behaviour": [
+    "hints",
+    "scoring",
+    "second_try"
+   ],
+   "voiceCompatible": true,
+   "minAppVersion": "1.0.0"
+  },
+  {
+   "id": "T3",
+   "version": 1,
+   "name": "Ordenar pasos",
+   "description": "Poner en orden los pasos de un cálculo",
+   "steps": [
+    {
+     "presentation": [
+      "statement",
+      "step_list"
+     ],
+     "response": "ordering",
+     "grading": "order_equivalences"
+    }
+   ],
+   "behaviour": [
+    "hints",
+    "scoring"
+   ],
+   "voiceCompatible": false,
+   "minAppVersion": "1.0.0"
+  },
+  {
+   "id": "T6",
+   "version": 1,
+   "name": "Estimación rápida",
+   "description": "Elegir la franja del resultado sin calcularlo con exactitud",
+   "steps": [
+    {
+     "presentation": [
+      "statement",
+      "highlighted_data",
+      "timer"
+     ],
+     "response": "range_choice",
+     "grading": "exact_match"
+    }
+   ],
+   "behaviour": [
+    "time_limit",
+    "scoring"
+   ],
+   "voiceCompatible": true,
+   "minAppVersion": "1.0.0",
+   "timeLimitS": 15
+  },
+  {
+   "id": "T7",
+   "version": 1,
+   "name": "Conversión relámpago",
+   "description": "Diez conversiones seguidas en 60 segundos",
+   "steps": [
+    {
+     "presentation": [
+      "statement",
+      "timer"
+     ],
+     "response": "conversion_series",
+     "grading": "numeric_tolerance"
+    }
+   ],
+   "behaviour": [
+    "time_limit",
+    "scoring"
+   ],
+   "voiceCompatible": true,
+   "minAppVersion": "1.0.0",
+   "timeLimitS": 60
+  }
+ ],
+ "units": [
+  {
+   "symbol": "g",
+   "name": "gramo",
+   "readingSingular": "gramo",
+   "readingPlural": "gramos",
+   "gender": "m",
+   "spokenForms": [
+    "gramos",
+    "gramo"
+   ],
+   "magnitude": "masa",
+   "factor": "1"
+  },
+  {
+   "symbol": "mg",
+   "name": "miligramo",
+   "readingSingular": "miligramo",
+   "readingPlural": "miligramos",
+   "gender": "m",
+   "spokenForms": [
+    "miligramos",
+    "miligramo"
+   ],
+   "magnitude": "masa",
+   "factor": "0.001"
+  },
+  {
+   "symbol": "µg",
+   "name": "microgramo",
+   "readingSingular": "microgramo",
+   "readingPlural": "microgramos",
+   "gender": "m",
+   "spokenForms": [
+    "microgramos",
+    "microgramo"
+   ],
+   "magnitude": "masa",
+   "factor": "0.000001"
+  },
+  {
+   "symbol": "kg",
+   "name": "kilogramo",
+   "readingSingular": "kilo",
+   "readingPlural": "kilos",
+   "gender": "m",
+   "spokenForms": [
+    "kilos",
+    "kilo",
+    "kilogramos"
+   ],
+   "magnitude": "masa",
+   "factor": "1000"
+  },
+  {
+   "symbol": "ml",
+   "name": "mililitro",
+   "readingSingular": "mililitro",
+   "readingPlural": "mililitros",
+   "gender": "m",
+   "spokenForms": [
+    "mililitros",
+    "mililitro",
+    "eme ele",
+    "ce ce",
+    "centímetros cúbicos"
+   ],
+   "magnitude": "volumen",
+   "factor": "1"
+  },
+  {
+   "symbol": "l",
+   "name": "litro",
+   "readingSingular": "litro",
+   "readingPlural": "litros",
+   "gender": "m",
+   "spokenForms": [
+    "litros",
+    "litro"
+   ],
+   "magnitude": "volumen",
+   "factor": "1000"
+  },
+  {
+   "symbol": "min",
+   "name": "minuto",
+   "readingSingular": "minuto",
+   "readingPlural": "minutos",
+   "gender": "m",
+   "spokenForms": [
+    "minutos",
+    "minuto"
+   ],
+   "magnitude": "tiempo",
+   "factor": "60"
+  },
+  {
+   "symbol": "h",
+   "name": "hora",
+   "readingSingular": "hora",
+   "readingPlural": "horas",
+   "gender": "f",
+   "spokenForms": [
+    "horas",
+    "hora"
+   ],
+   "magnitude": "tiempo",
+   "factor": "3600"
+  },
+  {
+   "symbol": "gotas",
+   "name": "gota",
+   "readingSingular": "gota",
+   "readingPlural": "gotas",
+   "gender": "f",
+   "spokenForms": [
+    "gotas",
+    "gota"
+   ],
+   "magnitude": "gotas",
+   "factor": "1"
+  },
+  {
+   "symbol": "UI",
+   "name": "unidad internacional",
+   "readingSingular": "unidad",
+   "readingPlural": "unidades internacionales",
+   "gender": "f",
+   "spokenForms": [
+    "unidades internacionales",
+    "unidades",
+    "unidad"
+   ],
+   "magnitude": "UI",
+   "factor": "1"
+  },
+  {
+   "symbol": "%",
+   "name": "por ciento (m/v)",
+   "readingSingular": "por ciento",
+   "readingPlural": "por ciento",
+   "gender": "m",
+   "spokenForms": [
+    "por ciento"
+   ],
+   "magnitude": "concentración",
+   "factor": "0.01"
+  }
+ ],
+ "instruments": [
+  {
+   "id": "jer-1",
+   "name": "Jeringa de 1 ml",
+   "capacityMl": "1",
+   "step": "0.01",
+   "unit": "ml"
+  },
+  {
+   "id": "jer-3",
+   "name": "Jeringa de 2 o 3 ml",
+   "capacityMl": "3",
+   "step": "0.1",
+   "unit": "ml"
+  },
+  {
+   "id": "jer-10",
+   "name": "Jeringa de 5 o 10 ml",
+   "capacityMl": "10",
+   "step": "0.2",
+   "unit": "ml"
+  },
+  {
+   "id": "jer-50",
+   "name": "Jeringa de 20 o 50 ml",
+   "capacityMl": "50",
+   "step": "1",
+   "unit": "ml"
+  },
+  {
+   "id": "bomba",
+   "name": "Bomba de perfusión",
+   "step": "0.1",
+   "unit": "ml/h"
+  },
+  {
+   "id": "goteo",
+   "name": "Sistema de goteo",
+   "step": "1",
+   "unit": "gotas/min"
+  }
+ ],
+ "voiceLexicon": {
+  "confusions": [
+   {
+    "from": "como",
+    "to": "coma"
+   },
+   {
+    "from": "toma",
+    "to": "coma"
+   },
+   {
+    "from": "cerro",
+    "to": "cero"
+   },
+   {
+    "from": "tos",
+    "to": "dos"
+   }
+  ],
+  "commands": [
+   {
+    "command": "repite",
+    "synonyms": [
+     "repite",
+     "otra vez",
+     "repítelo"
+    ]
+   },
+   {
+    "command": "repite_datos",
+    "synonyms": [
+     "repite los datos",
+     "los datos"
+    ]
+   },
+   {
+    "command": "siguiente",
+    "synonyms": [
+     "siguiente",
+     "continuar"
+    ]
+   },
+   {
+    "command": "no_lo_se",
+    "synonyms": [
+     "no lo sé",
+     "ni idea"
+    ]
+   },
+   {
+    "command": "pausa",
+    "synonyms": [
+     "pausa",
+     "espera",
+     "un momento"
+    ]
+   },
+   {
+    "command": "continua",
+    "synonyms": [
+     "continúa",
+     "sigue"
+    ]
+   },
+   {
+    "command": "si",
+    "synonyms": [
+     "sí",
+     "correcto",
+     "eso es",
+     "vale"
+    ]
+   },
+   {
+    "command": "no",
+    "synonyms": [
+     "no",
+     "incorrecto",
+     "corrige"
+    ]
+   },
+   {
+    "command": "explica",
+    "synonyms": [
+     "explica",
+     "cómo se hace"
+    ]
+   },
+   {
+    "command": "salta",
+    "synonyms": [
+     "salta"
+    ]
+   },
+   {
+    "command": "mas_despacio",
+    "synonyms": [
+     "más despacio"
+    ]
+   },
+   {
+    "command": "mas_rapido",
+    "synonyms": [
+     "más rápido"
+    ]
+   },
+   {
+    "command": "cifra_a_cifra",
+    "synonyms": [
+     "cifra a cifra"
+    ]
+   },
+   {
+    "command": "teclado",
+    "synonyms": [
+     "teclado",
+     "escribir"
+    ]
+   },
+   {
+    "command": "salir",
+    "synonyms": [
+     "salir",
+     "terminar"
+    ]
+   },
+   {
+    "command": "mas_informacion",
+    "synonyms": [
+     "más información"
+    ]
+   }
+  ],
+  "sectorSynonyms": [
+   {
+    "sectorId": "anestesia",
+    "spoken": "gammas",
+    "unit": "µg",
+    "enabledByDefault": false
+   }
+  ]
+ },
+ "achievements": [
+  {
+   "id": "ach-first-lesson",
+   "name": "Primera lección",
+   "description": "Has completado tu primera lección",
+   "category": "constancia",
+   "icon": "flag",
+   "condition": {
+    "metric": "lessons_completed",
+    "op": ">=",
+    "value": 1,
+    "scope": "global"
+   },
+   "secret": false,
+   "retroactive": true
+  },
+  {
+   "id": "ach-streak-7",
+   "name": "Siete días",
+   "description": "Siete días de racha con la meta cumplida",
+   "category": "constancia",
+   "icon": "local_fire_department",
+   "condition": {
+    "metric": "streak_days",
+    "op": ">=",
+    "value": 7,
+    "scope": "global"
+   },
+   "secret": false,
+   "retroactive": true
+  },
+  {
+   "id": "ach-first-unit-mastered",
+   "name": "Primera unidad dominada",
+   "description": "Todas las habilidades de una unidad en estado dominada",
+   "category": "dominio",
+   "icon": "workspace_premium",
+   "condition": {
+    "metric": "units_mastered",
+    "op": ">=",
+    "value": 1,
+    "scope": "global"
+   },
+   "secret": false,
+   "retroactive": true
+  },
+  {
+   "id": "ach-first-handsfree",
+   "name": "Manos libres",
+   "description": "Primera sesión manos libres completada",
+   "category": "agilidad",
+   "icon": "headset_mic",
+   "condition": {
+    "metric": "handsfree_sessions",
+    "op": ">=",
+    "value": 1,
+    "scope": "global"
+   },
+   "secret": false,
+   "retroactive": true
+  },
+  {
+   "id": "ach-100-no-critical",
+   "name": "Cien sin error crítico",
+   "description": "Cien ejercicios seguidos sin error crítico",
+   "category": "precision",
+   "icon": "verified",
+   "condition": {
+    "metric": "no_critical_exercises",
+    "op": ">=",
+    "value": 100,
+    "scope": "global"
+   },
+   "secret": false,
+   "retroactive": true
+  }
+ ],
+ "league": {
+  "groupSize": 30,
+  "divisions": [
+   "Bronce",
+   "Plata",
+   "Oro",
+   "Platino",
+   "Titanio"
+  ],
+  "promote": 7,
+  "relegate": 5,
+  "pointsPerCorrect": 10,
+  "timetrialBonus": 20,
+  "dailyCap": 300,
+  "weekStartsOn": 1,
+  "groupBySector": true,
+  "minHumanMs": 500
+ },
+ "ads": {
+  "params": {
+   "waitS": 3,
+   "frequencyTouch": 1,
+   "frequencyVoice": 1,
+   "defaultDailyCap": 6
+  },
+  "campaigns": [
+   {
+    "id": "camp-lanzamiento",
+    "name": "Campaña de lanzamiento",
+    "sectorIds": null,
+    "startsAt": null,
+    "endsAt": null,
+    "creatives": [
+     {
+      "id": "PA-01",
+      "kind": "fallback",
+      "context": "always",
+      "weight": 3,
+      "dailyCap": null,
+      "headline": "Entrena sin pausas",
+      "body": "Con Premium pasas de un ejercicio al siguiente sin anuncios.",
+      "cta": "Quitar anuncios",
+      "ctaAction": "paywall",
+      "voiceSpot": "Con Premium, entrenas sin estas pausas.",
+      "illustration": "continuous_scale"
+     },
+     {
+      "id": "PA-02",
+      "kind": "generic",
+      "context": "wait_gt0_in_lesson",
+      "weight": 2,
+      "dailyCap": 4,
+      "headline": "{espera_s} s × {ejercicios} ejercicios = {total_s} s",
+      "body": "Es lo que duran las pausas de esta lección. Con Premium son tiempo de práctica.",
+      "cta": "Quitar anuncios",
+      "ctaAction": "paywall",
+      "voiceSpot": "Estas pausas suman {total_s} segundos por lección. Premium las quita.",
+      "illustration": "operation_step"
+     },
+     {
+      "id": "PA-03",
+      "kind": "generic",
+      "context": "trial_available",
+      "weight": 3,
+      "dailyCap": 6,
+      "headline": "7 días de Premium, gratis",
+      "body": "Sin anuncios y con manos libres sin límite. Cancela cuando quieras.",
+      "cta": "Probar gratis",
+      "ctaAction": "trial",
+      "voiceSpot": "Prueba Premium siete días gratis, sin anuncios.",
+      "illustration": "seven_divisions"
+     },
+     {
+      "id": "PA-04",
+      "kind": "contextual",
+      "context": "handsfree_limit_or_after_handsfree",
+      "weight": 3,
+      "dailyCap": 3,
+      "headline": "Sigue con las manos ocupadas",
+      "body": "Manos libres sin límite diario. Tu voz se procesa en el dispositivo.",
+      "cta": "Ver Premium",
+      "ctaAction": "paywall",
+      "voiceSpot": "Con Premium, manos libres sin límite diario.",
+      "illustration": "headset_halo"
+     },
+     {
+      "id": "PA-05",
+      "kind": "contextual",
+      "context": "streak_gte_3",
+      "weight": 3,
+      "dailyCap": 2,
+      "headline": "Llevas {dias} días seguidos",
+      "body": "Mantén el ritmo sin interrupciones entre ejercicios.",
+      "cta": "Quitar anuncios",
+      "ctaAction": "paywall",
+      "voiceSpot": "Llevas {dias} días seguidos. Con Premium, sin pausas.",
+      "illustration": "streak_meniscus"
+     },
+     {
+      "id": "PA-06",
+      "kind": "generic",
+      "context": "prices_fresh_7d",
+      "weight": 2,
+      "dailyCap": 3,
+      "headline": "Premium por {equivalente_mes} € al mes",
+      "body": "Con el plan anual pagas un {ahorro_pct} % menos que mes a mes.",
+      "cta": "Ver planes",
+      "ctaAction": "paywall",
+      "voiceSpot": "El plan anual de Premium sale a {equivalente_mes} euros al mes.",
+      "illustration": "two_bars"
+     },
+     {
+      "id": "PA-07",
+      "kind": "contextual",
+      "context": "after_unit_completed",
+      "weight": 2,
+      "dailyCap": 2,
+      "headline": "Un sector hoy, otro mañana",
+      "body": "Premium abre todos los itinerarios: anestesia, urgencias, pediatría, veterinaria.",
+      "cta": "Ver Premium",
+      "ctaAction": "paywall",
+      "voiceSpot": "Premium abre todos los itinerarios.",
+      "illustration": "branching_path"
+     },
+     {
+      "id": "PA-08",
+      "kind": "contextual",
+      "context": "last_pause_lesson_with_errors",
+      "weight": 2,
+      "dailyCap": 2,
+      "headline": "¿Dónde se te va el tiempo?",
+      "body": "Premium muestra tu evolución por habilidad y tus errores más frecuentes.",
+      "cta": "Ver Premium",
+      "ctaAction": "paywall",
+      "voiceSpot": "Premium muestra tus errores más frecuentes por habilidad.",
+      "illustration": "rising_line"
+     },
+     {
+      "id": "PA-09",
+      "kind": "generic",
+      "context": "always",
+      "weight": 1,
+      "dailyCap": 2,
+      "headline": "Cada ejercicio lo revisa un profesional",
+      "body": "Tu suscripción financia la validación experta del contenido.",
+      "cta": "Apoyar con Premium",
+      "ctaAction": "paywall",
+      "voiceSpot": "Tu suscripción financia la revisión experta del contenido.",
+      "illustration": "validation_seal"
+     },
+     {
+      "id": "PA-10",
+      "kind": "contextual",
+      "context": "last_pause_lesson_perfect",
+      "weight": 3,
+      "dailyCap": 2,
+      "headline": "{aciertos} de {ejercicios}",
+      "body": "Buen ritmo. Con Premium, además, sin pausas entre ejercicios.",
+      "cta": "Probar gratis",
+      "ctaAlt": "Quitar anuncios",
+      "ctaAction": "trial_or_paywall",
+      "voiceSpot": "{aciertos} de {ejercicios}. Con Premium, sin pausas.",
+      "illustration": "full_meniscus"
+     },
+     {
+      "id": "PA-11",
+      "kind": "contextual",
+      "context": "after_timetrial",
+      "weight": 3,
+      "dailyCap": 3,
+      "headline": "Tu ritmo, sin cortes",
+      "body": "En las lecciones, Premium te lleva de un ejercicio al siguiente sin anuncios.",
+      "cta": "Quitar anuncios",
+      "ctaAction": "paywall",
+      "voiceSpot": null,
+      "illustration": "continuous_bar"
+     },
+     {
+      "id": "PA-12",
+      "kind": "generic",
+      "context": "orgs_enabled",
+      "weight": 1,
+      "dailyCap": 1,
+      "headline": "¿Tu facultad o tu hospital usa VolutrainMed?",
+      "body": "Con un código de organización entrenas sin anuncios y sin pagar tú.",
+      "cta": "Tengo un código",
+      "ctaAction": "org_code",
+      "voiceSpot": "Con un código de tu organización, entrenas sin anuncios.",
+      "illustration": "building_access"
+     }
+    ]
+   }
+  ]
+ },
+ "freePlan": {
+  "handsfreeDailyMinutes": 5,
+  "freeUnitsPerItinerary": 99
+ },
+ "orgsEnabled": false
+}

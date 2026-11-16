@@ -151,6 +151,11 @@ function toCanon(num: string): string {
  * «250 mg/5 ml» y cantidades con unidad por su lectura.
  */
 export function speakText(text: string): string {
+  return speakFragment(text).replace(/\s+/g, ' ').trim();
+}
+
+/** Igual que speakText pero conserva los espacios de los extremos (para unir segmentos). */
+export function speakFragment(text: string): string {
   let out = text;
   // Razones 1:10 000 → «uno en diez mil».
   out = out.replace(new RegExp(String.raw`\b(${NUM_RE}):(${NUM_RE})\b`, 'g'), (_m, a: string, b: string) => `${numberToWords(toCanon(a))} en ${numberToWords(toCanon(b))}`);
@@ -160,7 +165,7 @@ export function speakText(text: string): string {
   out = out.replace(new RegExp(String.raw`(${NUM_RE})\s?(${UNIT_RE})(?![\p{L}])`, 'gu'), (_m, n: string, u: string) => readQuantity(toCanon(n), u));
   // Números sueltos.
   out = out.replace(new RegExp(String.raw`(?<![\p{L}\d])(${NUM_RE})(?![\d])`, 'gu'), (_m, n: string) => numberToWords(toCanon(n)));
-  return out.replace(/\s+/g, ' ').trim();
+  return out;
 }
 
 /** Lectura para la confirmación hablada: «Cuatro coma ocho mililitros por hora». */

@@ -110,7 +110,7 @@ const meloxicam: TemplateDefinition = {
       { name: 'farmaco', unit: '' }, { name: 'dosis', unit: 'mg/kg' }, { name: 'conc', unit: 'mg/ml' },
     ], rows: [{ farmaco: 'meloxicam', dosis: '0.2', conc: '5' }] },
   ],
-  statement: 'Perro de {peso}. Pauta: {caso.farmaco} {caso.dosis} por vía subcutánea. Presentación: {caso.conc}.',
+  statement: 'Caso simulado: perro de {peso}. Pauta: {caso.farmaco} {caso.dosis} por vía subcutánea. Presentación: {caso.conc}.',
   question: '¿Qué volumen cargas?',
   formula: 'caso.dosis × peso ÷ caso.conc',
   answerUnit: 'ml', unitChoices: ['ml', 'mg', 'µg'], equivalents: [],
@@ -174,6 +174,7 @@ describe('generador de variantes', () => {
     const v = variants[0]!.variant;
     expect(v.tts.endsWith('Redondea a la centésima.')).toBe(true);
     expect(v.tts).toContain('miligramos por kilo');
+    expect(v.tts).toMatch(/^Caso simulado: perro de [a-zé ]+ kilos\. Pauta: meloxicam cero coma dos miligramos por kilo por vía subcutánea\./);
     expect(v.question.startsWith('¿Qué volumen cargas?')).toBe(true);
   });
   it('prueba masiva de 1000 informa descartes, distribución y extremos', () => {

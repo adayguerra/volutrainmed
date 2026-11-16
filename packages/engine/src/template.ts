@@ -12,7 +12,7 @@ import { type Dec, D, dec, canon, formatEs, roundPlaces, roundStep } from './dec
 import { checkDimensions, evalIn, FormulaError, parseFormula, type Scope } from './expr.js';
 import { evalInB, Rational } from './doublecheck.js';
 import { parseUnit, sameDims } from './units.js';
-import { speakText, readQuantity } from './speech.js';
+import { speakText, speakFragment, readQuantity, readUnit } from './speech.js';
 import { findClinicalUseText, findQuantitiesWithoutUnit } from './textcheck.js';
 
 export interface VariableDef {
@@ -219,7 +219,7 @@ export function segmentsToText(segs: StatementSegment[]): string {
 }
 
 export function segmentsToSpeech(segs: StatementSegment[]): string {
-  return segs.map((s) => (s.t === 'text' ? speakText(s.v) : readQuantity(s.value, s.unit))).join('').replace(/\s+/g, ' ').trim();
+  return segs.map((s) => (s.t === 'text' ? speakFragment(s.v) : readQuantity(s.value, s.unit))).join('').replace(/\s+/g, ' ').trim();
 }
 
 function renderInline(template: string, a: Assignment): string {
@@ -265,7 +265,7 @@ export function resolveVariant(def: TemplateDefinition, level: LevelDef, a: Assi
       operation: renderInline(s.operation, opAssign),
       result: { value: canon(isLast ? shown : shown.toDecimalPlaces(4)), unit: s.unit },
       cancelled: s.cancelled,
-      cancelledSpoken: s.cancelled.length ? s.cancelled.map((u) => `${readQuantity('2', u).replace(/^dos /, '')} se cancela`).join('; ') : undefined,
+      cancelledSpoken: s.cancelled.length ? s.cancelled.map((u) => `${readUnit(u).text} se cancelan`).join('; ') : undefined,
     };
   });
 
@@ -405,6 +405,8 @@ export interface GenerationReport {
   duplicates: number;
   collisions: number;
   doubleCheckFailures: number;
+  /** Se han encontrado todas las combinaciones posibles: no caben más variantes distintas. */
+  exhausted: boolean;
   min: string | null;
   max: string | null;
 }
@@ -458,6 +460,7 @@ export function generateVariants(def: TemplateDefinition, opts: { perLevel?: num
       level: level.level, requested: perLevel, generated: levelOut.length, attempts,
       discarded, discardedPct: totalDraws ? Math.round((discarded / totalDraws) * 1000) / 10 : 0,
       duplicates, collisions, doubleCheckFailures: dcFail,
+      exhausted: levelOut.length < perLevel && duplicates >= 5 * Math.max(1, levelOut.length),
       min: min ? canon(min) : null, max: max ? canon(max) : null,
     });
   }
