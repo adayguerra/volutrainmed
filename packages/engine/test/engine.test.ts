@@ -213,3 +213,16 @@ describe('límite formativo y anuncios', () => {
     expect(checkAdCreative({ headline: '{espera_s} s × {ejercicios} ejercicios = {total_s} s', body: 'Es lo que duran las pausas de esta lección. Con Premium son tiempo de práctica.', cta: 'Quitar anuncios', voiceSpot: 'Estas pausas suman {total_s} segundos por lección. Premium las quita.' })).toEqual([]);
   });
 });
+
+describe('regresión de voz: 500 locuciones (capa de texto)', () => {
+  const corpus = load('voice-regression-500.json');
+  it('el corpus tiene 500 locuciones', () => expect(corpus.cases).toHaveLength(500));
+  it('la gramática interpreta las 500 locuciones al primer intento', () => {
+    const failures: string[] = [];
+    for (const c of corpus.cases) {
+      const r = parseSpoken(c.said, { digitByDigit: c.digitByDigit });
+      if (r.kind !== 'number' || r.value !== c.value || (c.unit && r.unit !== c.unit)) failures.push(`${c.said} → ${JSON.stringify(r)} (esperado ${c.value} ${c.unit ?? ''})`);
+    }
+    expect(failures).toEqual([]);
+  });
+});

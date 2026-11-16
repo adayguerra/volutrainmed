@@ -1,0 +1,2643 @@
+{
+ "description": "Conjunto de regresión de voz (capa de texto): 500 locuciones con su interpretación esperada. La parte acústica requiere grabaciones reales.",
+ "total": 500,
+ "categories": {
+  "entero": 120,
+  "decimal-coma": 65,
+  "decimal-con": 30,
+  "decimal-punto": 15,
+  "decimal-cifras": 60,
+  "coma-inicial": 20,
+  "fraccion": 30,
+  "con-unidad": 100,
+  "cifra-a-cifra": 25,
+  "confusion": 35
+ },
+ "cases": [
+  {
+   "said": "trescientos ocho",
+   "value": "308",
+   "category": "entero"
+  },
+  {
+   "said": "seis mil ciento ochenta y cuatro",
+   "value": "6184",
+   "category": "entero"
+  },
+  {
+   "said": "dos",
+   "value": "2",
+   "category": "entero"
+  },
+  {
+   "said": "ocho mil catorce",
+   "value": "8014",
+   "category": "entero"
+  },
+  {
+   "said": "cuatro",
+   "value": "4",
+   "category": "entero"
+  },
+  {
+   "said": "seis",
+   "value": "6",
+   "category": "entero"
+  },
+  {
+   "said": "once",
+   "value": "11",
+   "category": "entero"
+  },
+  {
+   "said": "tres",
+   "value": "3",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos veinte",
+   "value": "920",
+   "category": "entero"
+  },
+  {
+   "said": "uno",
+   "value": "1",
+   "category": "entero"
+  },
+  {
+   "said": "veintisiete",
+   "value": "27",
+   "category": "entero"
+  },
+  {
+   "said": "nueve mil quinientos treinta y cuatro",
+   "value": "9534",
+   "category": "entero"
+  },
+  {
+   "said": "setecientos sesenta y cinco mil ciento cincuenta y siete",
+   "value": "765157",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos ochenta y seis",
+   "value": "286",
+   "category": "entero"
+  },
+  {
+   "said": "ocho mil cuatrocientos veinticuatro",
+   "value": "8424",
+   "category": "entero"
+  },
+  {
+   "said": "noventa y uno",
+   "value": "91",
+   "category": "entero"
+  },
+  {
+   "said": "cero",
+   "value": "0",
+   "category": "entero"
+  },
+  {
+   "said": "setenta y siete",
+   "value": "77",
+   "category": "entero"
+  },
+  {
+   "said": "tres mil novecientos cuarenta y nueve",
+   "value": "3949",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos setenta y seis mil cuatrocientos sesenta y siete",
+   "value": "676467",
+   "category": "entero"
+  },
+  {
+   "said": "tres mil seiscientos cincuenta y uno",
+   "value": "3651",
+   "category": "entero"
+  },
+  {
+   "said": "nueve",
+   "value": "9",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos setenta y cuatro mil trescientos sesenta y siete",
+   "value": "274367",
+   "category": "entero"
+  },
+  {
+   "said": "ciento setenta y siete",
+   "value": "177",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos mil doscientos once",
+   "value": "600211",
+   "category": "entero"
+  },
+  {
+   "said": "setecientos sesenta y siete mil setecientos siete",
+   "value": "767707",
+   "category": "entero"
+  },
+  {
+   "said": "cuatrocientos sesenta y uno",
+   "value": "461",
+   "category": "entero"
+  },
+  {
+   "said": "setecientos ochenta y nueve",
+   "value": "789",
+   "category": "entero"
+  },
+  {
+   "said": "cinco mil setecientos sesenta y dos",
+   "value": "5762",
+   "category": "entero"
+  },
+  {
+   "said": "nueve mil seiscientos ochenta y uno",
+   "value": "9681",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos veintiséis mil novecientos veintiocho",
+   "value": "926928",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos ochenta y ocho",
+   "value": "588",
+   "category": "entero"
+  },
+  {
+   "said": "noventa y cuatro",
+   "value": "94",
+   "category": "entero"
+  },
+  {
+   "said": "quince mil novecientos dos",
+   "value": "15902",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos diecinueve mil doscientos noventa y dos",
+   "value": "619292",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos treinta y tres mil novecientos cincuenta",
+   "value": "233950",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos cincuenta y uno",
+   "value": "551",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos sesenta y tres mil quinientos diez",
+   "value": "963510",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos cincuenta y cinco",
+   "value": "255",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos treinta y cinco mil ochocientos ochenta y seis",
+   "value": "935886",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos quince mil cuatrocientos nueve",
+   "value": "915409",
+   "category": "entero"
+  },
+  {
+   "said": "ciento noventa y dos",
+   "value": "192",
+   "category": "entero"
+  },
+  {
+   "said": "ochocientos cuarenta y dos mil ciento sesenta y siete",
+   "value": "842167",
+   "category": "entero"
+  },
+  {
+   "said": "treinta y dos",
+   "value": "32",
+   "category": "entero"
+  },
+  {
+   "said": "ocho mil quinientos cincuenta y ocho",
+   "value": "8558",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta y ocho mil novecientos noventa y cinco",
+   "value": "48995",
+   "category": "entero"
+  },
+  {
+   "said": "ciento treinta",
+   "value": "130",
+   "category": "entero"
+  },
+  {
+   "said": "seis mil cincuenta",
+   "value": "6050",
+   "category": "entero"
+  },
+  {
+   "said": "veintidós",
+   "value": "22",
+   "category": "entero"
+  },
+  {
+   "said": "dieciséis",
+   "value": "16",
+   "category": "entero"
+  },
+  {
+   "said": "trescientos sesenta y cinco mil seiscientos cuarenta y uno",
+   "value": "365641",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos treinta y nueve mil ochocientos ochenta y cinco",
+   "value": "639885",
+   "category": "entero"
+  },
+  {
+   "said": "tres mil seiscientos treinta y ocho",
+   "value": "3638",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta y siete",
+   "value": "47",
+   "category": "entero"
+  },
+  {
+   "said": "cinco",
+   "value": "5",
+   "category": "entero"
+  },
+  {
+   "said": "ocho",
+   "value": "8",
+   "category": "entero"
+  },
+  {
+   "said": "ciento ocho mil ochocientos ochenta y nueve",
+   "value": "108889",
+   "category": "entero"
+  },
+  {
+   "said": "noventa",
+   "value": "90",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos noventa y dos",
+   "value": "992",
+   "category": "entero"
+  },
+  {
+   "said": "cincuenta y uno",
+   "value": "51",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos sesenta y ocho",
+   "value": "668",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos siete mil seiscientos veinticinco",
+   "value": "507625",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos cincuenta y cinco",
+   "value": "655",
+   "category": "entero"
+  },
+  {
+   "said": "mil trescientos treinta y ocho",
+   "value": "1338",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta y dos",
+   "value": "42",
+   "category": "entero"
+  },
+  {
+   "said": "ciento veintitrés",
+   "value": "123",
+   "category": "entero"
+  },
+  {
+   "said": "ciento setenta",
+   "value": "170",
+   "category": "entero"
+  },
+  {
+   "said": "veintiséis",
+   "value": "26",
+   "category": "entero"
+  },
+  {
+   "said": "seis mil novecientos veintidós",
+   "value": "6922",
+   "category": "entero"
+  },
+  {
+   "said": "diez",
+   "value": "10",
+   "category": "entero"
+  },
+  {
+   "said": "ochenta y siete",
+   "value": "87",
+   "category": "entero"
+  },
+  {
+   "said": "ochocientos ochenta y seis mil trescientos veintidós",
+   "value": "886322",
+   "category": "entero"
+  },
+  {
+   "said": "mil seiscientos noventa y cinco",
+   "value": "1695",
+   "category": "entero"
+  },
+  {
+   "said": "treinta y nueve",
+   "value": "39",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos sesenta mil ochocientos ochenta y cinco",
+   "value": "560885",
+   "category": "entero"
+  },
+  {
+   "said": "noventa y seis",
+   "value": "96",
+   "category": "entero"
+  },
+  {
+   "said": "cuatrocientos treinta",
+   "value": "430",
+   "category": "entero"
+  },
+  {
+   "said": "setecientos ochenta y seis",
+   "value": "786",
+   "category": "entero"
+  },
+  {
+   "said": "mil novecientos treinta y seis",
+   "value": "1936",
+   "category": "entero"
+  },
+  {
+   "said": "ciento cuarenta y nueve mil ciento sesenta y nueve",
+   "value": "149169",
+   "category": "entero"
+  },
+  {
+   "said": "cincuenta y ocho",
+   "value": "58",
+   "category": "entero"
+  },
+  {
+   "said": "sesenta",
+   "value": "60",
+   "category": "entero"
+  },
+  {
+   "said": "trescientos treinta y siete",
+   "value": "337",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos cuarenta y siete",
+   "value": "547",
+   "category": "entero"
+  },
+  {
+   "said": "ochocientos cincuenta y cuatro",
+   "value": "854",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta y cuatro",
+   "value": "44",
+   "category": "entero"
+  },
+  {
+   "said": "siete",
+   "value": "7",
+   "category": "entero"
+  },
+  {
+   "said": "ocho mil noventa y tres",
+   "value": "8093",
+   "category": "entero"
+  },
+  {
+   "said": "tres mil ciento cuarenta y siete",
+   "value": "3147",
+   "category": "entero"
+  },
+  {
+   "said": "siete mil trescientos sesenta y uno",
+   "value": "7361",
+   "category": "entero"
+  },
+  {
+   "said": "cinco mil treinta y ocho",
+   "value": "5038",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos siete",
+   "value": "507",
+   "category": "entero"
+  },
+  {
+   "said": "nueve mil cuatrocientos noventa y ocho",
+   "value": "9498",
+   "category": "entero"
+  },
+  {
+   "said": "treinta y ocho",
+   "value": "38",
+   "category": "entero"
+  },
+  {
+   "said": "ocho mil ochocientos treinta y dos",
+   "value": "8832",
+   "category": "entero"
+  },
+  {
+   "said": "ciento sesenta y nueve",
+   "value": "169",
+   "category": "entero"
+  },
+  {
+   "said": "noventa y tres",
+   "value": "93",
+   "category": "entero"
+  },
+  {
+   "said": "ochocientos treinta y cuatro",
+   "value": "834",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos cuarenta y siete mil ciento once",
+   "value": "947111",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos sesenta mil quinientos veintiocho",
+   "value": "260528",
+   "category": "entero"
+  },
+  {
+   "said": "sesenta y nueve",
+   "value": "69",
+   "category": "entero"
+  },
+  {
+   "said": "cuatro mil doscientos treinta y tres",
+   "value": "4233",
+   "category": "entero"
+  },
+  {
+   "said": "trescientos treinta y un mil novecientos setenta y seis",
+   "value": "331976",
+   "category": "entero"
+  },
+  {
+   "said": "setecientos setenta y un mil setecientos ochenta y siete",
+   "value": "771787",
+   "category": "entero"
+  },
+  {
+   "said": "seiscientos treinta y uno",
+   "value": "631",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos cincuenta y uno",
+   "value": "951",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta y uno",
+   "value": "41",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos treinta y cinco mil cuatrocientos ochenta y tres",
+   "value": "935483",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos cinco mil ciento sesenta y seis",
+   "value": "505166",
+   "category": "entero"
+  },
+  {
+   "said": "novecientos setenta y siete mil cuatrocientos diez",
+   "value": "977410",
+   "category": "entero"
+  },
+  {
+   "said": "treinta y dos mil ciento setenta",
+   "value": "32170",
+   "category": "entero"
+  },
+  {
+   "said": "ciento diecinueve",
+   "value": "119",
+   "category": "entero"
+  },
+  {
+   "said": "ciento diez",
+   "value": "110",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos sesenta y nueve mil doscientos cincuenta y tres",
+   "value": "569253",
+   "category": "entero"
+  },
+  {
+   "said": "cincuenta y nueve",
+   "value": "59",
+   "category": "entero"
+  },
+  {
+   "said": "quinientos dos",
+   "value": "502",
+   "category": "entero"
+  },
+  {
+   "said": "ochocientos dieciocho mil cuatrocientos cuarenta y siete",
+   "value": "818447",
+   "category": "entero"
+  },
+  {
+   "said": "cuarenta",
+   "value": "40",
+   "category": "entero"
+  },
+  {
+   "said": "doscientos ochenta mil cuatrocientos treinta",
+   "value": "280430",
+   "category": "entero"
+  },
+  {
+   "said": "ciento noventa y uno",
+   "value": "191",
+   "category": "entero"
+  },
+  {
+   "said": "ocho coma cero cinco",
+   "value": "8.05",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "seis con setenta y uno",
+   "value": "6.71",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cuarenta y cuatro con cero nueve",
+   "value": "44.09",
+   "category": "decimal-con"
+  },
+  {
+   "said": "siete con ocho",
+   "value": "7.8",
+   "category": "decimal-con"
+  },
+  {
+   "said": "doscientos cuatro coma cero tres",
+   "value": "204.03",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cincuenta y nueve punto quinientos cuarenta y uno",
+   "value": "59.541",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "tres coma veinticinco",
+   "value": "3.25",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "ochenta y cuatro coma nueve",
+   "value": "84.9",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma seiscientos cuarenta y uno",
+   "value": "0.641",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "treinta y dos coma novecientos treinta y cuatro",
+   "value": "32.934",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma setenta y siete",
+   "value": "0.77",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma cincuenta y siete",
+   "value": "0.57",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "dos coma treinta y uno",
+   "value": "2.31",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero punto dos",
+   "value": "0.2",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "cincuenta y seis con dos",
+   "value": "56.2",
+   "category": "decimal-con"
+  },
+  {
+   "said": "noventa y nueve coma cero tres",
+   "value": "99.03",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cinco con cuatrocientos ochenta y cuatro",
+   "value": "5.484",
+   "category": "decimal-con"
+  },
+  {
+   "said": "tres coma cero sesenta y ocho",
+   "value": "3.068",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "siete coma ochocientos treinta y dos",
+   "value": "7.832",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "dos punto ocho",
+   "value": "2.8",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "trescientos setenta y ocho con setenta y seis",
+   "value": "378.76",
+   "category": "decimal-con"
+  },
+  {
+   "said": "dos punto trescientos treinta y nueve",
+   "value": "2.339",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "nueve coma cero ocho",
+   "value": "9.08",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuatro coma cuatro",
+   "value": "4.4",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cinco coma cuatro",
+   "value": "5.4",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma noventa y nueve",
+   "value": "0.99",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma cero nueve",
+   "value": "0.09",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "uno punto uno",
+   "value": "1.1",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "ochenta y uno con sesenta y cinco",
+   "value": "81.65",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cincuenta y uno con sesenta y cinco",
+   "value": "51.65",
+   "category": "decimal-con"
+  },
+  {
+   "said": "siete con cuarenta y siete",
+   "value": "7.47",
+   "category": "decimal-con"
+  },
+  {
+   "said": "veinte punto seis",
+   "value": "20.6",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "cuatro coma cero tres",
+   "value": "4.03",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "seis coma cuatrocientos ochenta y nueve",
+   "value": "6.489",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "siete coma cuarenta y uno",
+   "value": "7.41",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "ocho coma noventa y siete",
+   "value": "8.97",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "doscientos catorce punto treinta y tres",
+   "value": "214.33",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "treinta y ocho coma ciento seis",
+   "value": "38.106",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "novecientos sesenta y cinco coma cero sesenta y cuatro",
+   "value": "965.064",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuarenta y tres coma cero cuarenta y tres",
+   "value": "43.043",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero punto uno",
+   "value": "0.1",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "setecientos nueve coma setenta y nueve",
+   "value": "709.79",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma trescientos cuarenta y tres",
+   "value": "0.343",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "sesenta y dos con cero nueve",
+   "value": "62.09",
+   "category": "decimal-con"
+  },
+  {
+   "said": "tres coma cero seis",
+   "value": "3.06",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero con uno",
+   "value": "0.1",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero con cuatrocientos ochenta y nueve",
+   "value": "0.489",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero con cero cuatro",
+   "value": "0.04",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cincuenta y nueve punto seiscientos cincuenta y cuatro",
+   "value": "59.654",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "cuarenta y tres coma seiscientos noventa y uno",
+   "value": "43.691",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "seis coma cero ochenta y nueve",
+   "value": "6.089",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "noventa y dos punto setenta y tres",
+   "value": "92.73",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "ciento trece con cuatro",
+   "value": "113.4",
+   "category": "decimal-con"
+  },
+  {
+   "said": "tres con cero ochenta y dos",
+   "value": "3.082",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero coma cero cinco",
+   "value": "0.05",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma catorce",
+   "value": "0.14",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma setenta y uno",
+   "value": "0.71",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "setecientos cincuenta y dos coma tres",
+   "value": "752.3",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "doscientos treinta y seis coma trescientos ochenta y siete",
+   "value": "236.387",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "nueve coma noventa y ocho",
+   "value": "9.98",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma novecientos cinco",
+   "value": "0.905",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cincuenta y dos coma cincuenta y nueve",
+   "value": "52.59",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma doce",
+   "value": "0.12",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuatro coma cincuenta y dos",
+   "value": "4.52",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "noventa y uno coma cuatro",
+   "value": "91.4",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "setecientos veinte con setecientos cincuenta y ocho",
+   "value": "720.758",
+   "category": "decimal-con"
+  },
+  {
+   "said": "veintidós punto cero siete",
+   "value": "22.07",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "noventa y dos coma tres",
+   "value": "92.3",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "nueve coma cinco",
+   "value": "9.5",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuatro coma seis",
+   "value": "4.6",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "seis coma ocho",
+   "value": "6.8",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero con cincuenta y uno",
+   "value": "0.51",
+   "category": "decimal-con"
+  },
+  {
+   "said": "veintiuno coma cero ochenta y cuatro",
+   "value": "21.084",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma cincuenta y dos",
+   "value": "0.52",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma cuarenta y cinco",
+   "value": "0.45",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "ocho coma cuatrocientos noventa y tres",
+   "value": "8.493",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "doscientos cuarenta con doscientos veintinueve",
+   "value": "240.229",
+   "category": "decimal-con"
+  },
+  {
+   "said": "novecientos setenta y uno coma sesenta y nueve",
+   "value": "971.69",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuarenta y siete coma dieciséis",
+   "value": "47.16",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero con setenta y cinco",
+   "value": "0.75",
+   "category": "decimal-con"
+  },
+  {
+   "said": "dos coma cero sesenta y cinco",
+   "value": "2.065",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "noventa coma cero siete",
+   "value": "90.07",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cincuenta y cuatro con treinta y cuatro",
+   "value": "54.34",
+   "category": "decimal-con"
+  },
+  {
+   "said": "quinientos diecisiete punto siete",
+   "value": "517.7",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "cien coma treinta y cinco",
+   "value": "100.35",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero con cero veintinueve",
+   "value": "0.029",
+   "category": "decimal-con"
+  },
+  {
+   "said": "ochocientos ochenta coma trescientos veinticuatro",
+   "value": "880.324",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "veintiséis con cero seis",
+   "value": "26.06",
+   "category": "decimal-con"
+  },
+  {
+   "said": "seis coma ochenta y seis",
+   "value": "6.86",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cincuenta y cuatro coma noventa y tres",
+   "value": "54.93",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero punto once",
+   "value": "0.11",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "siete punto tres",
+   "value": "7.3",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "diecisiete con tres",
+   "value": "17.3",
+   "category": "decimal-con"
+  },
+  {
+   "said": "novecientos ochenta y nueve con treinta y seis",
+   "value": "989.36",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero coma noventa y dos",
+   "value": "0.92",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma siete",
+   "value": "0.7",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "dos punto sesenta y seis",
+   "value": "2.66",
+   "category": "decimal-punto"
+  },
+  {
+   "said": "veinticuatro con cero cinco",
+   "value": "24.05",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero con ciento cuarenta y cuatro",
+   "value": "0.144",
+   "category": "decimal-con"
+  },
+  {
+   "said": "novecientos veintiuno coma tres",
+   "value": "921.3",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma setecientos setenta y tres",
+   "value": "0.773",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "ochenta y nueve con ocho",
+   "value": "89.8",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero con cero uno",
+   "value": "0.01",
+   "category": "decimal-con"
+  },
+  {
+   "said": "ochocientos setenta y siete coma cero tres",
+   "value": "877.03",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "novecientos tres coma seis",
+   "value": "903.6",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cinco coma cero ocho",
+   "value": "5.08",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cero coma trescientos treinta y cinco",
+   "value": "0.335",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "cuatro coma cero seis",
+   "value": "4.06",
+   "category": "decimal-coma"
+  },
+  {
+   "said": "dieciséis con cero ocho",
+   "value": "16.08",
+   "category": "decimal-con"
+  },
+  {
+   "said": "doscientos noventa y uno con cero siete",
+   "value": "291.07",
+   "category": "decimal-con"
+  },
+  {
+   "said": "cero coma uno siete uno",
+   "value": "0.171",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "siete coma seis seis",
+   "value": "7.66",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma seis cero uno",
+   "value": "0.601",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "diecisiete coma siete ocho",
+   "value": "17.78",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "uno coma uno cinco cuatro",
+   "value": "1.154",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "nueve coma nueve nueve",
+   "value": "9.99",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma siete cuatro",
+   "value": "0.74",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "veintitrés coma uno nueve tres",
+   "value": "23.193",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "treinta y uno coma cero tres",
+   "value": "31.03",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cinco coma cero siete tres",
+   "value": "5.073",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma dos nueve seis",
+   "value": "0.296",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "dos coma siete siete",
+   "value": "2.77",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cuatro coma ocho dos",
+   "value": "4.82",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cuatro coma ocho cero siete",
+   "value": "4.807",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "uno coma seis uno uno",
+   "value": "1.611",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma seis tres",
+   "value": "0.63",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "veintisiete coma siete cinco siete",
+   "value": "27.757",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cuatro coma dos ocho",
+   "value": "4.28",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cinco coma cero dos cuatro",
+   "value": "5.024",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "dos coma nueve tres ocho",
+   "value": "2.938",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "sesenta y siete coma uno seis seis",
+   "value": "67.166",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cinco siete",
+   "value": "0.57",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma siete tres seis",
+   "value": "0.736",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "noventa y cuatro coma nueve cinco",
+   "value": "94.95",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "ocho coma uno tres",
+   "value": "8.13",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cuatro cinco seis",
+   "value": "0.456",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma dos siete",
+   "value": "0.27",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "siete coma nueve seis",
+   "value": "7.96",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma siete cinco nueve",
+   "value": "0.759",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "seis coma dos cinco",
+   "value": "6.25",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "treinta y dos coma siete dos cinco",
+   "value": "32.725",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "seis coma seis siete",
+   "value": "6.67",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma nueve ocho",
+   "value": "0.98",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "once coma cero cuatro",
+   "value": "11.04",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "tres coma ocho siete",
+   "value": "3.87",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "tres coma nueve cinco",
+   "value": "3.95",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "diecinueve coma cuatro nueve",
+   "value": "19.49",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cuarenta y siete coma tres siete siete",
+   "value": "47.377",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "veintiséis coma cuatro dos",
+   "value": "26.42",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cuatro cuatro",
+   "value": "0.44",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cero cero dos",
+   "value": "0.002",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma nueve cinco seis",
+   "value": "0.956",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "veintiséis coma tres seis siete",
+   "value": "26.367",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "tres coma nueve uno",
+   "value": "3.91",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cinco coma siete nueve",
+   "value": "5.79",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma uno nueve tres",
+   "value": "0.193",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "dos coma cero nueve",
+   "value": "2.09",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cinco cero cinco",
+   "value": "0.505",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cuarenta y uno coma cuatro cuatro",
+   "value": "41.44",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma dos nueve",
+   "value": "0.29",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cinco siete cinco",
+   "value": "0.575",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma ocho dos",
+   "value": "0.82",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cinco nueve",
+   "value": "0.59",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cuatro ocho ocho",
+   "value": "0.488",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "sesenta y cinco coma cero cinco seis",
+   "value": "65.056",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "tres coma ocho seis cuatro",
+   "value": "3.864",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "dos coma seis cuatro tres",
+   "value": "2.643",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "cero coma cero tres",
+   "value": "0.03",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "dos coma cinco seis uno",
+   "value": "2.561",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "siete coma siete uno ocho",
+   "value": "7.718",
+   "category": "decimal-cifras"
+  },
+  {
+   "said": "coma ochenta y cinco",
+   "value": "0.85",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma veintiséis",
+   "value": "0.26",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma noventa y dos",
+   "value": "0.92",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma ochenta y seis",
+   "value": "0.86",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma ochenta y cuatro",
+   "value": "0.84",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma veintiocho",
+   "value": "0.28",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma cuarenta y siete",
+   "value": "0.47",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma siete",
+   "value": "0.7",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma noventa y tres",
+   "value": "0.93",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma setenta y dos",
+   "value": "0.72",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma treinta y cinco",
+   "value": "0.35",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma ochenta y tres",
+   "value": "0.83",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma cuarenta y cinco",
+   "value": "0.45",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma noventa y siete",
+   "value": "0.97",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma ocho",
+   "value": "0.8",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma nueve",
+   "value": "0.9",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma cinco",
+   "value": "0.5",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma treinta y seis",
+   "value": "0.36",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma setenta y uno",
+   "value": "0.71",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "coma seis",
+   "value": "0.6",
+   "category": "coma-inicial"
+  },
+  {
+   "said": "medio",
+   "value": "0.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "un cuarto",
+   "value": "0.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "tres cuartos",
+   "value": "0.75",
+   "category": "fraccion"
+  },
+  {
+   "said": "trece y medio",
+   "value": "13.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "uno y medio",
+   "value": "1.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "cincuenta y uno y medio",
+   "value": "51.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "dieciocho y cuarto",
+   "value": "18.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "veintiocho y medio",
+   "value": "28.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "noventa y tres y cuarto",
+   "value": "93.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "diecisiete y cuarto",
+   "value": "17.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "cuatro y cuarto",
+   "value": "4.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "quince y medio",
+   "value": "15.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "setenta y cuarto",
+   "value": "70.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "ochenta y cinco y cuarto",
+   "value": "85.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "tres y cuarto",
+   "value": "3.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "noventa y dos y medio",
+   "value": "92.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "seis y medio",
+   "value": "6.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "noventa y cuatro y cuarto",
+   "value": "94.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "cincuenta y seis y medio",
+   "value": "56.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "cincuenta y tres y cuarto",
+   "value": "53.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "cuarenta y uno y medio",
+   "value": "41.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "treinta y medio",
+   "value": "30.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "veinticuatro y medio",
+   "value": "24.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "ocho y medio",
+   "value": "8.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "veintidós y medio",
+   "value": "22.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "setenta y seis y medio",
+   "value": "76.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "cuarenta y dos y cuarto",
+   "value": "42.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "diecisiete y medio",
+   "value": "17.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "sesenta y tres y cuarto",
+   "value": "63.25",
+   "category": "fraccion"
+  },
+  {
+   "said": "dos y medio",
+   "value": "2.5",
+   "category": "fraccion"
+  },
+  {
+   "said": "cinco coma sesenta y nueve minutos",
+   "value": "5.69",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "noventa y nueve coma seis microgramos",
+   "value": "99.6",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos setenta y cuatro gramos",
+   "value": "274",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento sesenta y siete miligramos",
+   "value": "167",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trece coma dos gramos",
+   "value": "13.2",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento ocho unidades internacionales",
+   "value": "108",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento cincuenta y ocho microgramos",
+   "value": "158",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cinco minutos",
+   "value": "5",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma setenta y siete miligramos por mililitro",
+   "value": "0.77",
+   "unit": "mg/ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "dos coma dos gramos",
+   "value": "2.2",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos setenta y cinco mililitros por hora",
+   "value": "475",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma setenta y dos miligramos por kilo",
+   "value": "0.72",
+   "unit": "mg/kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ocho microgramos por kilo y minuto",
+   "value": "8",
+   "unit": "µg/kg/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos once gramos",
+   "value": "411",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos noventa y tres minutos",
+   "value": "393",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "setenta y nueve coma cuatro minutos",
+   "value": "79.4",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento catorce minutos",
+   "value": "114",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "noventa y dos coma trece mililitros",
+   "value": "92.13",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "setenta y ocho coma cincuenta y ocho kilos",
+   "value": "78.58",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "veintiocho coma tres miligramos por mililitro",
+   "value": "28.3",
+   "unit": "mg/ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "nueve coma dieciocho horas",
+   "value": "9.18",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma dos horas",
+   "value": "0.2",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos treinta y seis minutos",
+   "value": "336",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "setenta y uno coma cuatro mililitros por hora",
+   "value": "71.4",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos cincuenta y siete gramos",
+   "value": "457",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos noventa y dos mililitros",
+   "value": "492",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuarenta y siete coma tres mililitros por hora",
+   "value": "47.3",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos veinte kilos",
+   "value": "320",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cinco miligramos por kilo",
+   "value": "5",
+   "unit": "mg/kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cien gramos",
+   "value": "100",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cuarenta y ocho unidades internacionales",
+   "value": "0.48",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "dieciséis coma dieciséis mililitros por hora",
+   "value": "16.16",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ochenta y ocho coma cuatro kilos",
+   "value": "88.4",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cincuenta y dos mililitros",
+   "value": "0.52",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos gramos",
+   "value": "300",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma veintiséis gramos",
+   "value": "0.26",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos noventa y nueve microgramos por kilo y minuto",
+   "value": "299",
+   "unit": "µg/kg/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cero tres miligramos",
+   "value": "0.03",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "tres coma veintisiete kilos",
+   "value": "3.27",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuarenta y cuatro coma dos miligramos",
+   "value": "44.2",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "siete coma ocho microgramos",
+   "value": "7.8",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "tres coma ocho miligramos",
+   "value": "3.8",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma sesenta y cuatro mililitros por hora",
+   "value": "0.64",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma noventa y cuatro gramos",
+   "value": "0.94",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos ochenta y tres mililitros",
+   "value": "483",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ocho coma seis mililitros por hora",
+   "value": "8.6",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "dieciocho unidades internacionales",
+   "value": "18",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatro coma cuatro minutos",
+   "value": "4.4",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuarenta y siete coma cincuenta y tres microgramos por kilo y minuto",
+   "value": "47.53",
+   "unit": "µg/kg/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma ochenta y cinco minutos",
+   "value": "0.85",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma tres gotas por minuto",
+   "value": "0.3",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "treinta coma seis microgramos",
+   "value": "30.6",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "siete coma cinco miligramos por mililitro",
+   "value": "7.5",
+   "unit": "mg/ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "setenta y nueve coma nueve horas",
+   "value": "79.9",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos cincuenta y un microgramos",
+   "value": "351",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento setenta y ocho miligramos",
+   "value": "178",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma treinta y uno microgramos",
+   "value": "0.31",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos doce gramos",
+   "value": "312",
+   "unit": "g",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientas cuarenta y nueve horas",
+   "value": "249",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientas setenta y siete horas",
+   "value": "477",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cuarenta y dos mililitros por hora",
+   "value": "0.42",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientas cincuenta y siete horas",
+   "value": "357",
+   "unit": "h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos veintiún microgramos por kilo y minuto",
+   "value": "421",
+   "unit": "µg/kg/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento treinta y cuatro miligramos por kilo",
+   "value": "134",
+   "unit": "mg/kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma uno miligramos",
+   "value": "0.1",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "seis coma dos unidades internacionales",
+   "value": "6.2",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "setenta y seis coma noventa y uno mililitros",
+   "value": "76.91",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientos cincuenta y dos minutos",
+   "value": "352",
+   "unit": "min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cuatro unidades internacionales",
+   "value": "0.4",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos kilos",
+   "value": "400",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuarenta y uno coma sesenta y tres mililitros por hora",
+   "value": "41.63",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "treinta y tres coma cuarenta y dos miligramos por mililitro",
+   "value": "33.42",
+   "unit": "mg/ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "sesenta y uno coma seis microgramos",
+   "value": "61.6",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ochenta y cinco kilos",
+   "value": "85",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos cuarenta y dos kilos",
+   "value": "242",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cincuenta y dos coma quince gotas por minuto",
+   "value": "52.15",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientas noventa y siete unidades internacionales",
+   "value": "497",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos ochenta miligramos",
+   "value": "480",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientas sesenta y ocho unidades internacionales",
+   "value": "368",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos veinticuatro kilos",
+   "value": "224",
+   "unit": "kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientas cuarenta y seis gotas por minuto",
+   "value": "446",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos sesenta y tres miligramos por mililitro",
+   "value": "263",
+   "unit": "mg/ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "veintiocho gotas por minuto",
+   "value": "28",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos treinta y cuatro mililitros por hora",
+   "value": "434",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "noventa y cuatro coma siete miligramos por kilo",
+   "value": "94.7",
+   "unit": "mg/kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "dieciocho mililitros por hora",
+   "value": "18",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma setenta y dos mililitros por hora",
+   "value": "0.72",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "sesenta gotas por minuto",
+   "value": "60",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientas veinte unidades internacionales",
+   "value": "420",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cuarenta y cuatro gotas por minuto",
+   "value": "0.44",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "trescientas setenta y cuatro gotas por minuto",
+   "value": "374",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma ochenta y cuatro miligramos por kilo",
+   "value": "0.84",
+   "unit": "mg/kg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma cinco unidades internacionales",
+   "value": "0.5",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientas cuarenta gotas por minuto",
+   "value": "240",
+   "unit": "gotas/min",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma veintiocho unidades internacionales",
+   "value": "0.28",
+   "unit": "UI",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento noventa y ocho mililitros por hora",
+   "value": "198",
+   "unit": "ml/h",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cuatrocientos veinticinco microgramos",
+   "value": "425",
+   "unit": "µg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "doscientos veinticinco mililitros",
+   "value": "225",
+   "unit": "ml",
+   "category": "con-unidad"
+  },
+  {
+   "said": "ciento ochenta miligramos",
+   "value": "180",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "cero coma doce miligramos",
+   "value": "0.12",
+   "unit": "mg",
+   "category": "con-unidad"
+  },
+  {
+   "said": "uno siete cinco",
+   "value": "175",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "siete siete dos nueve",
+   "value": "7729",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres dos siete siete",
+   "value": "3277",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "ocho ocho seis uno",
+   "value": "8861",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "seis nueve siete cinco",
+   "value": "6975",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "seis cero nueve dos",
+   "value": "6092",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres uno uno siete",
+   "value": "3117",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "siete cuatro dos dos",
+   "value": "7422",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres seis ocho dos",
+   "value": "3682",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "cuatro seis dos uno",
+   "value": "4621",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "dos siete tres seis",
+   "value": "2736",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "ocho tres uno",
+   "value": "831",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres cuatro nueve cuatro",
+   "value": "3494",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "uno cinco siete cero",
+   "value": "1570",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "dos cinco dos cero",
+   "value": "2520",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres uno nueve dos",
+   "value": "3192",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "cinco ocho nueve nueve",
+   "value": "5899",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "nueve uno cero cinco",
+   "value": "9105",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "uno cinco siete ocho",
+   "value": "1578",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "siete ocho siete uno",
+   "value": "7871",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "siete dos dos",
+   "value": "722",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "cuatro cero uno ocho",
+   "value": "4018",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "nueve nueve siete dos",
+   "value": "9972",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres dos tres cuatro",
+   "value": "3234",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "tres siete cinco cinco",
+   "value": "3755",
+   "digitByDigit": true,
+   "category": "cifra-a-cifra"
+  },
+  {
+   "said": "cinco como cuatro",
+   "value": "5.4",
+   "category": "confusion"
+  },
+  {
+   "said": "ocho como tres",
+   "value": "8.3",
+   "category": "confusion"
+  },
+  {
+   "said": "dos toma cinco",
+   "value": "2.5",
+   "category": "confusion"
+  },
+  {
+   "said": "cero como uno",
+   "value": "0.1",
+   "category": "confusion"
+  },
+  {
+   "said": "doce como uno",
+   "value": "12.1",
+   "category": "confusion"
+  },
+  {
+   "said": "catorce toma dos",
+   "value": "14.2",
+   "category": "confusion"
+  },
+  {
+   "said": "nueve toma tres",
+   "value": "9.3",
+   "category": "confusion"
+  },
+  {
+   "said": "seis toma uno",
+   "value": "6.1",
+   "category": "confusion"
+  },
+  {
+   "said": "cinco toma seis",
+   "value": "5.6",
+   "category": "confusion"
+  },
+  {
+   "said": "setenta y cuatro toma cinco",
+   "value": "74.5",
+   "category": "confusion"
+  },
+  {
+   "said": "ochenta y ocho toma tres",
+   "value": "88.3",
+   "category": "confusion"
+  },
+  {
+   "said": "noventa y ocho como nueve",
+   "value": "98.9",
+   "category": "confusion"
+  },
+  {
+   "said": "ochenta y dos toma uno",
+   "value": "82.1",
+   "category": "confusion"
+  },
+  {
+   "said": "nueve toma siete",
+   "value": "9.7",
+   "category": "confusion"
+  },
+  {
+   "said": "noventa y uno como nueve",
+   "value": "91.9",
+   "category": "confusion"
+  },
+  {
+   "said": "siete como ocho",
+   "value": "7.8",
+   "category": "confusion"
+  },
+  {
+   "said": "uno como seis",
+   "value": "1.6",
+   "category": "confusion"
+  },
+  {
+   "said": "tres toma seis",
+   "value": "3.6",
+   "category": "confusion"
+  },
+  {
+   "said": "cinco como seis",
+   "value": "5.6",
+   "category": "confusion"
+  },
+  {
+   "said": "cuatro como nueve",
+   "value": "4.9",
+   "category": "confusion"
+  },
+  {
+   "said": "siete toma cinco",
+   "value": "7.5",
+   "category": "confusion"
+  },
+  {
+   "said": "dos como cinco",
+   "value": "2.5",
+   "category": "confusion"
+  },
+  {
+   "said": "ocho toma cinco",
+   "value": "8.5",
+   "category": "confusion"
+  },
+  {
+   "said": "cuatro toma dos",
+   "value": "4.2",
+   "category": "confusion"
+  },
+  {
+   "said": "tres como seis",
+   "value": "3.6",
+   "category": "confusion"
+  },
+  {
+   "said": "dos toma dos",
+   "value": "2.2",
+   "category": "confusion"
+  },
+  {
+   "said": "sesenta y cinco como cuatro",
+   "value": "65.4",
+   "category": "confusion"
+  },
+  {
+   "said": "treinta y tres toma seis",
+   "value": "33.6",
+   "category": "confusion"
+  },
+  {
+   "said": "uno como cinco",
+   "value": "1.5",
+   "category": "confusion"
+  },
+  {
+   "said": "uno toma seis",
+   "value": "1.6",
+   "category": "confusion"
+  },
+  {
+   "said": "setenta y nueve como seis",
+   "value": "79.6",
+   "category": "confusion"
+  },
+  {
+   "said": "catorce como siete",
+   "value": "14.7",
+   "category": "confusion"
+  },
+  {
+   "said": "uno como nueve",
+   "value": "1.9",
+   "category": "confusion"
+  },
+  {
+   "said": "dieciocho como nueve",
+   "value": "18.9",
+   "category": "confusion"
+  },
+  {
+   "said": "uno como tres",
+   "value": "1.3",
+   "category": "confusion"
+  }
+ ]
+}

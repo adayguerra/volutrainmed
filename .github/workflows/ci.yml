@@ -1,0 +1,66 @@
+# Integración continua de VolutrainMed (tarea 1.5 del MVP).
+# Motor y API con Postgres real, back office, app Flutter con pruebas de widget
+# por clase de tamaño y validación del OpenSpec.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: volutrain
+          POSTGRES_PASSWORD: volutrain
+          POSTGRES_DB: volutrainmed
+        ports: ['54329:5432']
+        options: >-
+          --health-cmd "pg_isready -U volutrain" --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.18.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - name: Motor de plantillas (fixtures compartidas y regresión de voz)
+        run: pnpm --filter @vtm/engine test
+      - name: Tipos
+        run: pnpm -r typecheck
+      - name: API (integración contra Postgres)
+        run: pnpm --filter @vtm/api test
+      - name: Back office
+        run: |
+          pnpm --filter backoffice test
+          pnpm --filter backoffice build
+
+  flutter:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with: { channel: stable }
+      - run: flutter pub get
+      - run: flutter analyze
+      - name: Pruebas de dominio y de widget (móvil, tablet, texto al 200 %)
+        run: flutter test
+      - run: flutter build web
+      - run: flutter build apk --debug
+      - run: flutter build ios --simulator --no-codesign
+
+  openspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - working-directory: volutrainmed-openspec
+        run: npx -y @fission-ai/openspec@latest validate --all --strict --no-interactive
