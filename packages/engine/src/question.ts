@@ -13,6 +13,7 @@ export interface QuestionDefinition {
   version: number;
   name: string;
   exerciseTypeId: 'T1' | 'T2' | 'T3' | 'T6' | 'T7' | string;
+  exerciseTypeVersion?: number;
   sectorId: string;
   skillId: SkillCode;
   level: 1 | 2 | 3 | 4 | 5;
@@ -63,7 +64,7 @@ export function resolveQuestion(q: QuestionDefinition): Variant {
     templateVersion: q.version,
     level: q.level,
     exerciseTypeId: q.exerciseTypeId,
-    exerciseTypeVersion: 1,
+    exerciseTypeVersion: q.exerciseTypeVersion ?? 1,
     skillId: q.skillId,
     sectorId: q.sectorId,
     statement,

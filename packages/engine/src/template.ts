@@ -46,6 +46,8 @@ export interface TemplateDefinition {
   sectorId: string;
   skillId: SkillCode;
   exerciseTypeId: string;
+  /** Versión del tipo de ejercicio con la que se creó (los tipos en uso se versionan). */
+  exerciseTypeVersion?: number;
   species?: string | null;
   variables: VariableDef[];
   statement: string;
@@ -335,7 +337,7 @@ export function resolveVariant(def: TemplateDefinition, level: LevelDef, a: Assi
     templateVersion: def.version,
     level: level.level,
     exerciseTypeId: def.exerciseTypeId,
-    exerciseTypeVersion: 1,
+    exerciseTypeVersion: def.exerciseTypeVersion ?? 1,
     skillId: def.skillId,
     sectorId: def.sectorId,
     species: def.species ?? undefined,

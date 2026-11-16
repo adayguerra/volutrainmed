@@ -155,7 +155,7 @@ export function buildContent(input: BuildInput): BuildOutput {
     const lessons: Lesson[] = [];
     units.forEach((u, idx) => {
       const seeds = input.lessons.filter((l) => l.unitId === u.id).sort((a, b) => a.order - b.order);
-      const effective = seeds.length ? seeds : LESSON_KIND_ORDER.map((kind, i) => ({ id: `${u.id}-l${i + 1}`, unitId: u.id, order: i + 1, kind, title: '', estimatedMinutes: kind === 'challenge' ? 5 : 4, rule: 'auto' as const }));
+      const effective: LessonSeed[] = seeds.length ? seeds : LESSON_KIND_ORDER.map((kind, i) => ({ id: `${u.id}-l${i + 1}`, unitId: u.id, order: i + 1, kind, title: '', estimatedMinutes: kind === 'challenge' ? 5 : 4, rule: 'auto' as const }));
       for (const l of effective) {
         const slots = l.slots && l.slots.length && l.rule !== 'auto' ? l.slots : autoSlots(l.kind, u, units.slice(0, idx), skillOf, typeOf);
         lessons.push({ id: l.id, unitId: u.id, order: l.order, kind: l.kind, title: l.title || defaultTitle(l.kind), estimatedMinutes: l.estimatedMinutes, slots });

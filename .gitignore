@@ -31,3 +31,6 @@ apps/mobile/android/local.properties
 
 # Claves privadas de firma (se generan en local)
 **/keys/*.pem
+
+# Worktrees y ajustes locales de agentes
+.claude/
