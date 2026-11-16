@@ -88,6 +88,8 @@ export function autoSlots(kind: LessonKind, unit: UnitInput, previousUnits: Unit
     .filter((x) => kind !== 'challenge' || ['T1', 'T2', 'T6'].includes(typeOf(x.id)));
   const prev = previousUnits.flatMap((u) => u.templateIds.map((id) => ({ id, q: false })));
   const slots: LessonSlot[] = [];
+  // Sin ejercicios validados en la unidad no se compone nada: la comprobación de lecciones bloquea la publicación.
+  if (!own.length) return slots;
   for (let i = 0; i < size; i++) {
     let pick = own[i % Math.max(own.length, 1)]!;
     // Mixta: alterna la habilidad nueva con habilidades de unidades anteriores.
@@ -180,7 +182,7 @@ export function buildContent(input: BuildInput): BuildOutput {
       templates: [...usedTemplates].map((t) => summaries.get(t)!).filter(Boolean), variants, placement,
     };
     const emptyLessons = lessons.filter((l) => !l.slots.length);
-    if (emptyLessons.length) checks.push({ id: 'lessons', label: 'Lecciones con ejercicios', ok: false, detail: `${emptyLessons.length} lecciones sin ejercicios en ${it.name}` });
+    if (emptyLessons.length) checks.push({ id: 'lessons', label: 'Lecciones con ejercicios', ok: false, detail: `${emptyLessons.length} lecciones sin ejercicios validados en ${it.name} (${[...new Set(emptyLessons.map((l) => l.unitId))].join(', ')})` });
     itineraries.push(pkg);
   }
 

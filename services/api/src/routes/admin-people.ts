@@ -85,7 +85,7 @@ export async function adminPeopleRoutes(app: FastifyInstance) {
       let result: unknown = { ok: true };
       if (b.action === 'grant_premium') {
         const days = Math.max(1, Math.min(Number(b.days ?? 7), 365));
-        await tx.query("INSERT INTO premium_grants(user_id, days, reason, granted_by, ends_at) VALUES ($1,$2,$3,$4, now() + ($2 || ' days')::interval)", [u.id, days, b.reason, bo.accountId]);
+        await tx.query("INSERT INTO premium_grants(user_id, days, reason, granted_by, ends_at) VALUES ($1,$2,$3,$4, now() + make_interval(days => $2::int))", [u.id, days, b.reason, bo.accountId]);
         result = { entitlements: await computeEntitlements(tx, u.id) };
       } else if (b.action === 'reset_access') {
         await tx.query('UPDATE otp_codes SET used_at = now() WHERE email = $1 AND used_at IS NULL', [u.email]);

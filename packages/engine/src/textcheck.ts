@@ -93,7 +93,7 @@ export function checkAdCreative(c: { headline: string; body: string; cta: string
   return issues;
 }
 
-const UNIT_AFTER = /^\s?(µg|mcg|mg|ng|kg|g|ml|µl|l|UI|gotas|gota|min|h|s|días?|tomas?|%|horas?|minutos?|segundos?|años?|semanas?|veces|ampollas?|viales?|comprimidos?|kilos?)\b/u;
+const UNIT_AFTER = /^\s?(µg|mcg|mg|ng|kg|g|ml|µl|l|UI|gotas|gota|min|h|s|días?|tomas?|%|horas?|minutos?|segundos?|años?|semanas?|veces|ampollas?|viales?|comprimidos?|kilos?)(?![\p{L}])/u;
 
 /**
  * Cantidades sin unidad en un enunciado («Pauta: 0,2»). Se ignoran razones (1:10 000),

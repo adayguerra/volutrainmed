@@ -77,7 +77,7 @@ export async function storeRoutes(app: FastifyInstance) {
     const u = requireUser(req);
     return withTx(SYSTEM, async (tx) => {
       const d = new Date(Date.now() - (req.body?.daysAgo ?? 1) * 86400_000);
-      await tx.query('UPDATE subscriptions SET expires_at = $2, renews_at = $2, trial_ends_at = CASE WHEN trial_ends_at IS NOT NULL THEN $2 ELSE NULL END WHERE user_id = $1', [u.userId, d]);
+      await tx.query('UPDATE subscriptions SET expires_at = $2::timestamptz, renews_at = $2::timestamptz, trial_ends_at = CASE WHEN trial_ends_at IS NOT NULL THEN $2::timestamptz ELSE NULL END WHERE user_id = $1', [u.userId, d]);
       return { entitlements: await computeEntitlements(tx, u.userId) };
     });
   });

@@ -241,7 +241,10 @@ export async function decide(tx: Tx, bo: BoCtx, id: string, body: { decision: 'v
     if (sector && sector !== 'comun' && !bo.sectors.includes(sector)) throw forbidden('No estás acreditado en este sector: puedes comentar, no validar');
     const missing = CHECKLIST_KEYS.filter((k) => !body.checklist?.[k]);
     if (missing.length) throw new ApiError(422, 'checklist_incomplete', `Falta marcar: ${missing.map((k) => CHECKLIST_LABELS[k]).join(', ')}`);
-    const already = (await tx.query("SELECT 1 FROM reviews WHERE item_id = $1 AND item_version = $2 AND reviewer_id = $3 AND decision = 'validate'", [id, cur.version, bo.accountId])).rowCount;
+    // Solo cuentan las validaciones de este ciclo de revisión (tras el último envío o la caducidad).
+    const already = (await tx.query(
+      "SELECT 1 FROM reviews WHERE item_id = $1 AND item_version = $2 AND reviewer_id = $3 AND decision = 'validate' AND created_at >= coalesce((SELECT submitted_at FROM content_items WHERE id = $1 AND version = $2), '-infinity')",
+      [id, cur.version, bo.accountId])).rowCount;
     if (already) throw conflict('already_validated', 'Ya has validado esta versión');
   } else if (!body.comment?.trim()) {
     throw bad('comment_required', 'El comentario es obligatorio para solicitar cambios o rechazar');
