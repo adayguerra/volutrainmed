@@ -676,9 +676,10 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
     final r = m.ultimoResultado!;
     final mostrarPasos = !r.acierto && !tablet;
     final contenido = <Widget>[
-      Enunciado(r.ejercicio.variante, compacto: true),
-      const SizedBox(height: 12),
+      // El veredicto va primero: visible sin desplazarse aunque el texto esté al 200 %.
       BandaVeredicto(resultado: r),
+      const SizedBox(height: 12),
+      Enunciado(r.ejercicio.variante, compacto: true),
       if (r.acierto && !tablet)
         Align(
           alignment: Alignment.centerLeft,
