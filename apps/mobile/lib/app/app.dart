@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'estado/ajustes.dart';
 import 'estado/estado_app.dart';
+import '../core/sync/sincronizador.dart';
 import 'router.dart';
 import 'tema.dart';
 
@@ -67,6 +68,8 @@ class VtmApp extends ConsumerWidget {
         ),
       );
     }
+    // Sincronización automática al arrancar y al recuperar la conexión.
+    ref.watch(sincronizacionAutomaticaProvider);
     return MaterialApp.router(
       title: 'VolutrainMed',
       debugShowCheckedModeBanner: false,
