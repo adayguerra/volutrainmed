@@ -339,6 +339,7 @@ class _Caja extends StatelessWidget {
   final String semantica;
   @override
   Widget build(BuildContext context) => Semantics(
+        container: true,
         label: semantica,
         excludeSemantics: true,
         child: ConstrainedBox(
