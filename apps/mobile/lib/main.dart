@@ -3,7 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
+import 'app/demo.dart';
 import 'app/dependencias.dart';
+import 'app/router.dart';
 import 'core/data/almacenes.dart';
 import 'core/data/api_client.dart';
 import 'core/data/database.dart';
@@ -14,7 +16,7 @@ import 'core/plataforma/plataforma.dart';
 /// Arranque de VolutrainMed con las dependencias reales: SQLite (Drift),
 /// cliente HTTP, voz del sistema y servicios de la plataforma. La API se
 /// configura con `--dart-define=API_BASE=http://…`.
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final db = VtmDatabase();
   final deps = Dependencias(
@@ -32,5 +34,12 @@ void main() {
     notificador: NotificadorLocal(),
     leerActivo: (ruta) async => (await rootBundle.load(ruta)).buffer.asUint8List(),
   );
-  runApp(ProviderScope(overrides: [dependenciasProvider.overrideWithValue(deps)], child: const VtmApp()));
+  await sembrarDemo(deps);
+  runApp(ProviderScope(
+    overrides: [
+      dependenciasProvider.overrideWithValue(deps),
+      if (modoDemo && rutaDemo.isNotEmpty) rutaInicialProvider.overrideWithValue(rutaDemo),
+    ],
+    child: const VtmApp(),
+  ));
 }
