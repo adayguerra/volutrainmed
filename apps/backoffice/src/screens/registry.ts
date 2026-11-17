@@ -8,6 +8,8 @@ import { QuestionEditor } from './QuestionEditor';
 import { Preview } from './Preview';
 import { ExerciseTypes } from './ExerciseTypes';
 import { Import } from './Import';
+import { ReviewInbox, ReviewSheet } from './Review';
+import { Publishing } from './Publishing';
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 
@@ -21,4 +23,7 @@ export const screens: ScreenDef[] = [
   { path: '/vista-previa/:id', section: 'biblioteca', component: Preview },
   { path: '/tipos', section: 'tipos', component: ExerciseTypes },
   { path: '/importar', section: 'importacion', component: Import },
+  { path: '/revision', section: 'revision', component: ReviewInbox },
+  { path: '/revision/:itemId', section: 'revision', component: ReviewSheet },
+  { path: '/publicacion', section: 'publicacion', component: Publishing },
 ];
