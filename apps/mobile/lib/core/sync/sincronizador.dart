@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/dependencias.dart';
 import '../../app/estado/estado_app.dart';
+import '../contenido/actualizador.dart';
 import '../contenido/repositorio_contenido.dart' show versionApp;
 import '../data/almacenes.dart';
 import '../data/api_client.dart';
@@ -296,10 +297,27 @@ final sincronizacionAutomaticaProvider = Provider<void>((ref) {
   ref.listen(conexionProvider, (prev, next) {
     final antes = prev?.value;
     final ahora = next.value;
-    if (ahora == true && antes == false) unawaited(s.sincronizar(forzar: true));
-    if (ahora == true && antes == null) unawaited(_alArrancar(ref, s));
+    if (ahora == true && antes == false) {
+      unawaited(s.sincronizar(forzar: true));
+      unawaited(_comprobarContenido(ref));
+    }
+    if (ahora == true && antes == null) {
+      unawaited(_alArrancar(ref, s));
+      unawaited(_comprobarContenido(ref));
+    }
   }, fireImmediately: true);
 });
+
+/// Comprueba el manifiesto de contenido (al arrancar con conexión y al
+/// recuperarla): aplica al momento la lista de retirada y descarga y prepara
+/// las versiones nuevas, que se aplican al empezar la siguiente sesión.
+Future<void> _comprobarContenido(Ref ref) async {
+  try {
+    await ref.read(actualizadorProvider).comprobar();
+  } catch (_) {
+    // Sin conexión o servidor caído: se reintenta en la siguiente ocasión.
+  }
+}
 
 Future<void> _alArrancar(Ref ref, Sincronizador s) async {
   await s.refrescar();

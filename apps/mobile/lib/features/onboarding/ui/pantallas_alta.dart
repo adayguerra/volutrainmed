@@ -780,6 +780,7 @@ class _PantallaPermisoNotificacionesState extends ConsumerState<PantallaPermisoN
         cuando: proximaHora(_texto, deps.reloj.ahora()),
         titulo: 'VolutrainMed',
         texto: 'Tienes fichas de repaso pendientes. Son unos minutos.',
+        diaria: true,
       ));
       await _terminar();
     } else {

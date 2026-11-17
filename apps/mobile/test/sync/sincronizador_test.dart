@@ -280,7 +280,7 @@ void main() {
       await a.montar(t, ruta: Rutas.sincronizacion);
       expect(find.textContaining('Solo en este dispositivo'), findsOneWidget);
       expect(find.textContaining('Fundamentos'), findsWidgets);
-      expect(a.peticiones, isEmpty, reason: 'sin cuenta y sin pendientes no hay tráfico');
+      expect(a.peticionesSinContenido, isEmpty, reason: 'sin cuenta y sin pendientes no hay tráfico de sincronización');
       final u = a.contenedor.read(usuarioProvider).value!;
       expect(u.conCuenta, isFalse);
     });

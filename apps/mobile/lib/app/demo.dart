@@ -11,7 +11,8 @@ import 'estado/estado_app.dart';
 /// `--dart-define=VTM_DEMO=1`): siembra un perfil local con el alta hecha y
 /// unos días de práctica sobre el contenido incluido. `VTM_RUTA` abre una
 /// pantalla concreta y `VTM_TEMA=oscuro` fuerza el tema oscuro.
-const modoDemo = bool.fromEnvironment('VTM_DEMO');
+const _demo = String.fromEnvironment('VTM_DEMO');
+const modoDemo = _demo == '1' || _demo == 'true';
 const rutaDemo = String.fromEnvironment('VTM_RUTA');
 const temaDemo = String.fromEnvironment('VTM_TEMA');
 

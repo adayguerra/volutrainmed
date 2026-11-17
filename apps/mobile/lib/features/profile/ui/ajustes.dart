@@ -248,6 +248,7 @@ class PantallaMetaAjustes extends ConsumerWidget {
               cuando: cuando,
               titulo: 'VolutrainMed',
               texto: 'Tienes fichas de repaso. Son unos minutos de entrenamiento.',
+              diaria: true,
             ));
           },
         ),

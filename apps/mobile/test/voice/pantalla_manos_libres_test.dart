@@ -79,7 +79,8 @@ void main() {
     await empezarSesion(t);
     expect(voz.escuchas, greaterThanOrEqualTo(4));
     expect(await t.runAsync(() => a.aprendizaje.intentos()), hasLength(2));
-    expect(a.peticiones, isEmpty, reason: 'ni audio ni texto reconocido salen del dispositivo');
+    expect(a.peticionesSinContenido, isEmpty, reason: 'ni audio ni texto reconocido salen del dispositivo');
+    expect(a.peticiones.every((r) => r.method == 'GET' && r.url.path.startsWith('/v1/content/')), isTrue, reason: 'solo la comprobación de contenido, sin cuerpo');
     expect(a.sintetizador.dichos, isNotEmpty, reason: 'la lectura funciona con la voz del dispositivo');
     expect(find.text(textoVozLocal), findsOneWidget);
   });
@@ -180,7 +181,7 @@ void main() {
     await a.montar(t, ruta: Rutas.manosLibres, tamano: const Size(1194, 834));
     await empezarSesion(t);
     expect(find.text('ESTA SESIÓN'), findsOneWidget);
-    expect(find.text('Enunciado'), findsOneWidget);
+    expect(find.textContaining('Enunciado · Caso simulado'), findsOneWidget, reason: 'el caso se rotula como simulado');
     expect(find.text('Incorrecto'), findsWidgets, reason: 'el ejercicio respondido con «no lo sé» aparece en la lista');
   });
 

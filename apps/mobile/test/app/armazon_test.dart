@@ -33,6 +33,9 @@ void main() {
       await a.montar(t, tamano: const Size(1194, 834));
       expect(find.byType(NavigationRail), findsOneWidget);
       expect(find.byType(NavigationBar), findsNothing);
+      // Las pantallas principales muestran dos paneles: ruta y detalle de unidad.
+      expect(find.byType(DosPaneles), findsOneWidget);
+      expect(find.text('GUÍA RÁPIDA'), findsWidgets, reason: 'el panel derecho muestra el detalle de la unidad');
       expect(ClaseAncho.deAncho(1194), ClaseAncho.expandida);
       expect(ClaseAncho.deAncho(700), ClaseAncho.media);
       expect(ClaseAncho.deAncho(599), ClaseAncho.compacta);

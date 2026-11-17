@@ -116,7 +116,7 @@ void main() {
     expect(t.widget<TextButton>(reenviar).onPressed, isNotNull);
     await tocar(t, reenviar);
     expect(a.peticiones.where((r) => r.url.path == '/v1/auth/otp/request'), hasLength(1));
-    expect(jsonDecode(a.peticiones.last.body)['email'], 'lucia@correo.es');
+    expect(jsonDecode(a.peticionesSinContenido.last.body)['email'], 'lucia@correo.es');
     // Al volver a la pantalla del correo, el correo escrito sigue ahí.
     await tocar(t, find.byTooltip('Cambiar el correo'));
     expect(t.widget<TextField>(find.byKey(const ValueKey('campo-correo'))).controller!.text, 'lucia@correo.es');
@@ -129,7 +129,7 @@ void main() {
     await t.enterText(find.byKey(const ValueKey('campo-correo')), 'Lucia@Correo.es');
     await Arnes.asentar(t);
     await tocar(t, find.text('Enviarme el código'));
-    expect(a.peticiones.single.url.path, '/v1/auth/otp/request');
+    expect(a.peticionesSinContenido.single.url.path, '/v1/auth/otp/request');
     expect(a.ubicacion.ruta, rutaCodigo('lucia@correo.es'));
   });
 
@@ -175,7 +175,7 @@ void main() {
     await t.enterText(find.byKey(const ValueKey('campo-correo')), 'lucia@correo.es');
     await Arnes.asentar(t);
     expect(t.widget<FilledButton>(find.widgetWithText(FilledButton, 'Enviarme el código')).onPressed, isNull);
-    expect(a.peticiones, isEmpty);
+    expect(a.peticionesSinContenido, isEmpty);
     // «Ahora no» conserva el perfil local y deja el recordatorio pendiente.
     await tocar(t, find.text('Ahora no'));
     final u = a.contenedor.read(usuarioProvider).value!;

@@ -53,6 +53,25 @@ void main() {
     });
   }
 
+  // Únicos campos de texto libre de la app: ninguno sirve para calcular.
+  const conCamposDeTexto = {Rutas.consulta, Rutas.organizacion, Rutas.ligas, Rutas.privacidad, Rutas.cuenta};
+
+  testWidgets('formative-boundary · No existe entrada libre de datos: ninguna pantalla acepta peso, fármaco o dosis libres para devolver un resultado', (t) async {
+    for (final ruta in [...rutas, Rutas.leccion('u-f-1-l3')]) {
+      final a = Arnes();
+      await a.montar(t, ruta: ruta);
+      final campos = find.byType(TextField).evaluate().map((e) => e.widget as TextField).toList();
+      if (!conCamposDeTexto.contains(ruta)) {
+        expect(campos, isEmpty, reason: 'campo de texto inesperado en $ruta');
+      }
+      for (final c in campos) {
+        final etiqueta = '${c.decoration?.labelText ?? ''} ${c.decoration?.hintText ?? ''}'.toLowerCase();
+        expect(etiqueta, isNot(matches(RegExp(r'peso|kg|fármaco|farmaco|dosis|mg|ml'))), reason: 'campo de datos clínicos en $ruta');
+      }
+      await t.pumpWidget(const SizedBox());
+    }
+  });
+
   for (final ruta in rutasAlta) {
     testWidgets('alta con texto al 200 % sin desbordes: $ruta', (t) async {
       final a = Arnes(usuario: usuarioDePrueba(alta: false));

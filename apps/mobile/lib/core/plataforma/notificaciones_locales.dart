@@ -44,6 +44,7 @@ class NotificadorLocal implements Notificador {
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         title: n.titulo,
         body: n.texto,
+        matchDateTimeComponents: n.diaria ? DateTimeComponents.time : null,
       );
     } catch (e) {
       debugPrint('No se ha podido programar la notificación ${n.id}: $e');

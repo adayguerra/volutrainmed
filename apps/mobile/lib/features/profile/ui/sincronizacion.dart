@@ -91,7 +91,9 @@ class _PantallaSincronizacionState extends ConsumerState<PantallaSincronizacion>
           Padding(
             padding: const EdgeInsets.all(12),
             child: OutlinedButton.icon(
-              onPressed: e.sincronizando || !enLinea ? null : () => sync.sincronizar(forzar: true).then((_) => _cargar()),
+              onPressed: e.sincronizando || !enLinea
+                  ? null
+                  : () => Future.wait([sync.sincronizar(forzar: true), ref.read(actualizadorProvider).comprobar()]).then((_) => _cargar()),
               icon: const Icon(Symbols.sync),
               label: Text(enLinea ? 'Sincronizar ahora' : 'Sin conexión'),
             ),

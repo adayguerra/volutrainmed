@@ -547,7 +547,7 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
     final lateral = e == null
         ? null
         : ListView(padding: const EdgeInsets.all(16), children: [
-            Enunciado(e.variante, rotulo: 'Enunciado', compacto: true),
+            Enunciado(e.variante, rotulo: 'Enunciado · ${rotuloCaso(e.variante)}', compacto: true),
             const TituloSeccion('Esta sesión'),
             for (final (i, r) in m.primerosIntentos.indexed)
               ListTile(

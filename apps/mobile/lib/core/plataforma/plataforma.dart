@@ -270,7 +270,10 @@ class PermisosSistema implements Permisos {
 // ---------------------------------------------------------------------------
 
 class NotificacionProgramada {
-  const NotificacionProgramada({required this.id, required this.cuando, required this.titulo, required this.texto});
+  const NotificacionProgramada({required this.id, required this.cuando, required this.titulo, required this.texto, this.diaria = false});
+
+  /// Se repite cada día a la misma hora (recordatorio de repaso).
+  final bool diaria;
   final int id;
   final DateTime cuando;
   final String titulo;

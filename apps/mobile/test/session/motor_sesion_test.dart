@@ -154,7 +154,7 @@ void main() {
       expect(reg.completed, isFalse);
     });
 
-    test('offline-sync · Contenido nuevo durante una lección: la lección sigue con la versión con la que empezó', () {
+    test('el motor conserva el contenido con el que empezó aunque se cargue otro', () {
       final s = crear();
       // Una versión nueva se carga en la app mientras tanto; el motor conserva la suya.
       final nueva = ContenidoCargado(global: c.global, itinerarios: const {}, revocaciones: const Revocaciones());

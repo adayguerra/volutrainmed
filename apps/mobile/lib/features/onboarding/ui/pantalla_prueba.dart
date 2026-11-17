@@ -156,7 +156,7 @@ class _PantallaPruebaNivelState extends ConsumerState<PantallaPruebaNivel> {
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
                     children: [
-                      Enunciado(v, rotulo: 'Prueba de nivel · sin corrección'),
+                      Enunciado(v, rotulo: '${rotuloCaso(v)} · prueba de nivel sin corrección'),
                       const SizedBox(height: 16),
                       if (opciones.isNotEmpty)
                         for (final (i, o) in opciones.indexed)

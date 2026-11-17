@@ -141,6 +141,10 @@ class Arnes {
   final peticiones = <http.Request>[];
   int _ms = 0;
 
+  /// Peticiones de la app salvo la comprobación de contenido (manifiesto y
+  /// paquetes firmados), que se hace al arrancar con conexión.
+  List<http.Request> get peticionesSinContenido => peticiones.where((r) => !r.url.path.startsWith('/v1/content/')).toList();
+
   /// Avanza el reloj monótono de la sesión (tiempos de respuesta).
   void avanzarMs(int ms) => _ms += ms;
 

@@ -93,7 +93,7 @@ void main() {
       expect(find.byIcon(iconoIlustracion(creatividad.illustration)), findsOneWidget);
       expect(find.byKey(const ValueKey('accion-anuncio')), findsOneWidget);
       expect(textoQueContiene(creatividad.body.split('{').first.trim()), findsOneWidget);
-      expect(a.peticiones, isEmpty);
+      expect(a.peticionesSinContenido, isEmpty);
     });
 
     testWidgets('house-ads · Sin tráfico publicitario: varias pausas con conexión no hacen ninguna petición de red', (t) async {
@@ -106,7 +106,7 @@ void main() {
       // Segunda pausa en el mismo contenedor.
       final segunda = await t.runAsync(() => elegirAnuncio(a.contenedor.read, datosLeccion()));
       expect(segunda, isNotNull);
-      expect(a.peticiones, isEmpty);
+      expect(a.peticionesSinContenido, isEmpty);
     });
 
     testWidgets('house-ads · Sin repetición consecutiva: dos pausas seguidas muestran anuncios distintos', (t) async {
@@ -250,7 +250,7 @@ void main() {
       expect(props['context'], isNotEmpty);
       expect(props['dwellS'], 4);
       expect(props['dwellMs'], 4000);
-      expect(a.peticiones, isEmpty, reason: 'se envía después, al recuperar la conexión');
+      expect(a.peticionesSinContenido, isEmpty, reason: 'se envía después, al recuperar la conexión');
     });
 
     testWidgets('house-ads · Toque en «Quitar anuncios» y vuelta: la sesión continúa en el ejercicio 7 con el progreso intacto', (t) async {
