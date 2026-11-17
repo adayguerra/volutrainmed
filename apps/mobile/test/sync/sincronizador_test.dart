@@ -20,7 +20,7 @@ import '../helpers/respuestas.dart';
 import 'servidor_falso.dart';
 
 /// Hace una lección completa en un dispositivo y la guarda en su almacén.
-Future<void> hacerLeccion(AlmacenAprendizaje almacen, ContenidoCargado c, String lessonId, String deviceId, DateTime cuando, {int fallos = 0}) async {
+Future<void> hacerLeccion(AlmacenAprendizaje almacen, ContenidoCargado c, String lessonId, String deviceId, DateTime cuando, {int fallos = 0, int msPorEjercicio = 8000}) async {
   var ms = 0;
   final intentos = <Attempt>[];
   final leccion = c.fundamentos!.lessons.firstWhere((l) => l.id == lessonId);
@@ -36,7 +36,7 @@ Future<void> hacerLeccion(AlmacenAprendizaje almacen, ContenidoCargado c, String
   )..preparar();
   var i = 0;
   while (m.fase != FaseSesion.terminada) {
-    ms += 8000;
+    ms += msPorEjercicio;
     i++ < fallos ? responderMal(m) : responderBien(m);
     m.continuar();
     if (m.fase == FaseSesion.pausaPromocional) m.cerrarPausa();
@@ -207,6 +207,39 @@ void main() {
       expect(pn.resumen.sesionesCompletadas, pv.resumen.sesionesCompletadas);
       expect(nuevo.cursor, isNotNull);
     });
+  });
+
+  test('offline-sync · Semana sin conexión: lecciones, repaso, rachas y estadísticas se actualizan en el dispositivo', () async {
+    final c = contenidoPrueba;
+    final d = Dispositivo('disp-prueba', ServidorFalso());
+    final sinRed = SincronizadorReal(
+      almacen: d.almacen,
+      api: ApiClient(baseUrl: 'http://x', client: MockClient((_) async => throw http.ClientException('sin red')), token: () => 'tok'),
+      reloj: RelojFijo(ahoraPrueba),
+      usuario: () => const EstadoUsuario(deviceId: 'disp-prueba', token: 'tok'),
+      guardarCursor: (_, _) async {},
+      alRecibir: () async {},
+    );
+    const lecciones = ['u-f-1-l1', 'u-f-1-l2', 'u-f-1-l3', 'u-f-1-l4', 'u-f-2-l1', 'u-f-2-l2', 'u-f-2-l3'];
+    final inicio = ahoraPrueba.subtract(const Duration(days: 6));
+    for (var dia = 0; dia < 7; dia++) {
+      await hacerLeccion(d.almacen, c, lecciones[dia], 'disp-prueba', inicio.add(Duration(days: dia)), fallos: 1, msPorEjercicio: 45000);
+      await sinRed.sincronizar(forzar: true);
+      expect(sinRed.estado.value.error, textoErrorSync, reason: 'el fallo de red no interrumpe nada');
+    }
+    final p = proyectar(
+      attempts: await d.almacen.intentos(),
+      sessions: await d.almacen.sesiones(),
+      itineraries: c.itinerarios.values.toList(),
+      goal: const Goal.daily(5),
+      now: ahoraPrueba.add(const Duration(hours: 2)),
+    );
+    expect(p.lecciones.keys.toSet(), lecciones.toSet());
+    expect(p.racha.actual, 7);
+    expect(p.fichas, isNotEmpty, reason: 'los fallos van al repaso');
+    expect(p.resumen.sesionesCompletadas, 7);
+    expect(p.resumen.datosInsuficientes, isFalse);
+    expect(await d.almacen.contarPendientes(), (await d.almacen.intentos()).length + 7, reason: 'todo queda en la bandeja para cuando haya conexión');
   });
 
   group('Centro de sincronización', () {
