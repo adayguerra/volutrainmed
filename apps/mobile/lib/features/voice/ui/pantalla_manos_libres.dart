@@ -538,7 +538,7 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(Symbols.lock, size: 16, color: c.atenuado),
             const SizedBox(width: 6),
-            Text(textoVozLocal, style: context.textos.labelMedium?.copyWith(color: c.atenuado)),
+            Flexible(child: Text(textoVozLocal, style: context.textos.labelMedium?.copyWith(color: c.atenuado))),
           ]),
         ),
       ],
