@@ -12,7 +12,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { authenticator } from 'otplib';
 import { ApiError, createApi, type Api } from '../src/api/client';
@@ -189,6 +189,22 @@ async function main() {
   const actions = itemAudit.items.filter((a) => a.entity_id === tid).map((a) => a.action);
   for (const a of ['item.create', 'item.update', 'item.submit', 'review.validate']) assert(actions.includes(a), `auditoría de ${a}`);
   log(`Auditoría de la plantilla: ${actions.reverse().join(' → ')}`);
+
+  // ---------------------------------------------------------------- Retirada desde una consulta
+  const inquiryId = randomUUID();
+  const sent = await anon.post<{ id: string; reference: string }>('/v1/inquiries', {
+    id: inquiryId, type: 'exercise_error', message: 'La respuesta de este ejercicio no me cuadra (prueba de extremo a extremo).', replyEmail: null,
+    exercise: { variantId: `${tid}.v1.1`, templateId: tid, questionId: null, answerValue: '1', answerUnit: 'ml' }, createdAt: new Date().toISOString(), deviceId: 'e2e-dispositivo-instalado',
+  });
+  const revBefore = await anon.get<{ version: number; templateIds: string[] }>('/v1/content/revocations');
+  assert(!revBefore.templateIds.includes(tid), 'la plantilla no está retirada antes de la consulta');
+  await admin.api.post(`/v1/admin/inquiries/${inquiryId}/withdraw-exercise`, { reason: `Retirada desde la consulta ${sent.reference} (prueba de extremo a extremo)` });
+  const revAfter = await anon.get<{ version: number; templateIds: string[] }>('/v1/content/revocations');
+  const manAfter = await anon.get<{ contentVersion: string; revocations: { templateIds: string[] } }>('/v1/content/manifest', { deviceId: 'e2e-dispositivo-instalado', appVersion: '1.0.0' });
+  assert(revAfter.templateIds.includes(tid) && revAfter.version > revBefore.version, 'la lista de retirada pública incluye la plantilla y sube de versión');
+  assert(manAfter.revocations.templateIds.includes(tid) && manAfter.contentVersion === active.number, 'el manifiesto que descargan las apps lleva la retirada sin publicar una versión nueva');
+  log(`[Retirada de una plantilla con error] Desde la consulta ${sent.reference}: la plantilla entra en la lista de retirada que las apps leen al conectarse, sin publicar versión (contenido sigue en ${manAfter.contentVersion})`);
+
   console.log('\nFlujo de extremo a extremo completado sin errores.');
 }
 

@@ -87,6 +87,40 @@ interface Sheet {
   canValidate: boolean; canComment: boolean; reasonCannotValidate: string | null;
 }
 
+/** Pantalla donde se edita cada clase de elemento. */
+export function editorPath(kind: string, id: string): string {
+  if (kind === 'template') return `/plantillas/${id}`;
+  if (kind === 'question') return `/preguntas/${id}`;
+  if (['sector', 'itinerary', 'unit', 'lesson'].includes(kind)) return '/estructura';
+  if (kind === 'exercise_type') return '/tipos';
+  if (kind === 'achievement') return '/logros';
+  return '/catalogos';
+}
+
+/** Contenido de los elementos que no son ejercicios (estructura, catálogos, anuncios, logros y tipos) y sus cambios. */
+function ItemContent({ item }: { item: Item }) {
+  const { api } = useSession();
+  const diff = useAsync(() => (item.version > 1 ? api.get<{ from: number | string; to: number | string; changes: { path: string; before: unknown; after: unknown }[] }>(`/v1/admin/items/${item.id}/diff`, { from: item.version - 1, to: item.version }) : Promise.resolve(null)), [api, item.id, item.version]);
+  const entries = Object.entries(item.data).filter(([k]) => k !== 'id');
+  return (
+    <Panel title="Contenido que se valida" icon="description">
+      <div className="col g12">
+        <dl className="col g6" aria-label="Contenido del elemento">
+          {entries.map(([k, v]) => (
+            <div key={k} className="row g8 ai-start t-small"><dt className="mono muted" style={{ width: 160, flex: 'none' }}>{k}</dt><dd style={{ margin: 0, minWidth: 0 }}>{typeof v === 'object' && v !== null ? <pre className="json">{JSON.stringify(v, null, 1)}</pre> : String(v)}</dd></div>
+          ))}
+        </dl>
+        {diff.data && diff.data.changes.length > 0 && (
+          <section className="col g4" aria-label="Cambios frente a la versión anterior">
+            <strong className="ui t-small">Cambios frente a la versión {diff.data.from}</strong>
+            <ul className="col g4">{diff.data.changes.map((c) => <li key={c.path} className="t-small"><span className="mono b">{c.path}</span>: <span className="diff-del">{short(c.before)}</span> → <span className="diff-ins">{short(c.after)}</span></li>)}</ul>
+          </section>
+        )}
+      </div>
+    </Panel>
+  );
+}
+
 function short(v: unknown): string {
   if (v === undefined) return '—';
   const s = typeof v === 'string' ? v : JSON.stringify(v);
@@ -152,7 +186,7 @@ export function ReviewSheet() {
         return (
           <Page title={`${s.item.title} · v${s.item.version}`} crumbs={[{ label: 'Contenido' }, { label: 'Revisión', to: '/revision' }, { label: s.item.title }]}
             chip={<><StateChip state={s.item.state} expired={isExpired(s.item)} /><span className="t-small muted">Autor: {s.authorName ?? '—'}</span></>}
-            actions={<Link className="btn btn-tertiary btn-sm" to={s.item.kind === 'question' ? `/preguntas/${s.item.id}` : `/plantillas/${s.item.id}`}><Icon name="open_in_new" />Abrir en el editor</Link>}>
+            actions={<Link className="btn btn-tertiary btn-sm" to={editorPath(s.item.kind, s.item.id)}><Icon name="open_in_new" />Abrir en el editor</Link>}>
             {s.requiredValidations > 1 && <Notice kind="info" icon="group">Este sector exige dos revisores: {s.item.validations} de {s.requiredValidations} validaciones registradas.</Notice>}
             {result && <Notice kind="ok">{result}</Notice>}
             {s.item.state === 'changes_requested' && lastChange?.comment && <Notice kind="warn">Cambios solicitados por {lastChange.reviewer_name}: «{lastChange.comment}»</Notice>}
@@ -177,7 +211,8 @@ export function ReviewSheet() {
                     </div>
                   </Panel>
                 )}
-                <Panel title={s.item.kind === 'template' ? '20 variantes al azar y extremos' : 'Pregunta'} icon="table" bodyClass="tblwrap" actions={s.item.kind === 'template' ? <button type="button" className="btn btn-tertiary btn-xs" onClick={st.reload}>Otras 20</button> : undefined}>
+                {!['template', 'question'].includes(s.item.kind) && <ItemContent item={s.item} />}
+                {['template', 'question'].includes(s.item.kind) && <Panel title={s.item.kind === 'template' ? '20 variantes al azar y extremos' : 'Pregunta'} icon="table" bodyClass="tblwrap" actions={s.item.kind === 'template' ? <button type="button" className="btn btn-tertiary btn-xs" onClick={st.reload}>Otras 20</button> : undefined}>
                   <table className="tbl" aria-label="Variantes de muestra">
                     <thead><tr><th>Nivel</th><th>Datos</th><th>Respuesta</th><th>Recálculo independiente</th><th>Comprobación</th></tr></thead>
                     <tbody>{rows.map((v, i) => (
@@ -190,7 +225,7 @@ export function ReviewSheet() {
                       </tr>
                     ))}</tbody>
                   </table>
-                </Panel>
+                </Panel>}
               </div>
               <div className="col g16">
                 <Panel title={`Lista de comprobación · ${done} de ${total}`} icon="checklist">

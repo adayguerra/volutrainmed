@@ -4,6 +4,8 @@ import { authenticator } from 'otplib';
 import { describe, expect, it } from 'vitest';
 import { account, HttpError, mockApi, renderApp } from '../test/helpers';
 
+// Ventana de ±1 paso (como la API) para que la prueba no falle al cruzar un límite de 30 s.
+authenticator.options = { window: 1 };
 const SECRET = authenticator.generateSecret();
 
 describe('B01 · acceso con doble factor obligatorio', () => {

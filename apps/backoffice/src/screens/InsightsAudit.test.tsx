@@ -138,7 +138,7 @@ describe('B25 · consultas de usuarios', () => {
     await waitFor(() => expect(api.last('POST', '/v1/admin/inquiries/iq-2/reply')!.body).toEqual({ template: 'patient' }));
   });
 
-  it('Retirada de una plantilla con error: desde la consulta se retira y las apps dejan de presentarla en cuanto tienen conexión', async () => {
+  it('retira el ejercicio desde la consulta con el motivo ya rellenado', async () => {
     const user = userEvent.setup();
     const api = mockApi({ 'GET /v1/admin/inquiries': { items: [inquiry()], models: MODELS }, 'GET /v1/admin/inquiries/iq-1': { inquiry: inquiry(), variant: VARIANT, models: MODELS, suggestedModel: null }, 'POST /v1/admin/inquiries/iq-1/withdraw-exercise': { revocation: { id: 1 } } });
     renderApp('/consultas', 'content_admin');

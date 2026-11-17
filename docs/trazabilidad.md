@@ -12,14 +12,14 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Roles y permisos | Analista | Prueba automatizada | apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, services/api/test/api.test.ts |
-| Roles y permisos | Autor | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/Library.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, services/api/test/api.test.ts |
-| Roles y permisos | Soporte | Prueba automatizada | apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, services/api/test/api.test.ts |
+| Roles y permisos | Analista | Prueba automatizada | apps/backoffice/src/realapi.smoke.test.tsx, apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, services/api/test/api.test.ts |
+| Roles y permisos | Autor | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/realapi.smoke.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/Library.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, services/api/test/api.test.ts |
+| Roles y permisos | Soporte | Prueba automatizada | apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/realapi.smoke.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, services/api/test/api.test.ts |
 | Doble factor obligatorio | Primer acceso | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/auth/auth.test.tsx, services/api/test/api.test.ts |
 | Registro de auditoría | Cambio de una fórmula | Prueba automatizada | apps/backoffice/src/screens/InsightsAudit.test.tsx, services/api/test/api.test.ts |
 | Registro de auditoría | Intento de alteración | Prueba automatizada | apps/backoffice/src/screens/InsightsAudit.test.tsx |
 | Nada se borra | Retirar una pregunta | Prueba automatizada | apps/backoffice/src/screens/Library.test.tsx |
-| Panel de control por rol | Revisor | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/Structure.test.tsx, services/api/test/api.test.ts |
+| Panel de control por rol | Revisor | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/realapi.smoke.test.tsx, apps/backoffice/src/screens/Dashboard.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/Structure.test.tsx, services/api/test/api.test.ts |
 | Panel de control por rol | Instalación nueva | Prueba automatizada | apps/backoffice/src/screens/Dashboard.test.tsx |
 | Gestión de usuarios | Conceder días de Premium | Prueba automatizada | apps/backoffice/src/screens/People.test.tsx, services/api/test/api.test.ts |
 | Gestión de usuarios | Supresión de datos | Prueba automatizada | apps/backoffice/src/screens/People.test.tsx |
@@ -78,7 +78,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Paquete firmado y despliegue gradual | Despliegue al 5 % | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, services/api/test/api.test.ts |
 | Paquete firmado y despliegue gradual | Compatibilidad con la app | Prueba automatizada | apps/backoffice/src/screens/Publishing.test.tsx, services/api/test/api.test.ts |
 | Reversión | Reversión de una versión | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts |
-| Retirada inmediata de un ejercicio | Retirada de una plantilla con error | Prueba automatizada | apps/backoffice/src/screens/InsightsAudit.test.tsx |
+| Retirada inmediata de un ejercicio | Retirada de una plantilla con error | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts |
 | Paquete de prueba | Prueba en un dispositivo | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts |
 
 ## add-growth-features · exercise-session
@@ -440,7 +440,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Esprint de sesenta segundos | Esprint sin conexión | Sin evidencia automática |  |
 | Penalización por fallo | Fallo con 20 segundos restantes | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
 | Marca válida con precisión mínima | Marca no válida | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
-| Marca válida con precisión mínima | Récord | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/screens/Import.test.tsx, apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/Organizations.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/Structure.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, apps/backoffice/src/test/helpers.tsx, apps/mobile/test/domain/entitlements_test.dart, apps/mobile/test/domain/league_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart, services/api/test/api.test.ts |
+| Marca válida con precisión mínima | Récord | Prueba automatizada | apps/backoffice/e2e/flujo-publicacion.e2e.ts, apps/backoffice/src/realapi.smoke.test.tsx, apps/backoffice/src/screens/Import.test.tsx, apps/backoffice/src/screens/InsightsAudit.test.tsx, apps/backoffice/src/screens/Organizations.test.tsx, apps/backoffice/src/screens/People.test.tsx, apps/backoffice/src/screens/Publishing.test.tsx, apps/backoffice/src/screens/Review.test.tsx, apps/backoffice/src/screens/Structure.test.tsx, apps/backoffice/src/screens/template/TemplateEditor.test.tsx, apps/backoffice/src/test/helpers.tsx, apps/mobile/test/domain/entitlements_test.dart, apps/mobile/test/domain/league_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart, services/api/test/api.test.ts |
 | La interrupción anula el esprint | Interrupción | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
 | Variante sin cuenta atrás | Ejercicios sin límite de tiempo | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
 | Los fallos pasan al repaso | Fallo en el esprint | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |

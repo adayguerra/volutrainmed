@@ -26,8 +26,7 @@ function save(s: Stored | null) {
 }
 
 export function apiBase(): string {
-  const env = (import.meta as unknown as { env?: Record<string, string | undefined> }).env;
-  return env?.VITE_API_BASE || DEFAULT_API_BASE;
+  return (import.meta.env.VITE_API_BASE as string | undefined) || DEFAULT_API_BASE;
 }
 
 interface SessionValue {

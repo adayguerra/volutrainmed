@@ -19,6 +19,12 @@ interface LexiconData { name: string; confusions: { from: string; to: string }[]
 interface Creative { name?: string; headline: string; body: string; cta: string; voiceSpot: string | null; weight: number; dailyCap: number | null; context: string; kind: string; campaignId?: string; ctaAction?: string; illustration?: string }
 interface Campaign { name: string; sectorIds: string[] | null; startsAt: string | null; endsAt: string | null }
 
+const AD_CONTEXTS: Record<string, string> = {
+  always: 'Siempre', wait_gt0_in_lesson: 'Lección con espera mayor que cero', trial_available: 'Prueba gratuita disponible', handsfree_limit_or_after_handsfree: 'Límite o fin de manos libres',
+  streak_gte_3: 'Racha de 3 días o más', prices_fresh_7d: 'Precios actualizados en 7 días', after_unit_completed: 'Tras completar una unidad', last_pause_lesson_with_errors: 'Última pausa de una lección con fallos',
+  last_pause_lesson_perfect: 'Última pausa de una lección perfecta', after_timetrial: 'Tras una contrarreloj', orgs_enabled: 'Organizaciones disponibles',
+};
+
 const DRAFT_NOTE = 'El cambio queda en borrador hasta su revisión y llega a las apps con la siguiente publicación.';
 
 function useItems<T>(kind: string) {
@@ -220,6 +226,8 @@ function CreativeEditor({ item, campaigns, onClose, onSaved }: { item: Item<Crea
         <Field label="Campaña" id="ad-camp"><select id="ad-camp" className="input" value={c.campaignId ?? ''} onChange={(e) => setC({ ...c, campaignId: e.target.value || undefined })}><option value="">Sin campaña</option>{campaigns.map((k) => <option key={k.id} value={k.id}>{k.data.name}</option>)}</select></Field>
         <Field label="Peso en la rotación" id="ad-weight"><input id="ad-weight" className="input mono" type="number" min={1} value={c.weight} onChange={(e) => setC({ ...c, weight: Number(e.target.value) })} /></Field>
         <Field label="Tope diario" id="ad-cap"><input id="ad-cap" className="input mono" type="number" min={1} value={c.dailyCap ?? ''} onChange={(e) => setC({ ...c, dailyCap: e.target.value ? Number(e.target.value) : null })} /></Field>
+        <Field label="Contexto en que se muestra" id="ad-context"><select id="ad-context" className="input" value={c.context} onChange={(e) => setC({ ...c, context: e.target.value })}>{Object.entries(AD_CONTEXTS).map(([k, l]) => <option key={k} value={k}>{l}</option>)}</select></Field>
+        <Field label="Clase de anuncio" id="ad-kind"><select id="ad-kind" className="input" value={c.kind} onChange={(e) => setC({ ...c, kind: e.target.value })}><option value="fallback">De reserva</option><option value="generic">Genérico</option><option value="contextual">Contextual</option></select></Field>
       </div>
       <Field label="Cuña hablada (manos libres)" id="ad-spot"><input id="ad-spot" className="input" value={c.voiceSpot ?? ''} onChange={(e) => setC({ ...c, voiceSpot: e.target.value || null })} /></Field>
       <section aria-label="Comprobaciones del anuncio">
@@ -227,6 +235,33 @@ function CreativeEditor({ item, campaigns, onClose, onSaved }: { item: Item<Crea
       </section>
       <div className="row g8 end"><button type="button" className="btn btn-tertiary btn-sm" onClick={onClose}>Cancelar</button>
         <button type="button" className="btn btn-primary btn-sm" disabled={busy || !c.headline || issues.length > 0} onClick={async () => { const r = await save(item, { ...c, name: `${item?.id ?? 'Anuncio'} · ${c.headline}` } as unknown as Record<string, unknown>); if (r) onSaved(); }}>Guardar</button></div>
+    </Modal>
+  );
+}
+
+function CampaignEditor({ item, onClose, onSaved }: { item: Item<Campaign> | null; onClose: () => void; onSaved: () => void }) {
+  const { save, busy } = useSaveItem('ad_campaign');
+  const [c, setC] = useState<Campaign>(item?.data ?? { name: '', sectorIds: null, startsAt: null, endsAt: null });
+  const sectors = c.sectorIds ?? [];
+  return (
+    <Modal title={item ? `Campaña ${item.data.name}` : 'Nueva campaña'} onClose={onClose}>
+      <Field label="Nombre de la campaña" id="cp-name"><input id="cp-name" className="input" value={c.name} onChange={(e) => setC({ ...c, name: e.target.value })} /></Field>
+      <fieldset className="col g4" style={{ border: 0, padding: 0, margin: 0 }}>
+        <legend className="flabel" style={{ marginBottom: 6 }}>Segmento por sector (vacío: todos los sectores)</legend>
+        <div className="grid2" style={{ gap: 4 }}>
+          {DEFAULT_SECTORS.filter((x) => x.id !== 'comun').map((x) => (
+            <label key={x.id} className="check-row t-small"><input type="checkbox" checked={sectors.includes(x.id)} onChange={(e) => { const next = e.target.checked ? [...sectors, x.id] : sectors.filter((y) => y !== x.id); setC({ ...c, sectorIds: next.length ? next : null }); }} />{x.name}</label>
+          ))}
+        </div>
+      </fieldset>
+      <div className="grid2">
+        <Field label="Inicio de la vigencia" id="cp-start"><input id="cp-start" className="input" type="date" value={c.startsAt ?? ''} onChange={(e) => setC({ ...c, startsAt: e.target.value || null })} /></Field>
+        <Field label="Fin de la vigencia" id="cp-end"><input id="cp-end" className="input" type="date" value={c.endsAt ?? ''} onChange={(e) => setC({ ...c, endsAt: e.target.value || null })} /></Field>
+      </div>
+      {c.startsAt && c.endsAt && c.endsAt < c.startsAt && <p className="err-msg" role="alert">La vigencia termina antes de empezar.</p>}
+      <p className="t-small muted">{DRAFT_NOTE} Fuera de su vigencia, la app deja la campaña fuera de la rotación aunque no tenga conexión.</p>
+      <div className="row g8 end"><button type="button" className="btn btn-tertiary btn-sm" onClick={onClose}>Cancelar</button>
+        <button type="button" className="btn btn-primary btn-sm" disabled={busy || !c.name.trim() || Boolean(c.startsAt && c.endsAt && c.endsAt < c.startsAt)} onClick={async () => { const r = await save(item, c as unknown as Record<string, unknown>); if (r) onSaved(); }}>Guardar campaña</button></div>
     </Modal>
   );
 }
@@ -240,6 +275,7 @@ function AdsTab() {
   const perf = useAsync(() => api.get<{ items: { ad: string; impressions: number; taps: number; trials: number; purchases: number; voice_skipped: number }[] }>('/v1/admin/ads/performance').then((r) => r.items).catch(() => []), [api]);
   const [p, setP] = useState<AdParams | null>(null);
   const [edit, setEdit] = useState<Item<Creative> | null | 'new'>(null);
+  const [campaign, setCampaign] = useState<Item<Campaign> | null | 'new'>(null);
   const cur = p ?? params.data ?? null;
   return (
     <div className="col g16">
@@ -270,9 +306,16 @@ function AdsTab() {
         </Async>
       </Panel>
       <div className="grid2">
-        <Panel title="Campañas" icon="event">
+        <Panel title="Campañas" icon="event" actions={<button type="button" className="btn btn-secondary btn-xs" onClick={() => setCampaign('new')}><Icon name="add" />Nueva campaña</button>}>
           <Async state={campaigns}>
-            {(items) => <ul className="col g6">{items.map((c) => <li key={c.id} className="t-small"><strong>{c.data.name}</strong> · {c.data.sectorIds?.length ? c.data.sectorIds.map((s) => sectorName(s)).join(', ') : 'todos los sectores'} · {c.data.endsAt ? `hasta el ${c.data.endsAt}` : 'sin fecha de fin'} · <StateChip state={c.state} /></li>)}</ul>}
+            {(items) => (
+              <ul className="col g6" aria-label="Campañas">{items.map((c) => (
+                <li key={c.id} className="row g8 wrap t-small">
+                  <span className="grow"><strong>{c.data.name}</strong> · {c.data.sectorIds?.length ? c.data.sectorIds.map((s) => sectorName(s)).join(', ') : 'todos los sectores'} · {c.data.startsAt ? `desde el ${c.data.startsAt}` : 'desde ya'} · {c.data.endsAt ? `hasta el ${c.data.endsAt}` : 'sin fecha de fin'} · <StateChip state={c.state} /></span>
+                  <button type="button" className="btn btn-tertiary btn-xs" onClick={() => setCampaign(c)}>Editar</button><SubmitButton item={c} onDone={campaigns.reload} />
+                </li>
+              ))}</ul>
+            )}
           </Async>
         </Panel>
         <Panel title="Rendimiento" icon="insights" bodyClass="tblwrap">
@@ -283,6 +326,7 @@ function AdsTab() {
         </Panel>
       </div>
       {edit && <CreativeEditor item={edit === 'new' ? null : edit} campaigns={campaigns.data ?? []} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); creatives.reload(); }} />}
+      {campaign && <CampaignEditor item={campaign === 'new' ? null : campaign} onClose={() => setCampaign(null)} onSaved={() => { setCampaign(null); campaigns.reload(); }} />}
     </div>
   );
 }
