@@ -22,7 +22,16 @@ import '../../review/domain/review_projection.dart';
 const puntosPorAcierto = 10;
 
 /// Respuestas que el intérprete de esta versión sabe dibujar (diseño D9).
-const bloquesSoportados = {'numeric_unit', 'single_choice', 'ordering', 'range_choice', 'conversion_series'};
+///
+/// Además de los cinco del producto mínimo viable, los de la fase 2 definidos
+/// con el creador de tipos (add-growth-features): completar el planteamiento
+/// (`fill_gaps`, T4), detectar el error (`step_pick`, T5), emparejar
+/// (`matching`, T10) y caso encadenado (`chain`, T8: pasos numéricos con
+/// `Variant.chain`).
+const bloquesSoportados = {
+  'numeric_unit', 'single_choice', 'ordering', 'range_choice', 'conversion_series', //
+  'fill_gaps', 'step_pick', 'matching', 'chain',
+};
 
 /// Bloques de respuesta compatibles con voz (hands-free-voice): T1, T2, T6, T7.
 const bloquesVoz = {'numeric_unit', 'single_choice', 'range_choice', 'conversion_series'};
@@ -121,11 +130,19 @@ class VarianteSaltada {
   final String motivo;
 }
 
+/// Bloque de respuesta con el que se dibuja una variante. Un caso encadenado
+/// (T8) se define con pasos numéricos y trae sus partes en `Variant.chain`.
+String bloqueRespuesta(Variant v, ExerciseType? tipo) {
+  final b = tipo?.steps.firstOrNull?.response ?? '';
+  if ((v.chain ?? const []).isNotEmpty && (b == 'numeric_unit' || b == 'chain')) return 'chain';
+  return b;
+}
+
 /// Por qué una variante no puede dibujarse, o null si es válida.
 String? motivoDefecto(Variant v, ExerciseType? tipo) {
   if (tipo == null) return 'Tipo de ejercicio desconocido: ${v.exerciseTypeId}';
   if (tipo.steps.isEmpty) return 'Tipo sin pasos';
-  final bloque = tipo.steps.first.response;
+  final bloque = bloqueRespuesta(v, tipo);
   if (!bloquesSoportados.contains(bloque)) return 'Bloque no soportado: $bloque';
   switch (bloque) {
     case 'numeric_unit':
@@ -143,6 +160,23 @@ String? motivoDefecto(Variant v, ExerciseType? tipo) {
       if ((v.orderItems ?? const []).length < 2 || (v.validOrders ?? const []).isEmpty) return 'Pasos no válidos';
     case 'conversion_series':
       if ((v.series ?? const []).isEmpty) return 'Serie vacía';
+    case 'fill_gaps':
+      final g = v.gapFill;
+      if (g == null || g.gapIds.isEmpty) return 'Faltan los huecos';
+      if (g.gapIds.any((id) => !g.tiles.contains(g.gapAnswers[id]))) return 'Hueco sin ficha correcta';
+    case 'step_pick':
+      if ((v.worked ?? const []).length < 2) return 'Faltan los pasos resueltos';
+    case 'matching':
+      final pares = v.pairs ?? const [];
+      if (pares.length < 2 || pares.map((p) => p.left).toSet().length != pares.length) return 'Parejas no válidas';
+    case 'chain':
+      for (final parte in v.chain!) {
+        try {
+          dec(parte.answer.value);
+        } catch (_) {
+          return 'Parte sin respuesta decimal';
+        }
+      }
   }
   if (v.statement.isEmpty && v.question.isEmpty) return 'Enunciado vacío';
   return null;
@@ -277,7 +311,7 @@ class MotorSesion {
         }
         final muestra = candidatas.first;
         final tipo = contenido.tipo(muestra.exerciseTypeId);
-        final bloque = tipo?.steps.firstOrNull?.response ?? '';
+        final bloque = bloqueRespuesta(muestra, tipo);
         if (soloVoz && !bloquesVoz.contains(bloque)) {
           excluidosPorVoz++;
           continue;
@@ -295,7 +329,7 @@ class MotorSesion {
     } else {
       for (final v in variantesPractica) {
         final tipo = contenido.tipo(v.exerciseTypeId);
-        final bloque = tipo?.steps.firstOrNull?.response ?? '';
+        final bloque = bloqueRespuesta(v, tipo);
         if (soloVoz && !bloquesVoz.contains(bloque)) {
           excluidosPorVoz++;
           continue;
@@ -313,7 +347,7 @@ class MotorSesion {
     if (id == null) return null;
     final v = candidatas.firstWhere((x) => x.id == id);
     final tipo = contenido.tipo(v.exerciseTypeId);
-    final bloque = tipo?.steps.firstOrNull?.response ?? '';
+    final bloque = bloqueRespuesta(v, tipo);
     if (soloVoz && !bloquesVoz.contains(bloque)) return null;
     return EjercicioPreparado(variante: v, tipo: tipo, bloque: bloque, origen: origen, ficha: f);
   }
@@ -511,16 +545,136 @@ class MotorSesion {
     return isCorrectVerdict(grade(item.answer, const [], GradeInput(raw)).verdict);
   }
 
+  // ---- Tipos de la fase 2 -------------------------------------------------
+
+  /// Operación con los huecos rellenos (por defecto, con las fichas correctas).
+  static String operacionResuelta(GapFill g, [Map<String, String>? colocadas]) =>
+      g.template.replaceAllMapped(RegExp(r'\{(g\d+)\}'), (m) => (colocadas ?? g.gapAnswers)[m.group(1)!] ?? '…');
+
+  /// T4: fichas colocadas por hueco (`g1` → ficha). Se aceptan las posiciones
+  /// intercambiables declaradas; sobran fichas.
+  ResultadoEjercicio responderHuecos(Map<String, String> colocadas, {int pistas = 0}) {
+    final e = _exigirEjercicio();
+    final g = e.variante.gapFill!;
+    final r = gradeGapFill(g, colocadas);
+    return _cerrar(
+      e,
+      verdict: r.correct ? Verdict.correct : Verdict.incorrect,
+      correcta: operacionResuelta(g),
+      valor: operacionResuelta(g, colocadas),
+      diagnostico: r.correct ? null : (r.wrongGaps.length == 1 ? 'Un hueco no es correcto' : '${r.wrongGaps.length} huecos no son correctos'),
+      payload: {'placed': Map<String, String>.of(colocadas), 'wrongGaps': r.wrongGaps},
+      pistas: pistas,
+    );
+  }
+
+  /// T5: paso señalado como erróneo, o null para «No hay ningún error».
+  ResultadoEjercicio responderPaso(int? pasoN, {int pistas = 0}) {
+    final e = _exigirEjercicio();
+    final pasos = e.variante.worked!;
+    final ok = gradeWorkedStep(pasos, pasoN);
+    final malo = pasos.where((w) => !w.correct).firstOrNull;
+    return _cerrar(
+      e,
+      verdict: ok ? Verdict.correct : Verdict.incorrect,
+      correcta: malo == null ? 'No hay ningún error' : 'Paso ${malo.n}: ${malo.correction ?? malo.text}',
+      valor: pasoN == null ? null : '$pasoN',
+      diagnostico: ok ? null : (malo == null ? 'Todos los pasos son correctos' : 'El error está en el paso ${malo.n}'),
+      pasoDesvio: malo?.n,
+      payload: {'stepN': pasoN},
+      pistas: pistas,
+    );
+  }
+
+  /// T10: corrige un par por separado (respuesta inmediata al unirlo).
+  bool corregirPar(String izquierda, String derecha) {
+    final e = _exigirEjercicio();
+    return e.variante.pairs!.any((p) => p.left == izquierda && p.right == derecha);
+  }
+
+  /// T10: el ejercicio termina cuando todos los elementos están unidos.
+  ResultadoEjercicio responderPares(Map<String, String> pares, {int pistas = 0}) {
+    final e = _exigirEjercicio();
+    final todos = e.variante.pairs!;
+    final r = gradePairs(todos, pares);
+    final bien = todos.length - r.wrongLefts.length;
+    return _cerrar(
+      e,
+      verdict: r.correct ? Verdict.correct : Verdict.incorrect,
+      correcta: todos.map((p) => '${p.left} = ${p.right}').join('\n'),
+      valor: '$bien',
+      diagnostico: r.correct ? null : '$bien de ${todos.length} parejas bien',
+      payload: {'pairs': Map<String, String>.of(pares), 'wrongLefts': r.wrongLefts},
+      pistas: pistas,
+    );
+  }
+
+  /// T8: corrige una parte del caso encadenado. Si falla, la siguiente parte
+  /// continúa con el valor correcto de esta.
+  GradeResult corregirParte(int indice, String raw, {String? unidad}) {
+    final e = _exigirEjercicio();
+    final parte = e.variante.chain![indice];
+    return grade(parte.answer, parte.predictedErrors, GradeInput(raw, unit: unidad));
+  }
+
+  /// T8: respuestas de todas las partes. Correcto solo si todas lo son; cada
+  /// parte queda corregida por separado en `answerPayload.parts`.
+  ResultadoEjercicio responderCadena(List<String?> respuestas, {int pistas = 0}) {
+    final e = _exigirEjercicio();
+    final partes = e.variante.chain!;
+    final detalle = <Map<String, dynamic>>[];
+    GradeResult? primerFallo;
+    int? primerFalloN;
+    var critico = false;
+    for (var i = 0; i < partes.length; i++) {
+      final raw = i < respuestas.length ? respuestas[i] : null;
+      final g = (raw == null || raw.trim().isEmpty) ? null : grade(partes[i].answer, partes[i].predictedErrors, GradeInput(raw));
+      final ok = g != null && isCorrectVerdict(g.verdict);
+      if (!ok && primerFalloN == null) {
+        primerFallo = g;
+        primerFalloN = i + 1;
+      }
+      if (g?.critical == true) critico = true;
+      detalle.add({
+        'value': g?.value,
+        'verdict': g == null ? 'skipped' : verdictWire(g.verdict),
+        'errorCode': g?.errorCode,
+        'correct': displayQty(partes[i].answer.value, partes[i].answer.unit),
+      });
+    }
+    final bien = detalle.where((d) => d['verdict'] == 'correct' || d['verdict'] == 'correct_note').length;
+    final ok = bien == partes.length;
+    final ultima = partes.last.answer;
+    return _cerrar(
+      e,
+      verdict: ok ? Verdict.correct : Verdict.incorrect,
+      correcta: displayQty(ultima.value, ultima.unit),
+      valor: detalle.last['value'] as String?,
+      unidad: ultima.unit,
+      errorCode: ok ? null : primerFallo?.errorCode,
+      diagnostico: ok ? null : (primerFallo?.diagnosis ?? '$bien de ${partes.length} partes bien'),
+      critico: critico,
+      pasoDesvio: ok ? null : primerFalloN,
+      payload: {'parts': detalle},
+      pistas: pistas,
+    );
+  }
+
   /// «No lo sé»: resolución guiada sin diagnóstico; cuenta como no acertado.
   ResultadoEjercicio noLoSe() {
     final e = _exigirEjercicio();
-    final a = e.variante.answer;
-    final buena = e.variante.options?.where((o) => o.correct).firstOrNull;
-    return _cerrar(
-      e,
-      verdict: Verdict.dontKnow,
-      correcta: a != null ? displayQty(a.value, a.unit) : (buena?.label ?? ''),
-    );
+    final v = e.variante;
+    final a = v.answer;
+    final buena = v.options?.where((o) => o.correct).firstOrNull;
+    final malo = v.worked?.where((w) => !w.correct).firstOrNull;
+    final correcta = switch (e.bloque) {
+      'fill_gaps' => operacionResuelta(v.gapFill!),
+      'step_pick' => malo == null ? 'No hay ningún error' : 'Paso ${malo.n}: ${malo.correction ?? malo.text}',
+      'matching' => v.pairs!.map((p) => '${p.left} = ${p.right}').join('\n'),
+      'chain' => displayQty(v.chain!.last.answer.value, v.chain!.last.answer.unit),
+      _ => a != null ? displayQty(a.value, a.unit) : (buena?.label ?? ''),
+    };
+    return _cerrar(e, verdict: Verdict.dontKnow, correcta: correcta);
   }
 
   EjercicioPreparado _exigirEjercicio() {

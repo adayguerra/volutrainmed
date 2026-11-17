@@ -21,11 +21,13 @@ import '../../../core/domain/learning_models.dart';
 import '../../../core/plataforma/plataforma.dart';
 import '../../../core/sync/sincronizador.dart';
 import '../../ads/ui/pausa_promocional.dart';
+import '../../grading/domain/grading.dart';
 import '../../progress/domain/projections.dart';
 import '../../review/domain/review_projection.dart';
 import '../domain/motor_sesion.dart';
 import 'borrador.dart';
 import 'correccion.dart';
+import 'fase2.dart';
 import 'fin_sesion.dart';
 
 /// Sesión de ejercicios a pantalla completa, sin navegación principal
@@ -66,6 +68,17 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
   final List<bool> _marcasSerie = [];
   int _pistas = 0;
   String? _varianteMostrada;
+
+  // Tipos de la fase 2.
+  final Map<String, String> _huecos = {};
+  String? _fichaSel;
+  int? _pasoSel;
+  final Map<String, String> _pares = {};
+  final Map<String, bool> _paresOk = {};
+  String? _izqSel;
+  List<String> _ordenDerecha = const [];
+  final List<String> _cadena = [];
+  final List<GradeResult> _cadenaRes = [];
 
   // Cuentas atrás visibles (T6 informativa, T7 de 60 s).
   Timer? _cuentaAtras;
@@ -205,6 +218,16 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       _serie.clear();
       _marcasSerie.clear();
       _pistas = 0;
+      _huecos.clear();
+      _fichaSel = null;
+      _pasoSel = null;
+      _pares.clear();
+      _paresOk.clear();
+      _izqSel = null;
+      _cadena.clear();
+      _cadenaRes.clear();
+      final pares = m.actual!.variante.pairs;
+      _ordenDerecha = pares == null ? const [] : (pares.map((x) => x.right).toList()..sort());
       _iniciarCuentaAtras(m.actual!);
     } else if (m.fase != FaseSesion.ejercicio) {
       _cuentaAtras?.cancel();
@@ -285,7 +308,9 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       'numeric_unit' => !_entrada.vacia && (!e.unidadAElegir || _unidad != null),
       'single_choice' || 'range_choice' => _opcion != null,
       'ordering' => _orden.length == (e.variante.orderItems?.length ?? 0),
-      'conversion_series' => !_entrada.vacia,
+      'conversion_series' || 'chain' => !_entrada.vacia,
+      'fill_gaps' => e.variante.gapFill!.gapIds.every(_huecos.containsKey),
+      'step_pick' => _pasoSel != null,
       _ => false,
     };
   }
@@ -298,9 +323,15 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       _siguienteConversion();
       return;
     }
+    if (e.bloque == 'chain') {
+      _siguienteParte();
+      return;
+    }
     final r = switch (e.bloque) {
       'numeric_unit' => m.responderNumerico(_entrada.texto, unidad: e.unidadAElegir ? _unidad : null, pistas: _pistas),
       'ordering' => m.responderOrden(List.of(_orden), pistas: _pistas),
+      'fill_gaps' => m.responderHuecos(Map.of(_huecos), pistas: _pistas),
+      'step_pick' => m.responderPaso(_pasoSel == -1 ? null : _pasoSel, pistas: _pistas),
       _ => m.responderOpcion(_opcion!, pistas: _pistas),
     };
     _tras(r);
@@ -316,6 +347,47 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       _entrada.limpiar();
     });
     if (_serie.length >= (m.actual!.variante.series?.length ?? 0)) _terminarSerie();
+  }
+
+  /// T8: corrige la parte actual; si falla, la siguiente sigue con el valor
+  /// correcto. Al responder la última se corrige el caso entero.
+  void _siguienteParte() {
+    final m = _motor!;
+    final g = m.corregirParte(_cadena.length, _entrada.texto);
+    unawaited(ref.read(senalesProvider).emitir(isCorrectVerdict(g.verdict) ? Senal.acierto : Senal.fallo));
+    setState(() {
+      _cadena.add(_entrada.texto);
+      _cadenaRes.add(g);
+      _entrada.limpiar();
+    });
+    if (_cadena.length >= (m.actual!.variante.chain?.length ?? 0)) _tras(m.responderCadena(List.of(_cadena), pistas: _pistas));
+  }
+
+  /// T4: tocar una ficha la selecciona; tocar un hueco la coloca o lo vacía.
+  void _tocarHueco(String id) {
+    setState(() {
+      if (_fichaSel != null) {
+        _huecos[id] = _fichaSel!;
+        _fichaSel = null;
+      } else {
+        _huecos.remove(id);
+      }
+    });
+  }
+
+  /// T10: cada pareja se corrige al unirla; al unir todas, termina.
+  void _tocarDerecha(String d) {
+    final m = _motor!;
+    final izq = _izqSel;
+    if (izq == null) return;
+    final ok = m.corregirPar(izq, d);
+    unawaited(ref.read(senalesProvider).emitir(ok ? Senal.acierto : Senal.fallo));
+    setState(() {
+      _pares[izq] = d;
+      _paresOk[izq] = ok;
+      _izqSel = null;
+    });
+    if (_pares.length >= (m.actual!.variante.pairs?.length ?? 0)) _tras(m.responderPares(Map.of(_pares), pistas: _pistas));
   }
 
   void _terminarSerie() {
@@ -628,6 +700,32 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
               Expanded(child: Text('${serie[k].prompt} → ${_serie[k]}${_marcasSerie[k] ? '' : ' (incorrecta)'}', style: context.textos.bodySmall)),
             ]),
         ];
+      case 'fill_gaps':
+        return [
+          RespuestaHuecos(
+            datos: v.gapFill!,
+            colocadas: _huecos,
+            fichaSeleccionada: _fichaSel,
+            alTocarFicha: (f) => setState(() => _fichaSel = _fichaSel == f ? null : f),
+            alTocarHueco: _tocarHueco,
+          ),
+        ];
+      case 'step_pick':
+        return [RespuestaPasos(pasos: v.worked!, seleccionado: _pasoSel, alElegir: (n) => setState(() => _pasoSel = n))];
+      case 'matching':
+        return [
+          RespuestaParejas(
+            pares: v.pairs!,
+            unidos: _pares,
+            correccion: _paresOk,
+            izquierdaSel: _izqSel,
+            ordenDerecha: _ordenDerecha,
+            alTocarIzquierda: (x) => setState(() => _izqSel = _izqSel == x ? null : x),
+            alTocarDerecha: _tocarDerecha,
+          ),
+        ];
+      case 'chain':
+        return [PartesCadena(partes: v.chain!, resultados: _cadenaRes)];
     }
     return const [];
   }
@@ -645,9 +743,15 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
         ),
       ),
     );
-    if (e.bloque == 'numeric_unit' || e.bloque == 'conversion_series') {
+    if (e.bloque == 'matching') return const SizedBox.shrink();
+    if (e.bloque == 'numeric_unit' || e.bloque == 'conversion_series' || e.bloque == 'chain') {
       final a = e.variante.answer;
-      final unidad = e.bloque == 'numeric_unit' ? (e.unidadAElegir ? _unidad : a?.unit) : null;
+      final cadena = e.variante.chain;
+      final unidad = switch (e.bloque) {
+        'numeric_unit' => e.unidadAElegir ? _unidad : a?.unit,
+        'chain' => cadena![_cadenaRes.length.clamp(0, cadena.length - 1)].answer.unit,
+        _ => null,
+      };
       return Column(mainAxisSize: MainAxisSize.min, children: [
         AnchoMaximo(ancho: anchoTeclado, child: CampoRespuesta(entrada: _entrada, unidad: unidad)),
         if (e.unidadAElegir) ...[
@@ -679,6 +783,10 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       // El veredicto va primero: visible sin desplazarse aunque el texto esté al 200 %.
       BandaVeredicto(resultado: r),
       const SizedBox(height: 12),
+      if (const {'fill_gaps', 'step_pick', 'matching', 'chain'}.contains(r.ejercicio.bloque)) ...[
+        DetalleFase2(resultado: r),
+        const SizedBox(height: 12),
+      ],
       Enunciado(r.ejercicio.variante, compacto: true),
       if (r.acierto && !tablet)
         Align(
