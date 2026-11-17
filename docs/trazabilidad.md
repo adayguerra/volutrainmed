@@ -216,7 +216,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Disposición por clase de tamaño | Móvil | Prueba automatizada | apps/mobile/test/app/armazon_test.dart, apps/mobile/test/app/barrido_pantallas_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/sync/sincronizador_test.dart, services/api/test/api.test.ts |
+| Disposición por clase de tamaño | Móvil | Prueba automatizada | apps/mobile/test/account/fusion_cuenta_test.dart, apps/mobile/test/app/armazon_test.dart, apps/mobile/test/app/barrido_pantallas_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/sync/sincronizador_test.dart, services/api/test/api.test.ts |
 | Disposición por clase de tamaño | Tablet en horizontal | Prueba automatizada | apps/mobile/test/ads/pausa_promocional_test.dart, apps/mobile/test/app/armazon_test.dart, apps/mobile/test/app/barrido_pantallas_test.dart |
 | Disposición por clase de tamaño | Giro del dispositivo | Prueba automatizada | apps/mobile/test/session/correccion_test.dart |
 | Disposición por clase de tamaño | Disposición sin conexión | Prueba automatizada | apps/mobile/test/home/inicio_test.dart |
@@ -281,7 +281,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Solo casos simulados | No existe entrada libre de datos | Prueba automatizada | apps/mobile/test/session/correccion_test.dart |
+| Solo casos simulados | No existe entrada libre de datos | Prueba automatizada | apps/mobile/test/app/barrido_pantallas_test.dart, apps/mobile/test/session/correccion_test.dart |
 | Solo casos simulados | La respuesta del usuario solo se corrige | Prueba automatizada | apps/mobile/test/session/correccion_test.dart |
 | La pauta viene dada en el enunciado | Enunciado con pauta | Prueba automatizada | apps/mobile/test/contenido_formativo/contenido_formativo_test.dart, apps/mobile/test/session/correccion_test.dart |
 | La pauta viene dada en el enunciado | Límite de dosis como dato | Prueba automatizada | apps/mobile/test/contenido_formativo/contenido_formativo_test.dart, apps/mobile/test/session/correccion_test.dart |
@@ -355,7 +355,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | --- | --- | --- | --- |
 | Jerarquía del contenido | Ruta con estados | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart |
 | Jerarquía del contenido | Ruta sin conexión | Prueba automatizada | apps/mobile/test/home/inicio_test.dart |
-| Acción principal única | Continuar | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, apps/mobile/test/ads/pausa_promocional_test.dart, apps/mobile/test/contenido/actualizador_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart, apps/mobile/test/onboarding/alta_test.dart, apps/mobile/test/session/correccion_test.dart, apps/mobile/test/session/ejercicios_test.dart, apps/mobile/test/session/fase2_motor_test.dart, apps/mobile/test/session/fin_y_pausas_test.dart, apps/mobile/test/session/motor_sesion_test.dart, apps/mobile/test/subscription/suscripcion_test.dart, apps/mobile/test/sync/sincronizador_test.dart, apps/mobile/test/timetrial/contrarreloj_test.dart, apps/mobile/test/voice/pantalla_manos_libres_test.dart |
+| Acción principal única | Continuar | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, apps/mobile/test/ads/pausa_promocional_test.dart, apps/mobile/test/contenido/actualizacion_entre_sesiones_test.dart, apps/mobile/test/contenido/actualizador_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart, apps/mobile/test/onboarding/alta_test.dart, apps/mobile/test/session/correccion_test.dart, apps/mobile/test/session/ejercicios_test.dart, apps/mobile/test/session/fase2_motor_test.dart, apps/mobile/test/session/fin_y_pausas_test.dart, apps/mobile/test/session/motor_sesion_test.dart, apps/mobile/test/subscription/suscripcion_test.dart, apps/mobile/test/sync/sincronizador_test.dart, apps/mobile/test/timetrial/contrarreloj_test.dart, apps/mobile/test/voice/pantalla_manos_libres_test.dart |
 | Secuencia de lecciones de una unidad | Lección bloqueada | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart |
 | Secuencia de lecciones de una unidad | Lección mixta | Prueba automatizada | apps/mobile/test/session/fase2_motor_test.dart |
 | Reto de unidad | Reto superado | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/session/motor_sesion_test.dart |
@@ -382,7 +382,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Paquetes de contenido verificados | Paquete válido | Prueba automatizada | apps/mobile/test/contenido/actualizador_test.dart, services/api/test/api.test.ts |
 | Paquetes de contenido verificados | Paquete no válido | Prueba automatizada | apps/mobile/test/contenido/actualizador_test.dart, services/api/test/api.test.ts |
 | Paquetes de contenido verificados | Descarga interrumpida | Prueba automatizada | apps/mobile/test/contenido/actualizador_test.dart, services/api/test/api.test.ts |
-| Actualización de contenido entre sesiones | Contenido nuevo durante una lección | Prueba automatizada | apps/mobile/test/session/motor_sesion_test.dart |
+| Actualización de contenido entre sesiones | Contenido nuevo durante una lección | Prueba automatizada | apps/mobile/test/contenido/actualizacion_entre_sesiones_test.dart |
 | Actualización de contenido entre sesiones | Contenido que exige una app más reciente | Prueba automatizada | apps/mobile/test/contenido/actualizador_test.dart |
 | Retirada inmediata de ejercicios | Ejercicio retirado | Prueba automatizada | apps/mobile/test/contenido/actualizador_test.dart |
 | Indicador de conexión no bloqueante | Pérdida de conexión | Prueba automatizada | apps/mobile/test/home/inicio_test.dart, apps/mobile/test/profile/perfil_test.dart |
@@ -400,7 +400,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Prueba de nivel opcional | Omitir la prueba | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/onboarding/alta_test.dart |
 | Prueba de nivel opcional | Prueba interrumpida | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/onboarding/alta_test.dart |
 | Registro después de la primera lección | Primera lección sin cuenta | Prueba automatizada | apps/mobile/test/onboarding/alta_test.dart, apps/mobile/test/session/fin_y_pausas_test.dart |
-| Registro después de la primera lección | Fusión al registrarse | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, services/api/test/api.test.ts |
+| Registro después de la primera lección | Fusión al registrarse | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, apps/mobile/test/account/fusion_cuenta_test.dart, services/api/test/api.test.ts |
 | Registro después de la primera lección | Registro pospuesto | Prueba automatizada | apps/mobile/test/profile/perfil_test.dart |
 | Métodos de acceso | Código correcto | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, services/api/test/api.test.ts |
 | Métodos de acceso | Código incorrecto | Prueba automatizada | apps/mobile/test/account/cuenta_test.dart, services/api/test/api.test.ts |
