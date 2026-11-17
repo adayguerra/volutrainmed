@@ -12,6 +12,9 @@ import { ReviewInbox, ReviewSheet } from './Review';
 import { Publishing } from './Publishing';
 import { Accounts, UserDetail, Users } from './People';
 import { Organizations } from './Organizations';
+import { Analytics, AnalyticsItem } from './Analytics';
+import { Inquiries } from './Inquiries';
+import { Audit } from './Audit';
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 
@@ -32,4 +35,8 @@ export const screens: ScreenDef[] = [
   { path: '/usuarios/:id', section: 'usuarios', component: UserDetail },
   { path: '/cuentas', section: 'cuentas', component: Accounts },
   { path: '/organizaciones', section: 'organizaciones', component: Organizations },
+  { path: '/analitica', section: 'analitica', component: Analytics },
+  { path: '/analitica/:id', section: 'analitica', component: AnalyticsItem },
+  { path: '/consultas', section: 'consultas', component: Inquiries },
+  { path: '/auditoria', section: 'auditoria', component: Audit },
 ];
