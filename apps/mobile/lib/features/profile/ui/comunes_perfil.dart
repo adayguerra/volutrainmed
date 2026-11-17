@@ -91,8 +91,10 @@ class BloqueAjustes extends StatelessWidget {
                 child: Text(titulo!.toUpperCase(), style: context.textos.labelSmall?.copyWith(color: c.atenuado)),
               ),
             ),
-          DecoratedBox(
-            decoration: BoxDecoration(color: c.superficie, borderRadius: BorderRadius.circular(12), border: Border.all(color: c.borde)),
+          Material(
+            color: c.superficie,
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: c.borde)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
