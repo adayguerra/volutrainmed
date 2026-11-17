@@ -10,6 +10,8 @@ import { ExerciseTypes } from './ExerciseTypes';
 import { Import } from './Import';
 import { ReviewInbox, ReviewSheet } from './Review';
 import { Publishing } from './Publishing';
+import { Accounts, UserDetail, Users } from './People';
+import { Organizations } from './Organizations';
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 
@@ -26,4 +28,8 @@ export const screens: ScreenDef[] = [
   { path: '/revision', section: 'revision', component: ReviewInbox },
   { path: '/revision/:itemId', section: 'revision', component: ReviewSheet },
   { path: '/publicacion', section: 'publicacion', component: Publishing },
+  { path: '/usuarios', section: 'usuarios', component: Users },
+  { path: '/usuarios/:id', section: 'usuarios', component: UserDetail },
+  { path: '/cuentas', section: 'cuentas', component: Accounts },
+  { path: '/organizaciones', section: 'organizaciones', component: Organizations },
 ];
