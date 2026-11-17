@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import '../../orgs/ui/pantalla_organizacion.dart' show DestacadoOrganizacion;
 import '../../../app/adaptativo.dart';
 import '../../../app/estado/estado_app.dart';
 import '../../../app/router.dart';
@@ -132,6 +133,7 @@ class _Ruta extends ConsumerWidget {
                 Aviso(aviso, icono: Symbols.system_update, tono: TonoEtiqueta.aviso),
                 const SizedBox(height: 8),
               ],
+              const DestacadoOrganizacion(),
               Semantics(header: true, child: Text(itinerario.itinerary.name, style: context.textos.titleLarge)),
               const SizedBox(height: 12),
               if (cola.isNotEmpty) ...[
