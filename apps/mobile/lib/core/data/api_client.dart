@@ -64,7 +64,9 @@ class ApiClient {
   bool get conCuenta => token?.call() != null;
 
   Future<dynamic> _send(String method, String path, {Object? body, Map<String, String>? query}) async {
-    final req = http.Request(method, _u(path, query))..headers.addAll(_headers());
+    // Sin cuerpo no se envía `content-type: application/json`: el servidor
+    // (Fastify) rechaza un cuerpo JSON vacío con un error 400/500.
+    final req = http.Request(method, _u(path, query))..headers.addAll(_headers(json: body != null));
     if (body != null) req.body = jsonEncode(body);
     http.Response res;
     try {
@@ -125,7 +127,8 @@ class ApiClient {
 
   // ---- Sincronización ------------------------------------------------------
   Future<Map<String, dynamic>> syncPush(Map<String, dynamic> req) => _obj('POST', '/v1/sync/push', body: req);
-  Future<Map<String, dynamic>> syncPull(String? cursor) => _obj('GET', '/v1/sync/pull', query: {'cursor': ?cursor});
+  Future<Map<String, dynamic>> syncPull(String? cursor, {int? limit}) =>
+      _obj('GET', '/v1/sync/pull', query: {'cursor': ?cursor, if (limit != null) 'limit': '$limit'});
   Future<Map<String, dynamic>> events(String deviceId, List<Map<String, dynamic>> events) =>
       _obj('POST', '/v1/events', body: {'deviceId': deviceId, 'events': events});
 
@@ -141,9 +144,15 @@ class ApiClient {
     final req = http.Request('GET', uri)..headers.addAll(_headers(json: false, extra: {if (desde > 0) 'range': 'bytes=$desde-'}));
     try {
       final res = await http.Response.fromStream(await _http.send(req).timeout(const Duration(seconds: 60)));
+      final cr = res.headers['content-range'];
+      // 416: el rango empieza en el final del archivo, es decir, la descarga
+      // parcial ya estaba completa. No es un fallo: se devuelve vacío.
+      if (res.statusCode == 416 && desde > 0) {
+        final t = (cr != null && cr.contains('/')) ? int.tryParse(cr.split('/').last) : null;
+        if (t == null || t <= desde) return RespuestaBytes(416, Uint8List(0), t ?? desde);
+      }
       if (res.statusCode != 200 && res.statusCode != 206) throw ApiException(res.statusCode, 'download_failed', 'Descarga fallida');
       int? total;
-      final cr = res.headers['content-range'];
       if (cr != null && cr.contains('/')) total = int.tryParse(cr.split('/').last);
       return RespuestaBytes(res.statusCode, res.bodyBytes, total ?? (res.statusCode == 200 ? res.bodyBytes.length : null));
     } on ApiException {
@@ -153,10 +162,16 @@ class ApiClient {
     }
   }
 
+  /// Clave pública de firma (Ed25519 en bruto, 32 bytes en base64). La app la
+  /// lleva fijada; esta llamada solo sirve para comprobar el `keyId`.
+  Future<Map<String, dynamic>> publicKey() => _obj('GET', '/v1/content/public-key');
+
   Future<Map<String, dynamic>> voicePack() => _obj('GET', '/v1/voice/pack');
 
   // ---- Consultas -----------------------------------------------------------
-  Future<Map<String, dynamic>> postInquiry(Map<String, dynamic> i) => _obj('POST', '/v1/inquiries', body: i);
+  /// `deviceId` permite enlazar la consulta a la cuenta si se crea después.
+  Future<Map<String, dynamic>> postInquiry(Map<String, dynamic> i, {String? deviceId}) =>
+      _obj('POST', '/v1/inquiries', body: {...i, 'deviceId': ?deviceId});
   Future<Map<String, dynamic>> inquiries() => _obj('GET', '/v1/inquiries');
 
   // ---- Tienda de pruebas ---------------------------------------------------
@@ -174,6 +189,7 @@ class ApiClient {
   Future<Map<String, dynamic>> orgDomainOffer() => _obj('GET', '/v1/orgs/domain-offer');
   Future<void> orgLeave() => _send('POST', '/v1/orgs/leave');
   Future<Map<String, dynamic>> leagueCurrent() => _obj('GET', '/v1/leagues/current');
+  Future<Map<String, dynamic>> leaguesPrivate() => _obj('GET', '/v1/leagues/private');
   Future<Map<String, dynamic>> leagueParticipation(bool participate, {String? alias}) =>
       _obj('POST', '/v1/leagues/participation', body: {'participate': participate, 'alias': ?alias});
 }

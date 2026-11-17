@@ -16,6 +16,12 @@ part 'database.g.dart';
 
 @DataClassName('ContentPackageRow')
 class ContentPackages extends Table {
+  /// Clave lógica estable entre versiones: `global` o el id del itinerario.
+  /// El cambio atómico de versión se hace por esta clave.
+  TextColumn get key => text()();
+
+  /// Identificador del archivo firmado (`2026.11.1:it-fundamentos` en el
+  /// servidor, `it-fundamentos` en el contenido incluido). Entra en la firma.
   TextColumn get id => text()();
   TextColumn get version => text()();
   TextColumn get sha256 => text()();
@@ -30,11 +36,13 @@ class ContentPackages extends Table {
   DateTimeColumn get installedAt => dateTime()();
 
   @override
-  Set<Column> get primaryKey => {id, version};
+  Set<Column> get primaryKey => {key, version};
 }
 
 @DataClassName('ContentDownloadRow')
 class ContentDownloads extends Table {
+  /// Clave lógica (`global` o id del itinerario).
+  TextColumn get key => text()();
   TextColumn get fileId => text()();
   TextColumn get version => text()();
   TextColumn get url => text()();
