@@ -15,6 +15,8 @@ import { Organizations } from './Organizations';
 import { Analytics, AnalyticsItem } from './Analytics';
 import { Inquiries } from './Inquiries';
 import { Audit } from './Audit';
+import { Achievements, Leagues } from './Gamification';
+import { Catalogs } from './Catalogs';
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 
@@ -39,4 +41,7 @@ export const screens: ScreenDef[] = [
   { path: '/analitica/:id', section: 'analitica', component: AnalyticsItem },
   { path: '/consultas', section: 'consultas', component: Inquiries },
   { path: '/auditoria', section: 'auditoria', component: Audit },
+  { path: '/logros', section: 'logros', component: Achievements },
+  { path: '/ligas', section: 'ligas', component: Leagues },
+  { path: '/catalogos', section: 'catalogos', component: Catalogs },
 ];
