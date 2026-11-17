@@ -8,6 +8,7 @@ import 'core/data/almacenes.dart';
 import 'core/data/api_client.dart';
 import 'core/data/database.dart';
 import 'core/domain/reloj.dart';
+import 'core/plataforma/notificaciones_locales.dart';
 import 'core/plataforma/plataforma.dart';
 
 /// Arranque de VolutrainMed con las dependencias reales: SQLite (Drift),
@@ -28,7 +29,7 @@ void main() {
     vibrador: VibradorSistema(),
     sonido: SonidoSistema(),
     permisos: PermisosSistema(),
-    notificador: NotificadorRegistro(),
+    notificador: NotificadorLocal(),
     leerActivo: (ruta) async => (await rootBundle.load(ruta)).buffer.asUint8List(),
   );
   runApp(ProviderScope(overrides: [dependenciasProvider.overrideWithValue(deps)], child: const VtmApp()));

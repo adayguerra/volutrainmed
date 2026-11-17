@@ -204,7 +204,7 @@ class _PantallaBienvenidaState extends ConsumerState<PantallaBienvenida> {
                     Row(children: [
                       Icon(Symbols.vaccines, color: c.primario, size: 32),
                       const SizedBox(width: 8),
-                      Text('VolutrainMed', style: context.textos.titleLarge?.copyWith(color: c.primario)),
+                      Flexible(child: Text('VolutrainMed', style: context.textos.titleLarge?.copyWith(color: c.primario))),
                     ]),
                     const SizedBox(height: 32),
                     ExcludeSemantics(
