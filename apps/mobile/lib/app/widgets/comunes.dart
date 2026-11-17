@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -199,12 +201,19 @@ class Esqueleto extends StatefulWidget {
 
 class _EsqueletoState extends State<Esqueleto> {
   bool _visible = false;
+  Timer? _t;
   @override
   void initState() {
     super.initState();
-    Future<void>.delayed(const Duration(milliseconds: 300), () {
+    _t = Timer(const Duration(milliseconds: 300), () {
       if (mounted) setState(() => _visible = true);
     });
+  }
+
+  @override
+  void dispose() {
+    _t?.cancel();
+    super.dispose();
   }
 
   @override

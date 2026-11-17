@@ -59,6 +59,10 @@ Future<bool> responderMalUI(WidgetTester t) async {
 
 Future<void> cerrarPausaSiHay(WidgetTester t) async {
   if (find.byType(PausaPromocional).evaluate().isNotEmpty) {
+    // La pausa real activa «Continuar» tras la cuenta atrás configurada (3 s).
+    for (var i = 0; i < 8; i++) {
+      await t.pump(const Duration(milliseconds: 500));
+    }
     await tocar(t, find.descendant(of: find.byType(PausaPromocional), matching: find.text('Continuar')));
   }
 }

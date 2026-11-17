@@ -21,9 +21,11 @@ class SincronizadorFalso implements Sincronizador {
   @override
   ValueListenable<EstadoSync> get estado => ValueNotifier(const EstadoSync());
   @override
-  Future<void> sincronizar() async => sincronizaciones++;
+  Future<void> sincronizar({bool forzar = false}) async => sincronizaciones++;
   @override
   Future<void> recuperarHistorial() async => recuperaciones++;
+  @override
+  Future<void> refrescar() async {}
 }
 
 class ArnesCuenta extends Arnes {
