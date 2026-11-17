@@ -8,6 +8,7 @@ import '../../core/contenido/repositorio_contenido.dart';
 import '../../core/domain/content_models.dart';
 import '../../core/domain/ids.dart';
 import '../../core/domain/learning_models.dart';
+import '../../core/plataforma/plataforma.dart';
 import '../../features/progress/domain/projections.dart';
 import '../../features/subscription/domain/entitlements_policy.dart';
 import '../dependencias.dart';
@@ -318,6 +319,17 @@ final proyeccionProvider = Provider<Proyeccion?>((ref) {
     now: ref.watch(dependenciasProvider).reloj.ahora(),
     topeRepaso: aj.topeRepaso,
     habilidadesConocidas: c.global.skills.map((s) => s.id),
+  );
+});
+
+/// Señales hápticas y sonoras según los ajustes y el modo silencio.
+final senalesProvider = Provider<Senales>((ref) {
+  final deps = ref.watch(dependenciasProvider);
+  return Senales(
+    vibrador: deps.vibrador,
+    sonido: deps.sonido,
+    hapticaActiva: () => ref.read(ajustesProvider).haptica,
+    sonidosActivos: () => ref.read(ajustesProvider).sonidos,
   );
 });
 
