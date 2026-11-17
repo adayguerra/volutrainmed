@@ -4,8 +4,8 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Estado | Escenarios |
 | --- | --- |
-| Sin evidencia automática | 278 |
-| Prueba automatizada | 54 |
+| Prueba automatizada | 171 |
+| Sin evidencia automática | 161 |
 | **Total** | **332** |
 
 ## add-content-backoffice · backoffice-administration
@@ -29,7 +29,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Catálogos compartidos | Nueva forma hablada | Sin evidencia automática |  |
 | Catálogos compartidos | Prueba de interpretación | Sin evidencia automática |  |
 | Analítica de contenido | Preguntas con más fallos | Sin evidencia automática |  |
-| Analítica de contenido | Datos insuficientes | Sin evidencia automática |  |
+| Analítica de contenido | Datos insuficientes | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Alertas de calidad | Plantilla demasiado difícil | Sin evidencia automática |  |
 | Alertas de calidad | Error frecuente sin clasificar | Sin evidencia automática |  |
 
@@ -86,11 +86,11 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
 | Tipos de ejercicio del producto mínimo viable | Respuesta numérica | Sin evidencia automática |  |
-| Tipos de ejercicio del producto mínimo viable | Selección única con opciones diagnósticas | Sin evidencia automática |  |
-| Tipos de ejercicio del producto mínimo viable | Ordenar pasos con equivalencias | Sin evidencia automática |  |
+| Tipos de ejercicio del producto mínimo viable | Selección única con opciones diagnósticas | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Tipos de ejercicio del producto mínimo viable | Ordenar pasos con equivalencias | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
 | Tipos de ejercicio del producto mínimo viable | Conversión relámpago | Sin evidencia automática |  |
 | Tipos de ejercicio del producto mínimo viable | Completar el planteamiento | Sin evidencia automática |  |
-| Tipos de ejercicio del producto mínimo viable | Emparejar | Sin evidencia automática |  |
+| Tipos de ejercicio del producto mínimo viable | Emparejar | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
 | Tipos de ejercicio del producto mínimo viable | Tipo de fase 2 sin conexión | Sin evidencia automática |  |
 
 ## add-growth-features · exercise-type-builder
@@ -107,13 +107,13 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Compatibilidad con voz calculada | Tipo con un bloque de ordenar | Sin evidencia automática |  |
 | Tipos en uso versionados | Cambio en un tipo en uso | Sin evidencia automática |  |
 | Tipos de la fase 2 | Caso encadenado | Sin evidencia automática |  |
-| Tipos de la fase 2 | Detectar el error | Sin evidencia automática |  |
+| Tipos de la fase 2 | Detectar el error | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
 
 ## add-growth-features · gamification-progress
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Logros fijos | Primera sesión manos libres | Sin evidencia automática |  |
+| Logros fijos | Primera sesión manos libres | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Logros fijos | Logro configurado en el back office | Sin evidencia automática |  |
 | Logros fijos | Logro obtenido sin conexión | Sin evidencia automática |  |
 
@@ -123,11 +123,11 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | --- | --- | --- | --- |
 | Ligas semanales por sector | Inicio de semana | Sin evidencia automática |  |
 | Ligas semanales por sector | Ascenso y descenso | Sin evidencia automática |  |
-| Puntuación por precisión | Tope diario | Prueba automatizada | services/api/test/api.test.ts |
-| Puntuación por precisión | Marca de contrarreloj no válida | Sin evidencia automática |  |
-| Alias y participación voluntaria | Clasificación con alias | Sin evidencia automática |  |
+| Puntuación por precisión | Tope diario | Prueba automatizada | apps/mobile/test/domain/ads_test.dart, apps/mobile/test/domain/league_test.dart, services/api/test/api.test.ts |
+| Puntuación por precisión | Marca de contrarreloj no válida | Prueba automatizada | apps/mobile/test/domain/league_test.dart |
+| Alias y participación voluntaria | Clasificación con alias | Prueba automatizada | apps/mobile/test/domain/league_test.dart |
 | Alias y participación voluntaria | Salida de las ligas | Prueba automatizada | services/api/test/api.test.ts |
-| Clasificación sin conexión | Liga sin conexión | Sin evidencia automática |  |
+| Clasificación sin conexión | Liga sin conexión | Prueba automatizada | apps/mobile/test/domain/league_test.dart |
 | Cambios de reglas al inicio de semana | Cambio del tope diario | Prueba automatizada | services/api/test/api.test.ts |
 | Detección de puntuaciones anómalas | Tiempos imposibles | Prueba automatizada | services/api/test/api.test.ts |
 | Logros configurables | Logro de racha | Prueba automatizada | services/api/test/api.test.ts |
@@ -149,42 +149,42 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Grupos e itinerarios asignados | Itinerario asignado | Sin evidencia automática |  |
 | Ligas privadas | Liga de una promoción | Sin evidencia automática |  |
 | Las plazas de organización eliminan los anuncios | Miembro de una organización | Sin evidencia automática |  |
-| Las plazas de organización eliminan los anuncios | Miembro sin conexión | Sin evidencia automática |  |
+| Las plazas de organización eliminan los anuncios | Miembro sin conexión | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
 
 ## add-house-ads-and-premium · house-ads
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Pausa promocional tras cada ejercicio | Respuesta correcta en una lección | Sin evidencia automática |  |
+| Pausa promocional tras cada ejercicio | Respuesta correcta en una lección | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
 | Pausa promocional tras cada ejercicio | Último ejercicio de la lección | Sin evidencia automática |  |
 | La corrección va siempre antes | Respuesta incorrecta con explicación | Sin evidencia automática |  |
 | La corrección va siempre antes | Error crítico con segundo intento | Sin evidencia automática |  |
 | Formato de la pausa promocional | Elementos visibles | Sin evidencia automática |  |
 | Formato de la pausa promocional | Tablet en horizontal | Sin evidencia automática |  |
 | Espera configurable antes de continuar | Espera por defecto | Sin evidencia automática |  |
-| Espera configurable antes de continuar | Espera desactivada | Sin evidencia automática |  |
+| Espera configurable antes de continuar | Espera desactivada | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
 | Inventario propio y local | Modo avión | Sin evidencia automática |  |
 | Inventario propio y local | Sin tráfico publicitario | Sin evidencia automática |  |
-| Rotación de anuncios | Sin repetición consecutiva | Sin evidencia automática |  |
-| Rotación de anuncios | Tope diario alcanzado | Sin evidencia automática |  |
-| Anuncios activados por contexto | Racha de varios días | Sin evidencia automática |  |
-| Anuncios activados por contexto | Límite diario de manos libres agotado | Sin evidencia automática |  |
-| Exclusiones de la pausa promocional | Usuario con Premium | Sin evidencia automática |  |
-| Exclusiones de la pausa promocional | Primera lección | Sin evidencia automática |  |
-| Exclusiones de la pausa promocional | Contrarreloj | Sin evidencia automática |  |
-| Exclusiones de la pausa promocional | Prueba de nivel | Sin evidencia automática |  |
+| Rotación de anuncios | Sin repetición consecutiva | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Rotación de anuncios | Tope diario alcanzado | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Anuncios activados por contexto | Racha de varios días | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Anuncios activados por contexto | Límite diario de manos libres agotado | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Exclusiones de la pausa promocional | Usuario con Premium | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Exclusiones de la pausa promocional | Primera lección | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Exclusiones de la pausa promocional | Contrarreloj | Prueba automatizada | apps/mobile/test/domain/ads_test.dart, apps/mobile/test/domain/league_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart |
+| Exclusiones de la pausa promocional | Prueba de nivel | Prueba automatizada | apps/mobile/test/domain/ads_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/review/review_test.dart |
 | Cuña hablada en el modo manos libres | Cuña tras el veredicto | Sin evidencia automática |  |
 | Cuña hablada en el modo manos libres | Saltar la cuña | Sin evidencia automática |  |
 | Cuña hablada en el modo manos libres | Interés sin tocar la pantalla | Sin evidencia automática |  |
-| El tiempo de anuncio no cuenta como práctica | Meta diaria de cinco minutos | Sin evidencia automática |  |
-| El tiempo de anuncio no cuenta como práctica | Tiempo de respuesta | Sin evidencia automática |  |
+| El tiempo de anuncio no cuenta como práctica | Meta diaria de cinco minutos | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| El tiempo de anuncio no cuenta como práctica | Tiempo de respuesta | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
 | Acción del anuncio | Toque en «Quitar anuncios» y vuelta | Sin evidencia automática |  |
 | Acción del anuncio | Compra desde un anuncio | Sin evidencia automática |  |
-| Publicidad honesta | Cifras calculadas con la configuración vigente | Sin evidencia automática |  |
+| Publicidad honesta | Cifras calculadas con la configuración vigente | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
 | Publicidad honesta | Texto con alusión clínica | Prueba automatizada | services/api/test/api.test.ts |
 | Campañas sin publicar una versión de la app | Cambio de la espera | Sin evidencia automática |  |
-| Campañas sin publicar una versión de la app | Campaña por sector | Sin evidencia automática |  |
-| Campañas sin publicar una versión de la app | Campaña caducada sin conexión | Sin evidencia automática |  |
+| Campañas sin publicar una versión de la app | Campaña por sector | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
+| Campañas sin publicar una versión de la app | Campaña caducada sin conexión | Prueba automatizada | apps/mobile/test/domain/ads_test.dart |
 | Accesibilidad de la pausa promocional | Lector de pantalla | Prueba automatizada | packages/engine/test/engine.test.ts |
 | Accesibilidad de la pausa promocional | Movimiento reducido | Sin evidencia automática |  |
 | Medición de los anuncios | Impresión sin conexión | Sin evidencia automática |  |
@@ -194,40 +194,40 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Planes y prueba gratuita | Inicio de la prueba | Sin evidencia automática |  |
-| Planes y prueba gratuita | Prueba ya consumida | Sin evidencia automática |  |
+| Planes y prueba gratuita | Inicio de la prueba | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Planes y prueba gratuita | Prueba ya consumida | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
 | Premium elimina los anuncios | Compra a mitad de lección | Sin evidencia automática |  |
 | Premium elimina los anuncios | Lección completa con Premium | Sin evidencia automática |  |
-| Beneficios adicionales de Premium | Límite de manos libres en el plan gratuito | Sin evidencia automática |  |
-| Beneficios adicionales de Premium | Manos libres con Premium | Sin evidencia automática |  |
+| Beneficios adicionales de Premium | Límite de manos libres en el plan gratuito | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Beneficios adicionales de Premium | Manos libres con Premium | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
 | Compra en la tienda y restauración | Restauración en un dispositivo nuevo | Sin evidencia automática |  |
 | Compra en la tienda y restauración | Compra cancelada | Prueba automatizada | services/api/test/api.test.ts |
 | Compra en la tienda y restauración | Compra fallida | Sin evidencia automática |  |
-| Validez sin conexión | Dos semanas sin conexión | Sin evidencia automática |  |
-| Validez sin conexión | Más de treinta días sin conexión | Sin evidencia automática |  |
-| Caducidad y cancelación | Cancelación a mitad de periodo | Sin evidencia automática |  |
-| Caducidad y cancelación | Suscripción caducada | Sin evidencia automática |  |
+| Validez sin conexión | Dos semanas sin conexión | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Validez sin conexión | Más de treinta días sin conexión | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Caducidad y cancelación | Cancelación a mitad de periodo | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Caducidad y cancelación | Suscripción caducada | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
 | Transparencia de la oferta | Información antes de comprar | Sin evidencia automática |  |
-| Transparencia de la oferta | Precios no disponibles | Sin evidencia automática |  |
-| Recordatorio antes del fin de la prueba | Aviso previo al cobro | Sin evidencia automática |  |
-| Estado de la suscripción en Perfil | Usuario con plan anual | Sin evidencia automática |  |
+| Transparencia de la oferta | Precios no disponibles | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Recordatorio antes del fin de la prueba | Aviso previo al cobro | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
+| Estado de la suscripción en Perfil | Usuario con plan anual | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart |
 
 ## add-training-app-mvp · adaptive-accessible-ui
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Disposición por clase de tamaño | Móvil | Prueba automatizada | services/api/test/api.test.ts |
+| Disposición por clase de tamaño | Móvil | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, services/api/test/api.test.ts |
 | Disposición por clase de tamaño | Tablet en horizontal | Sin evidencia automática |  |
 | Disposición por clase de tamaño | Giro del dispositivo | Sin evidencia automática |  |
 | Disposición por clase de tamaño | Disposición sin conexión | Sin evidencia automática |  |
 | La tablet no estira el móvil | Sesión en tablet horizontal | Sin evidencia automática |  |
 | La tablet no estira el móvil | Inicio en tablet horizontal | Sin evidencia automática |  |
 | Hoja de borrador no persistente | Cambio de ejercicio | Sin evidencia automática |  |
-| Contraste y color no exclusivo | Veredicto | Sin evidencia automática |  |
+| Contraste y color no exclusivo | Veredicto | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
 | Contraste y color no exclusivo | Tema oscuro | Sin evidencia automática |  |
 | Texto ampliable | Texto al 200 % | Sin evidencia automática |  |
 | Objetivos táctiles | Icono pequeño | Sin evidencia automática |  |
-| Compatibilidad con lector de pantalla | Lectura de una cantidad | Sin evidencia automática |  |
+| Compatibilidad con lector de pantalla | Lectura de una cantidad | Prueba automatizada | apps/mobile/test/domain/tts_fixtures_test.dart |
 | Compatibilidad con lector de pantalla | Anuncio del veredicto | Sin evidencia automática |  |
 | Movimiento reducido | Fin de lección con movimiento reducido | Sin evidencia automática |  |
 | Alternativa a los gestos | Ordenar pasos sin arrastrar | Sin evidencia automática |  |
@@ -239,22 +239,22 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Aritmética decimal exacta | Suma de decimales | Sin evidencia automática |  |
-| Tres veredictos | Más decimales de los pedidos | Sin evidencia automática |  |
-| Tres veredictos | Formato inseguro | Sin evidencia automática |  |
-| Tres veredictos | Respuesta incorrecta | Sin evidencia automática |  |
-| Redondeo indicado | Gota entera | Sin evidencia automática |  |
-| Redondeo indicado | Jeringa de 1 ml | Prueba automatizada | packages/engine/test/engine.test.ts |
-| Unidades de la respuesta | Unidad equivalente | Sin evidencia automática |  |
-| Unidades de la respuesta | Unidad equivocada | Sin evidencia automática |  |
-| Diagnóstico del tipo de error | Factor diez | Sin evidencia automática |  |
-| Diagnóstico del tipo de error | Paso omitido | Sin evidencia automática |  |
-| Diagnóstico del tipo de error | Error sin clasificar | Sin evidencia automática |  |
-| Errores críticos | Desviación de factor cinco | Sin evidencia automática |  |
-| Errores críticos | Dosis máxima no aplicada | Sin evidencia automática |  |
-| Explicación paso a paso | Explicación de una perfusión | Sin evidencia automática |  |
+| Aritmética decimal exacta | Suma de decimales | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Tres veredictos | Más decimales de los pedidos | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Tres veredictos | Formato inseguro | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Tres veredictos | Respuesta incorrecta | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Redondeo indicado | Gota entera | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Redondeo indicado | Jeringa de 1 ml | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart, packages/engine/test/engine.test.ts |
+| Unidades de la respuesta | Unidad equivalente | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Unidades de la respuesta | Unidad equivocada | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Diagnóstico del tipo de error | Factor diez | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Diagnóstico del tipo de error | Paso omitido | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Diagnóstico del tipo de error | Error sin clasificar | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Errores críticos | Desviación de factor cinco | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Errores críticos | Dosis máxima no aplicada | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Explicación paso a paso | Explicación de una perfusión | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
 | Explicación paso a paso | Explicación a demanda tras un acierto | Sin evidencia automática |  |
-| Segundo intento con otros números | Segundo intento acertado | Sin evidencia automática |  |
+| Segundo intento con otros números | Segundo intento acertado | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
 | Corrección con valores verificados | Corrección en modo avión | Sin evidencia automática |  |
 
 ## add-training-app-mvp · exercise-session
@@ -262,14 +262,14 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
 | Tipos de ejercicio del producto mínimo viable | Respuesta numérica | Sin evidencia automática |  |
-| Tipos de ejercicio del producto mínimo viable | Selección única con opciones diagnósticas | Sin evidencia automática |  |
-| Tipos de ejercicio del producto mínimo viable | Ordenar pasos con equivalencias | Sin evidencia automática |  |
+| Tipos de ejercicio del producto mínimo viable | Selección única con opciones diagnósticas | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Tipos de ejercicio del producto mínimo viable | Ordenar pasos con equivalencias | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
 | Tipos de ejercicio del producto mínimo viable | Conversión relámpago | Sin evidencia automática |  |
 | Teclado numérico propio | Segunda coma | Sin evidencia automática |  |
-| Teclado numérico propio | Teclado físico en tablet | Sin evidencia automática |  |
-| Unidad de respuesta | Unidad fija | Sin evidencia automática |  |
+| Teclado numérico propio | Teclado físico en tablet | Prueba automatizada | apps/mobile/test/domain/grading_fixtures_test.dart |
+| Unidad de respuesta | Unidad fija | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
 | Unidad de respuesta | Unidad a elegir | Sin evidencia automática |  |
-| Respuesta «No lo sé» | No lo sé | Sin evidencia automática |  |
+| Respuesta «No lo sé» | No lo sé | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/domain/review/review_test.dart, apps/mobile/test/domain/spoken_fixtures_test.dart |
 | Sesión sin navegación y con salida confirmada | Salida a mitad de lección | Sin evidencia automática |  |
 | Sesión sin navegación y con salida confirmada | Gesto de atrás | Sin evidencia automática |  |
 | Pausa al pasar a segundo plano | Llamada entrante | Sin evidencia automática |  |
@@ -288,7 +288,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Aviso formativo | Aceptación obligatoria en el alta | Sin evidencia automática |  |
 | Aviso formativo | Aviso disponible en ajustes | Sin evidencia automática |  |
 | Aviso formativo | Aviso sin conexión | Sin evidencia automática |  |
-| Casos rotulados como simulados | Paciente simulado | Sin evidencia automática |  |
+| Casos rotulados como simulados | Paciente simulado | Prueba automatizada | apps/mobile/test/domain/tts_fixtures_test.dart |
 | Casos rotulados como simulados | Principio activo | Sin evidencia automática |  |
 | Comunicación sin uso clínico | Ficha de la tienda | Sin evidencia automática |  |
 | Comunicación sin uso clínico | Texto con sugerencia de uso clínico | Sin evidencia automática |  |
@@ -297,20 +297,20 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Meta de práctica diaria o semanal | Meta diaria cumplida | Sin evidencia automática |  |
-| Meta de práctica diaria o semanal | Meta semanal | Sin evidencia automática |  |
-| Racha | Racha extendida | Sin evidencia automática |  |
-| Racha | Racha interrumpida | Sin evidencia automática |  |
-| Racha | Racha sin conexión | Sin evidencia automática |  |
-| Puntos por aciertos al primer intento | Segundo intento | Sin evidencia automática |  |
-| Puntos por aciertos al primer intento | Acierto al primer intento | Sin evidencia automática |  |
-| Niveles | Subida de nivel | Sin evidencia automática |  |
-| Logros fijos | Primera sesión manos libres | Sin evidencia automática |  |
+| Meta de práctica diaria o semanal | Meta diaria cumplida | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Meta de práctica diaria o semanal | Meta semanal | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Racha | Racha extendida | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Racha | Racha interrumpida | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Racha | Racha sin conexión | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Puntos por aciertos al primer intento | Segundo intento | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/review/review_test.dart |
+| Puntos por aciertos al primer intento | Acierto al primer intento | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/review/review_test.dart |
+| Niveles | Subida de nivel | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Logros fijos | Primera sesión manos libres | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Fin de lección | Lección con fallos | Sin evidencia automática |  |
-| Fin de lección | Cambio de estado de una habilidad | Sin evidencia automática |  |
-| Estadísticas por habilidad | Evolución de la precisión | Sin evidencia automática |  |
-| Estadísticas por habilidad | Datos insuficientes | Sin evidencia automática |  |
-| Estadísticas por habilidad | Estadísticas sin conexión | Sin evidencia automática |  |
+| Fin de lección | Cambio de estado de una habilidad | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Estadísticas por habilidad | Evolución de la precisión | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Estadísticas por habilidad | Datos insuficientes | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Estadísticas por habilidad | Estadísticas sin conexión | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Fallar no bloquea la práctica | Lección con muchos fallos | Sin evidencia automática |  |
 
 ## add-training-app-mvp · hands-free-voice
@@ -320,22 +320,22 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Procesamiento íntegro en el dispositivo | Sesión en modo avión | Sin evidencia automática |  |
 | Procesamiento íntegro en el dispositivo | Sin tráfico de voz | Sin evidencia automática |  |
 | Sin almacenamiento de audio ni de transcripciones | Datos guardados de un intento por voz | Sin evidencia automática |  |
-| Turno conversacional | Turno completo | Sin evidencia automática |  |
+| Turno conversacional | Turno completo | Prueba automatizada | apps/mobile/test/domain/tts_fixtures_test.dart |
 | Turno conversacional | La pregunta va al final | Sin evidencia automática |  |
 | Confirmación antes de corregir | Rechazo de lo entendido | Sin evidencia automática |  |
-| Confirmación antes de corregir | Cifras que se confunden | Prueba automatizada | packages/engine/test/engine.test.ts |
+| Confirmación antes de corregir | Cifras que se confunden | Prueba automatizada | apps/mobile/test/domain/tts_fixtures_test.dart, packages/engine/test/engine.test.ts |
 | Confirmación antes de corregir | Confirmación abreviada | Sin evidencia automática |  |
-| Gramática de respuestas numéricas | Variantes de un mismo decimal | Sin evidencia automática |  |
-| Gramática de respuestas numéricas | Cero tras la coma | Sin evidencia automática |  |
-| Gramática de respuestas numéricas | Entero y medio | Sin evidencia automática |  |
-| Gramática de respuestas numéricas | Respuesta ambigua | Sin evidencia automática |  |
-| Unidades habladas | Unidad fija | Sin evidencia automática |  |
-| Unidades habladas | Miligramos o microgramos | Sin evidencia automática |  |
-| Unidades habladas | Sinónimo de sector | Sin evidencia automática |  |
-| Comandos de voz | Repite | Sin evidencia automática |  |
+| Gramática de respuestas numéricas | Variantes de un mismo decimal | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Gramática de respuestas numéricas | Cero tras la coma | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Gramática de respuestas numéricas | Entero y medio | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Gramática de respuestas numéricas | Respuesta ambigua | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Unidades habladas | Unidad fija | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Unidades habladas | Miligramos o microgramos | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Unidades habladas | Sinónimo de sector | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Comandos de voz | Repite | Prueba automatizada | apps/mobile/test/domain/ads_test.dart, apps/mobile/test/domain/entitlements_test.dart, apps/mobile/test/domain/spoken_fixtures_test.dart |
 | Comandos de voz | Pausa y continúa | Sin evidencia automática |  |
-| Comandos de voz | No lo sé | Sin evidencia automática |  |
-| Comandos de voz | Salir | Sin evidencia automática |  |
+| Comandos de voz | No lo sé | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/domain/review/review_test.dart, apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Comandos de voz | Salir | Prueba automatizada | apps/mobile/test/domain/spoken_fixtures_test.dart |
 | Recuperación de errores de reconocimiento | Tercer fallo | Sin evidencia automática |  |
 | Recuperación de errores de reconocimiento | El fallo de reconocimiento no penaliza | Sin evidencia automática |  |
 | Recuperación de errores de reconocimiento | Silencio | Sin evidencia automática |  |
@@ -353,19 +353,19 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Jerarquía del contenido | Ruta con estados | Sin evidencia automática |  |
+| Jerarquía del contenido | Ruta con estados | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Jerarquía del contenido | Ruta sin conexión | Sin evidencia automática |  |
-| Acción principal única | Continuar | Sin evidencia automática |  |
-| Secuencia de lecciones de una unidad | Lección bloqueada | Sin evidencia automática |  |
+| Acción principal única | Continuar | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Secuencia de lecciones de una unidad | Lección bloqueada | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Secuencia de lecciones de una unidad | Lección mixta | Sin evidencia automática |  |
-| Reto de unidad | Reto superado | Sin evidencia automática |  |
-| Reto de unidad | Reto no superado por un error crítico | Sin evidencia automática |  |
-| Reto de unidad | Saltar una unidad con el reto | Sin evidencia automática |  |
-| Dificultad adaptativa dentro de la lección | Subida de nivel | Sin evidencia automática |  |
+| Reto de unidad | Reto superado | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Reto de unidad | Reto no superado por un error crítico | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Reto de unidad | Saltar una unidad con el reto | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Dificultad adaptativa dentro de la lección | Subida de nivel | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Dificultad adaptativa dentro de la lección | Bajada de nivel con apoyo | Sin evidencia automática |  |
-| Estados de dominio por habilidad | Habilidad consolidada | Sin evidencia automática |  |
-| Estados de dominio por habilidad | Habilidad dominada | Sin evidencia automática |  |
-| Estados de dominio por habilidad | Habilidad por refrescar | Sin evidencia automática |  |
+| Estados de dominio por habilidad | Habilidad consolidada | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart |
+| Estados de dominio por habilidad | Habilidad dominada | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
+| Estados de dominio por habilidad | Habilidad por refrescar | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Calentamiento de repaso | Sesión con repaso pendiente | Sin evidencia automática |  |
 | Calentamiento de repaso | Sesión sin repaso pendiente | Sin evidencia automática |  |
 
@@ -373,11 +373,11 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Entrenamiento completo sin conexión | Semana sin conexión | Sin evidencia automática |  |
+| Entrenamiento completo sin conexión | Semana sin conexión | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart |
 | Sincronización posterior del progreso | Recuperación de la conexión | Sin evidencia automática |  |
 | Sincronización posterior del progreso | Envío repetido | Prueba automatizada | services/api/test/api.test.ts |
 | Sincronización posterior del progreso | Error de sincronización | Sin evidencia automática |  |
-| Fusión del progreso entre dispositivos | Dos dispositivos sin conexión | Prueba automatizada | services/api/test/api.test.ts |
+| Fusión del progreso entre dispositivos | Dos dispositivos sin conexión | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, services/api/test/api.test.ts |
 | Fusión del progreso entre dispositivos | Dispositivo nuevo | Sin evidencia automática |  |
 | Paquetes de contenido verificados | Paquete válido | Prueba automatizada | services/api/test/api.test.ts |
 | Paquetes de contenido verificados | Paquete no válido | Prueba automatizada | services/api/test/api.test.ts |
@@ -396,9 +396,9 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Alta en cuatro pasos | Elección de sector | Sin evidencia automática |  |
 | Alta en cuatro pasos | Continuar desactivado sin selección | Sin evidencia automática |  |
 | Alta en cuatro pasos | Alta sin conexión | Sin evidencia automática |  |
-| Prueba de nivel opcional | Unidades convalidadas | Sin evidencia automática |  |
-| Prueba de nivel opcional | Omitir la prueba | Sin evidencia automática |  |
-| Prueba de nivel opcional | Prueba interrumpida | Sin evidencia automática |  |
+| Prueba de nivel opcional | Unidades convalidadas | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/domain/progress/projections_test.dart |
+| Prueba de nivel opcional | Omitir la prueba | Prueba automatizada | apps/mobile/test/domain/placement_test.dart |
+| Prueba de nivel opcional | Prueba interrumpida | Prueba automatizada | apps/mobile/test/domain/placement_test.dart |
 | Registro después de la primera lección | Primera lección sin cuenta | Sin evidencia automática |  |
 | Registro después de la primera lección | Fusión al registrarse | Prueba automatizada | services/api/test/api.test.ts |
 | Registro después de la primera lección | Registro pospuesto | Sin evidencia automática |  |
@@ -416,31 +416,31 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Ficha de repaso | Variante nueva en el repaso | Sin evidencia automática |  |
-| Calificación automática | Acierto rápido | Sin evidencia automática |  |
-| Calificación automática | Acierto con pista | Sin evidencia automática |  |
-| Calificación automática | No lo sé | Sin evidencia automática |  |
-| Programación del siguiente repaso | Programación sin conexión | Sin evidencia automática |  |
-| Programación del siguiente repaso | Intervalo creciente | Sin evidencia automática |  |
-| Cuarentena de errores críticos | Error crítico | Sin evidencia automática |  |
-| Cuarentena de errores críticos | Salida de la cuarentena | Sin evidencia automática |  |
-| Cola diaria de repaso | Tope por defecto | Sin evidencia automática |  |
-| Cola diaria de repaso | Orden de la cola | Sin evidencia automática |  |
-| Sesión de repaso | Ficha fallada en el repaso | Sin evidencia automática |  |
-| Sesión de repaso | Motivo de la ficha | Sin evidencia automática |  |
-| Repaso sin fichas pendientes | Cola vacía | Sin evidencia automática |  |
+| Ficha de repaso | Variante nueva en el repaso | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Calificación automática | Acierto rápido | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Calificación automática | Acierto con pista | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Calificación automática | No lo sé | Prueba automatizada | apps/mobile/test/domain/placement_test.dart, apps/mobile/test/domain/review/review_test.dart, apps/mobile/test/domain/spoken_fixtures_test.dart |
+| Programación del siguiente repaso | Programación sin conexión | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Programación del siguiente repaso | Intervalo creciente | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Cuarentena de errores críticos | Error crítico | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/review/review_test.dart |
+| Cuarentena de errores críticos | Salida de la cuarentena | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Cola diaria de repaso | Tope por defecto | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Cola diaria de repaso | Orden de la cola | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Sesión de repaso | Ficha fallada en el repaso | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Sesión de repaso | Motivo de la ficha | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
+| Repaso sin fichas pendientes | Cola vacía | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
 
 ## add-training-app-mvp · time-trial
 
 | Requisito | Escenario | Estado | Evidencia |
 | --- | --- | --- | --- |
-| Contrarreloj por habilidad consolidada | Habilidad sin consolidar | Sin evidencia automática |  |
-| Contrarreloj por habilidad consolidada | Sin ninguna habilidad consolidada | Sin evidencia automática |  |
-| Esprint de sesenta segundos | Acierto en el esprint | Sin evidencia automática |  |
+| Contrarreloj por habilidad consolidada | Habilidad sin consolidar | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart |
+| Contrarreloj por habilidad consolidada | Sin ninguna habilidad consolidada | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
+| Esprint de sesenta segundos | Acierto en el esprint | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
 | Esprint de sesenta segundos | Esprint sin conexión | Sin evidencia automática |  |
-| Penalización por fallo | Fallo con 20 segundos restantes | Sin evidencia automática |  |
-| Marca válida con precisión mínima | Marca no válida | Sin evidencia automática |  |
-| Marca válida con precisión mínima | Récord | Prueba automatizada | services/api/test/api.test.ts |
-| La interrupción anula el esprint | Interrupción | Sin evidencia automática |  |
-| Variante sin cuenta atrás | Ejercicios sin límite de tiempo | Sin evidencia automática |  |
-| Los fallos pasan al repaso | Fallo en el esprint | Sin evidencia automática |  |
+| Penalización por fallo | Fallo con 20 segundos restantes | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
+| Marca válida con precisión mínima | Marca no válida | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
+| Marca válida con precisión mínima | Récord | Prueba automatizada | apps/mobile/test/domain/entitlements_test.dart, apps/mobile/test/domain/league_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/domain/timetrial_test.dart, services/api/test/api.test.ts |
+| La interrupción anula el esprint | Interrupción | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
+| Variante sin cuenta atrás | Ejercicios sin límite de tiempo | Prueba automatizada | apps/mobile/test/domain/timetrial_test.dart |
+| Los fallos pasan al repaso | Fallo en el esprint | Prueba automatizada | apps/mobile/test/domain/review/review_test.dart |
