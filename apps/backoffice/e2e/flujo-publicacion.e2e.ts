@@ -12,6 +12,8 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
 import { authenticator } from 'otplib';
 import { ApiError, createApi, type Api } from '../src/api/client';
 import type { Account, Item, LoginResponse, MfaResponse, Release } from '../src/api/types';
@@ -126,6 +128,16 @@ async function main() {
   // ---------------------------------------------------------------- Publicación
   const admin = await signIn('contenido@volutrainmed.test');
   log(`Acceso como ${admin.account.name} (${admin.account.roleLabel})`);
+  // La plantilla entra en una unidad de Fundamentos: la unidad cambia y también pasa por revisión.
+  const tree = await admin.api.get<{ tree: { id: string; children: { id: string; children: { id: string; kind: string; data: { templateIds?: string[] } }[] }[] }[] }>('/v1/admin/structure');
+  const unit = tree.tree.flatMap((s) => s.children).find((it) => it.id === 'it-fundamentos')?.children.find((u) => u.kind === 'unit');
+  assert(unit, 'hay una unidad en Fundamentos');
+  await admin.api.patch(`/v1/admin/structure/unit/${unit.id}`, { templateIds: [...(unit.data.templateIds ?? []), tid] });
+  await admin.api.post(`/v1/admin/items/${unit.id}/submit`);
+  const unitSheet = await revisor.api.get<{ checklist: { key: string }[]; item: Item }>(`/v1/admin/reviews/${unit.id}`);
+  const unitDec = await revisor.api.post<{ state: string }>(`/v1/admin/reviews/${unit.id}/decision`, { decision: 'validate', checklist: Object.fromEntries(unitSheet.checklist.map((c) => [c.key, true])), fingerprint: unitSheet.item.fingerprint });
+  assert(unitDec.state === 'validated', 'la unidad con la plantilla queda validada');
+  log(`Plantilla añadida a la unidad ${unit.id}, enviada a revisión y validada`);
   const before = await admin.api.get<{ items: Release[] }>('/v1/admin/releases');
   const active = before.items.find((r) => r.state === 'published' && r.rolloutPct === 100);
   assert(active, 'hay una versión activa al 100 %');
@@ -154,6 +166,17 @@ async function main() {
   const at100 = await manifestVersions(50);
   assert(at100.get(release.number) === 50, 'al 100 % la reciben todos');
   log('Despliegue al 100 %: la reciben todos los dispositivos');
+  // Un dispositivo con la app ya instalada descarga el contenido y encuentra los ejercicios de la plantilla.
+  const anon = createApi({ base: BASE });
+  const man = await anon.get<{ contentVersion: string; packages: { itineraryId: string; url: string; sha256: string }[] }>('/v1/content/manifest', { deviceId: 'e2e-dispositivo-instalado', appVersion: '1.0.0' });
+  const pkgRef = man.packages.find((p) => p.itineraryId === 'it-fundamentos');
+  assert(man.contentVersion === release.number && pkgRef, 'el manifiesto ofrece el paquete de Fundamentos de la versión nueva');
+  const bytes = Buffer.from(await (await fetch(`${BASE}${pkgRef.url}`)).arrayBuffer());
+  assert(createHash('sha256').update(bytes).digest('hex') === pkgRef.sha256, 'el paquete descargado coincide con su huella firmada');
+  const pkg = JSON.parse(gunzipSync(bytes).toString('utf8')) as { variants: { templateId: string | null }[] };
+  const mine = pkg.variants.filter((v) => v.templateId === tid).length;
+  assert(mine > 0, 'el paquete incluye variantes de la plantilla nueva');
+  log(`[De la plantilla al dispositivo] El dispositivo instalado descarga ${release.number} y recibe ${mine} variantes de la plantilla, sin versión nueva de la app`);
   await expectError(admin.api.post('/v1/admin/releases/rollback', { reason: '' }), 400, 'motivo de reversión');
   const rb = await admin.api.post<{ rolledBack: string; active: string }>('/v1/admin/releases/rollback', { reason: 'Prueba de extremo a extremo: reversión' });
   assert(rb.rolledBack === release.number && rb.active === active.number, 'la reversión vuelve a la versión anterior');

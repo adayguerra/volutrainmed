@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { ExerciseType } from '@vtm/contracts';
 import { mockApi, renderApp } from '../test/helpers';
 
-const T1: ExerciseType = { id: 'T1', version: 1, name: 'Respuesta numérica con unidad', description: '', steps: [{ presentation: ['statement', 'highlighted_data'], response: 'numeric_unit', grading: 'numeric_tolerance' }], behaviour: ['hints'], voiceCompatible: true, minAppVersion: '1.0.0' };
+const T1: ExerciseType = { id: 'T1', version: 1, name: 'Numérica con unidad', description: '', steps: [{ presentation: ['statement', 'highlighted_data'], response: 'numeric_unit', grading: 'numeric_tolerance' }], behaviour: ['hints'], voiceCompatible: true, minAppVersion: '1.0.0' };
 const row = (t: ExerciseType, publishedUsage = 0, state = 'published') => ({ id: t.id, version: t.version, state, data: t, usage: publishedUsage, publishedUsage });
 
 describe('B12 · creador de tipos de ejercicio', () => {
@@ -61,7 +61,7 @@ describe('B12 · creador de tipos de ejercicio', () => {
     });
     renderApp('/tipos', 'content_admin');
     await user.click(await screen.findByRole('button', { name: 'Nuevo tipo' }));
-    await user.type(screen.getByLabelText('Nombre del tipo'), 'Detectar el error');
+    await user.type(screen.getByLabelText('Nombre del tipo'), 'Señalar el paso erróneo');
     // Paso 1: se añaden bloques desde la paleta y se reordenan con botones.
     await user.click(screen.getByRole('button', { name: 'Cálculo resuelto' }));
     await user.click(screen.getByRole('button', { name: 'Mover antes Cálculo resuelto en el paso 1' }));

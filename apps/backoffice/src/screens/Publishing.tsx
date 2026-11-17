@@ -127,7 +127,7 @@ function ReleaseDetail({ release, previous, onChanged }: { release: Release; pre
     api.get<{ pct: number; compatible: number; total: number }>('/v1/admin/releases/compat', { minAppVersion: release.minAppVersion }).then(setCompat).catch(() => setCompat(null));
   }, [api, release.minAppVersion]);
   const failed = (checks ?? []).filter((c) => !c.ok);
-  const passed = checks !== null && failed.length === 0;
+  const passed = checks !== null && checks.length > 0 && failed.length === 0;
   const editable = ['preparing', 'testing'].includes(release.state);
   const live = release.state === 'published';
 

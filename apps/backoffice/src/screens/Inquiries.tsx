@@ -84,7 +84,7 @@ function InquiryDetail({ id, onChanged }: { id: string; onChanged: () => void })
               <Panel title="Acciones sobre el ejercicio" icon="build">
                 <div className="col g10">
                   {converted && <Notice kind="ok">Creado el borrador v{converted.version} de la plantilla, enlazado con la consulta {i.reference}. <Link to={`/plantillas/${converted.itemId}`}>Abrir el borrador</Link></Notice>}
-                  {withdrawn && <Notice kind="ok">Ejercicio retirado: las apps dejan de presentarlo en cuanto tienen conexión.</Notice>}
+                  {withdrawn && <Notice kind="ok">Retirada aplicada: las apps dejan de presentarlo en cuanto tienen conexión.</Notice>}
                   <div className="row g8 wrap">
                     <button type="button" className="btn btn-secondary btn-sm" disabled={busy} onClick={async () => { const r = await run(() => api.post<{ itemId: string; version: number }>(`/v1/admin/inquiries/${id}/convert`), 'Borrador de corrección creado'); if (r) { setConverted(r); st.reload(); } }}><Icon name="edit_document" />Convertir en corrección de contenido</button>
                     <button type="button" className="btn btn-danger btn-sm" onClick={() => setWithdrawing(true)}><Icon name="block" />Retirar el ejercicio ahora</button>
@@ -95,7 +95,7 @@ function InquiryDetail({ id, onChanged }: { id: string; onChanged: () => void })
             {withdrawing && (
               <ReasonDialog title="Retirar el ejercicio ahora" danger confirmLabel="Retirar ahora" initial={`Retirado desde la consulta ${i.reference}`} onClose={() => setWithdrawing(false)}
                 description="Entra en la lista de retirada sin publicar una versión completa: las apps dejan de presentarlo en cuanto tienen conexión."
-                onConfirm={async (reason) => { const r = await run(() => api.post(`/v1/admin/inquiries/${id}/withdraw-exercise`, { reason }), 'Ejercicio retirado'); setWithdrawing(false); if (r) { setWithdrawn(true); st.reload(); } }} />
+                onConfirm={async (reason) => { const r = await run(() => api.post(`/v1/admin/inquiries/${id}/withdraw-exercise`, { reason }), 'Retirada aplicada'); setWithdrawing(false); if (r) { setWithdrawn(true); st.reload(); } }} />
             )}
           </div>
         );

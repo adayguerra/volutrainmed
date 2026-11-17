@@ -148,7 +148,7 @@ describe('B25 · consultas de usuarios', () => {
     expect(within(dialog).getByLabelText('Motivo (obligatorio)')).toHaveValue('Retirado desde la consulta VM-2611-0042');
     await user.click(within(dialog).getByRole('button', { name: 'Retirar ahora' }));
     await waitFor(() => expect(api.last('POST', '/v1/admin/inquiries/iq-1/withdraw-exercise')!.body).toEqual({ reason: 'Retirado desde la consulta VM-2611-0042' }));
-    expect(await screen.findByText('Ejercicio retirado: las apps dejan de presentarlo en cuanto tienen conexión.')).toBeInTheDocument();
+    expect(await screen.findByText('Retirada aplicada: las apps dejan de presentarlo en cuanto tienen conexión.')).toBeInTheDocument();
   });
 });
 

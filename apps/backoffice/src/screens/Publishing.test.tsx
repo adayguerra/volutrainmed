@@ -95,13 +95,13 @@ describe('B17 · versionado y publicación', () => {
 
   it('Aviso antes de publicar: muestra qué porcentaje de los dispositivos activos admite el tipo con versión mínima', async () => {
     mockApi(routes({
-      'GET /v1/admin/exercise-types': { items: [{ id: 'T8', data: { name: 'Caso encadenado', minAppVersion: '1.3.0' } }, { id: 'T1', data: { name: 'Respuesta numérica', minAppVersion: '1.0.0' } }] },
+      'GET /v1/admin/exercise-types': { items: [{ id: 'T8', data: { name: 'Partes enlazadas', minAppVersion: '1.3.0' } }, { id: 'T1', data: { name: 'Numérica con unidad', minAppVersion: '1.0.0' } }] },
       'GET /v1/admin/items': { items: [{ id: 'tpl-remi', kind: 'template', data: { exerciseTypeId: 'T8' } }] },
       'GET /v1/admin/releases/compat': ({ query }: { query: URLSearchParams }) => (query.get('minAppVersion') === '1.3.0' ? { total: 100, compatible: 78, pct: 78 } : { total: 100, compatible: 100, pct: 100 }),
     }));
     renderApp('/publicacion', 'content_admin');
     const warn = await screen.findByRole('list', { name: 'Tipos con versión mínima' });
-    expect(warn).toHaveTextContent('Incluye contenido del tipo T8 · Caso encadenado, que exige la app 1.3.0: lo admite el 78 % de los dispositivos activos');
+    expect(warn).toHaveTextContent('Incluye contenido del tipo T8 · Partes enlazadas, que exige la app 1.3.0: lo admite el 78 % de los dispositivos activos');
   });
 
   it('publica al 5 % escribiendo el nombre de la versión y despliega después al 50 y al 100 %', async () => {
