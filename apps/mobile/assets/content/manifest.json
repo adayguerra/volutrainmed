@@ -4,39 +4,39 @@
  "packages": [
   {
    "id": "it-fundamentos",
-   "version": "2026.11.1",
+   "version": "2026.11.0",
    "url": "it-fundamentos.json.gz",
-   "sha256": "89f124d0400d60d8ec6aa014c2c5d78c33dd4fa04bd4a34b49e9812ce6f18ca4",
-   "signature": "JJo3VywXYQqsI8C9vWkS3YyKYBn+N85ZMglGha1QDviPX1PvQLVlwlPgtc4JmRclGqcg2YJVmKFfby3NJfgjCQ==",
-   "size": 33664,
+   "sha256": "95c39fb0dca743609f68435e37b1210b2bf5ca302b1c15556156f3d8ca2a5774",
+   "signature": "ZkTNzGqj0yYXy8IbaDcLEB7PIpZKi+euvVVfAwLPfsFUIMqqBOX3h6UQjxL+ncCAvc10tTxlh/KkpKy3nBpyDw==",
+   "size": 33662,
    "minAppVersion": "1.0.0"
   },
   {
    "id": "it-anestesia",
-   "version": "2026.11.1",
+   "version": "2026.11.0",
    "url": "it-anestesia.json.gz",
-   "sha256": "0f98c4e67d555ee7b3d50387580ae0f8b9ea4c3f48f8782ddda94a7fd4d833a7",
-   "signature": "odLsY8Glu9eJcfVd4Cd0pU+YQn8zRhlOxumrNSri+DQUaXI/orRXVZ9G49nT+GbiI9ej6Kcqf4PMyozdqapjDw==",
-   "size": 27410,
+   "sha256": "59289f606f5de0b55a36f129be916046e47e6bf2d4a3f27860db256c2a0113cc",
+   "signature": "dSAvs+8zkLwpeTQhCJFXdJwwT6d3A+G5dtN1bmWAz/mluCRzFth59p5FziZtjA8YmRSZ+C1R4Zq/74XimaDWAQ==",
+   "size": 27408,
    "minAppVersion": "1.0.0"
   },
   {
    "id": "it-vet-pequenos",
-   "version": "2026.11.1",
+   "version": "2026.11.0",
    "url": "it-vet-pequenos.json.gz",
-   "sha256": "6d047146a1ee0dc2e0f4479ac4214584126c7873719eaca02c44bbb90b8651df",
-   "signature": "L3CC7m4oDCLq505Bdwo8Z1f1hgxPEx5QD/32gvfb2OrRM5j0T1f54Tizclp+LXdLCF8bxYxS4qFjqmxaCx2jAw==",
-   "size": 23275,
+   "sha256": "3a355b7619c5654de8482b6bc97000b9172d782a52745e8de9fe4febdb2b4703",
+   "signature": "xYc+JCM/XnnKKwws1vXFFw1QpAiV7SNq/mAU9OZg7jkGFXkmN4ghKd6jZInm5G7TnDW2TGt7QTnn/ZT3bGkiCA==",
+   "size": 23273,
    "minAppVersion": "1.0.0"
   }
  ],
  "global": {
   "id": "global",
-  "version": "2026.11.1",
+  "version": "2026.11.0",
   "url": "global.json.gz",
-  "sha256": "e25c0a9cad6d96f6cbdd80fd53e1b73fb28a0827911cf030c3a1f8f49714aa4b",
-  "signature": "Kam4jWHrwbl1wbsIUY6BA7RsdPL6QkXWjXQ9/Z7REXoitIllqsxIzdFQaNfTOMwdPwqktN2+YlnJR3Or1srfBA==",
-  "size": 4427,
+  "sha256": "40399142a7580a5e29a465e0cea8f39276097846db4729c38d0c4ecc81a5e88d",
+  "signature": "1ImsrGt03tTE5GA9FPyP+QZEcHS4saZkBAK8rnLd4CLceuO3Mq4xhnmteRTV0Zrck4RuX6LvA12cyX/IFEZKBQ==",
+  "size": 4424,
   "minAppVersion": "1.0.0"
  }
 }

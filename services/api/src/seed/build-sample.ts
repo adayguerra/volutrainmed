@@ -22,7 +22,7 @@ for (const t of TEMPLATES) {
 }
 if (blocking) process.exit(1);
 
-const res = buildContent(seedBuildInput('2026.11.1', Number(process.env.VARIANTS ?? 12)));
+const res = buildContent(seedBuildInput(process.env.CONTENT_VERSION ?? '2026.11.0', Number(process.env.VARIANTS ?? 12)));
 const failed = res.checks.filter((c) => !c.ok);
 for (const c of res.checks) console.log(`${c.ok ? '✓' : '✗'} ${c.label}: ${c.detail}`);
 const keys = loadOrCreateKeys();
