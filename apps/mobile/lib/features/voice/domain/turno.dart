@@ -438,7 +438,9 @@ class TurnoManosLibres extends ChangeNotifier {
     } else {
       lectura = en.unidad == null || en.unidad!.isEmpty ? _capital(numberToWords(en.valor)) : confirmationText(en.valor, en.unidad!);
     }
-    final deletreo = en.opcionId == null ? spellingFor(en.valor) : null;
+    // Se deletrean los enteros con cifras que se confunden («sesenta»); con
+    // decimales, las cifras tras la coma ya se dicen una a una.
+    final deletreo = en.opcionId == null && !en.valor.contains('.') ? spellingFor(en.valor) : null;
     if (deletreo != null) lectura = '${_capital(numberToWords(en.valor))}: $deletreo';
     final abreviada = confirmacion == 'siHayDuda' && en.confianza >= umbralConfianza && deletreo == null;
     _cambiar(EstadoTurno.confirmando);
