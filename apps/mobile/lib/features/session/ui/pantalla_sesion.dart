@@ -37,6 +37,10 @@ class PantallaSesion extends ConsumerStatefulWidget {
   const PantallaSesion({super.key, required this.parametros});
   final Map<String, String> parametros;
 
+  /// Motor de la última sesión abierta (solo para las pruebas).
+  @visibleForTesting
+  static MotorSesion? ultimoMotor;
+
   @override
   ConsumerState<PantallaSesion> createState() => _PantallaSesionState();
 }
@@ -148,8 +152,11 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
         alRegistrar: (a) => ref.read(aprendizajeProvider.notifier).registrarIntento(a),
         alEvento: (n, props) => ref.read(aprendizajeProvider.notifier).registrarEvento(n, props),
       )..preparar();
-      setState(() => _motor = m);
-      _alCambiarFase();
+      PantallaSesion.ultimoMotor = m;
+      setState(() {
+        _motor = m;
+        _alCambiarFase();
+      });
     } catch (e) {
       if (mounted) setState(() => _error = 'No se ha podido preparar la sesión: $e');
     }
