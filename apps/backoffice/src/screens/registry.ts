@@ -6,6 +6,8 @@ import { Library } from './Library';
 import { TemplateEditor } from './template/TemplateEditor';
 import { QuestionEditor } from './QuestionEditor';
 import { Preview } from './Preview';
+import { ExerciseTypes } from './ExerciseTypes';
+import { Import } from './Import';
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 
@@ -17,4 +19,6 @@ export const screens: ScreenDef[] = [
   { path: '/preguntas/nueva', section: 'biblioteca', component: QuestionEditor },
   { path: '/preguntas/:id', section: 'biblioteca', component: QuestionEditor },
   { path: '/vista-previa/:id', section: 'biblioteca', component: Preview },
+  { path: '/tipos', section: 'tipos', component: ExerciseTypes },
+  { path: '/importar', section: 'importacion', component: Import },
 ];
