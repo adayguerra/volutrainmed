@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../features/subscription/ui/aviso_derechos.dart';
 import 'estado/ajustes.dart';
 import 'estado/estado_app.dart';
 import 'router.dart';
@@ -78,7 +79,7 @@ class VtmApp extends ConsumerWidget {
       supportedLocales: locales,
       localizationsDelegates: delegados,
       routerConfig: ref.watch(routerProvider),
-      builder: envolver,
+      builder: (context, child) => envolver(context, AvisoDerechos(child: child ?? const SizedBox.shrink())),
     );
   }
 }
