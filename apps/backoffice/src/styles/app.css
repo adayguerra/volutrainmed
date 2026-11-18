@@ -130,3 +130,20 @@ pre.json { font: 12px/16px var(--f-num); white-space: pre-wrap; word-break: brea
 .tree-node[draggable='true'] { cursor: grab; }
 .tree-node.drop { outline: 2px dashed var(--primary); outline-offset: -2px; background: var(--primary-tint); }
 .tree-node .grip { font-size: 18px; }
+
+/* La hoja del lienzo hace heredar el color a enlaces y botones (.vt a, .vt button): se restituye el de cada variante. */
+.vt .btn { color: var(--fg); }
+.vt .btn-primary { color: var(--on-primary); }
+.vt .btn-secondary, .vt .btn-tertiary { color: var(--primary); }
+.vt .btn-danger { color: var(--error-strong); }
+.vt .btn-danger-solid { color: #fff; }
+.vt .btn:disabled, .vt .btn[aria-disabled='true'] { color: var(--muted); }
+.vt .bo-side a { color: var(--muted); }
+.vt .bo-side a.on { color: var(--primary); }
+.vt .tab { color: var(--muted); }
+.vt .tab.on { color: var(--primary); }
+.vt .segctl button { color: var(--muted); }
+.vt .segctl button.on { color: var(--fg); }
+
+/* Los textos solo para lector de pantalla (posición absoluta) no deben ensanchar la página desde una tabla desplazable. */
+.tblwrap { position: relative; }
