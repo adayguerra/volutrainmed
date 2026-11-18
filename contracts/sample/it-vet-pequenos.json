@@ -22288,10 +22288,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "300",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22332,7 +22332,7 @@
      "operation": "600 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "300",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22340,7 +22340,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "300 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "300 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22395,10 +22395,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "70",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22439,7 +22439,7 @@
      "operation": "140 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "70",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22447,7 +22447,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "70 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "70 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22502,10 +22502,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "555",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22546,7 +22546,7 @@
      "operation": "1110 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "555",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22554,7 +22554,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "555 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "555 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22609,10 +22609,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "170",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22653,7 +22653,7 @@
      "operation": "340 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "170",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22661,7 +22661,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "170 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "170 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22716,10 +22716,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "133.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22760,7 +22760,7 @@
      "operation": "400 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "133.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22768,7 +22768,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "133,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "133,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22823,10 +22823,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "130",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22867,7 +22867,7 @@
      "operation": "260 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "130",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22875,7 +22875,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "130 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "130 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -22930,10 +22930,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "140",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -22974,7 +22974,7 @@
      "operation": "280 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "140",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -22982,7 +22982,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "140 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "140 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23037,10 +23037,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "187.5",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23081,7 +23081,7 @@
      "operation": "375 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "187.5",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23089,7 +23089,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "187,5 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "187,5 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23144,10 +23144,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "226.7",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23188,7 +23188,7 @@
      "operation": "680 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "226.7",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23196,7 +23196,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "226,7 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "226,7 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23251,10 +23251,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "240",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23295,7 +23295,7 @@
      "operation": "720 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "240",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23303,7 +23303,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "240 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "240 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23358,10 +23358,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "140",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23402,7 +23402,7 @@
      "operation": "420 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "140",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23410,7 +23410,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "140 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "140 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23465,10 +23465,10 @@
    "targetTimeS": 30,
    "answer": {
     "value": "150",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23509,7 +23509,7 @@
      "operation": "450 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "150",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23517,7 +23517,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "150 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "150 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23572,10 +23572,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "400",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23616,7 +23616,7 @@
      "operation": "800 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "400",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23624,7 +23624,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "400 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "400 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23679,10 +23679,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "220",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23723,7 +23723,7 @@
      "operation": "660 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "220",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23731,7 +23731,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "220 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "220 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23786,10 +23786,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "233.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23830,7 +23830,7 @@
      "operation": "700 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "233.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23838,7 +23838,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "233,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "233,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -23893,10 +23893,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "50",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -23937,7 +23937,7 @@
      "operation": "100 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "50",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -23945,7 +23945,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "50 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "50 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24000,10 +24000,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "325",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24044,7 +24044,7 @@
      "operation": "975 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "325",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24052,7 +24052,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "325 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "325 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24107,10 +24107,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "283.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24151,7 +24151,7 @@
      "operation": "850 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "283.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24159,7 +24159,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "283,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "283,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24214,10 +24214,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "195",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24258,7 +24258,7 @@
      "operation": "390 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "195",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24266,7 +24266,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "195 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "195 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24321,10 +24321,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "310",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24365,7 +24365,7 @@
      "operation": "930 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "310",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24373,7 +24373,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "310 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "310 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24428,10 +24428,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "70",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24472,7 +24472,7 @@
      "operation": "140 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "70",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24480,7 +24480,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "70 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "70 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24535,10 +24535,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "412.5",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24579,7 +24579,7 @@
      "operation": "825 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "412.5",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24587,7 +24587,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "412,5 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "412,5 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24642,10 +24642,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "280",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24686,7 +24686,7 @@
      "operation": "560 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "280",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24694,7 +24694,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "280 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "280 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24749,10 +24749,10 @@
    "targetTimeS": 35,
    "answer": {
     "value": "270",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24793,7 +24793,7 @@
      "operation": "540 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "270",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24801,7 +24801,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "270 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "270 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24856,10 +24856,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "285",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -24900,7 +24900,7 @@
      "operation": "570 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "285",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -24908,7 +24908,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "285 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "285 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -24963,10 +24963,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "387.5",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25007,7 +25007,7 @@
      "operation": "775 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "387.5",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25015,7 +25015,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "387,5 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "387,5 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25070,10 +25070,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "180",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25114,7 +25114,7 @@
      "operation": "540 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "180",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25122,7 +25122,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "180 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "180 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25177,10 +25177,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "585",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25221,7 +25221,7 @@
      "operation": "1170 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "585",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25229,7 +25229,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "585 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "585 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25284,10 +25284,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "225",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25328,7 +25328,7 @@
      "operation": "450 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "225",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25336,7 +25336,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "225 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "225 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25391,10 +25391,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "120",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25435,7 +25435,7 @@
      "operation": "240 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "120",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25443,7 +25443,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "120 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "120 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25498,10 +25498,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "140",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25542,7 +25542,7 @@
      "operation": "420 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "140",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25550,7 +25550,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "140 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "140 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25605,10 +25605,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "158.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25649,7 +25649,7 @@
      "operation": "475 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "158.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25657,7 +25657,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "158,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "158,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25712,10 +25712,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "165",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25756,7 +25756,7 @@
      "operation": "330 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "165",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25764,7 +25764,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "165 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "165 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25819,10 +25819,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "280",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25863,7 +25863,7 @@
      "operation": "560 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "280",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25871,7 +25871,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "280 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "280 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -25926,10 +25926,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "220",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -25970,7 +25970,7 @@
      "operation": "440 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "220",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -25978,7 +25978,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "220 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "220 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26033,10 +26033,10 @@
    "targetTimeS": 40,
    "answer": {
     "value": "340",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": true,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26077,7 +26077,7 @@
      "operation": "680 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "340",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26085,7 +26085,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "340 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "340 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26140,10 +26140,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "390",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26184,7 +26184,7 @@
      "operation": "1170 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "390",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26192,7 +26192,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "390 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "390 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26247,10 +26247,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "50",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26291,7 +26291,7 @@
      "operation": "150 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "50",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26299,7 +26299,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "50 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "50 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26354,10 +26354,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "150",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26398,7 +26398,7 @@
      "operation": "300 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "150",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26406,7 +26406,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "150 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "150 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26461,10 +26461,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "210",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26505,7 +26505,7 @@
      "operation": "420 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "210",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26513,7 +26513,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "210 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "210 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26568,10 +26568,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "400",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26612,7 +26612,7 @@
      "operation": "1200 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "400",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26620,7 +26620,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "400 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "400 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26675,10 +26675,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "120",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26719,7 +26719,7 @@
      "operation": "360 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "120",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26727,7 +26727,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "120 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "120 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26782,10 +26782,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "165",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26826,7 +26826,7 @@
      "operation": "330 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "165",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26834,7 +26834,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "165 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "165 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26889,10 +26889,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "150",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -26933,7 +26933,7 @@
      "operation": "450 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "150",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -26941,7 +26941,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "150 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "150 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -26996,10 +26996,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "291.7",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27040,7 +27040,7 @@
      "operation": "875 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "291.7",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27048,7 +27048,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "291,7 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "291,7 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27103,10 +27103,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "500",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27147,7 +27147,7 @@
      "operation": "1000 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "500",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27155,7 +27155,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "500 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "500 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27210,10 +27210,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "258.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27254,7 +27254,7 @@
      "operation": "775 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "258.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27262,7 +27262,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "258,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "258,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27317,10 +27317,10 @@
    "targetTimeS": 45,
    "answer": {
     "value": "510",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27361,7 +27361,7 @@
      "operation": "1020 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "510",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27369,7 +27369,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "510 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "510 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27424,10 +27424,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "370",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27468,7 +27468,7 @@
      "operation": "740 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "370",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27476,7 +27476,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "370 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "370 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27531,10 +27531,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "160",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27575,7 +27575,7 @@
      "operation": "480 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "160",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27583,7 +27583,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "160 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "160 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27638,10 +27638,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "90",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27682,7 +27682,7 @@
      "operation": "270 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "90",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27690,7 +27690,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "90 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "90 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27745,10 +27745,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "310",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27789,7 +27789,7 @@
      "operation": "620 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "310",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27797,7 +27797,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "310 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "310 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27852,10 +27852,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "66.7",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -27896,7 +27896,7 @@
      "operation": "200 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "66.7",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -27904,7 +27904,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "66,7 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "66,7 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -27959,10 +27959,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "75",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28003,7 +28003,7 @@
      "operation": "150 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "75",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28011,7 +28011,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "75 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "75 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28066,10 +28066,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "425",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28110,7 +28110,7 @@
      "operation": "850 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "425",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28118,7 +28118,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "425 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "425 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28173,10 +28173,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "340",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28217,7 +28217,7 @@
      "operation": "680 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "340",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28225,7 +28225,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "340 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "340 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28280,10 +28280,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "220",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28324,7 +28324,7 @@
      "operation": "660 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "220",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28332,7 +28332,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "220 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "220 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28387,10 +28387,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "83.3",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28431,7 +28431,7 @@
      "operation": "250 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "83.3",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28439,7 +28439,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "83,3 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "83,3 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28494,10 +28494,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "150",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28538,7 +28538,7 @@
      "operation": "300 mg/día ÷ 2 tomas/día",
      "result": {
       "value": "150",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28546,7 +28546,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "150 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "150 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
@@ -28601,10 +28601,10 @@
    "targetTimeS": 50,
    "answer": {
     "value": "250",
-    "unit": "mg/tomas",
+    "unit": "mg/toma",
     "unitFixed": false,
     "unitChoices": [
-     "mg/tomas"
+     "mg/toma"
     ],
     "equivalents": [],
     "rounding": {
@@ -28645,7 +28645,7 @@
      "operation": "750 mg/día ÷ 3 tomas/día",
      "result": {
       "value": "250",
-      "unit": "mg/tomas"
+      "unit": "mg/toma"
      },
      "cancelled": [
       "día"
@@ -28653,7 +28653,7 @@
      "cancelledSpoken": "días se cancelan"
     }
    ],
-   "plausibility": "250 mg/tomas: menos que la dosis diaria. Tiene sentido.",
+   "plausibility": "250 mg/toma: menos que la dosis diaria. Tiene sentido.",
    "demo": true
   },
   {
