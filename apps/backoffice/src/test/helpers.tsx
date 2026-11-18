@@ -37,6 +37,8 @@ export function mockApi(routes: Routes) {
     if (!r) return new Response(JSON.stringify({ error: { code: 'not_found', message: `Sin simular: ${method} ${url.pathname}` } }), { status: 404 });
     try {
       const out = typeof r.h === 'function' ? await (r.h as Handler)(call) : r.h;
+      // Un HttpError dado como valor (no lanzado) también es una respuesta de error.
+      if (out instanceof HttpError) throw out;
       if (typeof out === 'string') return new Response(out, { status: 200 });
       return new Response(JSON.stringify(out ?? {}), { status: 200, headers: { 'Content-Type': 'application/json' } });
     } catch (e) {
