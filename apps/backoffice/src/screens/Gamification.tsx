@@ -10,7 +10,7 @@ import type { AchievementMetric, LeagueConfig } from '@vtm/contracts';
 import type { Item } from '../api/types';
 import { can } from '../auth/permissions';
 import { useSession } from '../auth/session';
-import { Async, Empty, Field, Icon, Notice, Page, Panel, ReasonDialog, StateChip, useAction, useAsync } from '../ui/kit';
+import { Async, Empty, Field, Icon, Modal, Notice, Page, Panel, ReasonDialog, StateChip, useAction, useAsync } from '../ui/kit';
 import { ago, date } from '../ui/format';
 
 export const METRICS: Record<AchievementMetric, string> = {
@@ -132,6 +132,8 @@ export function Leagues() {
   const [draft, setDraft] = useState<LeagueConfig | null>(null);
   const [scheduledMsg, setScheduledMsg] = useState<string | null>(null);
   const [resolving, setResolving] = useState<{ flag: Flag; decision: 'cleared' | 'confirmed' } | null>(null);
+  const [closed, setClosed] = useState<{ week: string; groups: { groupId: string; promoted: number; relegated: number }[] } | null>(null);
+  const [closing, setClosing] = useState(false);
   const c = draft ?? cfg.data?.scheduled?.value ?? cfg.data?.current ?? null;
   const set = (p: Partial<LeagueConfig>) => c && setDraft({ ...c, ...p });
   const participants = (week.data?.groups ?? []).reduce((a, g) => a + g.members, 0);
@@ -170,6 +172,28 @@ export function Leagues() {
           )}
         </Async>
       </Panel>
+      {account?.role === 'superadmin' && (
+        <Panel title="Cierre de semana" icon="event_repeat">
+          <div className="col g10">
+            <p className="t-small">Al cerrar una semana, los primeros de cada grupo suben de división y los últimos bajan, según las reglas con las que empezó esa semana. El cierre queda en auditoría.</p>
+            <div className="row g8 wrap">
+              <button type="button" className="btn btn-secondary btn-sm" disabled={busy} onClick={() => setClosing(true)}><Icon name="event_repeat" />Cerrar la semana anterior</button>
+            </div>
+            {closed && (
+              <Notice kind="ok">Semana del {date(closed.week)} cerrada: {closed.groups.length} grupos, {closed.groups.reduce((a, g) => a + g.promoted, 0)} ascensos y {closed.groups.reduce((a, g) => a + g.relegated, 0)} descensos.</Notice>
+            )}
+          </div>
+        </Panel>
+      )}
+      {closing && (
+        <Modal title="Cerrar la semana anterior" onClose={() => setClosing(false)}>
+          <p className="t-small">Se calculan las clasificaciones finales y se aplican los ascensos y descensos. No se puede deshacer.</p>
+          <div className="row g8 end">
+            <button type="button" className="btn btn-tertiary btn-sm" onClick={() => setClosing(false)}>Cancelar</button>
+            <button type="button" className="btn btn-primary btn-sm" disabled={busy} onClick={async () => { const r = await run(() => api.post<{ week: string; groups: { groupId: string; promoted: number; relegated: number }[] }>('/v1/admin/leagues/close-week', {}), 'Semana cerrada'); setClosing(false); if (r) { setClosed(r); week.reload(); } }}>Cerrar la semana</button>
+          </div>
+        </Modal>
+      )}
       {editable && (
         <Panel title="Usuarios marcados por patrones anómalos" icon="flag" bodyClass="tblwrap">
           <Async state={flags}>

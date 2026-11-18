@@ -10,7 +10,7 @@ import type { AdParams } from '@vtm/contracts';
 import type { Item } from '../api/types';
 import { useSession } from '../auth/session';
 import { DEFAULT_SECTORS, sectorName } from '../content/common';
-import { Async, Empty, Field, Icon, Modal, Notice, Page, Panel, StateChip, Tabs, useAction, useAsync } from '../ui/kit';
+import { Async, Empty, Field, Icon, Modal, Notice, Page, Panel, ReasonDialog, StateChip, Tabs, useAction, useAsync } from '../ui/kit';
 import { num } from '../ui/format';
 
 interface UnitData { symbol: string; name: string; readingSingular?: string; readingPlural?: string; spokenForms?: string[]; magnitude?: string; factor?: string; gender?: string }
@@ -125,6 +125,57 @@ function InstrumentsTab() {
   );
 }
 
+// ------------------------------------------------------------------ Habilidades y especies
+interface SimpleData { name: string; code?: string; description?: string; sectorId?: string }
+
+function SimpleCatalogTab({ kind, title, icon, withCode }: { kind: 'catalog_skill' | 'catalog_species'; title: string; icon: string; withCode?: boolean }) {
+  const { api } = useSession();
+  const { run } = useAction();
+  const st = useItems<SimpleData>(kind);
+  const { save, busy } = useSaveItem(kind);
+  const [edit, setEdit] = useState<{ item: Item<SimpleData> | null; data: SimpleData } | null>(null);
+  const [retiring, setRetiring] = useState<Item<SimpleData> | null>(null);
+  const sorted = [...(st.data ?? [])].sort((a, b) => (withCode ? Number((a.data.code ?? 'H99').slice(1)) - Number((b.data.code ?? 'H99').slice(1)) : a.data.name.localeCompare(b.data.name, 'es')));
+  const codeOk = !withCode || /^H\d{1,2}$/.test(edit?.data.code ?? '');
+  const dup = Boolean(edit && withCode && (st.data ?? []).some((i) => i.data.code === edit.data.code && i.id !== edit.item?.id));
+  const one = withCode ? 'habilidad' : 'especie';
+  return (
+    <Panel title={title} icon={icon} bodyClass="tblwrap" actions={<button type="button" className="btn btn-primary btn-xs" onClick={() => setEdit({ item: null, data: withCode ? { code: '', name: '', description: '' } : { name: '', sectorId: 'veterinaria' } })}><Icon name="add" />Nueva {one}</button>}>
+      <Async state={st}>
+        {() => sorted.length === 0 ? <Empty title={`Sin ${title.toLowerCase()}`} /> : (
+          <table className="tbl" aria-label={title}>
+            <thead><tr>{withCode && <th>Código</th>}<th>Nombre</th>{withCode ? <th>Descripción</th> : <th>Sector</th>}<th>Estado</th><th><span className="sr-only">Acciones</span></th></tr></thead>
+            <tbody>{sorted.map((i) => (
+              <tr key={i.id}>
+                {withCode && <td className="mono b">{i.data.code}</td>}<td>{i.data.name}</td><td className="t-small">{withCode ? i.data.description ?? '' : sectorName(i.data.sectorId)}</td><td><StateChip state={i.state} /></td>
+                <td className="actions">
+                  <button type="button" className="btn btn-tertiary btn-xs" onClick={() => setEdit({ item: i, data: i.data })}>Editar</button><SubmitButton item={i} onDone={st.reload} />
+                  {i.state !== 'retired' && <button type="button" className="btn btn-danger btn-xs" onClick={() => setRetiring(i)}>Retirar</button>}
+                </td>
+              </tr>
+            ))}</tbody>
+          </table>
+        )}
+      </Async>
+      {edit && (
+        <Modal title={edit.item ? `Editar ${one}` : `Nueva ${one}`} onClose={() => setEdit(null)}>
+          {withCode && <Field label="Código (H1, H2…)" id="sc-code" error={edit.data.code && !codeOk ? 'El código tiene la forma H1, H2…' : dup ? 'Ya existe una habilidad con ese código' : undefined}><input id="sc-code" className="input mono" value={edit.data.code ?? ''} disabled={Boolean(edit.item)} onChange={(e) => setEdit({ ...edit, data: { ...edit.data, code: e.target.value.toUpperCase().trim() } })} /></Field>}
+          <Field label="Nombre" id="sc-name"><input id="sc-name" className="input" value={edit.data.name} onChange={(e) => setEdit({ ...edit, data: { ...edit.data, name: e.target.value } })} /></Field>
+          {withCode ? <Field label="Descripción" id="sc-desc"><input id="sc-desc" className="input" value={edit.data.description ?? ''} onChange={(e) => setEdit({ ...edit, data: { ...edit.data, description: e.target.value } })} /></Field>
+            : <Field label="Sector" id="sc-sector"><select id="sc-sector" className="input" value={edit.data.sectorId ?? 'veterinaria'} onChange={(e) => setEdit({ ...edit, data: { ...edit.data, sectorId: e.target.value } })}>{DEFAULT_SECTORS.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select></Field>}
+          <p className="t-small muted">{DRAFT_NOTE}</p>
+          <div className="row g8 end"><button type="button" className="btn btn-tertiary btn-sm" onClick={() => setEdit(null)}>Cancelar</button>
+            <button type="button" className="btn btn-primary btn-sm" disabled={busy || !edit.data.name.trim() || !codeOk || dup} onClick={async () => { const r = await save(edit.item, edit.data as unknown as Record<string, unknown>); if (r) { setEdit(null); st.reload(); } }}>Guardar</button></div>
+        </Modal>
+      )}
+      {retiring && (
+        <ReasonDialog title={`Retirar «${retiring.data.name}»`} description="Deja de ofrecerse en los editores y queda en el archivo. Nada se borra." confirmLabel="Retirar" danger onClose={() => setRetiring(null)}
+          onConfirm={async (reason) => { const r = await run(() => api.post(`/v1/admin/items/${retiring.id}/retire`, { reason }), 'Retirado y archivado'); setRetiring(null); if (r) st.reload(); }} />
+      )}
+    </Panel>
+  );
+}
+
 // ------------------------------------------------------------------ Voz: léxico, comandos, sinónimos y cuadro de prueba
 export function normalizedPhrase(text: string, lex: LexiconData | null, synonyms: Record<string, string>): { text: string; changes: string[] } {
   const confusions = Object.fromEntries((lex?.confusions ?? []).map((c) => [c.from, c.to]));
@@ -168,8 +219,12 @@ function VoiceTab() {
             <>
               <Panel title="Sinónimos por sector" icon="record_voice_over" actions={<StateChip state={lexItem.state} />} bodyClass="tblwrap">
                 <table className="tbl" aria-label="Sinónimos por sector">
-                  <thead><tr><th>Forma hablada</th><th>Unidad</th><th>Sector</th><th>Activado por defecto</th></tr></thead>
-                  <tbody>{lex.sectorSynonyms.map((s, i) => <tr key={i}><td>«{s.spoken}»</td><td className="mono">{s.unit}</td><td>{sectorName(s.sectorId)}</td><td>{s.enabledByDefault ? 'Sí' : 'No'}</td></tr>)}</tbody>
+                  <thead><tr><th>Forma hablada</th><th>Unidad</th><th>Sector</th><th>Activado por defecto</th><th><span className="sr-only">Acciones</span></th></tr></thead>
+                  <tbody>{lex.sectorSynonyms.map((s, i) => (
+                    <tr key={i}><td>«{s.spoken}»</td><td className="mono">{s.unit}</td><td>{sectorName(s.sectorId)}</td>
+                      <td><input type="checkbox" aria-label={`«${s.spoken}» activado por defecto`} checked={Boolean(s.enabledByDefault)} disabled={busy} onChange={(e) => update({ ...lex, sectorSynonyms: lex.sectorSynonyms.map((x, j) => (j === i ? { ...x, enabledByDefault: e.target.checked } : x)) })} /></td>
+                      <td className="actions"><button type="button" className="iconbtn iconbtn-sm" aria-label={`Quitar la forma hablada «${s.spoken}»`} disabled={busy} onClick={() => update({ ...lex, sectorSynonyms: lex.sectorSynonyms.filter((_, j) => j !== i) })}><Icon name="delete" /></button></td></tr>
+                  ))}</tbody>
                 </table>
                 <div className="row g8 wrap ai-end" style={{ padding: 16 }}>
                   <Field label="Nueva forma hablada" id="syn-spoken"><input id="syn-spoken" className="input input-sm" value={newSyn.spoken} onChange={(e) => setNewSyn({ ...newSyn, spoken: e.target.value.toLowerCase() })} /></Field>
@@ -179,7 +234,7 @@ function VoiceTab() {
                 </div>
               </Panel>
               <Panel title="Léxico de confusiones" icon="swap_horiz">
-                <ul className="row g6 wrap" aria-label="Léxico de confusiones">{lex.confusions.map((c, i) => <li key={i} className="chip chip-line">«{c.from}» → «{c.to}»</li>)}</ul>
+                <ul className="row g6 wrap" aria-label="Léxico de confusiones">{lex.confusions.map((c, i) => <li key={i} className="chip chip-line">«{c.from}» → «{c.to}»<button type="button" className="iconbtn" style={{ width: 24, height: 24 }} aria-label={`Quitar la confusión «${c.from}»`} disabled={busy} onClick={() => update({ ...lex, confusions: lex.confusions.filter((_, j) => j !== i) })}><Icon name="close" size={16} /></button></li>)}</ul>
                 <div className="row g8 wrap ai-end" style={{ marginTop: 12 }}>
                   <Field label="Se oye" id="cf-from"><input id="cf-from" className="input input-sm" value={newConf.from} onChange={(e) => setNewConf({ ...newConf, from: e.target.value.toLowerCase() })} /></Field>
                   <Field label="Se interpreta" id="cf-to"><input id="cf-to" className="input input-sm" value={newConf.to} onChange={(e) => setNewConf({ ...newConf, to: e.target.value.toLowerCase() })} /></Field>
@@ -187,7 +242,14 @@ function VoiceTab() {
                 </div>
               </Panel>
               <Panel title="Comandos" icon="keyboard_voice">
-                <ul className="col g4" aria-label="Comandos de voz">{lex.commands.map((c) => <li key={c.command} className="t-small"><span className="mono b">{c.command}</span>: {c.synonyms.map((s) => `«${s}»`).join(', ')}</li>)}</ul>
+                <ul className="col g8" aria-label="Comandos de voz">{lex.commands.map((c) => (
+                  <li key={c.command} className="row g8 wrap">
+                    <label className="mono b t-small" style={{ width: 130 }} htmlFor={`cmd-${c.command}`}>{c.command}</label>
+                    <input id={`cmd-${c.command}`} aria-label={`Formas habladas del comando ${c.command}`} className="input input-sm" style={{ flex: '1 1 240px' }} defaultValue={c.synonyms.join(', ')}
+                      onBlur={(e) => { const next = e.target.value.split(',').map((x) => x.trim().toLowerCase()).filter(Boolean); if (next.length && next.join('|') !== c.synonyms.join('|')) void update({ ...lex, commands: lex.commands.map((x) => (x.command === c.command ? { ...x, synonyms: next } : x)) }); else e.target.value = c.synonyms.join(', '); }} />
+                  </li>
+                ))}</ul>
+                <p className="t-small muted" style={{ marginTop: 8 }}>Formas separadas por comas; se guardan al salir del campo. Un comando no puede quedarse sin formas habladas.</p>
               </Panel>
               <div className="row g8"><SubmitButton item={lexItem} onDone={st.reload} /><span className="t-small muted">{DRAFT_NOTE}</span></div>
             </>
@@ -331,15 +393,17 @@ function AdsTab() {
   );
 }
 
-type TabId = 'units' | 'instruments' | 'voice' | 'ads';
+type TabId = 'units' | 'instruments' | 'skills' | 'species' | 'voice' | 'ads';
 
 export function Catalogs() {
   const [tab, setTab] = useState<TabId>('units');
   return (
     <Page title="Catálogos de unidades y voz" crumbs={[{ label: 'Sistema' }, { label: 'Catálogos' }]}>
-      <Tabs label="Catálogos" value={tab} onChange={setTab} tabs={[{ id: 'units', label: 'Unidades' }, { id: 'instruments', label: 'Instrumentos' }, { id: 'voice', label: 'Voz: confusiones, comandos y sinónimos' }, { id: 'ads', label: 'Anuncios propios' }]} />
+      <Tabs label="Catálogos" value={tab} onChange={setTab} tabs={[{ id: 'units', label: 'Unidades' }, { id: 'instruments', label: 'Instrumentos' }, { id: 'skills', label: 'Habilidades' }, { id: 'species', label: 'Especies' }, { id: 'voice', label: 'Voz: confusiones, comandos y sinónimos' }, { id: 'ads', label: 'Anuncios propios' }]} />
       {tab === 'units' && <UnitsTab />}
       {tab === 'instruments' && <InstrumentsTab />}
+      {tab === 'skills' && <SimpleCatalogTab kind="catalog_skill" title="Habilidades" icon="psychology" withCode />}
+      {tab === 'species' && <SimpleCatalogTab kind="catalog_species" title="Especies" icon="pets" />}
       {tab === 'voice' && <VoiceTab />}
       {tab === 'ads' && <AdsTab />}
     </Page>

@@ -4,6 +4,8 @@ import type { TemplateDefinition, VariableDef } from '@vtm/engine';
 import { ERROR_LABELS, type ErrorCode } from '@vtm/contracts';
 import { commonError, formulaCheck, runMassTest, sample, type MassReport, type SampleRow } from '../../content/template';
 import { ERROR_CODES, SKILLS } from '../../content/common';
+
+type Named = { id: string; name: string };
 import { Field, Icon, Notice, Panel } from '../../ui/kit';
 import { num, qty } from '../../ui/format';
 
@@ -23,14 +25,21 @@ function move<T>(arr: T[], i: number, d: -1 | 1): T[] {
 }
 
 // ------------------------------------------------------------------ 1 · Datos generales
-export function GeneralStep({ def, set, sectors, types }: { def: Def; set: Set; sectors: { id: string; name: string }[]; types: { id: string; name: string }[] }) {
+export function GeneralStep({ def, set, sectors, types, skills = SKILLS, species = [] }: { def: Def; set: Set; sectors: Named[]; types: Named[]; skills?: Named[]; species?: string[] }) {
   return (
     <div className="grid2">
       <Field label="Nombre de la plantilla" id="t-name"><input id="t-name" className="input" value={def.name} onChange={(e) => set((d) => ({ ...d, name: e.target.value }))} /></Field>
       <Field label="Sector" id="t-sector"><select id="t-sector" className="input" value={def.sectorId} onChange={(e) => set((d) => ({ ...d, sectorId: e.target.value }))}>{sectors.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></Field>
-      <Field label="Habilidad" id="t-skill"><select id="t-skill" className="input" value={def.skillId} onChange={(e) => set((d) => ({ ...d, skillId: e.target.value as Def['skillId'] }))}>{SKILLS.map((s) => <option key={s.id} value={s.id}>{s.id} · {s.name}</option>)}</select></Field>
+      <Field label="Habilidad" id="t-skill"><select id="t-skill" className="input" value={def.skillId} onChange={(e) => set((d) => ({ ...d, skillId: e.target.value as Def['skillId'] }))}>{skills.map((s) => <option key={s.id} value={s.id}>{s.id} · {s.name}</option>)}</select></Field>
       <Field label="Tipo de ejercicio" id="t-type"><select id="t-type" className="input" value={def.exerciseTypeId} onChange={(e) => set((d) => ({ ...d, exerciseTypeId: e.target.value }))}>{types.map((t) => <option key={t.id} value={t.id}>{t.id} · {t.name}</option>)}</select></Field>
-      {def.sectorId === 'veterinaria' && <Field label="Especie" id="t-species"><input id="t-species" className="input" value={def.species ?? ''} onChange={(e) => set((d) => ({ ...d, species: e.target.value || null }))} /></Field>}
+      {def.sectorId === 'veterinaria' && (
+        <Field label="Especie" id="t-species" help="Del catálogo de especies.">
+          <select id="t-species" className="input" value={def.species ?? ''} onChange={(e) => set((d) => ({ ...d, species: e.target.value || null }))}>
+            <option value="">Sin especie</option>
+            {[...new Set([...species.map((x) => x.toLowerCase()), ...(def.species ? [def.species] : [])])].map((x) => <option key={x} value={x}>{x.charAt(0).toUpperCase() + x.slice(1)}</option>)}
+          </select>
+        </Field>
+      )}
       <Field label="Variantes que se publicarán por nivel" id="t-vpl" help="300 por defecto. Un número menor reduce el tamaño del paquete.">
         <input id="t-vpl" className="input mono" type="number" min={1} max={1000} value={def.variantsPerLevel} onChange={(e) => set((d) => ({ ...d, variantsPerLevel: Math.max(1, Number(e.target.value) || 1) }))} />
       </Field>
