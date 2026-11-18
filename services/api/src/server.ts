@@ -50,7 +50,7 @@ export function boActor(bo: BoCtx): Actor {
 
 export async function buildApp(opts: { logger?: boolean } = {}): Promise<FastifyInstance> {
   const app = Fastify({ logger: opts.logger ?? false, bodyLimit: 25 * 1024 * 1024 });
-  await app.register(cors, { origin: true, exposedHeaders: ['Content-Range', 'Accept-Ranges', 'Content-Length'] });
+  await app.register(cors, { origin: true, methods: ['GET', 'HEAD', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'], exposedHeaders: ['Content-Range', 'Accept-Ranges', 'Content-Length'] });
 
   app.addHook('onRequest', async (req) => {
     req.appUser = null;

@@ -62,6 +62,12 @@ beforeAll(async () => { app = await buildApp(); });
 afterAll(async () => { await app.close(); await closePool(); });
 
 describe('onboarding-account', () => {
+  it('CORS: el navegador puede usar PATCH y DELETE (edición del perfil y eliminación de la cuenta desde la app web)', async () => {
+    const res = await app.inject({ method: 'OPTIONS', url: '/v1/me', headers: { origin: 'http://localhost:8090', 'access-control-request-method': 'PATCH' } });
+    expect(res.statusCode).toBe(204);
+    const allowed = String(res.headers['access-control-allow-methods']);
+    for (const m of ['PATCH', 'DELETE', 'PUT']) expect(allowed).toContain(m);
+  });
   it('Código correcto: la sesión se inicia con el código de seis cifras', async () => {
     const u = await appUser('lucia@correo.test');
     expect(u.token).toBeTruthy();
