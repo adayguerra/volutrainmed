@@ -11,6 +11,7 @@ import 'database.dart';
 
 class PaqueteGuardado {
   const PaqueteGuardado({
+    required this.clave,
     required this.id,
     required this.version,
     required this.sha256,
@@ -19,6 +20,12 @@ class PaqueteGuardado {
     required this.gz,
     required this.status,
   });
+
+  /// Clave lógica: `global` o el id del itinerario. El cambio de versión
+  /// sustituye por esta clave aunque el id firmado cambie entre versiones.
+  final String clave;
+
+  /// Id del archivo firmado (entra en la cadena firmada).
   final String id;
   final String version;
   final String sha256;
@@ -26,10 +33,22 @@ class PaqueteGuardado {
   final String minAppVersion;
   final Uint8List gz;
   final String status;
+
+  PaqueteGuardado conEstado(String s) => PaqueteGuardado(
+        clave: clave,
+        id: id,
+        version: version,
+        sha256: sha256,
+        signature: signature,
+        minAppVersion: minAppVersion,
+        gz: gz,
+        status: s,
+      );
 }
 
 class DescargaParcial {
   const DescargaParcial({
+    required this.clave,
     required this.fileId,
     required this.version,
     required this.url,
@@ -40,6 +59,7 @@ class DescargaParcial {
     required this.partial,
     required this.failures,
   });
+  final String clave;
   final String fileId;
   final String version;
   final String url;
@@ -56,7 +76,7 @@ abstract class AlmacenContenido {
   Future<void> guardarPreparado(PaqueteGuardado p);
 
   /// Cambio atómico: las versiones preparadas pasan a activas y las activas
-  /// sustituidas quedan como anteriores. Devuelve los ids cambiados.
+  /// sustituidas quedan como anteriores. Devuelve las claves cambiadas.
   Future<List<String>> activarPreparados();
   Future<void> instalarActivo(PaqueteGuardado p);
   Future<DescargaParcial?> descarga(String fileId, String version);
@@ -130,6 +150,7 @@ class AlmacenContenidoDrift implements AlmacenContenido {
   final VtmDatabase db;
 
   PaqueteGuardado _p(ContentPackageRow r) => PaqueteGuardado(
+        clave: r.key,
         id: r.id,
         version: r.version,
         sha256: r.sha256,
@@ -147,6 +168,7 @@ class AlmacenContenidoDrift implements AlmacenContenido {
   }
 
   ContentPackagesCompanion _c(PaqueteGuardado p, String status) => ContentPackagesCompanion.insert(
+        key: p.clave,
         id: p.id,
         version: p.version,
         sha256: p.sha256,
@@ -158,30 +180,35 @@ class AlmacenContenidoDrift implements AlmacenContenido {
       );
 
   @override
-  Future<void> guardarPreparado(PaqueteGuardado p) async {
-    await db.transaction(() async {
-      await (db.delete(db.contentPackages)..where((t) => t.id.equals(p.id) & t.status.equals('staged'))).go();
-      await db.into(db.contentPackages).insertOnConflictUpdate(_c(p, 'staged'));
-    });
-  }
+  Future<void> guardarPreparado(PaqueteGuardado p) => db.transaction(() async {
+        // Si esa versión ya está activa no hay nada que preparar.
+        final activa = await (db.select(db.contentPackages)
+              ..where((t) => t.key.equals(p.clave) & t.version.equals(p.version) & t.status.equals('active')))
+            .getSingleOrNull();
+        if (activa != null) return;
+        await (db.delete(db.contentPackages)..where((t) => t.key.equals(p.clave) & t.status.equals('staged'))).go();
+        await db.into(db.contentPackages).insertOnConflictUpdate(_c(p, 'staged'));
+      });
 
   @override
   Future<List<String>> activarPreparados() => db.transaction(() async {
         final staged = await (db.select(db.contentPackages)..where((t) => t.status.equals('staged'))).get();
         for (final s in staged) {
-          await (db.delete(db.contentPackages)..where((t) => t.id.equals(s.id) & t.status.equals('previous'))).go();
-          await (db.update(db.contentPackages)..where((t) => t.id.equals(s.id) & t.status.equals('active')))
+          await (db.delete(db.contentPackages)..where((t) => t.key.equals(s.key) & t.status.equals('previous'))).go();
+          await (db.update(db.contentPackages)..where((t) => t.key.equals(s.key) & t.status.equals('active')))
               .write(const ContentPackagesCompanion(status: Value('previous')));
-          await (db.update(db.contentPackages)..where((t) => t.id.equals(s.id) & t.version.equals(s.version)))
+          await (db.update(db.contentPackages)..where((t) => t.key.equals(s.key) & t.version.equals(s.version)))
               .write(const ContentPackagesCompanion(status: Value('active')));
         }
-        return staged.map((s) => s.id).toList();
+        return staged.map((s) => s.key).toList();
       });
 
   @override
   Future<void> instalarActivo(PaqueteGuardado p) => db.transaction(() async {
-        await (db.delete(db.contentPackages)..where((t) => t.id.equals(p.id) & t.status.equals('previous'))).go();
-        await (db.update(db.contentPackages)..where((t) => t.id.equals(p.id) & t.status.equals('active')))
+        await (db.delete(db.contentPackages)
+              ..where((t) => t.key.equals(p.clave) & (t.status.equals('previous') | t.version.equals(p.version))))
+            .go();
+        await (db.update(db.contentPackages)..where((t) => t.key.equals(p.clave) & t.status.equals('active')))
             .write(const ContentPackagesCompanion(status: Value('previous')));
         await db.into(db.contentPackages).insertOnConflictUpdate(_c(p, 'active'));
       });
@@ -191,6 +218,7 @@ class AlmacenContenidoDrift implements AlmacenContenido {
     final r = await (db.select(db.contentDownloads)..where((t) => t.fileId.equals(fileId) & t.version.equals(version))).getSingleOrNull();
     if (r == null) return null;
     return DescargaParcial(
+      clave: r.key,
       fileId: r.fileId,
       version: r.version,
       url: r.url,
@@ -205,6 +233,7 @@ class AlmacenContenidoDrift implements AlmacenContenido {
 
   @override
   Future<void> guardarDescarga(DescargaParcial d) => db.into(db.contentDownloads).insertOnConflictUpdate(ContentDownloadsCompanion.insert(
+        key: d.clave,
         fileId: d.fileId,
         version: d.version,
         url: d.url,
@@ -253,15 +282,27 @@ class AlmacenAprendizajeDrift implements AlmacenAprendizaje {
 
   @override
   Future<int> fusionar(List<Attempt> intentos, List<SessionRecord> sesiones) => db.transaction(() async {
+        // Se cuentan solo los intentos nuevos: `insertOrIgnore` no informa de
+        // forma fiable de las filas ignoradas, así que se consulta antes.
+        final ids = intentos.map((a) => a.id).toList();
+        final existentes = <String>{};
+        for (var i = 0; i < ids.length; i += 500) {
+          final trozo = ids.sublist(i, i + 500 > ids.length ? ids.length : i + 500);
+          final filas = await (db.selectOnly(db.attempts)
+                ..addColumns([db.attempts.id])
+                ..where(db.attempts.id.isIn(trozo)))
+              .get();
+          existentes.addAll(filas.map((r) => r.read(db.attempts.id)!));
+        }
         var n = 0;
         for (final a in intentos) {
-          n += await db.into(db.attempts).insert(
+          if (existentes.contains(a.id)) continue;
+          existentes.add(a.id);
+          await db.into(db.attempts).insert(
                 AttemptsCompanion.insert(id: a.id, sessionId: a.sessionId, json: jsonEncode(a.toJson()), deviceTime: a.deviceTime),
                 mode: InsertMode.insertOrIgnore,
-              ) >
-                  0
-              ? 1
-              : 0;
+              );
+          n++;
         }
         for (final s in sesiones) {
           await db.into(db.sessions).insert(
@@ -362,43 +403,34 @@ class AlmacenContenidoMemoria implements AlmacenContenido {
   @override
   Future<List<PaqueteGuardado>> paquetes({String? status}) async => _p.where((p) => status == null || p.status == status).toList();
 
-  PaqueteGuardado _con(PaqueteGuardado p, String s) => PaqueteGuardado(
-        id: p.id,
-        version: p.version,
-        sha256: p.sha256,
-        signature: p.signature,
-        minAppVersion: p.minAppVersion,
-        gz: p.gz,
-        status: s,
-      );
-
   @override
   Future<void> guardarPreparado(PaqueteGuardado p) async {
-    _p.removeWhere((x) => x.id == p.id && (x.status == 'staged' || x.version == p.version));
-    _p.add(_con(p, 'staged'));
+    if (_p.any((x) => x.clave == p.clave && x.version == p.version && x.status == 'active')) return;
+    _p.removeWhere((x) => x.clave == p.clave && (x.status == 'staged' || x.version == p.version));
+    _p.add(p.conEstado('staged'));
   }
 
   @override
   Future<List<String>> activarPreparados() async {
     final staged = _p.where((x) => x.status == 'staged').toList();
     for (final s in staged) {
-      _p.removeWhere((x) => x.id == s.id && x.status == 'previous');
+      _p.removeWhere((x) => x.clave == s.clave && x.status == 'previous');
       for (var i = 0; i < _p.length; i++) {
-        if (_p[i].id == s.id && _p[i].status == 'active') _p[i] = _con(_p[i], 'previous');
+        if (_p[i].clave == s.clave && _p[i].status == 'active') _p[i] = _p[i].conEstado('previous');
       }
       _p.remove(s);
-      _p.add(_con(s, 'active'));
+      _p.add(s.conEstado('active'));
     }
-    return staged.map((s) => s.id).toList();
+    return staged.map((s) => s.clave).toList();
   }
 
   @override
   Future<void> instalarActivo(PaqueteGuardado p) async {
-    _p.removeWhere((x) => x.id == p.id && (x.status == 'previous' || x.version == p.version));
+    _p.removeWhere((x) => x.clave == p.clave && (x.status == 'previous' || x.version == p.version));
     for (var i = 0; i < _p.length; i++) {
-      if (_p[i].id == p.id && _p[i].status == 'active') _p[i] = _con(_p[i], 'previous');
+      if (_p[i].clave == p.clave && _p[i].status == 'active') _p[i] = _p[i].conEstado('previous');
     }
-    _p.add(_con(p, 'active'));
+    _p.add(p.conEstado('active'));
   }
 
   @override

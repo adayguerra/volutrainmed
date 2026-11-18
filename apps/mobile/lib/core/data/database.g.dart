@@ -9,6 +9,15 @@ class $ContentPackagesTable extends ContentPackages
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ContentPackagesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
@@ -92,6 +101,7 @@ class $ContentPackagesTable extends ContentPackages
   );
   @override
   List<GeneratedColumn> get $columns => [
+    key,
     id,
     version,
     sha256,
@@ -113,6 +123,14 @@ class $ContentPackagesTable extends ContentPackages
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+        _keyMeta,
+        key.isAcceptableOrUnknown(data['key']!, _keyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
     } else if (isInserting) {
@@ -179,11 +197,15 @@ class $ContentPackagesTable extends ContentPackages
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id, version};
+  Set<GeneratedColumn> get $primaryKey => {key, version};
   @override
   ContentPackageRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ContentPackageRow(
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -227,6 +249,12 @@ class $ContentPackagesTable extends ContentPackages
 
 class ContentPackageRow extends DataClass
     implements Insertable<ContentPackageRow> {
+  /// Clave lógica estable entre versiones: `global` o el id del itinerario.
+  /// El cambio atómico de versión se hace por esta clave.
+  final String key;
+
+  /// Identificador del archivo firmado (`2026.11.1:it-fundamentos` en el
+  /// servidor, `it-fundamentos` en el contenido incluido). Entra en la firma.
   final String id;
   final String version;
   final String sha256;
@@ -240,6 +268,7 @@ class ContentPackageRow extends DataClass
   final String status;
   final DateTime installedAt;
   const ContentPackageRow({
+    required this.key,
     required this.id,
     required this.version,
     required this.sha256,
@@ -252,6 +281,7 @@ class ContentPackageRow extends DataClass
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
     map['id'] = Variable<String>(id);
     map['version'] = Variable<String>(version);
     map['sha256'] = Variable<String>(sha256);
@@ -265,6 +295,7 @@ class ContentPackageRow extends DataClass
 
   ContentPackagesCompanion toCompanion(bool nullToAbsent) {
     return ContentPackagesCompanion(
+      key: Value(key),
       id: Value(id),
       version: Value(version),
       sha256: Value(sha256),
@@ -282,6 +313,7 @@ class ContentPackageRow extends DataClass
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ContentPackageRow(
+      key: serializer.fromJson<String>(json['key']),
       id: serializer.fromJson<String>(json['id']),
       version: serializer.fromJson<String>(json['version']),
       sha256: serializer.fromJson<String>(json['sha256']),
@@ -296,6 +328,7 @@ class ContentPackageRow extends DataClass
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
       'id': serializer.toJson<String>(id),
       'version': serializer.toJson<String>(version),
       'sha256': serializer.toJson<String>(sha256),
@@ -308,6 +341,7 @@ class ContentPackageRow extends DataClass
   }
 
   ContentPackageRow copyWith({
+    String? key,
     String? id,
     String? version,
     String? sha256,
@@ -317,6 +351,7 @@ class ContentPackageRow extends DataClass
     String? status,
     DateTime? installedAt,
   }) => ContentPackageRow(
+    key: key ?? this.key,
     id: id ?? this.id,
     version: version ?? this.version,
     sha256: sha256 ?? this.sha256,
@@ -328,6 +363,7 @@ class ContentPackageRow extends DataClass
   );
   ContentPackageRow copyWithCompanion(ContentPackagesCompanion data) {
     return ContentPackageRow(
+      key: data.key.present ? data.key.value : this.key,
       id: data.id.present ? data.id.value : this.id,
       version: data.version.present ? data.version.value : this.version,
       sha256: data.sha256.present ? data.sha256.value : this.sha256,
@@ -346,6 +382,7 @@ class ContentPackageRow extends DataClass
   @override
   String toString() {
     return (StringBuffer('ContentPackageRow(')
+          ..write('key: $key, ')
           ..write('id: $id, ')
           ..write('version: $version, ')
           ..write('sha256: $sha256, ')
@@ -360,6 +397,7 @@ class ContentPackageRow extends DataClass
 
   @override
   int get hashCode => Object.hash(
+    key,
     id,
     version,
     sha256,
@@ -373,6 +411,7 @@ class ContentPackageRow extends DataClass
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ContentPackageRow &&
+          other.key == this.key &&
           other.id == this.id &&
           other.version == this.version &&
           other.sha256 == this.sha256 &&
@@ -384,6 +423,7 @@ class ContentPackageRow extends DataClass
 }
 
 class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
+  final Value<String> key;
   final Value<String> id;
   final Value<String> version;
   final Value<String> sha256;
@@ -394,6 +434,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
   final Value<DateTime> installedAt;
   final Value<int> rowid;
   const ContentPackagesCompanion({
+    this.key = const Value.absent(),
     this.id = const Value.absent(),
     this.version = const Value.absent(),
     this.sha256 = const Value.absent(),
@@ -405,6 +446,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
     this.rowid = const Value.absent(),
   });
   ContentPackagesCompanion.insert({
+    required String key,
     required String id,
     required String version,
     required String sha256,
@@ -414,7 +456,8 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
     required String status,
     required DateTime installedAt,
     this.rowid = const Value.absent(),
-  }) : id = Value(id),
+  }) : key = Value(key),
+       id = Value(id),
        version = Value(version),
        sha256 = Value(sha256),
        signature = Value(signature),
@@ -422,6 +465,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
        status = Value(status),
        installedAt = Value(installedAt);
   static Insertable<ContentPackageRow> custom({
+    Expression<String>? key,
     Expression<String>? id,
     Expression<String>? version,
     Expression<String>? sha256,
@@ -433,6 +477,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (key != null) 'key': key,
       if (id != null) 'id': id,
       if (version != null) 'version': version,
       if (sha256 != null) 'sha256': sha256,
@@ -446,6 +491,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
   }
 
   ContentPackagesCompanion copyWith({
+    Value<String>? key,
     Value<String>? id,
     Value<String>? version,
     Value<String>? sha256,
@@ -457,6 +503,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
     Value<int>? rowid,
   }) {
     return ContentPackagesCompanion(
+      key: key ?? this.key,
       id: id ?? this.id,
       version: version ?? this.version,
       sha256: sha256 ?? this.sha256,
@@ -472,6 +519,9 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
@@ -505,6 +555,7 @@ class ContentPackagesCompanion extends UpdateCompanion<ContentPackageRow> {
   @override
   String toString() {
     return (StringBuffer('ContentPackagesCompanion(')
+          ..write('key: $key, ')
           ..write('id: $id, ')
           ..write('version: $version, ')
           ..write('sha256: $sha256, ')
@@ -525,6 +576,15 @@ class $ContentDownloadsTable extends ContentDownloads
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ContentDownloadsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _fileIdMeta = const VerificationMeta('fileId');
   @override
   late final GeneratedColumn<String> fileId = GeneratedColumn<String>(
@@ -631,6 +691,7 @@ class $ContentDownloadsTable extends ContentDownloads
   );
   @override
   List<GeneratedColumn> get $columns => [
+    key,
     fileId,
     version,
     url,
@@ -654,6 +715,14 @@ class $ContentDownloadsTable extends ContentDownloads
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+        _keyMeta,
+        key.isAcceptableOrUnknown(data['key']!, _keyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
     if (data.containsKey('file_id')) {
       context.handle(
         _fileIdMeta,
@@ -742,6 +811,10 @@ class $ContentDownloadsTable extends ContentDownloads
   ContentDownloadRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ContentDownloadRow(
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
       fileId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}file_id'],
@@ -793,6 +866,8 @@ class $ContentDownloadsTable extends ContentDownloads
 
 class ContentDownloadRow extends DataClass
     implements Insertable<ContentDownloadRow> {
+  /// Clave lógica (`global` o id del itinerario).
+  final String key;
   final String fileId;
   final String version;
   final String url;
@@ -806,6 +881,7 @@ class ContentDownloadRow extends DataClass
   final int failures;
   final DateTime updatedAt;
   const ContentDownloadRow({
+    required this.key,
     required this.fileId,
     required this.version,
     required this.url,
@@ -820,6 +896,7 @@ class ContentDownloadRow extends DataClass
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
     map['file_id'] = Variable<String>(fileId);
     map['version'] = Variable<String>(version);
     map['url'] = Variable<String>(url);
@@ -835,6 +912,7 @@ class ContentDownloadRow extends DataClass
 
   ContentDownloadsCompanion toCompanion(bool nullToAbsent) {
     return ContentDownloadsCompanion(
+      key: Value(key),
       fileId: Value(fileId),
       version: Value(version),
       url: Value(url),
@@ -854,6 +932,7 @@ class ContentDownloadRow extends DataClass
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ContentDownloadRow(
+      key: serializer.fromJson<String>(json['key']),
       fileId: serializer.fromJson<String>(json['fileId']),
       version: serializer.fromJson<String>(json['version']),
       url: serializer.fromJson<String>(json['url']),
@@ -870,6 +949,7 @@ class ContentDownloadRow extends DataClass
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
       'fileId': serializer.toJson<String>(fileId),
       'version': serializer.toJson<String>(version),
       'url': serializer.toJson<String>(url),
@@ -884,6 +964,7 @@ class ContentDownloadRow extends DataClass
   }
 
   ContentDownloadRow copyWith({
+    String? key,
     String? fileId,
     String? version,
     String? url,
@@ -895,6 +976,7 @@ class ContentDownloadRow extends DataClass
     int? failures,
     DateTime? updatedAt,
   }) => ContentDownloadRow(
+    key: key ?? this.key,
     fileId: fileId ?? this.fileId,
     version: version ?? this.version,
     url: url ?? this.url,
@@ -908,6 +990,7 @@ class ContentDownloadRow extends DataClass
   );
   ContentDownloadRow copyWithCompanion(ContentDownloadsCompanion data) {
     return ContentDownloadRow(
+      key: data.key.present ? data.key.value : this.key,
       fileId: data.fileId.present ? data.fileId.value : this.fileId,
       version: data.version.present ? data.version.value : this.version,
       url: data.url.present ? data.url.value : this.url,
@@ -926,6 +1009,7 @@ class ContentDownloadRow extends DataClass
   @override
   String toString() {
     return (StringBuffer('ContentDownloadRow(')
+          ..write('key: $key, ')
           ..write('fileId: $fileId, ')
           ..write('version: $version, ')
           ..write('url: $url, ')
@@ -942,6 +1026,7 @@ class ContentDownloadRow extends DataClass
 
   @override
   int get hashCode => Object.hash(
+    key,
     fileId,
     version,
     url,
@@ -957,6 +1042,7 @@ class ContentDownloadRow extends DataClass
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ContentDownloadRow &&
+          other.key == this.key &&
           other.fileId == this.fileId &&
           other.version == this.version &&
           other.url == this.url &&
@@ -970,6 +1056,7 @@ class ContentDownloadRow extends DataClass
 }
 
 class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
+  final Value<String> key;
   final Value<String> fileId;
   final Value<String> version;
   final Value<String> url;
@@ -982,6 +1069,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
   final Value<DateTime> updatedAt;
   final Value<int> rowid;
   const ContentDownloadsCompanion({
+    this.key = const Value.absent(),
     this.fileId = const Value.absent(),
     this.version = const Value.absent(),
     this.url = const Value.absent(),
@@ -995,6 +1083,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
     this.rowid = const Value.absent(),
   });
   ContentDownloadsCompanion.insert({
+    required String key,
     required String fileId,
     required String version,
     required String url,
@@ -1006,7 +1095,8 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
     this.failures = const Value.absent(),
     required DateTime updatedAt,
     this.rowid = const Value.absent(),
-  }) : fileId = Value(fileId),
+  }) : key = Value(key),
+       fileId = Value(fileId),
        version = Value(version),
        url = Value(url),
        sha256 = Value(sha256),
@@ -1015,6 +1105,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
        partial = Value(partial),
        updatedAt = Value(updatedAt);
   static Insertable<ContentDownloadRow> custom({
+    Expression<String>? key,
     Expression<String>? fileId,
     Expression<String>? version,
     Expression<String>? url,
@@ -1028,6 +1119,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (key != null) 'key': key,
       if (fileId != null) 'file_id': fileId,
       if (version != null) 'version': version,
       if (url != null) 'url': url,
@@ -1043,6 +1135,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
   }
 
   ContentDownloadsCompanion copyWith({
+    Value<String>? key,
     Value<String>? fileId,
     Value<String>? version,
     Value<String>? url,
@@ -1056,6 +1149,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
     Value<int>? rowid,
   }) {
     return ContentDownloadsCompanion(
+      key: key ?? this.key,
       fileId: fileId ?? this.fileId,
       version: version ?? this.version,
       url: url ?? this.url,
@@ -1073,6 +1167,9 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
     if (fileId.present) {
       map['file_id'] = Variable<String>(fileId.value);
     }
@@ -1112,6 +1209,7 @@ class ContentDownloadsCompanion extends UpdateCompanion<ContentDownloadRow> {
   @override
   String toString() {
     return (StringBuffer('ContentDownloadsCompanion(')
+          ..write('key: $key, ')
           ..write('fileId: $fileId, ')
           ..write('version: $version, ')
           ..write('url: $url, ')
@@ -2856,6 +2954,7 @@ abstract class _$VtmDatabase extends GeneratedDatabase {
 
 typedef $$ContentPackagesTableCreateCompanionBuilder =
     ContentPackagesCompanion Function({
+      required String key,
       required String id,
       required String version,
       required String sha256,
@@ -2868,6 +2967,7 @@ typedef $$ContentPackagesTableCreateCompanionBuilder =
     });
 typedef $$ContentPackagesTableUpdateCompanionBuilder =
     ContentPackagesCompanion Function({
+      Value<String> key,
       Value<String> id,
       Value<String> version,
       Value<String> sha256,
@@ -2888,6 +2988,11 @@ class $$ContentPackagesTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<String> get id => $composableBuilder(
     column: $table.id,
     builder: (column) => ColumnFilters(column),
@@ -2938,6 +3043,11 @@ class $$ContentPackagesTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get id => $composableBuilder(
     column: $table.id,
     builder: (column) => ColumnOrderings(column),
@@ -2988,6 +3098,9 @@ class $$ContentPackagesTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
   GeneratedColumn<String> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
@@ -3054,6 +3167,7 @@ class $$ContentPackagesTableTableManager
               $$ContentPackagesTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
+                Value<String> key = const Value.absent(),
                 Value<String> id = const Value.absent(),
                 Value<String> version = const Value.absent(),
                 Value<String> sha256 = const Value.absent(),
@@ -3064,6 +3178,7 @@ class $$ContentPackagesTableTableManager
                 Value<DateTime> installedAt = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => ContentPackagesCompanion(
+                key: key,
                 id: id,
                 version: version,
                 sha256: sha256,
@@ -3076,6 +3191,7 @@ class $$ContentPackagesTableTableManager
               ),
           createCompanionCallback:
               ({
+                required String key,
                 required String id,
                 required String version,
                 required String sha256,
@@ -3086,6 +3202,7 @@ class $$ContentPackagesTableTableManager
                 required DateTime installedAt,
                 Value<int> rowid = const Value.absent(),
               }) => ContentPackagesCompanion.insert(
+                key: key,
                 id: id,
                 version: version,
                 sha256: sha256,
@@ -3132,6 +3249,7 @@ typedef $$ContentPackagesTableProcessedTableManager =
     >;
 typedef $$ContentDownloadsTableCreateCompanionBuilder =
     ContentDownloadsCompanion Function({
+      required String key,
       required String fileId,
       required String version,
       required String url,
@@ -3146,6 +3264,7 @@ typedef $$ContentDownloadsTableCreateCompanionBuilder =
     });
 typedef $$ContentDownloadsTableUpdateCompanionBuilder =
     ContentDownloadsCompanion Function({
+      Value<String> key,
       Value<String> fileId,
       Value<String> version,
       Value<String> url,
@@ -3168,6 +3287,11 @@ class $$ContentDownloadsTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<String> get fileId => $composableBuilder(
     column: $table.fileId,
     builder: (column) => ColumnFilters(column),
@@ -3228,6 +3352,11 @@ class $$ContentDownloadsTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get fileId => $composableBuilder(
     column: $table.fileId,
     builder: (column) => ColumnOrderings(column),
@@ -3288,6 +3417,9 @@ class $$ContentDownloadsTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
   GeneratedColumn<String> get fileId =>
       $composableBuilder(column: $table.fileId, builder: (column) => column);
 
@@ -3358,6 +3490,7 @@ class $$ContentDownloadsTableTableManager
               $$ContentDownloadsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
+                Value<String> key = const Value.absent(),
                 Value<String> fileId = const Value.absent(),
                 Value<String> version = const Value.absent(),
                 Value<String> url = const Value.absent(),
@@ -3370,6 +3503,7 @@ class $$ContentDownloadsTableTableManager
                 Value<DateTime> updatedAt = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => ContentDownloadsCompanion(
+                key: key,
                 fileId: fileId,
                 version: version,
                 url: url,
@@ -3384,6 +3518,7 @@ class $$ContentDownloadsTableTableManager
               ),
           createCompanionCallback:
               ({
+                required String key,
                 required String fileId,
                 required String version,
                 required String url,
@@ -3396,6 +3531,7 @@ class $$ContentDownloadsTableTableManager
                 required DateTime updatedAt,
                 Value<int> rowid = const Value.absent(),
               }) => ContentDownloadsCompanion.insert(
+                key: key,
                 fileId: fileId,
                 version: version,
                 url: url,
