@@ -239,7 +239,7 @@ void main() {
   testWidgets('escuchar el ejemplo de voz usa la síntesis del dispositivo', (t) async {
     final a = Arnes();
     await a.montar(t, ruta: Rutas.voz);
-    expect(find.textContaining('Reconocimiento pendiente'), findsOneWidget);
+    expect(find.textContaining('Reconocimiento no disponible'), findsOneWidget);
     await tocar(t, find.text('Escuchar ejemplo'));
     expect(a.sintetizador.dichos, [PantallaAjustesVoz.ejemplo]);
   });

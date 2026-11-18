@@ -15,7 +15,7 @@ class ActualizadorContador implements ActualizadorContenido {
   @override
   Future<void> comprobar() async => comprobaciones++;
   @override
-  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso}) async {}
+  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso, bool conDatos = false}) async {}
   @override
   Future<bool> aplicarPreparadas() async {
     aplicaciones++;

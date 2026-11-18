@@ -365,6 +365,34 @@ class DetalleUnidad extends ConsumerWidget {
     final bloqueada = (p.unidades[u.id] ?? EstadoUnidad.bloqueada) == EstadoUnidad.bloqueada;
     final g = u.guide;
 
+    // Acciones de la unidad. En el panel de tablet van arriba para que
+    // queden siempre a la vista sin desplazar el panel.
+    final acciones = <Widget>[
+      const SizedBox(height: 16),
+      if (siguiente != null)
+        FilledButton(
+          key: const ValueKey('empezar-leccion'),
+          onPressed: () => context.push(Rutas.leccion(siguiente.id)),
+          child: Text('Empezar lección ${siguiente.order}'),
+        ),
+      const SizedBox(height: 8),
+      Wrap(spacing: 8, runSpacing: 8, children: [
+        OutlinedButton.icon(
+          key: const ValueKey('manos-libres-unidad'),
+          onPressed: () => context.push(Rutas.manosLibres),
+          icon: const Icon(Symbols.headphones),
+          label: const Text('Manos libres'),
+        ),
+        if (reto != null && !bloqueada && !(info?.retoSuperado ?? false))
+          OutlinedButton.icon(
+            key: const ValueKey('reto-y-saltar'),
+            onPressed: () => context.push(Rutas.leccion(reto.id)),
+            icon: const Icon(Symbols.flag),
+            label: const Text('Reto y saltar'),
+          ),
+      ]),
+    ];
+
     return Column(
       key: ValueKey('detalle-${u.id}'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -378,6 +406,7 @@ class DetalleUnidad extends ConsumerWidget {
         ]),
         const SizedBox(height: 8),
         if (info != null) Text('${info.leccionesHechas} de ${info.leccionesTotales} lecciones', style: context.textos.bodyMedium),
+        if (enPanel) ...acciones,
         if (g.equivalences.isNotEmpty || g.exampleStatement.isNotEmpty) ...[
           const TituloSeccion('Guía rápida'),
           Tarjeta(
@@ -398,29 +427,7 @@ class DetalleUnidad extends ConsumerWidget {
         ],
         const TituloSeccion('Lecciones'),
         ListaLecciones(unitId: u.id, proyeccion: p, conPrecision: true),
-        const SizedBox(height: 16),
-        if (siguiente != null)
-          FilledButton(
-            key: const ValueKey('empezar-leccion'),
-            onPressed: () => context.push(Rutas.leccion(siguiente.id)),
-            child: Text('Empezar lección ${siguiente.order}'),
-          ),
-        const SizedBox(height: 8),
-        Wrap(spacing: 8, runSpacing: 8, children: [
-          OutlinedButton.icon(
-            key: const ValueKey('manos-libres-unidad'),
-            onPressed: () => context.push(Rutas.manosLibres),
-            icon: const Icon(Symbols.headphones),
-            label: const Text('Manos libres'),
-          ),
-          if (reto != null && !bloqueada && !(info?.retoSuperado ?? false))
-            OutlinedButton.icon(
-              key: const ValueKey('reto-y-saltar'),
-              onPressed: () => context.push(Rutas.leccion(reto.id)),
-              icon: const Icon(Symbols.flag),
-              label: const Text('Reto y saltar'),
-            ),
-        ]),
+        if (!enPanel) ...acciones,
       ],
     );
   }

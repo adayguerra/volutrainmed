@@ -9,7 +9,6 @@ import '../../../app/adaptativo.dart';
 import '../../../app/dependencias.dart';
 import '../../../app/estado/ajustes.dart';
 import '../../../app/estado/estado_app.dart';
-import '../../../core/contenido/actualizador.dart';
 import '../../../app/router.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
