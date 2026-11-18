@@ -4,8 +4,8 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 
 | Estado | Escenarios |
 | --- | --- |
-| Prueba automatizada | 324 |
-| Sin evidencia automática | 8 |
+| Prueba automatizada | 327 |
+| Sin evidencia automática | 5 |
 | **Total** | **332** |
 
 ## add-content-backoffice · backoffice-administration
@@ -100,9 +100,9 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | Tipos como combinación de bloques | Tipo de dos pasos | Prueba automatizada | apps/backoffice/src/screens/ExerciseTypes.test.tsx |
 | Tipos como combinación de bloques | Paso sin bloque de respuesta | Prueba automatizada | apps/backoffice/src/screens/ExerciseTypes.test.tsx, services/api/test/api.test.ts |
 | Tipos como combinación de bloques | Bloques sin arrastrar | Prueba automatizada | apps/backoffice/src/screens/ExerciseTypes.test.tsx |
-| Interpretación del tipo en la app | Tipo nuevo en una app ya instalada | Sin evidencia automática |  |
-| Interpretación del tipo en la app | Tipo nuevo sin conexión | Sin evidencia automática |  |
-| Versión mínima de la app por tipo | App antigua | Sin evidencia automática |  |
+| Interpretación del tipo en la app | Tipo nuevo en una app ya instalada | Prueba automatizada | apps/mobile/test/session/tipos_por_bloques_test.dart |
+| Interpretación del tipo en la app | Tipo nuevo sin conexión | Prueba automatizada | apps/mobile/test/session/tipos_por_bloques_test.dart |
+| Versión mínima de la app por tipo | App antigua | Prueba automatizada | apps/mobile/test/session/tipos_por_bloques_test.dart |
 | Versión mínima de la app por tipo | Aviso antes de publicar | Prueba automatizada | apps/backoffice/src/screens/Publishing.test.tsx |
 | Compatibilidad con voz calculada | Tipo con un bloque de ordenar | Prueba automatizada | apps/backoffice/src/screens/ExerciseTypes.test.tsx |
 | Tipos en uso versionados | Cambio en un tipo en uso | Prueba automatizada | apps/backoffice/src/screens/ExerciseTypes.test.tsx |
@@ -355,7 +355,7 @@ Generado con `python3 -I scripts/trazabilidad.py`. Una prueba cubre un escenario
 | --- | --- | --- | --- |
 | Jerarquía del contenido | Ruta con estados | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart |
 | Jerarquía del contenido | Ruta sin conexión | Prueba automatizada | apps/mobile/test/home/inicio_test.dart |
-| Acción principal única | Continuar | Prueba automatizada | apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/screens/GamificationCatalogs.test.tsx, apps/mobile/integration_test/recorrido_test.dart, apps/mobile/test/account/cuenta_test.dart, apps/mobile/test/ads/pausa_promocional_test.dart, apps/mobile/test/contenido/actualizacion_entre_sesiones_test.dart, apps/mobile/test/contenido/actualizador_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart, apps/mobile/test/onboarding/alta_test.dart, apps/mobile/test/session/correccion_test.dart, apps/mobile/test/session/ejercicios_test.dart, apps/mobile/test/session/fase2_motor_test.dart, apps/mobile/test/session/fin_y_pausas_test.dart, apps/mobile/test/session/motor_sesion_test.dart, apps/mobile/test/subscription/suscripcion_test.dart, apps/mobile/test/sync/sincronizador_test.dart, apps/mobile/test/timetrial/contrarreloj_test.dart, apps/mobile/test/voice/contenido_al_empezar_test.dart, apps/mobile/test/voice/pantalla_manos_libres_test.dart |
+| Acción principal única | Continuar | Prueba automatizada | apps/backoffice/src/auth/auth.test.tsx, apps/backoffice/src/screens/GamificationCatalogs.test.tsx, apps/mobile/integration_test/recorrido_test.dart, apps/mobile/test/account/cuenta_test.dart, apps/mobile/test/ads/pausa_promocional_test.dart, apps/mobile/test/contenido/actualizacion_entre_sesiones_test.dart, apps/mobile/test/contenido/actualizador_test.dart, apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart, apps/mobile/test/onboarding/alta_test.dart, apps/mobile/test/session/correccion_test.dart, apps/mobile/test/session/ejercicios_test.dart, apps/mobile/test/session/fase2_motor_test.dart, apps/mobile/test/session/fin_y_pausas_test.dart, apps/mobile/test/session/motor_sesion_test.dart, apps/mobile/test/session/tipos_por_bloques_test.dart, apps/mobile/test/subscription/suscripcion_test.dart, apps/mobile/test/sync/sincronizador_test.dart, apps/mobile/test/timetrial/contrarreloj_test.dart, apps/mobile/test/voice/contenido_al_empezar_test.dart, apps/mobile/test/voice/pantalla_manos_libres_test.dart |
 | Secuencia de lecciones de una unidad | Lección bloqueada | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/home/inicio_test.dart |
 | Secuencia de lecciones de una unidad | Lección mixta | Prueba automatizada | apps/mobile/test/session/fase2_motor_test.dart |
 | Reto de unidad | Reto superado | Prueba automatizada | apps/mobile/test/domain/progress/projections_test.dart, apps/mobile/test/session/motor_sesion_test.dart |

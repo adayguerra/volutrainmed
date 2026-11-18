@@ -141,6 +141,9 @@ String bloqueRespuesta(Variant v, ExerciseType? tipo) {
 /// Por qué una variante no puede dibujarse, o null si es válida.
 String? motivoDefecto(Variant v, ExerciseType? tipo) {
   if (tipo == null) return 'Tipo de ejercicio desconocido: ${v.exerciseTypeId}';
+  // Cada tipo declara la versión mínima de la app que lo admite: una app
+  // anterior omite su contenido sin errores (exercise-type-builder).
+  if (compararVersiones(tipo.minAppVersion, versionApp) > 0) return 'El tipo ${tipo.id} exige la app ${tipo.minAppVersion}';
   if (tipo.steps.isEmpty) return 'Tipo sin pasos';
   final bloque = bloqueRespuesta(v, tipo);
   if (!bloquesSoportados.contains(bloque)) return 'Bloque no soportado: $bloque';
