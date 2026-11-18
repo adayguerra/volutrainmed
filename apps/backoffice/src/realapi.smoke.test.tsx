@@ -20,7 +20,7 @@ import { screens } from './screens/registry';
 import type { Account, LoginResponse, MfaResponse } from './api/types';
 
 const BASE = process.env.BO_SMOKE_API;
-const STATE = join(tmpdir(), `vtm-bo-e2e-${(BASE ?? '').replace(/\W+/g, '_')}.json`);
+const STATE = process.env.BO_SMOKE_STATE ?? join(tmpdir(), `vtm-bo-e2e-${(BASE ?? '').replace(/\W+/g, '_')}.json`);
 const EMAILS = ['superadmin', 'contenido', 'autora', 'revisor.clinico', 'analista', 'soporte', 'organizacion'].map((e) => `${e}@volutrainmed.test`);
 
 async function signIn(email: string): Promise<{ token: string; account: Account }> {

@@ -8,6 +8,7 @@
     "build": "pnpm -r --filter ./packages/** build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
+    "e2e:backoffice": "bash scripts/e2e-backoffice.sh",
     "openspec:validate": "npx -y @fission-ai/openspec@latest validate --all --strict"
   },
   "engines": {

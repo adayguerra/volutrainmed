@@ -60,9 +60,12 @@ En la app, el acceso por correo usa un código de seis cifras; en desarrollo el 
 pnpm --filter @vtm/engine test   # motor: fixtures compartidas y 500 locuciones
 pnpm --filter @vtm/api test      # API: integración contra Postgres (base volutrainmed_test)
 pnpm --filter backoffice test    # back office
+pnpm e2e:backoffice              # back office de extremo a extremo contra una API real (base volutrainmed_e2e, puerto 8799)
 cd apps/mobile && flutter analyze && flutter test
 cd volutrainmed-openspec && npx -y @fission-ai/openspec@latest validate --all --strict
 ```
+
+`pnpm e2e:backoffice` crea y siembra la base `volutrainmed_e2e`, arranca una API propia en el puerto 8799, ejecuta el flujo completo (la autora crea una plantilla, un revisor distinto la valida, se publica al 5 % y al 100 %, se revierte y se retira un ejercicio desde una consulta) con doble factor real, recorre todas las pantallas con cada rol y para la API. Con `E2E_BROWSER=1` añade el recorrido en un navegador real (Playwright). Variables: `E2E_DB`, `E2E_API_PORT`, `E2E_PG_PORT`.
 
 ## Documentación
 

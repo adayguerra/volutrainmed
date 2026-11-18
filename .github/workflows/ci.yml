@@ -38,6 +38,8 @@ jobs:
         run: |
           pnpm --filter backoffice test
           pnpm --filter backoffice build
+      - name: Back office de extremo a extremo (API real: autoría, revisión, publicación, reversión y retirada)
+        run: pnpm e2e:backoffice
 
   flutter:
     runs-on: macos-latest
