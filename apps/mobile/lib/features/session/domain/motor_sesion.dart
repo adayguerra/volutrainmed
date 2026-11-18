@@ -191,6 +191,42 @@ extension FichaClave on FichaRepaso {
 typedef RegistrarIntento = void Function(Attempt a);
 typedef RegistrarEvento = void Function(String nombre, Map<String, dynamic> props);
 
+/// Sesión de lección sin terminar que se reanuda (exercise-session, «Salida
+/// a mitad de lección»: al volver se empieza por el ejercicio siguiente).
+class SesionPrevia {
+  const SesionPrevia({required this.sessionId, required this.intentos, required this.inicio, this.practicaMs = 0, this.anuncioMs = 0});
+  final String sessionId;
+
+  /// Intentos ya guardados de esa sesión.
+  final List<Attempt> intentos;
+  final DateTime inicio;
+  final int practicaMs;
+  final int anuncioMs;
+}
+
+/// Plazo para reanudar una lección dejada a medias.
+const plazoReanudar = Duration(hours: 24);
+
+/// Busca la sesión reanudable de una lección: la última sesión de esa
+/// lección, si quedó sin completar, tiene intentos y se dejó hace menos de
+/// 24 horas. Pasado ese plazo (o si después se completó), la lección empieza
+/// de nuevo con otros números.
+SesionPrevia? sesionReanudable(Lesson leccion, Iterable<SessionRecord> sesiones, Iterable<Attempt> intentos, DateTime ahora) {
+  SessionRecord? ultima;
+  for (final s in sesiones) {
+    if (s.lessonId != leccion.id) continue;
+    if (s.mode != SessionMode.lesson && s.mode != SessionMode.challenge) continue;
+    if (ultima == null || s.endedAt.isAfter(ultima.endedAt)) ultima = s;
+  }
+  if (ultima == null || ultima.completed) return null;
+  final d = ahora.difference(ultima.endedAt);
+  if (d.isNegative || d > plazoReanudar) return null;
+  final suyos = intentos.where((a) => a.sessionId == ultima!.id).toList()..sort((a, b) => a.deviceTime.compareTo(b.deviceTime));
+  final primeros = suyos.where((a) => a.attemptNumber == 1 && a.lessonId == leccion.id).length;
+  if (primeros == 0 || primeros >= leccion.slots.length) return null;
+  return SesionPrevia(sessionId: ultima.id, intentos: suyos, inicio: ultima.startedAt, practicaMs: ultima.practiceMs, anuncioMs: ultima.adMs);
+}
+
 class MotorSesion {
   MotorSesion({
     required this.contenido,
@@ -209,10 +245,23 @@ class MotorSesion {
     this.inputMode = InputMode.touch,
     this.alRegistrar,
     this.alEvento,
+    this.previa,
     Random? azar,
     String? sessionId,
   })  : azar = azar ?? Random(),
         sessionId = sessionId ?? nuevoId();
+
+  /// Sesión sin terminar de esta misma lección que se continúa: se empieza
+  /// por el ejercicio siguiente y los ya respondidos cuentan en el resumen.
+  /// La continuación lleva un identificador de sesión nuevo: el servidor no
+  /// actualiza una sesión ya subida (`ON CONFLICT DO NOTHING`), así que la
+  /// sesión sin completar se conserva tal cual y la nueva registra la lección
+  /// completa. El tiempo de práctica de cada tramo queda en su sesión, sin
+  /// contarse dos veces.
+  final SesionPrevia? previa;
+
+  /// Ejercicios ya respondidos en la sesión que se reanuda.
+  int reanudados = 0;
 
   final ContenidoCargado contenido;
   final SessionMode modo;
@@ -289,7 +338,8 @@ class MotorSesion {
   void preparar() {
     _inicioSesionMs = relojMs();
     _inicioSesion = ahora();
-    for (final f in calentamiento.take(5)) {
+    _restaurarPrevios();
+    for (final f in reanudados > 0 ? const <FichaRepaso>[] : calentamiento.take(5)) {
       final e = _ejercicioDeFicha(f, OrigenEjercicio.calentamiento);
       if (e != null) _cola.add(e);
     }
@@ -304,6 +354,7 @@ class MotorSesion {
         final s = slots[i];
         final key = s.templateId ?? s.questionId;
         if (key == null) continue;
+        if (i < reanudados) continue; // Ya respondido antes de salir.
         final candidatas = contenido.variantesDe(key);
         if (candidatas.isEmpty) {
           saltadas.add(VarianteSaltada(key, 'Sin variantes vigentes'));
@@ -337,8 +388,54 @@ class MotorSesion {
         _cola.add(EjercicioPreparado(variante: v, tipo: tipo, bloque: bloque, origen: OrigenEjercicio.practica));
       }
     }
-    total = _cola.length + (modo == SessionMode.review ? fichasRepaso.length : 0);
+    total = _cola.length + reanudados + (modo == SessionMode.review ? fichasRepaso.length : 0);
     _avanzar();
+  }
+
+  /// Reconstruye los resultados de la sesión que se reanuda a partir de sus
+  /// intentos guardados, para que el resumen cuente la lección entera.
+  void _restaurarPrevios() {
+    final previa = this.previa;
+    if (previa == null || leccion == null) return;
+    final slots = [...leccion!.slots]..sort((a, b) => a.position.compareTo(b.position));
+    var i = 0;
+    for (final a in previa.intentos) {
+      if (a.lessonId != leccion!.id) continue;
+      final v = contenido.variante(a.variantId);
+      if (v == null) {
+        if (a.attemptNumber == 1) i++;
+        continue;
+      }
+      final tipo = contenido.tipo(v.exerciseTypeId);
+      final segundo = a.attemptNumber != 1;
+      final indice = segundo ? i - 1 : i;
+      final e = EjercicioPreparado(
+        variante: v,
+        tipo: tipo,
+        bloque: bloqueRespuesta(v, tipo),
+        origen: segundo ? OrigenEjercicio.segundoIntento : OrigenEjercicio.leccion,
+        slot: indice >= 0 && indice < slots.length ? slots[indice] : null,
+        indiceSlot: indice,
+      );
+      final spec = v.answer;
+      resultados.add(ResultadoEjercicio(
+        ejercicio: e,
+        verdict: a.verdict,
+        respuestaMs: a.responseMs,
+        puntos: a.points,
+        correcta: spec != null ? displayQty(spec.value, spec.unit) : (v.options?.where((o) => o.correct).firstOrNull?.label ?? ''),
+        valor: a.answerValue,
+        unidad: a.answerUnit,
+        errorCode: a.errorCode,
+        critico: a.critical,
+        payload: a.answerPayload,
+        intento: a,
+      ));
+      _vistas.add(v.id);
+      if (!segundo) i++;
+    }
+    reanudados = i;
+    cerrados = i;
   }
 
   EjercicioPreparado? _ejercicioDeFicha(FichaRepaso f, OrigenEjercicio origen) {

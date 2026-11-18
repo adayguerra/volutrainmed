@@ -7,6 +7,7 @@ import 'package:volutrainmed/app/widgets/teclado.dart';
 import 'package:volutrainmed/core/domain/learning_models.dart';
 import 'package:volutrainmed/core/plataforma/plataforma.dart';
 import 'package:volutrainmed/features/session/domain/motor_sesion.dart';
+import 'package:volutrainmed/features/session/ui/pantalla_sesion.dart';
 
 import '../helpers/arnes.dart';
 import 'fixtures_sesion.dart';
@@ -197,6 +198,37 @@ void main() {
     expect(s.completed, isFalse);
     expect(s.lessonId, 'u-f-1-l3');
     expect(a.ubicacion.ruta, Rutas.inicio);
+
+    // Al volver, la lección empieza por el ejercicio siguiente.
+    a.contenedor.read(routerProvider).go(Rutas.leccion('u-f-1-l3'));
+    await Arnes.asentar(t);
+    expect(find.text('6 de 10'), findsOneWidget);
+    final vistas = (await a.aprendizaje.intentos()).map((i) => i.variantId).toSet();
+    expect(vistas, isNot(contains(PantallaSesion.ultimoMotor!.actual!.variante.id)), reason: 'no repite un ejercicio ya respondido');
+    for (var i = 0; i < 5; i++) {
+      await noLoSeUI(t);
+      await continuar(t);
+    }
+    await Arnes.asentar(t);
+    expect(await a.aprendizaje.intentos(), hasLength(10));
+    final sesiones = await a.aprendizaje.sesiones();
+    final completa = sesiones.singleWhere((x) => x.completed);
+    expect(completa.lessonId, 'u-f-1-l3');
+    expect(completa.summary!.total, 10, reason: 'el resumen cuenta la lección entera');
+    expect(PantallaSesion.ultimoMotor!.primerosIntentos, hasLength(10));
+  });
+
+  testWidgets('una lección dejada hace más de 24 horas empieza de nuevo', (t) async {
+    final a = arnesSesion();
+    await a.montar(t, ruta: Rutas.leccion('u-f-1-l3'));
+    await noLoSeUI(t);
+    await continuar(t);
+    await tocar(t, find.byKey(const ValueKey('cerrar-sesion')));
+    await tocar(t, find.byKey(const ValueKey('confirmar-salir')));
+    a.reloj.avanzar(const Duration(hours: 25));
+    a.contenedor.read(routerProvider).go(Rutas.leccion('u-f-1-l3'));
+    await Arnes.asentar(t);
+    expect(find.text('1 de 10'), findsOneWidget);
   });
 
   testWidgets('exercise-session · Gesto de atrás: abre la confirmación de salida en lugar de abandonar', (t) async {

@@ -148,6 +148,9 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       final cola = proyeccion?.colaHoy ?? const <FichaRepaso>[];
       final derechos = ref.read(derechosEfectivosProvider);
       _eraPrimeraLeccion = !usuario.primeraLeccionHecha;
+      // Lección dejada a medias hace menos de 24 h: se sigue por el siguiente.
+      final datos = ref.read(aprendizajeProvider).value;
+      final previa = leccion == null || datos == null ? null : sesionReanudable(leccion, datos.sesiones, datos.intentos, _deps.reloj.ahora());
       final m = MotorSesion(
         contenido: contenido,
         modo: modo,
@@ -164,6 +167,7 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
         azar: _deps.azar,
         alRegistrar: (a) => ref.read(aprendizajeProvider.notifier).registrarIntento(a),
         alEvento: (n, props) => ref.read(aprendizajeProvider.notifier).registrarEvento(n, props),
+        previa: previa,
       )..preparar();
       PantallaSesion.ultimoMotor = m;
       setState(() {
@@ -444,7 +448,7 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text(textoSalirTitulo),
-        content: Text('Se guarda lo hecho hasta aquí: $hechos de ${m.total} ejercicios. La lección quedará sin completar.'),
+        content: Text('Se guarda lo hecho hasta aquí: $hechos de ${m.total} ejercicios. Al volver, empiezas por el siguiente.'),
         actions: [
           TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Seguir con la lección')),
           FilledButton(key: const ValueKey('confirmar-salir'), onPressed: () => Navigator.of(ctx).pop(true), child: const Text('Salir')),
