@@ -4,6 +4,8 @@
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>El modo manos libres escucha tu respuesta. La voz se procesa en este dispositivo y no se guarda ni se envía.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>El modo manos libres reconoce tu respuesta hablada. El reconocimiento se hace solo en este dispositivo: el audio no se guarda ni se envía.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
