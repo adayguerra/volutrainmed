@@ -4,7 +4,7 @@
  * generan las variantes, se recalculan con el motor independiente, se firman los
  * paquetes por itinerario y se despliegan de forma gradual (5 %, 50 %, 100 %).
  */
-import type { AdCampaign, AdCreative, AdParams, ContentManifest, ExerciseType, FreePlanRules, Instrument, ItinerarySummary, LeagueConfig, MeasureUnit, Revocations, Sector, VoiceLexicon, Achievement } from '@vtm/contracts';
+import type { AdCampaign, AdCreative, AdParams, ContentManifest, ExerciseType, FreePlanRules, Instrument, ItinerarySummary, LeagueConfig, MeasureUnit, Revocations, Sector, Skill, VoiceLexicon, Achievement } from '@vtm/contracts';
 import type { QuestionDefinition, TemplateDefinition } from '@vtm/engine';
 import type { Tx } from '../db/pool.js';
 import { buildContent, signPackage, type BuildOutput, type CheckResult, type LessonSeed, type UnitInput } from './build.js';
@@ -86,7 +86,12 @@ export async function buildFromSnapshot(tx: Tx, snap: Snapshot, contentVersion: 
   const campaigns: AdCampaign[] = of('ad_campaign').map((r) => ({ ...(r.data as unknown as AdCampaign), creatives: of('ad_creative').filter((c) => (c.data as Record<string, unknown>).campaignId === r.id).map((c) => c.data as unknown as AdCreative) }));
   const lexicon = of('voice_lexicon')[0]?.data as unknown as VoiceLexicon | undefined;
   return buildContent({
-    contentVersion, minAppVersion, sectors, itineraries, skills: SKILLS,
+    contentVersion, minAppVersion, sectors, itineraries,
+    // Las habilidades salen del catálogo validado; sin catálogo (bases antiguas) se usa la lista de serie.
+    skills: of('catalog_skill').length
+      ? of('catalog_skill').map((r) => ({ id: String((r.data as Record<string, unknown>).code) as Skill['id'], name: String((r.data as Record<string, unknown>).name), description: ((r.data as Record<string, unknown>).description as string | undefined) || undefined }))
+          .sort((a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1)))
+      : SKILLS,
     // Tipos en uso versionados: viajan todas sus versiones vigentes y cada ejercicio usa la suya.
     exerciseTypes: (await tx.query("SELECT data, version FROM content_items WHERE kind = 'exercise_type' AND state IN ('validated','published') ORDER BY id, version")).rows
       .map((r) => ({ ...(r.data as ExerciseType), version: Number(r.version) })),

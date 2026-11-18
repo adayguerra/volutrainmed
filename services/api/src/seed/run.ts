@@ -13,7 +13,7 @@ import { createItem, decide, submitItem, CHECKLIST_KEYS, latest } from '../servi
 import { buildFromSnapshot, nextReleaseNumber, snapshot, storePackages, summarizeChecks } from '../publish/service.js';
 import type { BoCtx, BoRole } from '../server.js';
 import {
-  ACHIEVEMENTS, AD_PARAMS, EXERCISE_TYPES, INSTRUMENTS, ITINERARIES, LAUNCH_CAMPAIGN, LEAGUE_CONFIG, MEASURE_UNITS, QUESTIONS, SECTORS, STRUCTURE, TEMPLATES, VOICE_LEXICON, LESSON_TITLES,
+  ACHIEVEMENTS, AD_PARAMS, EXERCISE_TYPES, INSTRUMENTS, ITINERARIES, LAUNCH_CAMPAIGN, LEAGUE_CONFIG, MEASURE_UNITS, QUESTIONS, SECTORS, SKILLS, STRUCTURE, TEMPLATES, VOICE_LEXICON, LESSON_TITLES,
 } from './content.js';
 import { LESSON_KIND_ORDER } from '@vtm/contracts';
 
@@ -98,6 +98,8 @@ export async function seed(opts: { reset?: boolean; publish?: boolean; log?: (s:
     for (const u of MEASURE_UNITS) await seedItem(tx, admin, reviewers, 'catalog_unit', { ...u, id: `cu-${u.symbol.replace(/[^a-z]/gi, '') || 'pct'}` } as never);
     for (const i of INSTRUMENTS) await seedItem(tx, admin, reviewers, 'catalog_instrument', { ...i, id: `ci-${i.id}` } as never);
     await seedItem(tx, admin, reviewers, 'voice_lexicon', { ...VOICE_LEXICON, id: 'voice-lexicon-es', name: 'Léxico de voz (es-ES)' } as never);
+    for (const [i, k] of SKILLS.entries()) await seedItem(tx, admin, reviewers, 'catalog_skill', { id: `cs-${k.id.toLowerCase()}`, code: k.id, name: k.name } as never, i + 1);
+    for (const [i, sp] of ['Perro', 'Gato', 'Conejo', 'Hurón', 'Caballo'].entries()) await seedItem(tx, admin, reviewers, 'catalog_species', { id: `sp-${sp.toLowerCase().normalize('NFD').replace(/[^a-z]/g, '')}`, name: sp, sectorId: 'veterinaria' } as never, i + 1);
     for (const a of ACHIEVEMENTS) await seedItem(tx, admin, reviewers, 'achievement', a as never);
     await seedItem(tx, admin, reviewers, 'ad_campaign', { id: LAUNCH_CAMPAIGN.id, name: LAUNCH_CAMPAIGN.name, sectorIds: null, startsAt: null, endsAt: null } as never);
     for (const c of LAUNCH_CAMPAIGN.creatives) await seedItem(tx, admin, reviewers, 'ad_creative', { ...c, campaignId: LAUNCH_CAMPAIGN.id, name: `${c.id} · ${c.headline}` } as never);

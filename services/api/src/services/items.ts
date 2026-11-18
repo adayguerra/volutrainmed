@@ -16,6 +16,7 @@ import type { BoCtx } from '../server.js';
 export const KINDS = [
   'sector', 'itinerary', 'unit', 'lesson', 'template', 'question', 'exercise_type',
   'catalog_unit', 'catalog_instrument', 'voice_lexicon', 'ad_creative', 'ad_campaign', 'achievement',
+  'catalog_skill', 'catalog_species',
 ] as const;
 export type Kind = (typeof KINDS)[number];
 
@@ -78,7 +79,12 @@ export function checkOnSave(kind: Kind, data: Record<string, unknown>): void {
       if (!dc.ok) throw new ApiError(422, 'formula_units', dc.message);
     }
   }
-  if (kind === 'structure' as Kind) return;
+  // Catálogos de habilidades y especies (tareas 2.3 del back office).
+  if (kind === 'catalog_skill') {
+    if (!/^H\d{1,2}$/.test(String(data.code ?? ''))) throw new ApiError(422, 'skill_code', 'El código de la habilidad tiene la forma H1, H2…');
+    if (!String(data.name ?? '').trim()) throw new ApiError(422, 'name_required', 'Falta el nombre de la habilidad');
+  }
+  if (kind === 'catalog_species' && !String(data.name ?? '').trim()) throw new ApiError(422, 'name_required', 'Falta el nombre de la especie');
 }
 
 /** Comprobaciones previas al envío a revisión. Devuelve los motivos que lo impiden. */
@@ -136,11 +142,11 @@ export async function createItem(tx: Tx, bo: BoCtx, kind: Kind, data: Record<str
   if (!KINDS.includes(kind)) throw bad('invalid_kind', 'Tipo de elemento desconocido');
   if (STRUCTURE_KINDS.includes(kind) || kind === 'exercise_type') {
     if (!['superadmin', 'content_admin'].includes(bo.role)) throw forbidden('Solo la administración de contenido gestiona la estructura y los tipos');
-  } else if (['ad_creative', 'ad_campaign', 'achievement', 'catalog_unit', 'catalog_instrument', 'voice_lexicon'].includes(kind)) {
+  } else if (['ad_creative', 'ad_campaign', 'achievement', 'catalog_unit', 'catalog_instrument', 'voice_lexicon', 'catalog_skill', 'catalog_species'].includes(kind)) {
     if (!['superadmin', 'content_admin'].includes(bo.role)) throw forbidden();
   } else if (!CONTENT_EDITORS.includes(bo.role)) throw forbidden('Tu rol no crea contenido');
   checkOnSave(kind, data);
-  const prefix = { template: 'tpl', question: 'q', sector: 'sec', itinerary: 'it', unit: 'u', lesson: 'l', exercise_type: 'type', catalog_unit: 'cu', catalog_instrument: 'ci', voice_lexicon: 'vl', ad_creative: 'ad', ad_campaign: 'camp', achievement: 'ach' }[kind];
+  const prefix = { template: 'tpl', question: 'q', sector: 'sec', itinerary: 'it', unit: 'u', lesson: 'l', exercise_type: 'type', catalog_unit: 'cu', catalog_instrument: 'ci', voice_lexicon: 'vl', ad_creative: 'ad', ad_campaign: 'camp', achievement: 'ach', catalog_skill: 'cs', catalog_species: 'sp' }[kind];
   const id = opts.id ?? (data.id as string | undefined) ?? `${prefix}-${slug(titleOf(kind, data))}-${Math.random().toString(36).slice(2, 6)}`;
   const exists = (await tx.query('SELECT 1 FROM content_items WHERE id = $1', [id])).rowCount;
   if (exists) throw conflict('duplicate_id', 'Ya existe un elemento con ese identificador');
