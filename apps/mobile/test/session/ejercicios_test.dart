@@ -91,6 +91,35 @@ void main() {
     expect(find.text('Correcto'), findsOneWidget);
   });
 
+  testWidgets('ordenar pasos arrastrando: recolocar un paso por el asa corrige el orden y se da por correcto', (t) async {
+    final a = arnesSesion();
+    await a.montar(t, ruta: Rutas.leccion('l-t3'));
+    // Orden equivocado al tocar: b, a, c, d (el válido es a, b, c, d).
+    for (final id in ['b', 'a', 'c', 'd']) {
+      await tocar(t, find.byKey(ValueKey('paso-$id')));
+    }
+    expect(find.bySemanticsLabel(RegExp('^Posición 1: Multiplicar por 60')), findsOneWidget);
+    final asa = find.byKey(const ValueKey('asa-b'));
+    expect(t.getSize(asa).width, greaterThanOrEqualTo(48));
+    expect(t.getSize(asa).height, greaterThanOrEqualTo(48));
+    // Se arrastra «b» por debajo de «a».
+    final destino = t.getCenter(find.byKey(const ValueKey('asa-a')));
+    final paso = (destino.dy - t.getCenter(asa).dy + 40) / 8;
+    final g = await t.startGesture(t.getCenter(asa));
+    await t.pump(const Duration(milliseconds: 50));
+    for (var i = 0; i < 8; i++) {
+      await g.moveBy(Offset(0, paso));
+      await t.pump(const Duration(milliseconds: 50));
+    }
+    await g.up();
+    await Arnes.asentar(t);
+    expect(find.bySemanticsLabel(RegExp('^Posición 1: Multiplicar la dosis por el peso')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('^Posición 2: Multiplicar por 60')), findsOneWidget);
+    await comprobar(t);
+    expect(find.text('Correcto'), findsOneWidget);
+    expect((await a.aprendizaje.intentos()).single.answerPayload, {'order': ['a', 'b', 'c', 'd']});
+  });
+
   testWidgets('exercise-session · Conversión relámpago: serie de diez conversiones con 60 segundos en total', (t) async {
     final a = arnesSesion();
     await a.montar(t, ruta: Rutas.leccion('l-t7'));
