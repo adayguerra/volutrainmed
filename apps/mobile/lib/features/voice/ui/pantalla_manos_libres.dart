@@ -9,6 +9,7 @@ import '../../../app/adaptativo.dart';
 import '../../../app/dependencias.dart';
 import '../../../app/estado/ajustes.dart';
 import '../../../app/estado/estado_app.dart';
+import '../../../core/contenido/actualizador.dart';
 import '../../../app/router.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
@@ -144,6 +145,13 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
   // ---- Sesión --------------------------------------------------------------
 
   Future<void> _empezar() async {
+    // El contenido nuevo solo se aplica entre sesiones: justo antes de empezar.
+    try {
+      if (await ref.read(actualizadorProvider).aplicarPreparadas()) await ref.read(contenidoProvider.notifier).recargar();
+    } catch (_) {
+      // Si falla, se entrena con el contenido que ya está en uso.
+    }
+    if (!mounted) return;
     final c = ref.read(contenidoProvider).value!;
     final p = ref.read(proyeccionProvider);
     final it = ref.read(itinerarioActivoProvider);
