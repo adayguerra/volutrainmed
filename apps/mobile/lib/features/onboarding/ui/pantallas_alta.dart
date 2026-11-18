@@ -11,6 +11,7 @@ import '../../../app/router.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/contenido/repositorio_contenido.dart';
 import '../../../core/domain/content_models.dart';
 import '../../../core/domain/learning_models.dart';
@@ -632,14 +633,17 @@ class _PantallaDescargaState extends ConsumerState<PantallaDescarga> {
     setState(() => _estado = _EstadoDescarga.descargando);
     final act = ref.read(actualizadorProvider);
     try {
-      await act.descargarItinerario(id, progreso: (r, t) {
-        if (mounted) {
-          setState(() {
-            _recibidos = r;
-            _total = t;
-          });
-        }
-      });
+      await descargarRespetandoWifi(
+        context,
+        (datos) => act.descargarItinerario(id, conDatos: datos, progreso: (r, t) {
+          if (mounted) {
+            setState(() {
+              _recibidos = r;
+              _total = t;
+            });
+          }
+        }),
+      );
       if (await act.aplicarPreparadas()) await ref.read(contenidoProvider.notifier).recargar();
       if (!mounted) return;
       final ok = ref.read(contenidoProvider).value!.itinerario(id) != null;

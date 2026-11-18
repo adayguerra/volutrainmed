@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,11 +36,25 @@ Future<void> main() async {
     leerActivo: (ruta) async => (await rootBundle.load(ruta)).buffer.asUint8List(),
   );
   await sembrarDemo(deps);
+  // Web: la ruta de la URL (enlace directo o recarga) se lee antes de dibujar
+  // nada; la pantalla de arranque la sustituiría por «/».
+  final rutaUrl = rutaInicialDeLaPlataforma();
   runApp(ProviderScope(
     overrides: [
       dependenciasProvider.overrideWithValue(deps),
-      if (modoDemo && rutaDemo.isNotEmpty) rutaInicialProvider.overrideWithValue(rutaDemo),
+      if (modoDemo && rutaDemo.isNotEmpty)
+        rutaInicialProvider.overrideWithValue(rutaDemo)
+      else if (rutaUrl != null)
+        rutaInicialProvider.overrideWithValue(rutaUrl),
     ],
     child: const VtmApp(),
   ));
+}
+
+/// Ruta con la que el sistema abre la app (en la web, la de la barra de
+/// direcciones), o null si es la raíz.
+String? rutaInicialDeLaPlataforma() {
+  if (!kIsWeb) return null;
+  final r = WidgetsBinding.instance.platformDispatcher.defaultRouteName;
+  return r.isEmpty || r == '/' ? null : r;
 }

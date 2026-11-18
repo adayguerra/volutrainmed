@@ -9,6 +9,7 @@ import '../../../app/dependencias.dart';
 import '../../../app/estado/estado_app.dart';
 import '../../../app/tema.dart';
 import '../../../core/data/api_client.dart';
+import '../../../core/plataforma/archivos.dart';
 import 'comunes_perfil.dart';
 
 /// Aviso formativo, incluido en la app (se lee sin conexión).
@@ -36,6 +37,34 @@ class _PantallaPrivacidadState extends ConsumerState<PantallaPrivacidad> {
   _Exportacion _exp = _Exportacion.nada;
   Map<String, dynamic>? _archivo;
   String? _error;
+  ArchivoGuardado? _guardado;
+  String? _avisoArchivo;
+
+  /// Nombre del archivo exportado: `volutrainmed-datos-AAAA-MM-DD.json`.
+  String _nombreArchivo() {
+    final h = ref.read(dependenciasProvider).reloj.ahora();
+    String d(int n) => n.toString().padLeft(2, '0');
+    return 'volutrainmed-datos-${h.year}-${d(h.month)}-${d(h.day)}.json';
+  }
+
+  /// Guarda el archivo (descarga en la web, documentos de la app en el
+  /// móvil) y, si se pide y es posible, abre la hoja de compartir.
+  Future<void> _guardarArchivo({bool compartir = false}) async {
+    final f = _archivo;
+    if (f == null) return;
+    final guardador = ref.read(guardadorArchivosProvider);
+    try {
+      final g = _guardado ?? await guardador.guardar(_nombreArchivo(), const JsonEncoder.withIndent('  ').convert(f));
+      if (compartir) await guardador.compartir(g, asunto: 'Mis datos de VolutrainMed');
+      if (!mounted) return;
+      setState(() {
+        _guardado = g;
+        _avisoArchivo = g.ruta == null ? 'Archivo ${g.nombre} descargado.' : 'Guardado como ${g.nombre} en los documentos de la app.';
+      });
+    } catch (_) {
+      if (mounted) setState(() => _avisoArchivo = 'No se ha podido guardar el archivo. Puedes copiarlo.');
+    }
+  }
 
   Future<void> _exportar() async {
     final deps = ref.read(dependenciasProvider);
@@ -147,11 +176,33 @@ class _PantallaPrivacidadState extends ConsumerState<PantallaPrivacidad> {
                   style: context.textos.bodySmall,
                 ),
                 const SizedBox(height: 8),
-                OutlinedButton.icon(
-                  onPressed: () => Clipboard.setData(ClipboardData(text: const JsonEncoder.withIndent('  ').convert(f))),
-                  icon: const Icon(Symbols.content_copy),
-                  label: const Text('Copiar el archivo'),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    FilledButton.icon(
+                      onPressed: _guardarArchivo,
+                      icon: const Icon(Symbols.download),
+                      label: const Text('Guardar el archivo'),
+                    ),
+                    if (ref.watch(guardadorArchivosProvider).puedeCompartir)
+                      OutlinedButton.icon(
+                        onPressed: () => _guardarArchivo(compartir: true),
+                        icon: const Icon(Symbols.share),
+                        label: const Text('Compartir'),
+                      ),
+                    OutlinedButton.icon(
+                      onPressed: () => Clipboard.setData(ClipboardData(text: const JsonEncoder.withIndent('  ').convert(f))),
+                      icon: const Icon(Symbols.content_copy),
+                      label: const Text('Copiar'),
+                    ),
+                  ],
                 ),
+                if (_avisoArchivo != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Semantics(liveRegion: true, child: Text(_avisoArchivo!, style: context.textos.bodySmall)),
+                  ),
               ],
             ),
           ),

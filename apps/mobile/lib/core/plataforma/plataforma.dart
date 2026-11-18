@@ -16,6 +16,10 @@ import 'package:permission_handler/permission_handler.dart' as ph;
 
 abstract class Conectividad {
   Future<bool> hayConexion();
+
+  /// La conexión actual es de datos móviles (sin wifi ni cable): con el
+  /// ajuste «Descargar solo con wifi» no se bajan paquetes por ella.
+  Future<bool> soloDatosMoviles();
   Stream<bool> get cambios;
 }
 
@@ -30,6 +34,17 @@ class ConectividadSistema implements Conectividad {
       return _conectado(await _c.checkConnectivity());
     } catch (_) {
       return true;
+    }
+  }
+
+  @override
+  Future<bool> soloDatosMoviles() async {
+    try {
+      final r = await _c.checkConnectivity();
+      const fijas = {ConnectivityResult.wifi, ConnectivityResult.ethernet};
+      return r.contains(ConnectivityResult.mobile) && !r.any(fijas.contains);
+    } catch (_) {
+      return false;
     }
   }
 

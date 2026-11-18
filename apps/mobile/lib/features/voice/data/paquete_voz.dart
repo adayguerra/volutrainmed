@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import '../../../core/contenido/actualizador.dart' show SoloWifi;
 import '../../../core/contenido/verificador.dart';
 import '../../../core/data/almacenes.dart';
 import '../../../core/data/api_client.dart';
@@ -41,7 +42,10 @@ const claveMetaPaqueteVoz = 'voz.paquete';
 const claveBytesPaqueteVoz = 'voz.paquete.bytes';
 
 class ServicioPaqueteVoz {
-  ServicioPaqueteVoz({required this.api, required this.claves});
+  ServicioPaqueteVoz({required this.api, required this.claves, this.restringido});
+
+  /// Restricción «Descargar solo con wifi»; null = sin restricción.
+  final Future<bool> Function()? restringido;
   final ApiClient api;
   final AlmacenClaves claves;
 
@@ -66,7 +70,11 @@ class ServicioPaqueteVoz {
 
   /// Descarga y verifica el paquete. Si la verificación falla se descarta y
   /// se lanza [PaqueteNoValido]; no se guarda nada.
-  Future<PaqueteVoz> descargar({PaqueteVoz? meta}) async {
+  ///
+  /// Con «Descargar solo con wifi» y datos móviles lanza [SoloWifi], salvo
+  /// que el usuario lo autorice con [conDatos].
+  Future<PaqueteVoz> descargar({PaqueteVoz? meta, bool conDatos = false}) async {
+    if (!conDatos && (await restringido?.call() ?? false)) throw const SoloWifi();
     final p = meta ?? await disponible();
     final r = await api.descargar(p.url);
     final bytes = Uint8List.fromList(r.bytes);
