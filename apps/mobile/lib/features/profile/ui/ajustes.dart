@@ -10,6 +10,7 @@ import '../../../app/estado/estado_app.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/domain/learning_models.dart';
 import '../../../core/plataforma/plataforma.dart';
 import 'comunes_perfil.dart';
@@ -280,10 +281,16 @@ class _PantallaItinerarioState extends ConsumerState<PantallaItinerario> {
       setState(() => _descargando = id);
       final act = ref.read(actualizadorProvider);
       try {
-        await act.descargarItinerario(id, progreso: (r, t) {
-          if (mounted) setState(() => _fraccion = t <= 0 ? null : r / t);
-        });
+        await descargarRespetandoWifi(
+          context,
+          (datos) => act.descargarItinerario(id, conDatos: datos, progreso: (r, t) {
+            if (mounted) setState(() => _fraccion = t <= 0 ? null : r / t);
+          }),
+        );
         await act.aplicarPreparadas();
+      } on SoloWifi {
+        if (mounted) setState(() => _descargando = null);
+        return;
       } catch (e) {
         if (mounted) setState(() => _descargando = null);
         mensajero.showSnackBar(SnackBar(content: Text('No se ha podido descargar: $e')));
