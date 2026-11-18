@@ -147,3 +147,10 @@ pre.json { font: 12px/16px var(--f-num); white-space: pre-wrap; word-break: brea
 
 /* Los textos solo para lector de pantalla (posición absoluta) no deben ensanchar la página desde una tabla desplazable. */
 .tblwrap { position: relative; }
+
+/* Los enlaces con aspecto de botón no heredan el color de enlace (.vt a gana por especificidad
+   y dejaba «Nueva plantilla» con el texto del mismo color que el fondo). */
+.vt a.btn { text-decoration: none; }
+.vt a.btn-primary { color: var(--on-primary); }
+.vt a.btn-danger { color: var(--error-strong); }
+.vt a.btn-off { color: var(--muted); }

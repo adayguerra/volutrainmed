@@ -455,11 +455,11 @@ const V: TemplateDefinition[] = [
       { name: 'tomas', label: 'Tomas al día', kind: 'list', unit: 'tomas/día', values: ['2', '3'], show: true },
     ],
     statement: 'Caso simulado: perro de {peso}. Pauta: {dosis} repartidos en {tomas}.', question: '¿Cuántos mg por toma?',
-    formula: 'dosis × peso ÷ tomas', answerUnit: 'mg/tomas', unitChoices: ['mg/tomas'], rounding: { mode: 'decimals', places: 1 },
+    formula: 'dosis × peso ÷ tomas', answerUnit: 'mg/toma', unitChoices: ['mg/toma'], rounding: { mode: 'decimals', places: 1 },
     predictedErrors: [{ formula: 'dosis × peso × 1[tomas] ÷ 1[tomas]', unit: 'mg/día', code: 'E4', message: 'Has dado la dosis diaria: falta repartirla en tomas', deviationStep: 2 }],
     steps: [
       { text: 'Dosis diaria', formula: 'dosis × peso', unit: 'mg/día', operation: '{dosis} × {peso}', cancelled: ['kg'] },
-      { text: 'Dosis por toma', formula: 'paso1 ÷ tomas', unit: 'mg/tomas', operation: '{paso1} ÷ {tomas}', cancelled: ['día'] },
+      { text: 'Dosis por toma', formula: 'paso1 ÷ tomas', unit: 'mg/toma', operation: '{paso1} ÷ {tomas}', cancelled: ['día'] },
     ],
     plausibility: '{respuesta}: menos que la dosis diaria. Tiene sentido.',
     levels: levels(30),

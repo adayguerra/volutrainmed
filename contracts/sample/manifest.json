@@ -24,8 +24,8 @@
    "id": "it-vet-pequenos",
    "version": "2026.11.0",
    "url": "it-vet-pequenos.json.gz",
-   "sha256": "3a355b7619c5654de8482b6bc97000b9172d782a52745e8de9fe4febdb2b4703",
-   "signature": "xYc+JCM/XnnKKwws1vXFFw1QpAiV7SNq/mAU9OZg7jkGFXkmN4ghKd6jZInm5G7TnDW2TGt7QTnn/ZT3bGkiCA==",
+   "sha256": "63510c8bfa3f8cc304f97e02b8d8c2b408fd5fd7bac153271dc16819991459d5",
+   "signature": "cjxVgM+mCePUYdLMtndErMNbjb3vfJ3/gUAEetkvH2JHMkOYJG3c99wTvX8bTE32d8tvMnXAbcT0ioR5E/M7DA==",
    "size": 23273,
    "minAppVersion": "1.0.0"
   }
