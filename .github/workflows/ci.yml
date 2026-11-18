@@ -38,6 +38,10 @@ jobs:
         run: |
           pnpm --filter backoffice test
           pnpm --filter backoffice build
+      - name: Back office de extremo a extremo (API real y navegador: autoría, revisión, publicación, reversión, retirada y accesibilidad)
+        run: |
+          pnpm --filter backoffice exec playwright install --with-deps chromium
+          E2E_BROWSER=1 pnpm e2e:backoffice
 
   flutter:
     runs-on: macos-latest

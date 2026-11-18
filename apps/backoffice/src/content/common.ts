@@ -40,6 +40,28 @@ export async function loadSectors(api: Api): Promise<{ id: string; name: string 
   }
 }
 
+/** Habilidades del catálogo (no retiradas); si no hay catálogo, la lista de serie. */
+export async function loadSkills(api: Api): Promise<{ id: string; name: string }[]> {
+  try {
+    const r = await api.get<{ items: Item<{ code?: string; name?: string }>[] }>('/v1/admin/items', { kind: 'catalog_skill' });
+    const list = r.items.filter((i) => i.kind === 'catalog_skill' && i.data.code && i.data.name).map((i) => ({ id: String(i.data.code), name: String(i.data.name) }))
+      .sort((a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1)));
+    return list.length ? list : SKILLS;
+  } catch {
+    return SKILLS;
+  }
+}
+
+/** Especies del catálogo (no retiradas). */
+export async function loadSpecies(api: Api): Promise<string[]> {
+  try {
+    const r = await api.get<{ items: Item<{ name?: string }>[] }>('/v1/admin/items', { kind: 'catalog_species' });
+    return r.items.filter((i) => i.kind === 'catalog_species' && i.data.name).map((i) => String(i.data.name)).sort((a, b) => a.localeCompare(b, 'es'));
+  } catch {
+    return [];
+  }
+}
+
 export async function loadTypes(api: Api): Promise<{ id: string; name: string; voiceCompatible?: boolean }[]> {
   try {
     const r = await api.get<{ items: { id: string; data: { name: string; voiceCompatible?: boolean } }[] }>('/v1/admin/exercise-types');

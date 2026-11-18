@@ -23,11 +23,11 @@ export const STATE_LABELS: Record<string, string> = {
 
 export type Kind =
   | 'sector' | 'itinerary' | 'unit' | 'lesson' | 'template' | 'question' | 'exercise_type'
-  | 'catalog_unit' | 'catalog_instrument' | 'voice_lexicon' | 'ad_creative' | 'ad_campaign' | 'achievement';
+  | 'catalog_unit' | 'catalog_instrument' | 'voice_lexicon' | 'ad_creative' | 'ad_campaign' | 'achievement' | 'catalog_skill' | 'catalog_species';
 
 export const KIND_LABELS: Record<Kind, string> = {
   sector: 'Sector', itinerary: 'Itinerario', unit: 'Unidad', lesson: 'Lección', template: 'Plantilla', question: 'Pregunta', exercise_type: 'Tipo de ejercicio',
-  catalog_unit: 'Catálogo · unidad', catalog_instrument: 'Catálogo · instrumento', voice_lexicon: 'Catálogo · voz', ad_creative: 'Anuncio propio', ad_campaign: 'Campaña', achievement: 'Logro',
+  catalog_unit: 'Catálogo · unidad', catalog_instrument: 'Catálogo · instrumento', voice_lexicon: 'Catálogo · voz', ad_creative: 'Anuncio propio', ad_campaign: 'Campaña', achievement: 'Logro', catalog_skill: 'Catálogo · habilidad', catalog_species: 'Catálogo · especie',
 };
 
 export interface Item<D = Record<string, unknown>> {

@@ -10,7 +10,7 @@ import type { TemplateDefinition } from '@vtm/engine';
 import type { ItemDetail } from '../../api/types';
 import { canAccess, can } from '../../auth/permissions';
 import { useSession } from '../../auth/session';
-import { BUILTIN_TYPES, DEFAULT_SECTORS, loadSectors, loadTypes } from '../../content/common';
+import { BUILTIN_TYPES, DEFAULT_SECTORS, loadSectors, loadSkills, loadSpecies, loadTypes } from '../../content/common';
 import { formulaCheck, issuesOf, newTemplate, normalizeTemplate, sample, type MassReport } from '../../content/template';
 import { ErrorBox, Icon, Loading, Notice, Page, Panel, StateChip, Tabs, useAction, useAsync } from '../../ui/kit';
 import { date } from '../../ui/format';
@@ -30,6 +30,8 @@ export function TemplateEditor() {
   const detail = useAsync(() => (isNew ? Promise.resolve(null) : api.get<ItemDetail<TemplateDefinition>>(`/v1/admin/items/${id}`)), [api, id]);
   const sectors = useAsync(() => loadSectors(api), [api]);
   const types = useAsync(() => loadTypes(api), [api]);
+  const skills = useAsync(() => loadSkills(api), [api]);
+  const species = useAsync(() => loadSpecies(api), [api]);
   const [def, setDef] = useState<TemplateDefinition>(newTemplate);
   const [dirty, setDirty] = useState(false);
   const [tab, setTab] = useState<StepId>('general');
@@ -116,7 +118,7 @@ export function TemplateEditor() {
           <Tabs label="Pasos del asistente" value={tab} onChange={setTab} tabs={STEPS.map((s, i) => ({ id: s.id, label: s.label, n: i + 1 }))} />
           <section className="panel panel-b" aria-label={STEPS.find((s) => s.id === tab)!.label}>
             <fieldset disabled={!editable} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
-              {tab === 'general' && <GeneralStep def={def} set={set} sectors={sectors.data ?? DEFAULT_SECTORS} types={types.data ?? BUILTIN_TYPES} />}
+              {tab === 'general' && <GeneralStep def={def} set={set} sectors={sectors.data ?? DEFAULT_SECTORS} types={types.data ?? BUILTIN_TYPES} skills={skills.data} species={species.data} />}
               {tab === 'variables' && <VariablesStep def={def} set={set} />}
               {tab === 'statement' && <StatementStep def={def} set={set} preview={preview} />}
               {tab === 'formula' && <FormulaStep def={def} set={set} preview={preview} />}

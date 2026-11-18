@@ -8,6 +8,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "migrate": "tsx src/db/migrate.ts",
+    "db:ensure": "tsx src/db/ensure-db.ts",
     "seed": "tsx src/seed/run.ts",
     "build:sample": "tsx src/seed/build-sample.ts",
     "test": "vitest run",

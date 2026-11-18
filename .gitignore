@@ -34,3 +34,7 @@ apps/mobile/android/local.properties
 
 # Worktrees y ajustes locales de agentes
 .claude/
+
+# Playwright
+test-results/
+playwright-report/

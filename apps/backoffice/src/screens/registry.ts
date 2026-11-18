@@ -1,22 +1,28 @@
-/** Registro de pantallas por ruta y sección (la guarda de permisos usa la sección). */
-import type { ComponentType } from 'react';
+/** Registro de pantallas por ruta y sección (la guarda de permisos usa la sección). Cada pantalla se carga bajo demanda. */
+import { lazy, type ComponentType } from 'react';
 import type { Section } from '../auth/permissions';
-import { Structure } from './Structure';
-import { Library } from './Library';
-import { TemplateEditor } from './template/TemplateEditor';
-import { QuestionEditor } from './QuestionEditor';
-import { Preview } from './Preview';
-import { ExerciseTypes } from './ExerciseTypes';
-import { Import } from './Import';
-import { ReviewInbox, ReviewSheet } from './Review';
-import { Publishing } from './Publishing';
-import { Accounts, UserDetail, Users } from './People';
-import { Organizations } from './Organizations';
-import { Analytics, AnalyticsItem } from './Analytics';
-import { Inquiries } from './Inquiries';
-import { Audit } from './Audit';
-import { Achievements, Leagues } from './Gamification';
-import { Catalogs } from './Catalogs';
+
+const Structure = lazy(() => import('./Structure').then((m) => ({ default: m.Structure })));
+const Library = lazy(() => import('./Library').then((m) => ({ default: m.Library })));
+const TemplateEditor = lazy(() => import('./template/TemplateEditor').then((m) => ({ default: m.TemplateEditor })));
+const QuestionEditor = lazy(() => import('./QuestionEditor').then((m) => ({ default: m.QuestionEditor })));
+const Preview = lazy(() => import('./Preview').then((m) => ({ default: m.Preview })));
+const ExerciseTypes = lazy(() => import('./ExerciseTypes').then((m) => ({ default: m.ExerciseTypes })));
+const Import = lazy(() => import('./Import').then((m) => ({ default: m.Import })));
+const ReviewInbox = lazy(() => import('./Review').then((m) => ({ default: m.ReviewInbox })));
+const ReviewSheet = lazy(() => import('./Review').then((m) => ({ default: m.ReviewSheet })));
+const Publishing = lazy(() => import('./Publishing').then((m) => ({ default: m.Publishing })));
+const Accounts = lazy(() => import('./People').then((m) => ({ default: m.Accounts })));
+const UserDetail = lazy(() => import('./People').then((m) => ({ default: m.UserDetail })));
+const Users = lazy(() => import('./People').then((m) => ({ default: m.Users })));
+const Organizations = lazy(() => import('./Organizations').then((m) => ({ default: m.Organizations })));
+const Analytics = lazy(() => import('./Analytics').then((m) => ({ default: m.Analytics })));
+const AnalyticsItem = lazy(() => import('./Analytics').then((m) => ({ default: m.AnalyticsItem })));
+const Inquiries = lazy(() => import('./Inquiries').then((m) => ({ default: m.Inquiries })));
+const Audit = lazy(() => import('./Audit').then((m) => ({ default: m.Audit })));
+const Achievements = lazy(() => import('./Gamification').then((m) => ({ default: m.Achievements })));
+const Leagues = lazy(() => import('./Gamification').then((m) => ({ default: m.Leagues })));
+const Catalogs = lazy(() => import('./Catalogs').then((m) => ({ default: m.Catalogs })));
 
 export interface ScreenDef { path: string; section: Section; component: ComponentType }
 

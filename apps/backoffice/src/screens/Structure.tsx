@@ -4,7 +4,7 @@
  * nodos hijos, ficha de cada nodo, composición de lecciones por huecos o por
  * regla automática y retirada con motivo (nada se borra).
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
 import type { Item, Kind, TreeNode } from '../api/types';
 import { KIND_LABELS } from '../api/types';
 import { can } from '../auth/permissions';
@@ -30,21 +30,47 @@ function find(nodes: TreeNode[], id: string): TreeNode | null {
   return null;
 }
 
-function TreeItem({ node, depth, selected, onSelect, onMove, editable, index, count }: {
-  node: TreeNode; depth: number; selected: string | null; onSelect: (id: string) => void; onMove: (n: TreeNode, dir: 'up' | 'down') => void; editable: boolean; index: number; count: number;
+type DragRef = MutableRefObject<{ id: string; kind: string; parentId: string | null; index: number } | null>;
+
+function TreeItem({ node, depth, selected, onSelect, onMove, onReorder, drag, editable, index, count }: {
+  node: TreeNode; depth: number; selected: string | null; onSelect: (id: string) => void; onMove: (n: TreeNode, dir: 'up' | 'down') => void;
+  onReorder: (n: { id: string; kind: string; title?: string }, delta: number) => void; drag: DragRef; editable: boolean; index: number; count: number;
 }) {
+  const [over, setOver] = useState(false);
+  const movable = editable && node.state !== 'retired';
+  const accepts = () => Boolean(drag.current && drag.current.id !== node.id && drag.current.kind === node.kind && drag.current.parentId === node.parentId);
   const [open, setOpen] = useState(depth < 2 || node.children.some((c) => c.id === selected));
   const label = node.kind === 'unit' ? `Unidad ${index + 1} · ${node.title}` : node.kind === 'lesson' ? `L${index + 1} · ${node.title}` : node.title;
   const active = node.children.filter((c) => c.state !== 'retired');
   return (
     <li>
-      <div className={`tree-node${selected === node.id ? ' sel' : ''}`} style={{ paddingLeft: 6 + depth * 16 }}>
+      <div className={`tree-node${selected === node.id ? ' sel' : ''}${over ? ' drop' : ''}`} style={{ paddingLeft: 6 + depth * 16 }} data-testid={`nodo-${node.id}`}
+        draggable={movable}
+        onDragStart={(e) => { drag.current = { id: node.id, kind: node.kind, parentId: node.parentId, index }; e.dataTransfer?.setData('text/plain', node.id); if (e.dataTransfer) e.dataTransfer.effectAllowed = 'move'; e.stopPropagation(); }}
+        onDragEnd={() => { drag.current = null; setOver(false); }}
+        onDragOver={(e) => { if (movable && accepts()) { e.preventDefault(); setOver(true); } }}
+        onDragLeave={() => setOver(false)}
+        onDrop={(e) => {
+          setOver(false);
+          const d = drag.current;
+          if (!movable || !d || !accepts()) return;
+          e.preventDefault(); e.stopPropagation();
+          drag.current = null;
+          onReorder({ id: d.id, kind: d.kind }, index - d.index);
+        }}>
+        {movable && <Icon name="drag_indicator" className="muted grip" />}
         {node.children.length ? (
           <button type="button" className="iconbtn iconbtn-sm" aria-label={open ? `Contraer ${node.title}` : `Desplegar ${node.title}`} aria-expanded={open} onClick={() => setOpen(!open)}>
             <Icon name={open ? 'expand_more' : 'chevron_right'} />
           </button>
         ) : <span style={{ width: 36 }} />}
-        <button type="button" className="name" onClick={() => onSelect(node.id)} aria-current={selected === node.id ? 'true' : undefined}>
+        <button type="button" className="name" onClick={() => onSelect(node.id)} aria-current={selected === node.id ? 'true' : undefined}
+          aria-keyshortcuts={movable ? 'Alt+ArrowUp Alt+ArrowDown' : undefined}
+          onKeyDown={(e) => {
+            if (!movable || !e.altKey) return;
+            if (e.key === 'ArrowUp' && index > 0) { e.preventDefault(); onMove(node, 'up'); }
+            if (e.key === 'ArrowDown' && index < count - 1) { e.preventDefault(); onMove(node, 'down'); }
+          }}>
           {label}{node.state === 'draft' ? <span className="chip" style={{ marginLeft: 6, height: 22 }}>Borrador</span> : node.state === 'retired' ? <span className="chip chip-line" style={{ marginLeft: 6, height: 22 }}>Retirado</span> : null}
         </button>
         {editable && node.state !== 'retired' && (
@@ -57,7 +83,7 @@ function TreeItem({ node, depth, selected, onSelect, onMove, editable, index, co
       {open && node.children.length > 0 && (
         <ul className="tree-list">
           {node.children.map((c) => (
-            <TreeItem key={c.id} node={c} depth={depth + 1} selected={selected} onSelect={onSelect} onMove={onMove} editable={editable}
+            <TreeItem key={c.id} node={c} depth={depth + 1} selected={selected} onSelect={onSelect} onMove={onMove} onReorder={onReorder} drag={drag} editable={editable}
               index={active.findIndex((x) => x.id === c.id)} count={active.length} />
           ))}
         </ul>
@@ -275,6 +301,17 @@ export function Structure() {
     state.reload();
   }
 
+  /** Soltar un nodo sobre un hermano: lo lleva a esa posición con los mismos movimientos que los botones. */
+  async function reorder(n: { id: string; kind: string }, delta: number) {
+    if (!delta) return;
+    const dir = delta < 0 ? 'up' : 'down';
+    const title = find(tree, n.id)?.title ?? n.id;
+    await run(async () => { for (let i = 0; i < Math.abs(delta); i++) await api.post(`/v1/admin/structure/${n.kind}/${n.id}/move`, { direction: dir }); },
+      `${title} ${dir === 'up' ? 'sube' : 'baja'} ${Math.abs(delta)} ${Math.abs(delta) === 1 ? 'posición' : 'posiciones'}`);
+    state.reload();
+  }
+  const drag: DragRef = useRef(null);
+
   const childKind = node ? CHILD[node.kind] : 'sector';
   return (
     <Page title="Sectores e itinerarios" crumbs={[{ label: 'Contenido' }, { label: 'Estructura' }]}
@@ -286,9 +323,10 @@ export function Structure() {
             <Panel title="Árbol" icon="account_tree" actions={editable && node && childKind ? (
               <button type="button" className="btn btn-primary btn-xs" onClick={() => setCreating({ kind: childKind, parent: node })}><Icon name="add" />Nueva {KIND_LABELS[childKind].toLowerCase()}</button>
             ) : undefined}>
+              {editable && <p className="t-small muted" style={{ marginBottom: 8 }}>Para reordenar, arrastra un nodo sobre otro del mismo nivel, usa los botones de subir y bajar o pulsa Alt + flecha arriba o abajo.</p>}
               {tree.length === 0 ? <Empty icon="account_tree" title="Todavía no hay sectores" /> : (
                 <ul className="tree-list" aria-label="Árbol de contenido">
-                  {tree.map((n, i) => <TreeItem key={n.id} node={n} depth={0} selected={selected} onSelect={setSelected} onMove={move} editable={editable} index={i} count={tree.length} />)}
+                  {tree.map((n, i) => <TreeItem key={n.id} node={n} depth={0} selected={selected} onSelect={setSelected} onMove={move} onReorder={reorder} drag={drag} editable={editable} index={i} count={tree.length} />)}
                 </ul>
               )}
             </Panel>

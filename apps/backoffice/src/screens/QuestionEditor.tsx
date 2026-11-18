@@ -11,7 +11,7 @@ import { ERROR_LABELS, type ErrorCode } from '@vtm/contracts';
 import type { Item, ItemDetail } from '../api/types';
 import { can } from '../auth/permissions';
 import { useSession } from '../auth/session';
-import { BUILTIN_TYPES, DEFAULT_SECTORS, ERROR_CODES, SKILLS, loadSectors, loadTypes } from '../content/common';
+import { BUILTIN_TYPES, DEFAULT_SECTORS, ERROR_CODES, SKILLS, loadSectors, loadSkills, loadTypes } from '../content/common';
 import { ExercisePreview, type Device } from '../content/ExercisePreview';
 import { ErrorBox, Field, Icon, Loading, Notice, Page, Panel, StateChip, useAction, useAsync } from '../ui/kit';
 
@@ -62,6 +62,7 @@ export function QuestionEditor() {
   const detail = useAsync(() => (isNew ? Promise.resolve(null) : api.get<ItemDetail<Q>>(`/v1/admin/items/${id}`)), [api, id]);
   const sectors = useAsync(() => loadSectors(api), [api]);
   const types = useAsync(() => loadTypes(api), [api]);
+  const skills = useAsync(() => loadSkills(api), [api]);
   const others = useAsync(() => api.get<{ items: Item<Q>[] }>('/v1/admin/items', { kind: 'question' }).then((r) => r.items).catch(() => [] as Item<Q>[]), [api]);
   const [q, setQ] = useState<Q>(() => newQuestion());
   const [dirty, setDirty] = useState(false);
@@ -139,7 +140,7 @@ export function QuestionEditor() {
             <div className="grid2">
               <Field label="Tipo de ejercicio" id="q-type"><select id="q-type" className="input" value={t} onChange={(e) => changeType(e.target.value)}>{(types.data ?? BUILTIN_TYPES).map((x) => <option key={x.id} value={x.id}>{x.id} · {x.name}</option>)}</select></Field>
               <Field label="Sector" id="q-sector"><select id="q-sector" className="input" value={q.sectorId} onChange={(e) => set((x) => ({ ...x, sectorId: e.target.value }))}>{(sectors.data ?? DEFAULT_SECTORS).map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></Field>
-              <Field label="Habilidad" id="q-skill"><select id="q-skill" className="input" value={q.skillId} onChange={(e) => set((x) => ({ ...x, skillId: e.target.value as Q['skillId'] }))}>{SKILLS.map((s) => <option key={s.id} value={s.id}>{s.id} · {s.name}</option>)}</select></Field>
+              <Field label="Habilidad" id="q-skill"><select id="q-skill" className="input" value={q.skillId} onChange={(e) => set((x) => ({ ...x, skillId: e.target.value as Q['skillId'] }))}>{(skills.data ?? SKILLS).map((s) => <option key={s.id} value={s.id}>{s.id} · {s.name}</option>)}</select></Field>
               <Field label="Nombre" id="q-name"><input id="q-name" className="input" value={q.name} onChange={(e) => set((x) => ({ ...x, name: e.target.value }))} /></Field>
             </div>
             <Field label="Enunciado" id="q-statement" help="Inserta las cantidades con su unidad: la app las resalta y la voz las lee.">

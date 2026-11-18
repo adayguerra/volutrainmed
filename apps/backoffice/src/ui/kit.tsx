@@ -42,7 +42,8 @@ export function Panel({ title, icon, actions, children, className, bodyClass = '
           {actions}
         </div>
       )}
-      <div className={bodyClass}>{children}</div>
+      {/* Una tabla desplazable debe poder recorrerse con el teclado. */}
+      <div className={bodyClass} {...(bodyClass.includes('tblwrap') ? { tabIndex: 0, role: 'group', 'aria-label': 'Tabla desplazable' } : {})}>{children}</div>
     </section>
   );
 }

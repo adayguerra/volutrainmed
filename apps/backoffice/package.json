@@ -10,7 +10,8 @@
     "preview": "vite preview --port 5173",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p .",
-    "e2e": "tsx e2e/flujo-publicacion.e2e.ts"
+    "e2e": "tsx e2e/flujo-publicacion.e2e.ts",
+    "e2e:browser": "playwright test"
   },
   "dependencies": {
     "@vtm/contracts": "workspace:*",
@@ -21,6 +22,8 @@
     "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.1",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",

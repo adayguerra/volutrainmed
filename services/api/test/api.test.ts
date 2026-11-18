@@ -590,6 +590,105 @@ describe('leagues', () => {
   });
 });
 
+describe('leagues (cierre semanal)', () => {
+  async function sectorUser(email: string, sectorId: string) {
+    const u = await appUser(email);
+    await call('PATCH', '/v1/me', { sectorId }, u.token);
+    return u;
+  }
+  it('Inicio de semana: cada participante queda asignado a un grupo de su división con usuarios de su sector', async () => {
+    const a = await sectorUser('semana-a@correo.test', 'emergencias');
+    const b = await sectorUser('semana-b@correo.test', 'emergencias');
+    const c = await sectorUser('semana-c@correo.test', 'pediatria');
+    const la = (await call('GET', '/v1/leagues/current', undefined, a.token)).json;
+    const lb = (await call('GET', '/v1/leagues/current', undefined, b.token)).json;
+    const lc = (await call('GET', '/v1/leagues/current', undefined, c.token)).json;
+    expect(la.division).toBe('Bronce');
+    const aliasesA = la.standings.map((s: any) => s.alias);
+    expect(aliasesA).toContain(a.user.alias);
+    expect(lb.standings.map((s: any) => s.alias).sort()).toEqual([...aliasesA, ...(aliasesA.includes(b.user.alias) ? [] : [b.user.alias])].sort());
+    expect(lc.standings.map((s: any) => s.alias)).not.toContain(a.user.alias);
+    const db = adminDb(); await db.connect();
+    try {
+      const rows = (await db.query(
+        `SELECT u.email, g.id, g.division, g.sector_id FROM league_members m JOIN league_groups g ON g.id = m.group_id JOIN users u ON u.id = m.user_id
+         WHERE u.email = ANY($1) AND g.private_league_id IS NULL`, [['semana-a@correo.test', 'semana-b@correo.test', 'semana-c@correo.test']])).rows;
+      const by = Object.fromEntries(rows.map((r) => [r.email, r]));
+      expect(by['semana-a@correo.test'].id).toBe(by['semana-b@correo.test'].id);
+      expect(by['semana-a@correo.test'].sector_id).toBe('emergencias');
+      expect(by['semana-a@correo.test'].division).toBe(0);
+      expect(by['semana-c@correo.test'].sector_id).toBe('pediatria');
+      expect(by['semana-c@correo.test'].id).not.toBe(by['semana-a@correo.test'].id);
+    } finally { await db.end(); }
+  });
+  it('Ascenso y descenso: al terminar la semana los 7 primeros de cada grupo suben de división y los 5 últimos bajan', async () => {
+    const db = adminDb(); await db.connect();
+    try {
+      const users = [];
+      for (let i = 0; i < 14; i++) {
+        const u = await sectorUser(`ascenso-${i}@correo.test`, 'farmacia');
+        // Todos empiezan en Plata para que el descenso sea posible.
+        await db.query('INSERT INTO league_divisions(user_id, division) VALUES ($1, 1) ON CONFLICT (user_id) DO UPDATE SET division = 1', [u.user.id]);
+        const atts = Array.from({ length: 14 - i }, () => attempt({ responseMs: 9000 }));
+        await call('POST', '/v1/sync/push', { deviceId: u.deviceId, appVersion: '1.0.0', attempts: atts, sessions: [], events: [] }, u.token);
+        users.push(u);
+      }
+      let week = '';
+      for (const u of users) {
+        const l = (await call('GET', '/v1/leagues/current', undefined, u.token)).json;
+        expect(l.division).toBe('Plata');
+        week = l.week;
+      }
+      const last = (await call('GET', '/v1/leagues/current', undefined, users[0]!.token)).json;
+      expect(last.standings).toHaveLength(14);
+      expect(last.standings[0].me).toBe(true);
+      const sa = await bo('superadmin@volutrainmed.test');
+      const closed = await call('POST', '/v1/admin/leagues/close-week', { weekStart: week }, sa);
+      expect(closed.status).toBe(200);
+      const mine = closed.json.groups.filter((g: any) => g.promoted === 7 && g.relegated === 5);
+      expect(mine).toHaveLength(1);
+      const div = (await db.query('SELECT u.email, d.division FROM league_divisions d JOIN users u ON u.id = d.user_id WHERE u.email LIKE $1', ['ascenso-%'])).rows;
+      const of = (i: number) => div.find((r) => r.email === `ascenso-${i}@correo.test`).division;
+      for (let i = 0; i < 7; i++) expect(of(i)).toBe(2);
+      for (let i = 7; i < 9; i++) expect(of(i)).toBe(1);
+      for (let i = 9; i < 14; i++) expect(of(i)).toBe(0);
+      // El cierre semanal es exclusivo de la superadministración y queda en auditoría.
+      const ca = await bo('contenido@volutrainmed.test');
+      expect((await call('POST', '/v1/admin/leagues/close-week', { weekStart: week }, ca)).status).toBe(403);
+      const audit = await call('GET', '/v1/admin/audit?action=league.close_week', undefined, ca);
+      expect(audit.json.items.length).toBeGreaterThan(0);
+    } finally { await db.end(); }
+  });
+});
+
+describe('catálogos de habilidades y especies (back office)', () => {
+  it('las habilidades y las especies son catálogos con el mismo ciclo de revisión y llegan al paquete publicado', async () => {
+    const admin = await bo('contenido@volutrainmed.test');
+    const skills = await call('GET', '/v1/admin/items?kind=catalog_skill', undefined, admin);
+    expect(skills.json.items).toHaveLength(12);
+    expect(skills.json.items.every((i: any) => i.state === 'published' || i.state === 'validated')).toBe(true);
+    const species = await call('GET', '/v1/admin/items?kind=catalog_species', undefined, admin);
+    expect(species.json.items.map((i: any) => i.data.name).sort()).toEqual(['Caballo', 'Conejo', 'Gato', 'Hurón', 'Perro']);
+    // El paquete global lleva las habilidades del catálogo.
+    const m = (await call('GET', '/v1/content/manifest?deviceId=cat-1&appVersion=1.0.0')).json as ContentManifest;
+    const g = JSON.parse(gunzipSync((await call('GET', m.global.url)).raw).toString('utf8'));
+    expect(g.skills.map((k: any) => k.id)).toEqual(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12']);
+    // Alta sin código válido o sin nombre: no se guarda.
+    expect((await call('POST', '/v1/admin/items', { kind: 'catalog_skill', data: { code: 'X1', name: 'Mala' } }, admin)).status).toBe(422);
+    expect((await call('POST', '/v1/admin/items', { kind: 'catalog_species', data: { name: ' ' } }, admin)).status).toBe(422);
+    // Una especie nueva queda en borrador; la autoría no gestiona catálogos.
+    const sp = await call('POST', '/v1/admin/items', { kind: 'catalog_species', data: { name: 'Cobaya', sectorId: 'veterinaria' } }, admin);
+    expect(sp.json.item.state).toBe('draft');
+    const author = await bo('autora@volutrainmed.test');
+    expect((await call('POST', '/v1/admin/items', { kind: 'catalog_species', data: { name: 'Loro' } }, author)).status).toBe(403);
+    // Cambiar una habilidad publicada crea una versión nueva en borrador.
+    const h1 = skills.json.items.find((i: any) => i.data.code === 'H1');
+    const upd = await call('PUT', `/v1/admin/items/${h1.id}`, { data: { ...h1.data, name: 'Conversión de unidades (masa, volumen y tiempo)' } }, admin);
+    expect(upd.json.item.version).toBe(h1.version + 1);
+    expect(upd.json.item.state).toBe('draft');
+  });
+});
+
 describe('house-ads (back office)', () => {
   it('Espera configurable de 0 a 5 s, auditada', async () => {
     const admin = await bo('contenido@volutrainmed.test');
