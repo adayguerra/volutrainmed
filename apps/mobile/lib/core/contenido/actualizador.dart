@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/dependencias.dart';
+import '../../app/estado/ajustes.dart';
 import '../../app/estado/estado_app.dart';
 import '../data/almacenes.dart';
 import '../data/api_client.dart';
@@ -24,7 +25,12 @@ class EstadoActualizacion {
     this.error,
     this.avisoAppAntigua,
     this.ultimaComprobacion,
+    this.esperaWifi = false,
   });
+
+  /// Hay una versión nueva que no se ha bajado porque el ajuste «Descargar
+  /// solo con wifi» está activo y la conexión es de datos móviles.
+  final bool esperaWifi;
 
   final bool comprobando;
 
@@ -55,6 +61,7 @@ class EstadoActualizacion {
     String? avisoAppAntigua,
     bool sinAviso = false,
     DateTime? ultimaComprobacion,
+    bool? esperaWifi,
   }) =>
       EstadoActualizacion(
         comprobando: comprobando ?? this.comprobando,
@@ -65,6 +72,7 @@ class EstadoActualizacion {
         error: sinError ? null : (error ?? this.error),
         avisoAppAntigua: sinAviso ? null : (avisoAppAntigua ?? this.avisoAppAntigua),
         ultimaComprobacion: ultimaComprobacion ?? this.ultimaComprobacion,
+        esperaWifi: esperaWifi ?? this.esperaWifi,
       );
 }
 
@@ -81,7 +89,10 @@ abstract class ActualizadorContenido {
   /// Descarga (o reanuda) y verifica el paquete de un itinerario y lo deja
   /// preparado. [progreso] recibe bytes recibidos y totales. Para usarlo hay
   /// que llamar después a [aplicarPreparadas] (fuera de una sesión).
-  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso});
+  ///
+  /// Con «Descargar solo con wifi» y conexión de datos móviles lanza
+  /// [SoloWifi], salvo que el usuario lo autorice con [conDatos].
+  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso, bool conDatos = false});
 
   /// Aplica las versiones preparadas si no hay ninguna sesión en curso.
   /// Devuelve true si el contenido ha cambiado.
@@ -99,7 +110,7 @@ class ActualizadorSinRed implements ActualizadorContenido {
   @override
   Future<void> comprobar() async {}
   @override
-  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso}) async {}
+  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso, bool conDatos = false}) async {}
   @override
   Future<bool> aplicarPreparadas() async => false;
   @override
@@ -140,6 +151,23 @@ class DescargaFallida implements Exception {
   String toString() => mensaje;
 }
 
+const textoSoloWifi = 'Solo se descarga con wifi. Conéctate a una wifi o cambia el ajuste en Descargas y sincronización';
+
+/// La descarga no se hace porque el ajuste «Descargar solo con wifi» está
+/// activo y la conexión es de datos móviles.
+class SoloWifi extends DescargaFallida {
+  const SoloWifi() : super(textoSoloWifi);
+}
+
+/// ¿Está restringida ahora la descarga de paquetes (ajuste solo wifi activo y
+/// conexión de datos móviles)?
+typedef RestriccionWifi = Future<bool> Function();
+
+final restriccionWifiProvider = Provider<RestriccionWifi>((ref) {
+  final deps = ref.watch(dependenciasProvider);
+  return () async => ref.read(ajustesProvider).soloWifi && await deps.conectividad.soloDatosMoviles();
+});
+
 class ActualizadorReal implements ActualizadorContenido {
   ActualizadorReal({
     required this.almacen,
@@ -150,7 +178,11 @@ class ActualizadorReal implements ActualizadorContenido {
     required this.aplicarRevocaciones,
     required this.recargarContenido,
     this.reintentosVerificacion = 1,
+    this.restringido,
   });
+
+  /// Restricción «solo wifi»; null = sin restricción.
+  final RestriccionWifi? restringido;
 
   final AlmacenContenido almacen;
   final AlmacenClaves claves;
@@ -209,11 +241,19 @@ class ActualizadorReal implements ActualizadorContenido {
       }
       var appAntigua = m.crudo['newerRequiresAppVersion'] != null;
       final objetivos = <ArchivoFirmado>[m.global, for (final c in await itinerariosInstalados()) ?m.itinerarios[c]];
+      // Solo wifi: el manifiesto y la lista de retirada (pequeños y de
+      // seguridad) ya se han aplicado; los paquetes esperan a una wifi.
+      final sinWifi = await restringido?.call() ?? false;
+      var esperaWifi = false;
       for (final f in objetivos) {
         final local = await _versionLocal(f.clave);
         if (local != null && compararVersiones(f.version, local) <= 0) continue;
         if (!f.compatible) {
           appAntigua = true;
+          continue;
+        }
+        if (sinWifi) {
+          esperaWifi = true;
           continue;
         }
         await _descargar(f);
@@ -228,6 +268,7 @@ class ActualizadorReal implements ActualizadorContenido {
         ultimaComprobacion: DateTime.now(),
         avisoAppAntigua: appAntigua ? textoActualizaApp : null,
         sinAviso: !appAntigua,
+        esperaWifi: esperaWifi,
       );
     } on ApiException catch (e) {
       // 404 no_content: aún no hay contenido publicado; no es un error.
@@ -238,7 +279,7 @@ class ActualizadorReal implements ActualizadorContenido {
   }
 
   @override
-  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso}) async {
+  Future<void> descargarItinerario(String itineraryId, {void Function(int recibidos, int total)? progreso, bool conDatos = false}) async {
     final m = _manifiesto ?? await _pedirManifiesto();
     final f = m.itinerarios[itineraryId] ?? (await _pedirManifiesto()).itinerarios[itineraryId];
     if (f == null) throw DescargaFallida('El itinerario $itineraryId no está publicado');
@@ -251,6 +292,7 @@ class ActualizadorReal implements ActualizadorContenido {
       progreso?.call(f.tamano, f.tamano);
       return;
     }
+    if (!conDatos && (await restringido?.call() ?? false)) throw const SoloWifi();
     await _descargar(f, progreso: progreso);
   }
 
@@ -342,6 +384,7 @@ final actualizadorProvider = Provider<ActualizadorContenido>((ref) {
     claves: deps.claves,
     api: deps.api,
     repositorio: deps.repositorio,
+    restringido: ref.watch(restriccionWifiProvider),
     deviceId: () => ref.read(usuarioProvider).value?.deviceId ?? 'sin-dispositivo',
     aplicarRevocaciones: (r) => ref.read(contenidoProvider.notifier).aplicarRevocaciones(r),
     recargarContenido: () => ref.read(contenidoProvider.notifier).recargar(),

@@ -170,7 +170,7 @@ class _PantallaCuentaState extends ConsumerState<PantallaCuenta> {
                 autofillHints: const [AutofillHints.email],
                 textInputAction: TextInputAction.send,
                 onSubmitted: (_) => valido && enLinea ? _pedirCodigo() : null,
-                decoration: const InputDecoration(labelText: 'Correo electrónico', helperText: 'Te enviaremos un código de seis cifras. Sin contraseñas.'),
+                decoration: const InputDecoration(labelText: 'Correo electrónico', helperText: 'Te enviaremos un código de seis cifras. Sin contraseñas.', helperMaxLines: 4, errorMaxLines: 4),
               ),
               if (_error != null) ...[
                 const SizedBox(height: 12),

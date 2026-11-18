@@ -8,6 +8,7 @@ import '../../../app/estado/estado_app.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/contenido/repositorio_contenido.dart' show textoActualizaApp;
 import '../../../core/data/almacenes.dart';
 import '../../../core/sync/sincronizador.dart';
@@ -49,8 +50,10 @@ class _PantallaSincronizacionState extends ConsumerState<PantallaSincronizacion>
     final act = ref.read(actualizadorProvider);
     final mensajero = ScaffoldMessenger.of(context);
     try {
-      await act.descargarItinerario(id);
+      await descargarRespetandoWifi(context, (datos) => act.descargarItinerario(id, conDatos: datos));
       await act.aplicarPreparadas();
+    } on SoloWifi {
+      // El usuario ha preferido esperar a la wifi: el diálogo ya lo explica.
     } catch (e) {
       mensajero.showSnackBar(SnackBar(content: Text('$e')));
     }
@@ -108,6 +111,8 @@ class _PantallaSincronizacionState extends ConsumerState<PantallaSincronizacion>
           if (contenido != null)
             for (final it in contenido.global.itineraries)
               _filaItinerario(context, it.id, it.name, e),
+          if (e.esperaWifi)
+            const FilaAjuste(icono: Symbols.wifi_off, titulo: 'Hay contenido nuevo', detalle: 'Se descargará cuando haya wifi (ajuste «Descargar solo con wifi»).'),
           if (e.preparada != null)
             FilaAjuste(icono: Symbols.new_releases, titulo: 'Versión ${e.preparada} lista', detalle: 'Se aplicará al empezar la próxima sesión.'),
         ]),

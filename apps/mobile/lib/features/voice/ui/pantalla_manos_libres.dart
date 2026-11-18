@@ -13,6 +13,8 @@ import '../../../app/router.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../app/widgets/teclado.dart';
+import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/contenido/verificador.dart';
 import '../../../core/data/api_client.dart';
 import '../../../core/domain/content_models.dart';
@@ -65,7 +67,7 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
   String? _anterior;
 
   Dependencias get _deps => ref.read(dependenciasProvider);
-  ServicioPaqueteVoz get _servicio => ServicioPaqueteVoz(api: _deps.api, claves: _deps.claves);
+  ServicioPaqueteVoz get _servicio => ServicioPaqueteVoz(api: _deps.api, claves: _deps.claves, restringido: ref.read(restriccionWifiProvider));
 
   @override
   void initState() {
@@ -120,13 +122,15 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
       _errorPaquete = null;
     });
     try {
-      _paquete = await _servicio.descargar(meta: _disponible);
+      _paquete = await descargarRespetandoWifi(context, (datos) => _servicio.descargar(meta: _disponible, conDatos: datos));
       if (mounted) setState(() => _fase = _Fase.previa);
     } on PaqueteNoValido {
       await _servicio.borrar();
       _errorPaquete = textoPaqueteAlterado;
     } on SinConexionException {
       _errorPaquete = textoSinPaqueteSinConexion;
+    } on SoloWifi {
+      _errorPaquete = textoSoloWifi;
     } catch (e) {
       _errorPaquete = 'No se ha podido descargar el paquete de voz. Inténtalo de nuevo.';
     }
@@ -144,6 +148,13 @@ class _PantallaManosLibresState extends ConsumerState<PantallaManosLibres> {
   // ---- Sesión --------------------------------------------------------------
 
   Future<void> _empezar() async {
+    // El contenido nuevo solo se aplica entre sesiones: justo antes de empezar.
+    try {
+      if (await ref.read(actualizadorProvider).aplicarPreparadas()) await ref.read(contenidoProvider.notifier).recargar();
+    } catch (_) {
+      // Si falla, se entrena con el contenido que ya está en uso.
+    }
+    if (!mounted) return;
     final c = ref.read(contenidoProvider).value!;
     final p = ref.read(proyeccionProvider);
     final it = ref.read(itinerarioActivoProvider);

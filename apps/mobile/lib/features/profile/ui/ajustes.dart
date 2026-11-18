@@ -10,8 +10,10 @@ import '../../../app/estado/estado_app.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/domain/learning_models.dart';
 import '../../../core/plataforma/plataforma.dart';
+import '../../voice/ui/prueba_microfono.dart';
 import 'comunes_perfil.dart';
 
 /// Ajustes de voz (M55). La lectura usa la voz del sistema; el
@@ -27,12 +29,11 @@ class PantallaAjustesVoz extends ConsumerWidget {
     final n = ref.read(ajustesProvider.notifier);
     final deps = ref.watch(dependenciasProvider);
     final motor = deps.motorVoz;
-    final c = context.vtm;
     return AndamioAjustes(titulo: 'Voz', hijos: [
       BloqueAjustes(titulo: 'Paquete de voz · español', hijos: [
         FilaAjuste(
-          icono: motor.disponible ? Symbols.check_circle : Symbols.hourglass_top,
-          titulo: motor.disponible ? 'Reconocimiento listo' : 'Reconocimiento pendiente',
+          icono: motor.disponible ? Symbols.check_circle : Symbols.mic_off,
+          titulo: motor.disponible ? 'Reconocimiento listo' : 'Reconocimiento no disponible',
           detalle: motor.disponible ? 'Funciona sin conexión. El audio no se guarda ni sale del dispositivo.' : motor.motivoNoDisponible,
         ),
       ]),
@@ -95,17 +96,7 @@ class PantallaAjustesVoz extends ConsumerWidget {
           alCambiar: (v) => n.cambiar((x) => x.copyWith(modoBolsillo: v)),
         ),
       ]),
-      BloqueAjustes(titulo: 'Prueba de micrófono', hijos: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            motor.disponible
-                ? 'Di «cuatro coma ocho mililitros por hora» al empezar una sesión de manos libres para comprobar el micrófono.'
-                : 'La prueba de micrófono estará disponible cuando llegue el reconocimiento embebido. Hasta entonces, en manos libres puedes responder con el teclado y los botones.',
-            style: context.textos.bodyMedium?.copyWith(color: c.atenuado),
-          ),
-        ),
-      ]),
+      const BloqueAjustes(titulo: 'Prueba de micrófono', hijos: [PruebaMicrofono()]),
     ]);
   }
 }
@@ -280,10 +271,16 @@ class _PantallaItinerarioState extends ConsumerState<PantallaItinerario> {
       setState(() => _descargando = id);
       final act = ref.read(actualizadorProvider);
       try {
-        await act.descargarItinerario(id, progreso: (r, t) {
-          if (mounted) setState(() => _fraccion = t <= 0 ? null : r / t);
-        });
+        await descargarRespetandoWifi(
+          context,
+          (datos) => act.descargarItinerario(id, conDatos: datos, progreso: (r, t) {
+            if (mounted) setState(() => _fraccion = t <= 0 ? null : r / t);
+          }),
+        );
         await act.aplicarPreparadas();
+      } on SoloWifi {
+        if (mounted) setState(() => _descargando = null);
+        return;
       } catch (e) {
         if (mounted) setState(() => _descargando = null);
         mensajero.showSnackBar(SnackBar(content: Text('No se ha podido descargar: $e')));

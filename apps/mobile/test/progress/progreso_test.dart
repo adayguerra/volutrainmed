@@ -56,7 +56,8 @@ void main() {
     expect(find.text('Sin conexión'), findsOneWidget);
     // Últimos 7 días: los diez intentos de esta semana, 9 aciertos.
     expect(t.widget<Text>(find.byKey(const ValueKey('cifra-precision'))).data, '90 %');
-    expect(t.widget<Text>(find.byKey(const ValueKey('cifra-tiempo'))).data, '0,6');
+    expect(t.widget<Text>(find.byKey(const ValueKey('cifra-tiempo'))).data, '40 % más rápido');
+    expect(find.text('que el tiempo objetivo'), findsOneWidget);
     await t.tap(find.text('Todo'));
     await t.pump();
     expect(t.widget<Text>(find.byKey(const ValueKey('cifra-precision'))).data, '85 %');

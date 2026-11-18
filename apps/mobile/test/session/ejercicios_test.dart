@@ -7,6 +7,7 @@ import 'package:volutrainmed/app/widgets/teclado.dart';
 import 'package:volutrainmed/core/domain/learning_models.dart';
 import 'package:volutrainmed/core/plataforma/plataforma.dart';
 import 'package:volutrainmed/features/session/domain/motor_sesion.dart';
+import 'package:volutrainmed/features/session/ui/pantalla_sesion.dart';
 
 import '../helpers/arnes.dart';
 import 'fixtures_sesion.dart';
@@ -88,6 +89,35 @@ void main() {
     expect(find.byType(Draggable), findsNothing, reason: 'no hace falta arrastrar');
     await comprobar(t);
     expect(find.text('Correcto'), findsOneWidget);
+  });
+
+  testWidgets('ordenar pasos arrastrando: recolocar un paso por el asa corrige el orden y se da por correcto', (t) async {
+    final a = arnesSesion();
+    await a.montar(t, ruta: Rutas.leccion('l-t3'));
+    // Orden equivocado al tocar: b, a, c, d (el válido es a, b, c, d).
+    for (final id in ['b', 'a', 'c', 'd']) {
+      await tocar(t, find.byKey(ValueKey('paso-$id')));
+    }
+    expect(find.bySemanticsLabel(RegExp('^Posición 1: Multiplicar por 60')), findsOneWidget);
+    final asa = find.byKey(const ValueKey('asa-b'));
+    expect(t.getSize(asa).width, greaterThanOrEqualTo(48));
+    expect(t.getSize(asa).height, greaterThanOrEqualTo(48));
+    // Se arrastra «b» por debajo de «a».
+    final destino = t.getCenter(find.byKey(const ValueKey('asa-a')));
+    final paso = (destino.dy - t.getCenter(asa).dy + 40) / 8;
+    final g = await t.startGesture(t.getCenter(asa));
+    await t.pump(const Duration(milliseconds: 50));
+    for (var i = 0; i < 8; i++) {
+      await g.moveBy(Offset(0, paso));
+      await t.pump(const Duration(milliseconds: 50));
+    }
+    await g.up();
+    await Arnes.asentar(t);
+    expect(find.bySemanticsLabel(RegExp('^Posición 1: Multiplicar la dosis por el peso')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('^Posición 2: Multiplicar por 60')), findsOneWidget);
+    await comprobar(t);
+    expect(find.text('Correcto'), findsOneWidget);
+    expect((await a.aprendizaje.intentos()).single.answerPayload, {'order': ['a', 'b', 'c', 'd']});
   });
 
   testWidgets('exercise-session · Conversión relámpago: serie de diez conversiones con 60 segundos en total', (t) async {
@@ -197,6 +227,37 @@ void main() {
     expect(s.completed, isFalse);
     expect(s.lessonId, 'u-f-1-l3');
     expect(a.ubicacion.ruta, Rutas.inicio);
+
+    // Al volver, la lección empieza por el ejercicio siguiente.
+    a.contenedor.read(routerProvider).go(Rutas.leccion('u-f-1-l3'));
+    await Arnes.asentar(t);
+    expect(find.text('6 de 10'), findsOneWidget);
+    final vistas = (await a.aprendizaje.intentos()).map((i) => i.variantId).toSet();
+    expect(vistas, isNot(contains(PantallaSesion.ultimoMotor!.actual!.variante.id)), reason: 'no repite un ejercicio ya respondido');
+    for (var i = 0; i < 5; i++) {
+      await noLoSeUI(t);
+      await continuar(t);
+    }
+    await Arnes.asentar(t);
+    expect(await a.aprendizaje.intentos(), hasLength(10));
+    final sesiones = await a.aprendizaje.sesiones();
+    final completa = sesiones.singleWhere((x) => x.completed);
+    expect(completa.lessonId, 'u-f-1-l3');
+    expect(completa.summary!.total, 10, reason: 'el resumen cuenta la lección entera');
+    expect(PantallaSesion.ultimoMotor!.primerosIntentos, hasLength(10));
+  });
+
+  testWidgets('una lección dejada hace más de 24 horas empieza de nuevo', (t) async {
+    final a = arnesSesion();
+    await a.montar(t, ruta: Rutas.leccion('u-f-1-l3'));
+    await noLoSeUI(t);
+    await continuar(t);
+    await tocar(t, find.byKey(const ValueKey('cerrar-sesion')));
+    await tocar(t, find.byKey(const ValueKey('confirmar-salir')));
+    a.reloj.avanzar(const Duration(hours: 25));
+    a.contenedor.read(routerProvider).go(Rutas.leccion('u-f-1-l3'));
+    await Arnes.asentar(t);
+    expect(find.text('1 de 10'), findsOneWidget);
   });
 
   testWidgets('exercise-session · Gesto de atrás: abre la confirmación de salida en lugar de abandonar', (t) async {

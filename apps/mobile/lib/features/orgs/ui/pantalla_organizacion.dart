@@ -9,6 +9,7 @@ import '../../../app/router.dart';
 import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/actualizador.dart';
+import '../../../core/contenido/aviso_solo_wifi.dart';
 import '../../../core/data/api_client.dart';
 import '../data/organizacion.dart';
 
@@ -83,11 +84,14 @@ class _PantallaOrganizacionState extends ConsumerState<PantallaOrganizacion> {
     await ref.read(usuarioProvider.notifier).editarPerfil((p) => p.copyWith(itineraryId: id));
     final act = ref.read(actualizadorProvider);
     try {
-      if (!(await act.itinerariosInstalados()).contains(id)) {
-        await act.descargarItinerario(id);
+      final instalado = (await act.itinerariosInstalados()).contains(id);
+      if (!instalado && mounted) {
+        await descargarRespetandoWifi(context, (datos) => act.descargarItinerario(id, conDatos: datos));
         await act.aplicarPreparadas();
       }
       m.showSnackBar(const SnackBar(content: Text('Itinerario cambiado')));
+    } on SoloWifi {
+      m.showSnackBar(const SnackBar(content: Text('Itinerario elegido. Se descargará cuando haya wifi')));
     } catch (_) {
       m.showSnackBar(const SnackBar(content: Text('Itinerario elegido. Se descargará cuando haya conexión')));
     }

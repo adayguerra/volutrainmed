@@ -18,6 +18,12 @@ class ConectividadFalsa implements Conectividad {
     _ctrl.add(v);
   }
 
+  /// Simula una conexión por datos móviles (sin wifi).
+  bool datosMoviles = false;
+
+  @override
+  Future<bool> soloDatosMoviles() async => _conectado && datosMoviles;
+
   @override
   Future<bool> hayConexion() async => _conectado;
   @override

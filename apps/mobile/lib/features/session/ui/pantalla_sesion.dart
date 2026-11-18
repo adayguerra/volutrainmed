@@ -148,6 +148,9 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       final cola = proyeccion?.colaHoy ?? const <FichaRepaso>[];
       final derechos = ref.read(derechosEfectivosProvider);
       _eraPrimeraLeccion = !usuario.primeraLeccionHecha;
+      // Lección dejada a medias hace menos de 24 h: se sigue por el siguiente.
+      final datos = ref.read(aprendizajeProvider).value;
+      final previa = leccion == null || datos == null ? null : sesionReanudable(leccion, datos.sesiones, datos.intentos, _deps.reloj.ahora());
       final m = MotorSesion(
         contenido: contenido,
         modo: modo,
@@ -164,6 +167,7 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
         azar: _deps.azar,
         alRegistrar: (a) => ref.read(aprendizajeProvider.notifier).registrarIntento(a),
         alEvento: (n, props) => ref.read(aprendizajeProvider.notifier).registrarEvento(n, props),
+        previa: previa,
       )..preparar();
       PantallaSesion.ultimoMotor = m;
       setState(() {
@@ -444,7 +448,7 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text(textoSalirTitulo),
-        content: Text('Se guarda lo hecho hasta aquí: $hechos de ${m.total} ejercicios. La lección quedará sin completar.'),
+        content: Text('Se guarda lo hecho hasta aquí: $hechos de ${m.total} ejercicios. Al volver, empiezas por el siguiente.'),
         actions: [
           TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Seguir con la lección')),
           FilledButton(key: const ValueKey('confirmar-salir'), onPressed: () => Navigator.of(ctx).pop(true), child: const Text('Salir')),
@@ -645,18 +649,53 @@ class _PantallaSesionState extends ConsumerState<PantallaSesion> with WidgetsBin
         final items = {for (final i in v.orderItems!) i.id: i};
         final pendientes = v.orderItems!.where((i) => !_orden.contains(i.id)).toList();
         return [
-          Text('Toca los pasos en orden.', style: context.textos.bodySmall),
+          Text('Toca los pasos en orden o arrástralos por el asa para recolocarlos.', style: context.textos.bodySmall),
           const SizedBox(height: 8),
-          for (var p = 0; p < v.orderItems!.length; p++)
+          // Pasos ya colocados: se pueden recolocar arrastrando por el asa
+          // (48 dp). Tocar y «Deshacer» siguen bastando sin arrastrar.
+          ReorderableListView(
+            key: const ValueKey('pasos-colocados'),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            buildDefaultDragHandles: false,
+            onReorderItem: (de, a) => setState(() => _orden.insert(a, _orden.removeAt(de))),
+            children: [
+              for (var p = 0; p < _orden.length; p++)
+                Padding(
+                  key: ValueKey('colocado-${_orden[p]}'),
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Tarjeta(
+                    key: ValueKey('posicion-$p'),
+                    padding: const EdgeInsets.fromLTRB(16, 4, 4, 4),
+                    semantica: 'Posición ${p + 1}: ${items[_orden[p]]!.text}',
+                    child: Row(children: [
+                      Text('${p + 1}', style: context.textos.titleSmall),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(items[_orden[p]]!.text, style: context.textos.bodyMedium)),
+                      ReorderableDragStartListener(
+                        index: p,
+                        child: SizedBox(
+                          key: ValueKey('asa-${_orden[p]}'),
+                          width: 48,
+                          height: 48,
+                          child: Icon(Symbols.drag_indicator, color: context.vtm.atenuado, semanticLabel: 'Arrastrar para recolocar'),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+            ],
+          ),
+          for (var p = _orden.length; p < v.orderItems!.length; p++)
             Padding(
               padding: const EdgeInsets.only(bottom: 6),
               child: Tarjeta(
                 key: ValueKey('posicion-$p'),
-                semantica: p < _orden.length ? 'Posición ${p + 1}: ${items[_orden[p]]!.text}' : 'Posición ${p + 1}, vacía',
+                semantica: 'Posición ${p + 1}, vacía',
                 child: Row(children: [
                   Text('${p + 1}', style: context.textos.titleSmall),
                   const SizedBox(width: 12),
-                  Expanded(child: Text(p < _orden.length ? items[_orden[p]]!.text : 'Posición ${p + 1}', style: context.textos.bodyMedium?.copyWith(color: p < _orden.length ? null : context.vtm.atenuado))),
+                  Expanded(child: Text('Posición ${p + 1}', style: context.textos.bodyMedium?.copyWith(color: context.vtm.atenuado))),
                 ]),
               ),
             ),

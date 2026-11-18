@@ -10,6 +10,8 @@ import 'package:volutrainmed/app/router.dart';
 import 'package:volutrainmed/app/widgets/comunes.dart';
 import 'package:volutrainmed/app/widgets/teclado.dart';
 import 'package:volutrainmed/core/domain/learning_models.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
+import 'package:volutrainmed/core/plataforma/archivos.dart';
 import 'package:volutrainmed/core/plataforma/plataforma.dart';
 import 'package:volutrainmed/features/profile/ui/ajustes.dart';
 import 'package:volutrainmed/features/profile/ui/perfil.dart';
@@ -19,6 +21,14 @@ import '../helpers/arnes.dart';
 import '../sync/sincronizador_test.dart' show intentoSintetico;
 
 http.Response json(Object o, [int s = 200]) => http.Response(jsonEncode(o), s, headers: {'content-type': 'application/json'});
+
+/// Arnés con el guardador de archivos de prueba.
+class ArnesArchivos extends Arnes {
+  ArnesArchivos({super.usuario, super.http});
+  final guardador = GuardadorArchivosFalso();
+  @override
+  List<Override> get overrides => [...super.overrides, guardadorArchivosProvider.overrideWithValue(guardador)];
+}
 
 void main() {
   setUpAll(cargarContenidoDePrueba);
@@ -48,7 +58,7 @@ void main() {
 
   testWidgets('onboarding-account · Exportación de datos: confirmación de la solicitud y archivo con perfil e historial', (t) async {
     var consultas = 0;
-    final a = Arnes(
+    final a = ArnesArchivos(
       usuario: usuarioDePrueba(token: 'tok'),
       http: (r) async {
         if (r.url.path == '/v1/me/export' && r.method == 'POST') return json({'requestId': '7', 'status': 'pending'}, 202);
@@ -80,6 +90,22 @@ void main() {
     expect(find.text(textoArchivoListo), findsOneWidget);
     expect(find.textContaining('Perfil, 3 intentos, 1 sesiones'), findsOneWidget);
     expect(a.peticiones.where((r) => r.url.path == '/v1/me/export' && r.method == 'POST'), hasLength(1));
+
+    // El archivo se entrega como archivo real (descarga o documentos de la app).
+    await tocar(t, find.text('Guardar el archivo'));
+    final g = a.guardador.guardados.single;
+    expect(g.nombre, 'volutrainmed-datos-2026-11-17.json');
+    expect(g.mime, 'application/json');
+    final contenido = jsonDecode(g.contenido) as Map<String, dynamic>;
+    expect((contenido['profile'] as Map)['alias'], 'MeniscoÁgil12');
+    expect(contenido['attempts'], hasLength(3));
+    expect(contenido['sessions'], hasLength(1));
+    expect(find.textContaining('volutrainmed-datos-2026-11-17.json'), findsOneWidget);
+
+    // Compartir reutiliza el archivo ya guardado.
+    await tocar(t, find.text('Compartir'));
+    expect(a.guardador.compartidos.single.nombre, g.nombre);
+    expect(a.guardador.guardados, hasLength(1));
   });
 
   testWidgets('onboarding-account · Eliminación de la cuenta: confirmada por escrito, la cuenta se cierra y los datos se suprimen', (t) async {
@@ -166,7 +192,13 @@ void main() {
 
     final entrada = EntradaNumerica();
     final senales = a.contenedor.read(senalesProvider);
-    await t.pumpWidget(MaterialApp(home: Scaffold(body: TecladoNumerico(entrada: entrada, senales: senales))));
+    await t.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: TecladoNumerico(entrada: entrada, senales: senales),
+        ),
+      ),
+    );
     await t.tap(find.byKey(const ValueKey('tecla-4')));
     await t.pump();
     expect(entrada.texto, '4');
@@ -207,7 +239,7 @@ void main() {
   testWidgets('escuchar el ejemplo de voz usa la síntesis del dispositivo', (t) async {
     final a = Arnes();
     await a.montar(t, ruta: Rutas.voz);
-    expect(find.textContaining('Reconocimiento pendiente'), findsOneWidget);
+    expect(find.textContaining('Reconocimiento no disponible'), findsOneWidget);
     await tocar(t, find.text('Escuchar ejemplo'));
     expect(a.sintetizador.dichos, [PantallaAjustesVoz.ejemplo]);
   });

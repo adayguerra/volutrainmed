@@ -264,6 +264,9 @@ ThemeData construirTema(Brightness brillo, {bool altoContraste = false}) {
     ),
     iconButtonTheme: IconButtonThemeData(style: IconButton.styleFrom(minimumSize: const Size(48, 48))),
     inputDecorationTheme: InputDecorationTheme(
+      // Los textos de ayuda y de error no se truncan: pasan a otra línea.
+      helperMaxLines: 4,
+      errorMaxLines: 4,
       filled: true,
       fillColor: c.superficie,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: borde)),

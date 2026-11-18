@@ -12,7 +12,6 @@ import '../../../app/tema.dart';
 import '../../../app/widgets/comunes.dart';
 import '../../../core/contenido/repositorio_contenido.dart';
 import '../../../core/domain/content_models.dart';
-import '../../../core/domain/decimal_es.dart';
 import '../../../core/domain/reloj.dart';
 import '../../home/ui/componentes_inicio.dart';
 import '../../review/ui/pantalla_repaso.dart' show nombrePlantilla;
@@ -161,7 +160,7 @@ class _Cifras extends StatelessWidget {
     final t = cf.tiempoObjetivo;
     return Wrap(spacing: 8, runSpacing: 8, children: [
       celda('cifra-precision', 'Precisión', cf.precision == null ? '—' : porcentaje(cf.precision!), '${cf.intentos} ejercicios'),
-      celda('cifra-tiempo', 'Tiempo / objetivo', t == null ? '—' : formatEs(t.toStringAsFixed(2)), t == null ? null : (t <= 1 ? 'por debajo' : 'por encima')),
+      celda('cifra-tiempo', 'Tu ritmo', t == null ? '—' : textoRitmo(t), t == null ? 'sin datos todavía' : 'que el tiempo objetivo'),
       celda('cifra-dias', 'Días activos', '${proyeccion.resumen.diasActivosSemana}/7', 'esta semana'),
     ]);
   }
@@ -415,4 +414,12 @@ class _FilaBarra extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Ritmo frente al tiempo objetivo, en palabras: con una razón de 0,67 se
+/// responde un 33 % más rápido que el objetivo.
+String textoRitmo(double razon) {
+  final pct = ((1 - razon).abs() * 100).round();
+  if (pct == 0) return 'Igual';
+  return razon < 1 ? '$pct % más rápido' : '$pct % más lento';
 }
