@@ -6,6 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:permission_handler/permission_handler.dart' as ph;
 
+import 'voces.dart';
+export 'voces.dart';
+
 /// Costuras con la plataforma. Cada servicio del sistema (conexión, voz,
 /// vibración, permisos, notificaciones) va detrás de una interfaz propia para
 /// que la lógica sea comprobable con dobles de prueba (`falsos.dart`).
@@ -62,21 +65,110 @@ abstract class Sintetizador {
   Future<void> parar();
 }
 
-/// Voz del sistema en español de España. No usa red: si el motor del sistema
-/// necesitara red para es-ES, la app lo indica en los ajustes de voz.
-class SintetizadorSistema implements Sintetizador {
-  SintetizadorSistema() {
-    _tts.setLanguage('es-ES');
-    _tts.awaitSpeakCompletion(true);
+/// Permite elegir entre las voces en español instaladas en el dispositivo.
+abstract class SelectorDeVoces {
+  /// Voces en español que funcionan sin red, de mejor a peor.
+  Future<List<VozSistema>> voces();
+
+  /// Fija la voz por su nombre; `null` vuelve a la mejor disponible.
+  Future<void> usarVoz(String? nombre);
+  VozSistema? get vozActual;
+}
+
+/// Voz del sistema en español de España. No usa red: descarta las voces que
+/// la necesitan y elige la de mejor calidad instalada (la voz por defecto del
+/// sistema suele ser la compacta, que suena metálica).
+class SintetizadorSistema implements Sintetizador, SelectorDeVoces {
+  SintetizadorSistema({FlutterTts? tts, bool? esWeb})
+      : _tts = tts ?? FlutterTts(),
+        _esWeb = esWeb ?? kIsWeb;
+  final FlutterTts _tts;
+  final bool _esWeb;
+  Future<void>? _listo;
+  List<VozSistema> _voces = const [];
+  String? _preferida;
+  VozSistema? _actual;
+  int _turno = 0;
+
+  @override
+  VozSistema? get vozActual => _actual;
+
+  Future<void> _preparar() => _listo ??= () async {
+        try {
+          await _tts.awaitSpeakCompletion(true);
+          await _tts.setLanguage('es-ES');
+          await _tts.setVolume(1.0);
+          await _tts.setPitch(1.0);
+          if (!_esWeb) {
+            // iOS: la lectura suena aunque el interruptor esté en silencio y baja
+            // el volumen de otra app mientras habla.
+            try {
+              await _tts.setSharedInstance(true);
+              await _tts.setIosAudioCategory(IosTextToSpeechAudioCategory.playback, [IosTextToSpeechAudioCategoryOptions.duckOthers], IosTextToSpeechAudioMode.spokenAudio);
+            } catch (_) {}
+          }
+          await _cargarVoces();
+        } catch (_) {}
+      }();
+
+  Future<void> _cargarVoces() async {
+    // En el navegador la lista de voces llega con retraso: se reintenta un poco.
+    for (var i = 0; i < (_esWeb ? 6 : 1); i++) {
+      try {
+        final crudo = await _tts.getVoices;
+        if (crudo is List) {
+          _voces = vocesEnEspanol(crudo.whereType<Map>().map((m) => VozSistema.deMapa(m)));
+        }
+      } catch (_) {}
+      if (_voces.isNotEmpty) break;
+      await Future<void>.delayed(const Duration(milliseconds: 250));
+    }
+    await _aplicarVoz();
   }
-  final _tts = FlutterTts();
+
+  Future<void> _aplicarVoz() async {
+    final v = elegirVoz(_voces, preferida: _preferida);
+    _actual = v;
+    if (v == null) return;
+    try {
+      await _tts.setVoice({'name': v.nombre, 'locale': v.locale});
+    } catch (_) {}
+  }
+
+  @override
+  Future<List<VozSistema>> voces() async {
+    await _preparar();
+    if (_voces.isEmpty) await _cargarVoces();
+    return _voces;
+  }
+
+  @override
+  Future<void> usarVoz(String? nombre) async {
+    _preferida = nombre;
+    await _preparar();
+    await _aplicarVoz();
+  }
+
+  /// Velocidad del motor para un multiplicador de usuario. El navegador usa 1,0
+  /// como velocidad normal; iOS y Android, 0,5. Con 0,5 en la web la voz iba a
+  /// mitad de velocidad.
+  double velocidadMotor(double velocidad) => _esWeb ? velocidad.clamp(0.5, 2.0).toDouble() : (0.5 * velocidad).clamp(0.1, 1.0).toDouble();
 
   @override
   Future<void> decir(String texto, {double velocidad = 1.0}) async {
+    final turno = ++_turno;
     try {
-      // flutter_tts usa 0,5 como velocidad normal en iOS y Android.
-      await _tts.setSpeechRate((0.5 * velocidad).clamp(0.1, 1.0));
-      await _tts.speak(texto);
+      await _preparar();
+      await _tts.setSpeechRate(velocidadMotor(velocidad));
+      // Frase a frase, con una pausa breve: el caso y la pregunta no se atropellan.
+      final frases = frasesParaLeer(texto);
+      for (var i = 0; i < frases.length; i++) {
+        if (turno != _turno) return;
+        await _tts.speak(frases[i]);
+        if (i + 1 < frases.length && turno == _turno) {
+          await Future<void>.delayed(const Duration(milliseconds: 180));
+        }
+      }
     } catch (_) {
       // Sin voz disponible: el texto siempre aparece también en pantalla.
     }
@@ -84,6 +176,7 @@ class SintetizadorSistema implements Sintetizador {
 
   @override
   Future<void> parar() async {
+    _turno++;
     try {
       await _tts.stop();
     } catch (_) {}

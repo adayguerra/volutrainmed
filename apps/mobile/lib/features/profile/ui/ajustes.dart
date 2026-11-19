@@ -21,7 +21,7 @@ import 'comunes_perfil.dart';
 class PantallaAjustesVoz extends ConsumerWidget {
   const PantallaAjustesVoz({super.key});
 
-  static const ejemplo = 'Cuatro coma ocho mililitros por hora';
+  static const ejemplo = 'Paciente simulado de setenta kilos. Pauta: cinco miligramos por kilo. ¿Cuántos miligramos son?';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,6 +57,16 @@ class PantallaAjustesVoz extends ConsumerWidget {
           detalle: '«$ejemplo»',
           onTap: () => deps.sintetizador.decir(ejemplo, velocidad: a.velocidadVoz),
         ),
+        if (deps.sintetizador is SelectorDeVoces)
+          SelectorVozLectura(
+            selector: deps.sintetizador as SelectorDeVoces,
+            elegida: a.vozLectura,
+            alElegir: (nombre) async {
+              await n.cambiar((x) => nombre == null ? x.copyWith(vozAutomatica: true) : x.copyWith(vozLectura: nombre));
+              await (deps.sintetizador as SelectorDeVoces).usarVoz(nombre);
+              unawaited(deps.sintetizador.decir(ejemplo, velocidad: a.velocidadVoz));
+            },
+          ),
         OpcionesSegmentadas<String>(
           etiqueta: 'Lectura de explicaciones',
           opciones: const {'breve': 'Breve', 'completa': 'Completa', 'ninguna': 'Ninguna'},
@@ -335,5 +345,74 @@ class _PantallaItinerarioState extends ConsumerState<PantallaItinerario> {
             ),
           ),
     ]);
+  }
+}
+
+
+/// Lista de voces en español instaladas en el dispositivo. La primera opción
+/// deja que la app elija la de mejor calidad; al tocar una voz se oye el ejemplo.
+class SelectorVozLectura extends StatefulWidget {
+  const SelectorVozLectura({super.key, required this.selector, required this.elegida, required this.alElegir});
+  final SelectorDeVoces selector;
+  final String? elegida;
+  final Future<void> Function(String? nombre) alElegir;
+
+  @override
+  State<SelectorVozLectura> createState() => _SelectorVozLecturaState();
+}
+
+class _SelectorVozLecturaState extends State<SelectorVozLectura> {
+  late final Future<List<VozSistema>> _voces = widget.selector.voces();
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.vtm;
+    return FutureBuilder<List<VozSistema>>(
+      future: _voces,
+      builder: (context, snap) {
+        final voces = snap.data ?? const <VozSistema>[];
+        if (snap.connectionState != ConnectionState.done) return const SizedBox.shrink();
+        if (voces.isEmpty) {
+          return const FilaAjuste(
+            icono: Symbols.voice_over_off,
+            titulo: 'Sin voces en español',
+            detalle: 'Instala una voz en español en los ajustes del sistema para oír la lectura.',
+          );
+        }
+        final mejor = voces.first;
+        final pobre = mejor.nivelCalidad < 2;
+        Widget fila(String? nombre, String titulo, String? detalle) {
+          final activa = widget.elegida == nombre;
+          return Semantics(
+            selected: activa,
+            button: true,
+            child: ListTile(
+              dense: true,
+              leading: Icon(activa ? Symbols.radio_button_checked : Symbols.radio_button_unchecked, color: activa ? c.primario : c.atenuado),
+              title: Text(titulo, style: context.textos.bodyLarge),
+              subtitle: detalle == null ? null : Text(detalle, style: context.textos.bodySmall?.copyWith(color: c.atenuado)),
+              onTap: () => widget.alElegir(nombre),
+            ),
+          );
+        }
+
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+            child: Text('Voz de lectura', style: context.textos.titleSmall),
+          ),
+          fila(null, 'Automática', 'La mejor instalada: ${mejor.etiqueta}'),
+          for (final v in voces.take(8)) fila(v.nombre, v.etiqueta, null),
+          if (pobre)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+              child: Text(
+                'Este dispositivo solo tiene voces básicas. En los ajustes del sistema puedes descargar una voz en español de calidad «mejorada» o «prémium»; funciona sin conexión y la app la usará sola.',
+                style: context.textos.bodySmall?.copyWith(color: c.atenuado),
+              ),
+            ),
+        ]);
+      },
+    );
   }
 }

@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/plataforma/plataforma.dart';
 import '../dependencias.dart';
 
 enum ConfirmacionVoz { siempre, siHayDuda, nunca }
@@ -20,6 +23,7 @@ class Ajustes {
     this.manoIzquierda = false,
     this.topeRepaso = 20,
     this.velocidadVoz = 1.0,
+    this.vozLectura,
     this.confirmacion = ConfirmacionVoz.siempre,
     this.esperaSilencioMs = 900,
     this.cifraACifra = false,
@@ -46,6 +50,9 @@ class Ajustes {
   final bool manoIzquierda;
   final int topeRepaso;
   final double velocidadVoz;
+
+  /// Nombre de la voz de lectura elegida; `null` = la mejor instalada.
+  final String? vozLectura;
   final ConfirmacionVoz confirmacion;
   final int esperaSilencioMs;
   final bool cifraACifra;
@@ -70,6 +77,8 @@ class Ajustes {
     bool? manoIzquierda,
     int? topeRepaso,
     double? velocidadVoz,
+    String? vozLectura,
+    bool vozAutomatica = false,
     ConfirmacionVoz? confirmacion,
     int? esperaSilencioMs,
     bool? cifraACifra,
@@ -91,6 +100,7 @@ class Ajustes {
         manoIzquierda: manoIzquierda ?? this.manoIzquierda,
         topeRepaso: topeRepaso ?? this.topeRepaso,
         velocidadVoz: velocidadVoz ?? this.velocidadVoz,
+        vozLectura: vozAutomatica ? null : (vozLectura ?? this.vozLectura),
         confirmacion: confirmacion ?? this.confirmacion,
         esperaSilencioMs: esperaSilencioMs ?? this.esperaSilencioMs,
         cifraACifra: cifraACifra ?? this.cifraACifra,
@@ -112,6 +122,7 @@ class Ajustes {
         'manoIzquierda': manoIzquierda,
         'topeRepaso': topeRepaso,
         'velocidadVoz': velocidadVoz,
+        'vozLectura': vozLectura,
         'confirmacion': confirmacion.name,
         'esperaSilencioMs': esperaSilencioMs,
         'cifraACifra': cifraACifra,
@@ -136,6 +147,7 @@ class Ajustes {
       manoIzquierda: j['manoIzquierda'] == true,
       topeRepaso: (j['topeRepaso'] as num?)?.toInt() ?? 20,
       velocidadVoz: (j['velocidadVoz'] as num?)?.toDouble() ?? 1.0,
+      vozLectura: j['vozLectura'] as String?,
       confirmacion: en(ConfirmacionVoz.values, j['confirmacion'], ConfirmacionVoz.siempre),
       esperaSilencioMs: (j['esperaSilencioMs'] as num?)?.toInt() ?? 900,
       cifraACifra: j['cifraACifra'] == true,
@@ -157,10 +169,19 @@ class AjustesNotifier extends Notifier<Ajustes> {
   /// Carga los ajustes guardados (al arrancar).
   Future<void> cargar() async {
     state = Ajustes.fromJson(await ref.read(dependenciasProvider).claves.leerJson(claveAjustes));
+    _aplicarVoz();
+  }
+
+  /// La voz de lectura elegida se aplica al sintetizador al cargar y al cambiar.
+  void _aplicarVoz() {
+    final s = ref.read(dependenciasProvider).sintetizador;
+    if (s is SelectorDeVoces) unawaited((s as SelectorDeVoces).usarVoz(state.vozLectura));
   }
 
   Future<void> cambiar(Ajustes Function(Ajustes) f) async {
+    final vozAntes = state.vozLectura;
     state = f(state);
+    if (state.vozLectura != vozAntes) _aplicarVoz();
     await ref.read(dependenciasProvider).claves.escribirJson(claveAjustes, state.toJson());
   }
 }
