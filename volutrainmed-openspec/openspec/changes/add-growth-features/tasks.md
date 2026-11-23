@@ -2,34 +2,34 @@
 
 ## 1. Ligas y logros
 
-- [ ] 1.1 Formación semanal de grupos de 30 por sector y cinco divisiones
-- [ ] 1.2 Puntuación por aciertos al primer intento, bonificación por marca válida y tope diario
-- [ ] 1.3 Cálculo de ascensos y descensos al cierre de la semana
+- [x] 1.1 Formación semanal de grupos de 30 por sector y cinco divisiones
+- [x] 1.2 Puntuación por aciertos al primer intento, bonificación por marca válida y tope diario
+- [x] 1.3 Cálculo de ascensos y descensos al cierre de la semana
 - [ ] 1.4 Pestaña de ligas con alias, zonas rotuladas y fila propia fija
-- [ ] 1.5 Unión y salida voluntaria de las ligas
-- [ ] 1.6 Clasificación en caché con su hora para el uso sin conexión
-- [ ] 1.7 Detección de patrones anómalos y revisión
-- [ ] 1.8 Constructor de logros en el back office y migración de los cinco logros fijos
-- [ ] 1.9 Configuración de ligas con entrada en vigor la semana siguiente
+- [x] 1.5 Unión y salida voluntaria de las ligas
+- [x] 1.6 Clasificación en caché con su hora para el uso sin conexión
+- [x] 1.7 Detección de patrones anómalos y revisión
+- [x] 1.8 Constructor de logros en el back office y migración de los cinco logros fijos
+- [x] 1.9 Configuración de ligas con entrada en vigor la semana siguiente
 
 ## 2. Organizaciones
 
-- [ ] 2.1 Alta de organizaciones, plazas, vigencia y administradores
-- [ ] 2.2 Acceso por código de invitación y por dominio de correo
+- [x] 2.1 Alta de organizaciones, plazas, vigencia y administradores
+- [x] 2.2 Acceso por código de invitación y por dominio de correo
 - [ ] 2.3 Grupos, asignación de itinerarios e invitación masiva
-- [ ] 2.4 Informes agregados de grupo
-- [ ] 2.5 Modo nominal con información previa a cada usuario
-- [ ] 2.6 Ligas privadas de organización
-- [ ] 2.7 Derecho «sin anuncios» para las plazas de organización
+- [x] 2.4 Informes agregados de grupo
+- [x] 2.5 Modo nominal con información previa a cada usuario
+- [x] 2.6 Ligas privadas de organización
+- [x] 2.7 Derecho «sin anuncios» para las plazas de organización
 - [ ] 2.8 Contrato de encargo de tratamiento y revisión de protección de datos
 
 ## 3. Creador de tipos de ejercicio
 
-- [ ] 3.1 Catálogo de bloques de presentación, respuesta, corrección y comportamiento
+- [x] 3.1 Catálogo de bloques de presentación, respuesta, corrección y comportamiento
 - [ ] 3.2 Editor de tipos con paleta, lista de pasos, propiedades y vista previa
-- [ ] 3.3 Cálculo automático de la compatibilidad con voz
-- [ ] 3.4 Versión mínima de la app por tipo y porcentaje de dispositivos compatibles
-- [ ] 3.5 Ampliación del intérprete de la app con los bloques necesarios para T4, T5, T8 y T10
+- [x] 3.3 Cálculo automático de la compatibilidad con voz
+- [x] 3.4 Versión mínima de la app por tipo y porcentaje de dispositivos compatibles
+- [x] 3.5 Ampliación del intérprete de la app con los bloques necesarios para T4, T5, T8 y T10
 - [ ] 3.6 Definición de T4, T5, T8 y T10 con el creador y validación de sus plantillas
 
 ## 4. Pruebas
